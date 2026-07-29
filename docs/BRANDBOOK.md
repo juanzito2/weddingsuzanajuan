@@ -81,73 +81,123 @@ El diseño toma inspiración en:
 
 ---
 
-# 6. Paleta oficial
+# 6. Paleta Oficial
 
 ## Imperial Purple
 
-Color principal.
+Cor principal da identidade visual.
 
 Representa:
 
 - Realeza
-- Nobleza
-- Elegancia
+- Elegância
+- Sofisticação
+- Espiritualidade
 
 ---
 
 ## Royal Lavender
 
-Color secundario.
+Cor secundária.
 
 Representa:
 
 - Delicadeza
-- Amor
-- Calma
-
----
-
-## Champagne Beige
-
-Representa:
-
-- Sofisticación
-- Lujo
-- Neutralidad
+- Romance
+- Leveza
+- Harmonia
 
 ---
 
 ## Royal Gold
 
-Uso limitado.
+Cor de destaque.
 
-Solo para pequeños detalles.
+Será utilizada em elementos importantes do projeto como:
 
-Nunca dominará el diseño.
+- Monograma
+- Bordas elegantes
+- Linhas decorativas
+- Ícones especiais
+- Botões principais (quando apropriado)
+- Detalhes do Hero
+- Divisores de seção
+- Títulos especiais
+- Molduras
+- Efeitos de brilho discretos
+
+O dourado nunca deverá ser excessivo, mas poderá aparecer ao longo de todo o site para reforçar a identidade visual.
+
+---
+
+## Champagne Beige
+
+Cor de apoio.
+
+Representa:
+
+- Sofisticação
+- Conforto
+- Elegância
+- Luz
+
+Será utilizada para equilibrar o roxo e o dourado.
 
 ---
 
 ## Ivory
 
-Color principal para fondos.
+Principal cor dos fundos.
 
-Debe generar sensación de amplitud.
+Responsável por transmitir leveza.
 
 ---
 
 ## White
 
-Para destacar elementos importantes.
-
----
+Utilizada para destacar elementos importantes e melhorar a leitura.
 
 # 7. Gradientes
 
-Los gradientes serán suaves.
+Os gradientes serão uma das principais características visuais do projeto.
 
-Nunca muy saturados.
+Todos deverão ser suaves, elegantes e discretos.
 
-Ejemplos:
+Nunca utilizar transições bruscas.
+
+---
+
+## Gradiente Imperial
+
+Imperial Purple
+
+↓
+
+Royal Lavender
+
+---
+
+## Gradiente Royal
+
+Imperial Purple
+
+↓
+
+Royal Gold
+
+---
+
+## Gradiente Champagne
+
+Champagne Beige
+
+↓
+
+Ivory
+
+---
+
+## Gradiente Royal Luxury
 
 Imperial Purple
 
@@ -159,11 +209,37 @@ Royal Lavender
 
 Champagne Beige
 
+↓
+
+Ivory
+
 ---
 
-Nunca utilizar degradados muy fuertes.
+## Gradiente Premium
+
+Royal Gold
+
+↓
+
+Champagne Beige
+
+↓
+
+Ivory
 
 ---
+
+Os gradientes deverão ser utilizados em:
+
+- Hero principal
+- Botões especiais
+- Linhas decorativas
+- Divisores
+- Cards em destaque
+- Overlay de imagens
+- Rodapé
+- Tela de carregamento
+- Monograma
 
 # 8. Estilo fotográfico
 
