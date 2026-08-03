@@ -1,3 +1,7 @@
+/* ==========================================================
+   LOADING
+========================================================== */
+
 .loading{
 
     position:fixed;
@@ -10,38 +14,226 @@
 
     align-items:center;
 
-    background:white;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top,
+            rgba(188,165,214,.18),
+            transparent 55%),
+
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f7f1e8
+        );
 
 }
 
+/* ==========================================================
+   CONTENT
+========================================================== */
+
 .loading__content{
+
+    position:relative;
+
+    z-index:10;
 
     text-align:center;
 
 }
 
+/* ==========================================================
+   LOGO
+========================================================== */
+
 .loading__logo{
 
-    font-size:4rem;
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:5rem;
+
+    letter-spacing:.35rem;
+
+   font-family:"Cormorant Garamond", serif;
+
+    font-size:5rem;
+
+    letter-spacing:.35rem;
 
     color:#4D2A7A;
 
+    text-shadow:
+        0 0 10px rgba(77,42,122,.15),
+        0 0 25px rgba(200,162,77,.12);
+
+    animation:
+        logoFloat 3s ease-in-out infinite,
+        logoFade 2.5s ease-in-out infinite;
+
+    text-shadow:
+
+        0 0 25px rgba(200,162,77,.15);
+
+
+    animation:
+
+        logoFloat 3s ease-in-out infinite,
+
+        logoFade 2.5s ease-in-out infinite;
+
 }
 
-.loading__line{
+/* ==========================================================
+   DIVIDER
+========================================================== */
 
-    width:100px;
+.loading__divider{
+
+    width:130px;
 
     height:2px;
 
-    margin:20px auto;
+    margin:28px auto;
 
-    background:#C9A44C;
+    background:linear-gradient(
+
+        to right,
+
+        transparent,
+
+        #C9A44C,
+
+        transparent
+
+    );
+
+    animation:divider 2.5s ease infinite;
+
+    .loading__divider{
+
+    background:
+
+        linear-gradient(
+
+            to right,
+
+            transparent,
+
+            #B8892C,
+
+            #D8B45A,
+
+            #B8892C,
+
+            transparent
+
+        );
 
 }
 
+}
+
+/* ==========================================================
+   TEXT
+========================================================== */
+
 .loading__text{
 
-    margin-top:20px;
+    max-width:320px;
+
+    font-family:"Inter",sans-serif;
+
+    font-size:.95rem;
+
+    color:var(--color-title);
+
+    font-weight:500;
+
+    line-height:1.8;
+
+    letter-spacing:.06rem;
+
+}
+
+/* ==========================================================
+   DOT
+========================================================== */
+
+.loading__dot{
+
+    width:8px;
+
+    height:8px;
+
+    margin:35px auto 0;
+
+    border-radius:50%;
+
+    background:#C9A44C;
+
+    animation:pulse 1.8s infinite;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:scale(1.8);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:.4;
+
+    }
+
+}
+
+@keyframes divider{
+
+    50%{
+
+        width:170px;
+
+    }
+
+}
+
+@keyframes logoFade{
+
+    50%{
+
+        opacity:.65;
+
+    }
+
+}
+
+@keyframes logoFloat{
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
 
 }

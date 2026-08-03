@@ -1,21 +1,30 @@
 /**
- * ===========================================================
- * Loading Screen
- * ===========================================================
+ * ============================================================
+ * Loading Component
+ * ============================================================
  */
 
-export function hideLoading() {
+export function startLoading() {
+
+    console.log("Loading iniciado.");
+
+}
+
+export function finishLoading() {
 
     const loading = document.getElementById("loading-screen");
 
-    if (!loading) return;
+    if(!loading) return;
 
-    loading.classList.add("hidden");
+    loading.style.transition =
+        "opacity .8s ease";
 
-    setTimeout(() => {
+    loading.style.opacity = 0;
+
+    setTimeout(()=>{
 
         loading.remove();
 
-    }, 900);
+    },800);
 
 }
