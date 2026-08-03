@@ -1,0 +1,47 @@
+.loading{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:white;
+
+}
+
+.loading__content{
+
+    text-align:center;
+
+}
+
+.loading__logo{
+
+    font-size:4rem;
+
+    color:#4D2A7A;
+
+}
+
+.loading__line{
+
+    width:100px;
+
+    height:2px;
+
+    margin:20px auto;
+
+    background:#C9A44C;
+
+}
+
+.loading__text{
+
+    margin-top:20px;
+
+}
