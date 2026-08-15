@@ -3,7 +3,29 @@
 ========================================================== */
 
 .loading{
+    background:
 
+radial-gradient(
+
+circle at top,
+
+rgba(77,42,122,.10),
+
+transparent 60%
+
+),
+
+linear-gradient(
+
+180deg,
+
+#FFFFFF,
+
+#FCFAF7,
+
+#F3EBDE
+
+);
     position:fixed;
 
     inset:0;
@@ -49,13 +71,7 @@
 
 .loading__logo{
 
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:5rem;
-
-    letter-spacing:.35rem;
-
-   font-family:"Cormorant Garamond", serif;
+    font-family:"Cormorant Garamond", serif;
 
     font-size:5rem;
 
@@ -64,22 +80,10 @@
     color:#4D2A7A;
 
     text-shadow:
-        0 0 10px rgba(77,42,122,.15),
-        0 0 25px rgba(200,162,77,.12);
-
-    animation:
-        logoFloat 3s ease-in-out infinite,
-        logoFade 2.5s ease-in-out infinite;
-
-    text-shadow:
-
         0 0 25px rgba(200,162,77,.15);
 
-
     animation:
-
         logoFloat 3s ease-in-out infinite,
-
         logoFade 2.5s ease-in-out infinite;
 
 }
@@ -96,21 +100,10 @@
 
     margin:28px auto;
 
-    background:linear-gradient(
+    
 
-        to right,
+    animation:divider 3.5s ease infinite;
 
-        transparent,
-
-        #C9A44C,
-
-        transparent
-
-    );
-
-    animation:divider 2.5s ease infinite;
-
-    .loading__divider{
 
     background:
 
@@ -132,7 +125,6 @@
 
 }
 
-}
 
 /* ==========================================================
    TEXT
@@ -192,7 +184,7 @@
 
     50%{
 
-        transform:scale(1.8);
+        transform:scale(1.35);
 
         opacity:1;
 
@@ -230,9 +222,27 @@
 
 @keyframes logoFloat{
 
+    0%{
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
     50%{
 
-        transform:translateY(-6px);
+        transform:
+            translateY(-6px)
+            scale(1.015);
+
+    }
+
+    100%{
+
+        transform:
+            translateY(0)
+            scale(1);
 
     }
 

@@ -1,0 +1,47 @@
+/* ==========================================================
+   COLORS
+========================================================== */
+
+:root{
+
+    /* Primary */
+
+    --color-primary:#4D2A7A;
+    --color-primary-light:#7C5AB5;
+
+    /* Royal Gold */
+
+    --color-gold:#D2B15C;
+    --color-gold-dark:#B8892C;
+
+    /* Background */
+
+    --color-white:#FFFFFF;
+    --color-champagne:#F3EBDE;
+    --color-surface:#FCFAF7;
+
+    /* Typography */
+
+    --color-title:#35264D;
+    --color-text:#4B4B4B;
+    --color-muted:#737373;
+
+    /* Shadows */
+
+    --shadow-soft:
+        0 15px 45px rgba(0,0,0,.08);
+
+    --shadow-card:
+        0 25px 70px rgba(0,0,0,.10);
+
+    /* Radius */
+
+    --radius-large:24px;
+    --radius-medium:16px;
+    --radius-small:8px;
+
+    /* Transition */
+
+    --transition:.35s ease;
+
+}

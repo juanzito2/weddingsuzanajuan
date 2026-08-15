@@ -1,24 +1,78 @@
-import { loadComponent } from "./core/componentLoader.js";
+/**
+ * ============================================================
+ * MAIN
+ * ============================================================
+ */
+
+import { loadComponent }
+from "./core/componentLoader.js";
 
 import {
+    startLoading,
     finishLoading
 }
-from "../components/loading/loading.js";
+from "../components/system/loading/loading.js";
 
-document.addEventListener("DOMContentLoaded", async()=>{
+import { initHero }
+from "../components/sections/hero/hero.js";
 
-    await loadComponent(
 
-        "app",
+/**
+ * ============================================================
+ * APPLICATION
+ * ============================================================
+ */
 
-        "./src/components/loading/loading.html"
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-    );
+        // ------------------------------------------------------
+        // LOADING
+        // ------------------------------------------------------
 
-    setTimeout(()=>{
+        await loadComponent(
+            "app",
+            "./src/components/system/loading/loading.html"
+        );
 
-        finishLoading();
+        startLoading();
 
-    },2200);
 
-});
+        // ------------------------------------------------------
+        // WAIT FOR LOADING
+        // ------------------------------------------------------
+
+        setTimeout(async () => {
+
+            finishLoading();
+
+
+            // --------------------------------------------------
+            // WAIT FOR LOADING FADE
+            // --------------------------------------------------
+
+            setTimeout(async () => {
+
+                // ----------------------------------------------
+                // LOAD HERO
+                // ----------------------------------------------
+
+                await loadComponent(
+                    "app",
+                    "./src/components/sections/hero/hero.html"
+                );
+
+
+                // ----------------------------------------------
+                // INITIALIZE HERO
+                // ----------------------------------------------
+
+                initHero();
+
+            }, 850);
+
+        }, 2200);
+
+    }
+);

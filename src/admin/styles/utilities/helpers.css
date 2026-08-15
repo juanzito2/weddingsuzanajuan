@@ -1,0 +1,53 @@
+.hidden{
+
+    display:none;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.container{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+}
+
+/* ==========================================================
+   SCREEN
+========================================================== */
+
+.screen{
+
+    position:fixed;
+
+    inset:0;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+
+        opacity .8s ease,
+
+        visibility .8s ease;
+
+}
+
+.screen--active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
