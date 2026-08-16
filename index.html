@@ -2,40 +2,75 @@
 <html lang="es">
 
 <head>
-    <link rel="stylesheet" href="./src/styles/main.css">
-    <link rel="stylesheet" href="./src/components/system/loading/loading.css">
-    <!-- ==========================================================
-         METADATA
-    =========================================================== -->
 
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Suzana & Juan | 09 Enero 2027</title>
+    <title>
+        Suzana & Juan | 09 Enero 2027
+    </title>
 
-    <!-- CSS -->
+
+    <!-- ======================================================
+         CSS PRINCIPAL
+    ======================================================= -->
 
     <link
         rel="stylesheet"
-        href="./src/styles/main.css">
+        href="./src/styles/main.css"
+    >
+
+
+    <!-- ======================================================
+         CSS DO LOADING
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="./src/components/system/loading/loading.css"
+    >
 
 </head>
 
+
 <body>
 
-    <!-- ==========================================================
-         APPLICATION
-    =========================================================== -->
 
-    <div id="app"></div>
+    <!-- ======================================================
+         APLICAÇÃO
+         
+         ESTE ELEMENTO NUNCA É REMOVIDO.
+         Os componentes são carregados dentro dele.
+    ======================================================= -->
+
+    <div id="app">
+
+    <div id="loading-container"></div>
+
+    <main id="site">
+
+        <div id="hero-container"></div>
+
+        <div id="story-container"></div>
+
+    </main>
+
+</div>
+
+
+    <!-- ======================================================
+         JAVASCRIPT PRINCIPAL
+    ======================================================= -->
 
     <script
         type="module"
-        src="./src/scripts/main.js">
-    </script>
+        src="./src/scripts/main.js"
+    ></script>
+
 
 </body>
 

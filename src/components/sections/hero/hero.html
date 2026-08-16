@@ -1,167 +1,66 @@
 <section id="hero" class="hero">
 
-    <!-- ======================================================
-         BACKGROUND
-    ======================================================= -->
+    <!-- Decoração estrutural -->
+    <div class="hero__frame hero__frame--outer"></div>
+    <div class="hero__frame hero__frame--inner"></div>
 
-    <div class="hero__background"></div>
+    <div class="hero__corner hero__corner--tl"></div>
+    <div class="hero__corner hero__corner--tr"></div>
+    <div class="hero__corner hero__corner--bl"></div>
+    <div class="hero__corner hero__corner--br"></div>
 
-    <div class="hero__glow hero__glow--main"></div>
-    <div class="hero__glow hero__glow--left"></div>
-    <div class="hero__glow hero__glow--right"></div>
+    <!-- Elementos gráficos -->
+    <div class="hero__circle hero__circle--large"></div>
+    <div class="hero__circle hero__circle--small"></div>
 
-    <div class="hero__overlay"></div>
+    <span class="hero__dot hero__dot--one"></span>
+    <span class="hero__dot hero__dot--two"></span>
+    <span class="hero__dot hero__dot--three"></span>
+    <span class="hero__dot hero__dot--four"></span>
 
-
-    <!-- ======================================================
-         DECORATION — RAMERAS
-         Apenas nos cantos
-    ======================================================= -->
-
-    <div class="hero__decorations" aria-hidden="true">
-
-        <!-- Rama superior esquerda -->
+    <!-- Pequenos detalhes florais -->
+    <div class="hero__floral hero__floral--left">
         <img
-            class="hero__branch hero__branch--top-left"
-            src="./src/assets/images/rameras/ramera-esquerdo.png"
-            alt=""
-        >
-
-        <!-- Rama superior direita -->
-        <img
-            class="hero__branch hero__branch--top-right"
-            src="./src/assets/images/rameras/ramera-direita.png"
-            alt=""
-        >
-
-        <!-- Rama inferior esquerda -->
-        <img
-            class="hero__branch hero__branch--bottom-left"
-            src="./src/assets/images/rameras/ramera-lado.png"
-            alt=""
-        >
-
-        <!-- Rama inferior direita -->
-        <img
-            class="hero__branch hero__branch--bottom-right"
-            src="./src/assets/images/rameras/ramera-lado.png"
-            alt=""
-        >
-
-    </div>
-
-
-    <!-- ======================================================
-         DECORATION — FLORES
-    ======================================================= -->
-
-    <div class="hero__flowers" aria-hidden="true">
-
-        <!-- Flor branca -->
-        <img
-            class="hero__flower hero__flower--white"
             src="./src/assets/images/flower/flor-branco.png"
             alt=""
         >
+    </div>
 
-        <!-- Flor rosa -->
+    <div class="hero__floral hero__floral--right">
         <img
-            class="hero__flower hero__flower--pink"
             src="./src/assets/images/flower/flor-rosa.png"
             alt=""
         >
-
-        <!-- Grupo inferior esquerdo -->
-        <img
-            class="hero__flower hero__flower--group-left"
-            src="./src/assets/images/flower/flores-grupo.png"
-            alt=""
-        >
-
-        <!-- Grupo inferior direito -->
-        <img
-            class="hero__flower hero__flower--group-right"
-            src="./src/assets/images/flower/flores-grupo.png"
-            alt=""
-        >
-
     </div>
 
-
-    <!-- ======================================================
-         GOLD PARTICLES
-    ======================================================= -->
-
-    <div class="hero__particles" aria-hidden="true">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </div>
-
-
-    <!-- ======================================================
-         MAIN CONTENT
-    ======================================================= -->
-
+    <!-- Conteúdo -->
     <div class="hero__content">
 
-
-        <!-- ==================================================
-             MONOGRAM
-        =================================================== -->
+        <p class="hero__eyebrow">
+            Nuestra boda
+        </p>
 
         <div class="hero__monogram">
 
             <div class="hero__monogram-ring"></div>
 
-            <div class="hero__monogram-ring hero__monogram-ring--inner"></div>
-
             <img
-                class="hero__monogram-image"
                 src="./src/assets/images/monograms/monogram4.png"
-                alt="Monograma de Suzana y Juan"
+                alt="Suzana y Juan"
             >
 
         </div>
 
-
-        <!-- ==================================================
-             DIVIDER
-        =================================================== -->
-
-        <div class="hero__line" aria-hidden="true">
-
+        <div class="hero__divider">
             <span></span>
-
             <i>✦</i>
-
             <span></span>
-
         </div>
 
-
-        <!-- ==================================================
-             VERSE
-        =================================================== -->
-
         <p class="hero__verse">
-
             La mujer de Pr. 31:10 y el hombre de Ef. 5:25
             alcanzarán el amor de 1 Co. 13.
-
         </p>
-
-
-        <!-- ==================================================
-             NAMES
-        =================================================== -->
 
         <h1 class="hero__title">
 
@@ -173,21 +72,11 @@
 
         </h1>
 
-
-        <!-- ==================================================
-             DATE
-        =================================================== -->
-
-        <p class="hero__date">
-
-            09 Enero 2027
-
-        </p>
-
-
-        <!-- ==================================================
-             COUNTDOWN
-        =================================================== -->
+        <div class="hero__date">
+            <span></span>
+            <p>09 Enero 2027</p>
+            <span></span>
+        </div>
 
         <div
             id="hero-countdown"
@@ -195,65 +84,65 @@
         >
 
             <div class="countdown__item">
-
-                <span>000</span>
-
+                <span id="countdown-days">000</span>
                 <small>Días</small>
-
             </div>
 
+            <div class="countdown__separator">:</div>
+
             <div class="countdown__item">
-
-                <span>00</span>
-
+                <span id="countdown-hours">00</span>
                 <small>Horas</small>
-
             </div>
 
+            <div class="countdown__separator">:</div>
+
             <div class="countdown__item">
-
-                <span>00</span>
-
+                <span id="countdown-minutes">00</span>
                 <small>Minutos</small>
-
             </div>
 
+            <div class="countdown__separator">:</div>
+
             <div class="countdown__item">
-
-                <span>00</span>
-
+                <span id="countdown-seconds">00</span>
                 <small>Segundos</small>
-
             </div>
 
         </div>
 
-
-        <!-- ==================================================
-             DISCOVER
-        =================================================== -->
-
         <div class="hero__discover">
 
             <button
+                id="hero-discover"
                 class="hero__button"
                 type="button"
-                aria-label="Descubrir nuestra historia"
             >
 
-                <span class="hero__button-shine"></span>
+                <span class="hero__button-line"></span>
 
                 <span class="hero__button-text">
-                    Descubrir nuestra historia
+                    Nuestra historia
                 </span>
 
                 <span class="hero__button-arrow">
                     ↓
                 </span>
 
+                <span class="hero__button-line"></span>
+
             </button>
 
         </div>
+
+    </div>
+
+    <!-- Indicador inferior -->
+    <div class="hero__scroll">
+
+        <span class="hero__scroll-line"></span>
+
+        
 
     </div>
 

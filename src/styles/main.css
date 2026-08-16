@@ -17,3 +17,5 @@
 @import "../components/system/loading/loading.css";
 
 @import "../components/sections/hero/hero.css";
+
+@import url("../components/sections/story/story.css");

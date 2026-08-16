@@ -1,11 +1,15 @@
 /**
  * ============================================================
  * MAIN
+ * Suzana & Juan
  * ============================================================
  */
 
-import { loadComponent }
+import {
+    loadComponent
+}
 from "./core/componentLoader.js";
+
 
 import {
     startLoading,
@@ -13,8 +17,17 @@ import {
 }
 from "../components/system/loading/loading.js";
 
-import { initHero }
+
+import {
+    initHero
+}
 from "../components/sections/hero/hero.js";
+
+
+import {
+    initStory
+}
+from "../components/sections/story/story.js";
 
 
 /**
@@ -27,52 +40,93 @@ document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-        // ------------------------------------------------------
-        // LOADING
-        // ------------------------------------------------------
+
+        console.log(
+            "✓ Aplicação iniciada"
+        );
+
+
+        /* ====================================================
+           LOADING
+        ==================================================== */
 
         await loadComponent(
-            "app",
+            "loading-container",
             "./src/components/system/loading/loading.html"
         );
+
 
         startLoading();
 
 
-        // ------------------------------------------------------
-        // WAIT FOR LOADING
-        // ------------------------------------------------------
+        /* ====================================================
+           TEMPO DO LOADING
+        ==================================================== */
 
-        setTimeout(async () => {
+        setTimeout(
+            async () => {
 
-            finishLoading();
+
+                /* ============================================
+                   FINALIZA LOADING
+                ============================================ */
+
+                finishLoading();
 
 
-            // --------------------------------------------------
-            // WAIT FOR LOADING FADE
-            // --------------------------------------------------
+                /* ============================================
+                   AGUARDA O FADE
+                ============================================ */
 
-            setTimeout(async () => {
+                setTimeout(
+                    async () => {
 
-                // ----------------------------------------------
-                // LOAD HERO
-                // ----------------------------------------------
 
-                await loadComponent(
-                    "app",
-                    "./src/components/sections/hero/hero.html"
+                        /* ====================================
+                           HERO
+                        ==================================== */
+
+                        const hero =
+                            await loadComponent(
+                                "hero-container",
+                                "./src/components/sections/hero/hero.html"
+                            );
+
+
+                        if (hero) {
+
+                            initHero();
+
+                        }
+
+
+                        /* ====================================
+                           STORY
+                        ==================================== */
+
+                        const story =
+                            await loadComponent(
+                                "story-container",
+                                "./src/components/sections/story/story.html"
+                            );
+
+
+                        if (story) {
+
+                            initStory();
+
+                        }
+
+
+                    },
+                    850
                 );
 
 
-                // ----------------------------------------------
-                // INITIALIZE HERO
-                // ----------------------------------------------
+            },
+            2200
+        );
 
-                initHero();
-
-            }, 850);
-
-        }, 2200);
 
     }
 );
