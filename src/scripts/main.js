@@ -30,6 +30,12 @@ import {
 from "../components/sections/story/story.js";
 
 
+import {
+    initDresscode
+}
+from "../components/sections/dresscode/dresscode.js";
+
+
 /**
  * ============================================================
  * APPLICATION
@@ -40,15 +46,16 @@ document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-
         console.log(
             "✓ Aplicação iniciada"
         );
 
 
-        /* ====================================================
-           LOADING
-        ==================================================== */
+        /**
+         * ====================================================
+         * LOADING
+         * ====================================================
+         */
 
         await loadComponent(
             "loading-container",
@@ -59,61 +66,84 @@ document.addEventListener(
         startLoading();
 
 
-        /* ====================================================
-           TEMPO DO LOADING
-        ==================================================== */
+        /**
+         * ====================================================
+         * AGUARDA O LOADING
+         * ====================================================
+         */
 
         setTimeout(
             async () => {
 
-
-                /* ============================================
-                   FINALIZA LOADING
-                ============================================ */
-
                 finishLoading();
 
 
-                /* ============================================
-                   AGUARDA O FADE
-                ============================================ */
+                /**
+                 * ============================================
+                 * AGUARDA O FADE DO LOADING
+                 * ============================================
+                 */
 
                 setTimeout(
                     async () => {
 
 
-                        /* ====================================
-                           HERO
-                        ==================================== */
+                        /**
+                         * ====================================
+                         * HERO
+                         * ====================================
+                         */
 
-                        const hero =
+                        const heroLoaded =
                             await loadComponent(
                                 "hero-container",
                                 "./src/components/sections/hero/hero.html"
                             );
 
 
-                        if (hero) {
+                        if (heroLoaded) {
 
                             initHero();
 
                         }
 
 
-                        /* ====================================
-                           STORY
-                        ==================================== */
+                        /**
+                         * ====================================
+                         * STORY
+                         * ====================================
+                         */
 
-                        const story =
+                        const storyLoaded =
                             await loadComponent(
                                 "story-container",
                                 "./src/components/sections/story/story.html"
                             );
 
 
-                        if (story) {
+                        if (storyLoaded) {
 
                             initStory();
+
+                        }
+
+
+                        /**
+                         * ====================================
+                         * DRESS CODE
+                         * ====================================
+                         */
+
+                        const dresscodeLoaded =
+                            await loadComponent(
+                                "dresscode-container",
+                                "./src/components/sections/dresscode/dresscode.html"
+                            );
+
+
+                        if (dresscodeLoaded) {
+
+                            initDresscode();
 
                         }
 
@@ -122,11 +152,9 @@ document.addEventListener(
                     850
                 );
 
-
             },
             2200
         );
-
 
     }
 );

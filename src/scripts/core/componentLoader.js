@@ -3,12 +3,12 @@
  * COMPONENT LOADER
  * ============================================================
  *
- * Responsável por:
+ * Carrega um componente HTML e insere no container informado.
  *
- * 1. Buscar um arquivo HTML
- * 2. Encontrar o container
- * 3. Inserir o componente
- * 4. Informar erros no console
+ * Retorna:
+ *
+ * true  → componente carregado
+ * false → erro
  *
  * ============================================================
  */
@@ -20,11 +20,6 @@ export async function loadComponent(
 
     try {
 
-
-        /* ====================================================
-           BUSCAR COMPONENTE
-        ==================================================== */
-
         const response =
             await fetch(componentPath);
 
@@ -32,23 +27,15 @@ export async function loadComponent(
         if (!response.ok) {
 
             throw new Error(
-                `HTTP ${response.status} ao carregar ${componentPath}`
+                `Erro HTTP ${response.status}: ${componentPath}`
             );
 
         }
 
 
-        /* ====================================================
-           CONVERTER RESPOSTA PARA HTML
-        ==================================================== */
-
         const html =
             await response.text();
 
-
-        /* ====================================================
-           PROCURAR CONTAINER
-        ==================================================== */
 
         const container =
             document.getElementById(containerId);
@@ -63,32 +50,19 @@ export async function loadComponent(
         }
 
 
-        /* ====================================================
-           INSERIR COMPONENTE
-        ==================================================== */
-
         container.innerHTML =
             html;
 
-
-        /* ====================================================
-           LOG
-        ==================================================== */
 
         console.log(
             `✓ Componente carregado: ${componentPath}`
         );
 
 
-        /* ====================================================
-           RETORNAR CONTAINER
-        ==================================================== */
-
-        return container;
+        return true;
 
 
     } catch (error) {
-
 
         console.error(
             "Erro no Component Loader:",
@@ -96,7 +70,7 @@ export async function loadComponent(
         );
 
 
-        return null;
+        return false;
 
     }
 
