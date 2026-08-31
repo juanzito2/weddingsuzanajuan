@@ -1,53 +1,165 @@
-/**
- * ============================================================
- * LOADING COMPONENT
- * ============================================================
- */
-
 let loadingScreen = null;
 
-/**
- * ------------------------------------------------------------
- * Inicializa o Loading
- * ------------------------------------------------------------
- */
+let loadingStartTime = 0;
 
-export function startLoading() {
+const MINIMUM_LOADING_TIME = 4000;
 
-    loadingScreen = document.getElementById("loading-screen");
+export function initLoading() {
 
-    if (!loadingScreen) {
 
-        console.warn("Loading não encontrado.");
+loadingScreen =
+    document.getElementById(
+        "loading-screen"
+    );
 
-        return;
 
-    }
+if (!loadingScreen) {
 
-    loadingScreen.style.opacity = "1";
-    loadingScreen.style.visibility = "visible";
+    console.warn(
+        "Loading não encontrado."
+    );
+
+    return;
 
 }
 
-/**
- * ------------------------------------------------------------
- * Finaliza o Loading
- * ------------------------------------------------------------
- */
+
+loadingStartTime =
+    Date.now();
+
+
+loadingScreen.style.opacity = "1";
+
+loadingScreen.style.visibility =
+    "visible";
+
+loadingScreen.style.pointerEvents =
+    "auto";
+
+
+console.log(
+    "✓ Loading inicializado"
+);
+
+
+}
+
+export function startLoading() {
+
+
+initLoading();
+
+
+}
 
 export function finishLoading() {
 
-    console.log("finishLoading foi chamado");
 
-    if (!loadingScreen) return;
+console.log(
+    "finishLoading foi chamado"
+);
 
-    loadingScreen.style.transition = "opacity .8s ease";
-    loadingScreen.style.opacity = "0";
 
-    setTimeout(() => {
+if (!loadingScreen) {
 
-        loadingScreen.remove();
+    loadingScreen =
+        document.getElementById(
+            "loading-screen"
+        );
 
-    }, 800);
+}
+
+
+if (!loadingScreen) {
+
+    console.warn(
+        "Loading não encontrado."
+    );
+
+    return;
+
+}
+
+
+const elapsedTime =
+    Date.now() - loadingStartTime;
+
+
+const remainingTime =
+    Math.max(
+        0,
+        MINIMUM_LOADING_TIME -
+        elapsedTime
+    );
+
+
+console.log(
+    "Tempo decorrido:",
+    elapsedTime,
+    "ms"
+);
+
+
+console.log(
+    "Tempo restante:",
+    remainingTime,
+    "ms"
+);
+
+
+setTimeout(
+    function () {
+
+
+        if (!loadingScreen) {
+
+            return;
+
+        }
+
+
+        loadingScreen.style.transition =
+            "opacity 1.5s ease";
+
+
+        loadingScreen.style.opacity =
+            "0";
+
+
+        loadingScreen.style.pointerEvents =
+            "none";
+
+
+        setTimeout(
+            function () {
+
+
+                if (loadingScreen) {
+
+                    loadingScreen.style.visibility =
+                        "hidden";
+
+
+                    loadingScreen.remove();
+
+                    loadingScreen = null;
+
+
+                    console.log(
+                        "✓ Loading removido"
+                    );
+
+                }
+
+
+            },
+            1500
+        );
+
+
+    },
+    remainingTime
+);
+
 
 }

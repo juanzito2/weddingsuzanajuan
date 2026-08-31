@@ -10,12 +10,22 @@
 
 @import "./utilities/helpers.css";
 
+
 /* ==========================================================
-   COMPONENTS
+   SYSTEM
 ========================================================== */
 
 @import "../components/system/loading/loading.css";
 
+
+/* ==========================================================
+   SECTIONS
+========================================================== */
+
 @import "../components/sections/hero/hero.css";
 
-@import url("../components/sections/story/story.css");
+@import "../components/sections/story/story.css";
+
+@import "../components/sections/day/day.css";
+
+@import "../components/sections/dresscode/dresscode.css";

@@ -1740,3 +1740,67 @@
 
     pointer-events: none;
 }
+
+/* ==========================================================
+   AJUSTES FINAIS
+========================================================== */
+
+.story__content {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.story__heading {
+    margin-bottom: 0;
+}
+
+.story__layout {
+    width: 100%;
+}
+
+.story__body {
+    overflow: hidden;
+}
+
+.story__body::after {
+    content: "SJ";
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 15px;
+
+    font-family: var(--font-title);
+    font-size: 5rem;
+    line-height: 1;
+
+    color: rgba(77, 42, 122, .025);
+
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+
+    .story__content {
+        width: 100%;
+    }
+
+    .story__body::after {
+        font-size: 4rem;
+        right: 15px;
+        bottom: 10px;
+    }
+
+    .story__circle--one {
+        width: 300px;
+        height: 300px;
+        left: -230px;
+    }
+
+    .story__circle--two {
+        width: 180px;
+        height: 180px;
+        right: -100px;
+    }
+
+}

@@ -1,77 +1,75 @@
-/**
- * ============================================================
- * COMPONENT LOADER
- * ============================================================
- *
- * Carrega um componente HTML e insere no container informado.
- *
- * Retorna:
- *
- * true  → componente carregado
- * false → erro
- *
- * ============================================================
- */
-
 export async function loadComponent(
-    containerId,
-    componentPath
+componentPath,
+containerId
 ) {
 
-    try {
 
-        const response =
-            await fetch(componentPath);
+try {
 
-
-        if (!response.ok) {
-
-            throw new Error(
-                `Erro HTTP ${response.status}: ${componentPath}`
-            );
-
-        }
+    const container =
+        document.getElementById(containerId);
 
 
-        const html =
-            await response.text();
+    if (!container) {
 
-
-        const container =
-            document.getElementById(containerId);
-
-
-        if (!container) {
-
-            throw new Error(
-                `Container "${containerId}" não encontrado.`
-            );
-
-        }
-
-
-        container.innerHTML =
-            html;
-
-
-        console.log(
-            `✓ Componente carregado: ${componentPath}`
+        throw new Error(
+            `Container "${containerId}" não encontrado.`
         );
-
-
-        return true;
-
-
-    } catch (error) {
-
-        console.error(
-            "Erro no Component Loader:",
-            error
-        );
-
-
-        return false;
 
     }
+
+
+    const response =
+        await fetch(componentPath);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            `Não foi possível carregar ${componentPath}`
+        );
+
+    }
+
+
+    const html =
+        await response.text();
+
+
+    const template =
+        document.createElement("template");
+
+
+    template.innerHTML =
+        html.trim();
+
+
+    const content =
+        template.content.cloneNode(true);
+
+
+    container.appendChild(content);
+
+
+    console.log(
+        `✓ Componente carregado: ${componentPath}`
+    );
+
+
+    return true;
+
+
+} catch (error) {
+
+    console.error(
+        "❌ Erro no Component Loader:",
+        error
+    );
+
+
+    return false;
+
+}
+
 
 }

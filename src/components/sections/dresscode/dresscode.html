@@ -1,284 +1,508 @@
-<section
-    id="dresscode"
-    class="dresscode"
->
+<!-- ============================================================
+     DRESS CODE
+     Suzana & Juan
+============================================================ -->
 
-    <div
-        class="dresscode__transition"
-        aria-hidden="true"
-    ></div>
+<section class="dresscode" id="dresscode">
 
+    <!-- ========================================================
+         BACKGROUND
+    ========================================================= -->
 
-    <div
-        class="dresscode__frame dresscode__frame--outer"
-        aria-hidden="true"
-    ></div>
+    <div class="dresscode__background" aria-hidden="true">
 
+        <div class="dresscode__orb dresscode__orb--one"></div>
+        <div class="dresscode__orb dresscode__orb--two"></div>
+        <div class="dresscode__orb dresscode__orb--three"></div>
 
-    <div
-        class="dresscode__frame dresscode__frame--inner"
-        aria-hidden="true"
-    ></div>
+        <!-- Chuva geral -->
+        <div class="dresscode__rain"></div>
 
+        <div class="dresscode__frame dresscode__frame--outer"></div>
+        <div class="dresscode__frame dresscode__frame--inner"></div>
 
-    <div
-        class="dresscode__ornament dresscode__ornament--top"
-        aria-hidden="true"
-    >
-        ✦
+        <div class="dresscode__corner dresscode__corner--tl"></div>
+        <div class="dresscode__corner dresscode__corner--tr"></div>
+        <div class="dresscode__corner dresscode__corner--bl"></div>
+        <div class="dresscode__corner dresscode__corner--br"></div>
+
     </div>
 
 
-    <div
-        class="dresscode__ornament dresscode__ornament--bottom"
-        aria-hidden="true"
-    >
-        ✦
-    </div>
-
-
-    <div
-        class="dresscode__circle dresscode__circle--one"
-        aria-hidden="true"
-    ></div>
-
-
-    <div
-        class="dresscode__circle dresscode__circle--two"
-        aria-hidden="true"
-    ></div>
-
+    <!-- ========================================================
+         CONTENT
+    ========================================================= -->
 
     <div class="dresscode__content">
 
+        <!-- ====================================================
+             HEADING
+        ==================================================== -->
 
-        <header class="dresscode__heading">
+        <header class="dresscode__heading dresscode-reveal">
 
-            <p class="dresscode__eyebrow">
-                Una celebración especial
-            </p>
-
+            <span class="dresscode__eyebrow">
+                Celebración & Elegancia
+            </span>
 
             <h2 class="dresscode__title">
                 Dress Code
             </h2>
 
+            <div class="dresscode__title-decoration">
 
-            <span class="dresscode__line"></span>
+                <span></span>
 
+                <i>✦</i>
+
+                <span></span>
+
+            </div>
 
             <p class="dresscode__intro">
-                Queremos compartir este día tan especial
-                con ustedes y crear juntos una celebración
-                llena de elegancia, armonía y belleza.
+                Hemos preparado una paleta especial para nuestra celebración.
+                Elige primero el grupo y después el color que deseas llevar.
             </p>
 
         </header>
 
 
-        <div class="dresscode__cards">
+        <!-- ====================================================
+             EMBLEM
+        ==================================================== -->
 
+        <div class="dresscode__emblem dresscode-reveal">
+
+            <div class="dresscode__emblem-ring"></div>
+
+            <div class="dresscode__emblem-inner">
+
+                <span class="dresscode__emblem-crown">
+                    ✦
+                </span>
+
+                <span class="dresscode__emblem-small">
+                    SUZANA & JUAN
+                </span>
+
+                <strong>SJ</strong>
+
+            </div>
+
+            <span class="dresscode__emblem-star dresscode__emblem-star--one">
+                ✦
+            </span>
+
+            <span class="dresscode__emblem-star dresscode__emblem-star--two">
+                ✦
+            </span>
+
+        </div>
+
+
+        <!-- ====================================================
+             PALETTE
+        ==================================================== -->
+
+        <div class="dresscode__palette-section dresscode-reveal">
+
+            <div class="dresscode__section-title">
+
+                <span>
+                    Nuestra paleta
+                </span>
+
+                <h3>
+                    Elige tu color
+                </h3>
+
+                <p>
+                    Primero selecciona Caballeros o Señoras.
+                    Después elige el color que deseas asignar.
+                </p>
+
+            </div>
+
+
+            <div class="dresscode__palette">
+
+                <!-- BURDEOS -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--burgundy"
+                    data-color="#7a1f32"
+                    data-color-rgb="122, 31, 50"
+                    data-color-name="burdeos"
+                    aria-label="Burdeos">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- FUCSIA -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--fuchsia"
+                    data-color="#c2185b"
+                    data-color-rgb="194, 24, 91"
+                    data-color-name="fucsia"
+                    aria-label="Fucsia">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- ROSA CLARO -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--light-pink"
+                    data-color="#f4a6b8"
+                    data-color-rgb="244, 166, 184"
+                    data-color-name="rosa claro"
+                    aria-label="Rosa claro">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- ROJO -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--red"
+                    data-color="#c62828"
+                    data-color-rgb="198, 40, 40"
+                    data-color-name="rojo"
+                    aria-label="Rojo">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- TERRACOTA -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--terracotta"
+                    data-color="#c96f4a"
+                    data-color-rgb="201, 111, 74"
+                    data-color-name="terracota"
+                    aria-label="Terracota">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- VERDE CLARO -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--light-green"
+                    data-color="#8fbf7a"
+                    data-color-rgb="143, 191, 122"
+                    data-color-name="verde claro"
+                    aria-label="Verde claro">
+
+                    <span></span>
+
+                </button>
+
+
+                <!-- GRIS -->
+                <button
+                    type="button"
+                    class="dresscode__swatch dresscode__swatch--gray"
+                    data-color="#bfc1c5"
+                    data-color-rgb="191, 193, 197"
+                    data-color-name="gris"
+                    aria-label="Gris">
+
+                    <span></span>
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 HINT
+            ================================================= -->
+
+            <div class="dresscode__selection-hint">
+
+                <span class="dresscode__selection-indicator"></span>
+
+                <p>
+                    Primero selecciona un grupo
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ====================================================
+             DIVIDER
+        ==================================================== -->
+
+        <div class="dresscode__divider dresscode-reveal">
+
+            <span></span>
+
+            <i>✦</i>
+
+            <span></span>
+
+        </div>
+
+
+        <!-- ====================================================
+             CARDS
+        ==================================================== -->
+
+        <div class="dresscode__cards dresscode-reveal">
+
+
+            <!-- ==================================================
+                 CABALLEROS
+            ================================================== -->
 
             <article
-                class="dresscode__card dresscode__card--ladies"
-            >
+                class="dresscode__card"
+                data-card-name="Caballeros"
+                tabindex="0"
+                role="button"
+                aria-label="Seleccionar Caballeros">
 
-                <div
-                    class="dresscode__card-glow"
-                    aria-hidden="true"
-                ></div>
+                <!-- Fundo vidro -->
+                <div class="dresscode__card-glass"></div>
+
+                <!-- Degradê diagonal -->
+                <div class="dresscode__card-color"></div>
+
+                <!-- Brilho -->
+                <div class="dresscode__card-shine"></div>
+
+                <!-- Chuva -->
+                <div class="dresscode__card-rain"></div>
+
+                <!-- Reflexo -->
+                <div class="dresscode__card-reflection"></div>
 
 
-                <div class="dresscode__card-number">
-                    01
-                </div>
+                <span class="dresscode__card-number">
+                    I
+                </span>
 
 
                 <div class="dresscode__card-icon">
-                    ♡
+
+                    <span class="dresscode__card-icon-line"></span>
+
+                    <span>♔</span>
+
+                    <span class="dresscode__card-icon-line"></span>
+
                 </div>
 
 
                 <div class="dresscode__card-content">
 
-                    <p class="dresscode__card-label">
-                        Para ellas
-                    </p>
+                    <span class="dresscode__card-label">
+                        Código masculino
+                    </span>
 
-
-                    <h3 class="dresscode__card-title">
-                        Damas
-                    </h3>
-
-
-                    <p class="dresscode__card-description">
-                        Vestimenta elegante y sofisticada,
-                        pensada para acompañar la belleza
-                        de esta celebración.
-                    </p>
-
-
-                    <div class="dresscode__palette">
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--champagne"
-                            title="Champagne"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--beige"
-                            title="Beige"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--rose"
-                            title="Rosa suave"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--lavender"
-                            title="Lavanda"
-                        ></span>
-
-                    </div>
-
-
-                    <p class="dresscode__palette-label">
-                        Tonos suaves y elegantes
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="dresscode__card-detail"
-                    aria-hidden="true"
-                ></div>
-
-            </article>
-
-
-
-            <article
-                class="dresscode__card dresscode__card--gentlemen"
-            >
-
-                <div
-                    class="dresscode__card-glow"
-                    aria-hidden="true"
-                ></div>
-
-
-                <div class="dresscode__card-number">
-                    02
-                </div>
-
-
-                <div class="dresscode__card-icon">
-                    ◇
-                </div>
-
-
-                <div class="dresscode__card-content">
-
-                    <p class="dresscode__card-label">
-                        Para ellos
-                    </p>
-
-
-                    <h3 class="dresscode__card-title">
+                    <h3>
                         Caballeros
                     </h3>
 
+                    <div class="dresscode__card-line"></div>
 
-                    <p class="dresscode__card-description">
-                        Traje formal y elegante,
-                        manteniendo una estética clásica
-                        y sofisticada.
-                    </p>
-
-
-                    <div class="dresscode__palette">
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--black"
-                            title="Negro"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--navy"
-                            title="Azul marino"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--charcoal"
-                            title="Gris oscuro"
-                        ></span>
-
-
-                        <span
-                            class="dresscode__swatch dresscode__swatch--white"
-                            title="Blanco"
-                        ></span>
-
-                    </div>
-
-
-                    <p class="dresscode__palette-label">
-                        Tonos clásicos y elegantes
+                    <p>
+                        Elegancia, sobriedad y armonía.
+                        Selecciona un color de nuestra paleta
+                        para formar parte de nuestra celebración.
                     </p>
 
                 </div>
 
 
-                <div
-                    class="dresscode__card-detail"
-                    aria-hidden="true"
-                ></div>
+                <div class="dresscode__card-selection">
+
+                    <span></span>
+
+                    <p>
+                        Seleccionar card
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ==================================================
+                 SEÑORAS
+            ================================================== -->
+
+            <article
+                class="dresscode__card"
+                data-card-name="Señoras"
+                tabindex="0"
+                role="button"
+                aria-label="Seleccionar Señoras">
+
+                <!-- Fundo vidro -->
+                <div class="dresscode__card-glass"></div>
+
+                <!-- Degradê diagonal -->
+                <div class="dresscode__card-color"></div>
+
+                <!-- Brilho -->
+                <div class="dresscode__card-shine"></div>
+
+                <!-- Chuva -->
+                <div class="dresscode__card-rain"></div>
+
+                <!-- Reflexo -->
+                <div class="dresscode__card-reflection"></div>
+
+
+                <span class="dresscode__card-number">
+                    II
+                </span>
+
+
+                <div class="dresscode__card-icon">
+
+                    <span class="dresscode__card-icon-line"></span>
+
+                    <span>♕</span>
+
+                    <span class="dresscode__card-icon-line"></span>
+
+                </div>
+
+
+                <div class="dresscode__card-content">
+
+                    <span class="dresscode__card-label">
+                        Código femenino
+                    </span>
+
+                    <h3>
+                        Señoras
+                    </h3>
+
+                    <div class="dresscode__card-line"></div>
+
+                    <p>
+                        Delicadeza, elegancia y personalidad.
+                        Selecciona un color de nuestra paleta
+                        para formar parte de nuestra celebración.
+                    </p>
+
+                </div>
+
+
+                <div class="dresscode__card-selection">
+
+                    <span></span>
+
+                    <p>
+                        Seleccionar card
+                    </p>
+
+                </div>
 
             </article>
 
         </div>
 
 
-        <div class="dresscode__note">
+        <!-- ====================================================
+             SPECIAL
+        ==================================================== -->
 
-            <span class="dresscode__note-line"></span>
+        <div class="dresscode__special dresscode-reveal">
 
+            <div class="dresscode__special-line"></div>
+
+            <div class="dresscode__special-symbol">
+                ✦
+            </div>
+
+            <span>
+                Un detalle para nuestros invitados
+            </span>
+
+            <h3>
+                Cada color contará una parte de nuestra historia.
+            </h3>
 
             <p>
-                Elegancia, sencillez y armonía
+                Queremos que cada invitado se sienta parte de
+                este día tan especial. Gracias por acompañarnos
+                en el comienzo de nuestra historia.
             </p>
 
+            <div class="dresscode__special-signature">
 
-            <span class="dresscode__note-line"></span>
+                <i>✦</i>
 
-        </div>
+                Suzana & Juan
 
+                <i>✦</i>
 
-        <div class="dresscode__signature">
-
-            <span>
-                Suzana
-            </span>
-
-
-            <i>
-                &
-            </i>
-
-
-            <span>
-                Juan
-            </span>
+            </div>
 
         </div>
 
+
+        <!-- ====================================================
+             FOOTER
+        ==================================================== -->
+
+        <footer class="dresscode__footer">
+
+            <span></span>
+
+            <p>
+                09 · 01 · 2027
+            </p>
+
+            <span></span>
+
+        </footer>
+
+    </div>
+
+
+    <!-- ========================================================
+         EASTER EGG
+    ========================================================= -->
+
+    <div
+        class="dresscode__secret-message"
+        aria-hidden="true">
+
+        <span>✦</span>
+
+        <p>
+            Una pequeña sorpresa para quienes conocen nuestra historia
+        </p>
+
+        <strong>
+            Dos corazones.<br>
+            Una promesa.<br>
+            Un comienzo.
+        </strong>
+
+        <small>
+            Suzana & Juan · 2027
+        </small>
 
     </div>
 
