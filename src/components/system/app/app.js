@@ -39,11 +39,6 @@ export async function loadWebsite(){
     );
 
     await loadComponent(
-        "rsvp-container",
-        "./src/components/rsvp/rsvp.html"
-    );
-
-    await loadComponent(
         "gallery-container",
         "./src/components/gallery/gallery.html"
     );

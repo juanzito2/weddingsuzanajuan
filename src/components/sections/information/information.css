@@ -1,0 +1,1251 @@
+/* ==========================================================
+   INFORMATION
+   Royal Information Deck
+   ========================================================== */
+
+.information {
+    --info-purple: #4d2a7a;
+    --info-purple-dark: #2d1748;
+    --info-purple-soft: #765497;
+    --info-gold: #c9a45c;
+    --info-gold-light: #ead8ae;
+    --info-cream: #f8f4ef;
+    --info-beige: #eee5dc;
+    --info-text: #493c43;
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 130px 6vw 150px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(201, 164, 92, 0.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(77, 42, 122, 0.09),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #fbf8f4 0%,
+            #f5eee8 50%,
+            #eee4db 100%
+        );
+
+    color: var(--info-text);
+}
+
+
+/* ==========================================================
+   DECORATIVE LIGHT
+   ========================================================== */
+
+.information__glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.information__glow--one {
+    top: -200px;
+    right: -100px;
+
+    background: rgba(201, 164, 92, 0.16);
+}
+
+.information__glow--two {
+    bottom: -250px;
+    left: -150px;
+
+    background: rgba(77, 42, 122, 0.12);
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.information__header {
+    position: relative;
+    z-index: 2;
+
+    max-width: 760px;
+
+    margin: 0 auto 90px;
+
+    text-align: center;
+}
+
+.information__eyebrow {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: var(--info-gold);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+}
+
+.information__title {
+    margin: 0;
+
+    color: var(--info-purple-dark);
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 400;
+
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+}
+
+.information__title em {
+    color: var(--info-purple);
+
+    font-weight: 400;
+}
+
+.information__intro {
+    max-width: 570px;
+
+    margin: 35px auto 0;
+
+    font-size: 1rem;
+    line-height: 1.8;
+
+    color: #786c72;
+}
+
+
+/* ==========================================================
+   DECK
+   ========================================================== */
+
+.information__deck {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    gap: 24px;
+
+    align-items: stretch;
+}
+
+
+/* ==========================================================
+   CARDS
+   ========================================================== */
+
+.information-card {
+    position: relative;
+
+    min-height: 570px;
+
+    padding: 38px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(201, 164, 92, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.48);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 70px rgba(57, 37, 52, 0.08);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.information-card:nth-child(2) {
+    transform: translateY(55px);
+}
+
+.information-card:hover {
+    transform: translateY(-12px);
+
+    border-color:
+        rgba(201, 164, 92, 0.8);
+
+    box-shadow:
+        0 40px 90px rgba(57, 37, 52, 0.16);
+}
+
+.information-card:nth-child(2):hover {
+    transform: translateY(43px);
+}
+
+
+/* ==========================================================
+   CARD NUMBER
+   ========================================================== */
+
+.information-card__number {
+    position: absolute;
+
+    top: 24px;
+    right: 28px;
+
+    color:
+        rgba(77, 42, 122, 0.09);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 7rem;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* ==========================================================
+   CARD CONTENT
+   ========================================================== */
+
+.information-card__content {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+}
+
+.information-card__label {
+    margin-bottom: 95px;
+
+    color: var(--info-gold);
+
+    font-size: 0.68rem;
+    font-weight: 600;
+
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.information-card h3 {
+    max-width: 330px;
+
+    margin: 0 0 25px;
+
+    color: var(--info-purple-dark);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 400;
+
+    line-height: 0.95;
+}
+
+.information-card p {
+    max-width: 320px;
+
+    margin: 0;
+
+    color: #746970;
+
+    font-size: 0.93rem;
+
+    line-height: 1.75;
+}
+
+
+/* ==========================================================
+   LOCATION LINK
+   ========================================================== */
+
+.information-card__link {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: auto;
+    padding: 18px 0 5px;
+
+    border-bottom:
+        1px solid rgba(77, 42, 122, 0.22);
+
+    color: var(--info-purple);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.information-card__link:hover {
+    color: var(--info-gold);
+
+    border-color: var(--info-gold);
+}
+
+.information-card__arrow {
+    font-size: 1.4rem;
+
+    transition: transform 0.3s ease;
+}
+
+.information-card__link:hover
+.information-card__arrow {
+    transform:
+        translate(4px, -4px);
+}
+
+
+/* ==========================================================
+   PARKING PRICE
+   ========================================================== */
+
+.information-card__highlight {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 14px;
+
+    margin-top: auto;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid rgba(201, 164, 92, 0.3);
+}
+
+.information-card__highlight strong {
+    color: var(--info-purple);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 3.8rem;
+    font-weight: 500;
+
+    line-height: 0.8;
+}
+
+.information-card__highlight span {
+    max-width: 130px;
+
+    color: #85767d;
+
+    font-size: 0.7rem;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================
+   SJ SEAL
+   ========================================================== */
+
+.information-card__seal {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 110px;
+    height: 110px;
+
+    margin-top: auto;
+
+    border:
+        1px solid rgba(201, 164, 92, 0.65);
+
+    border-radius: 50%;
+
+    color: var(--info-purple);
+}
+
+.information-card__seal span {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 2rem;
+
+    line-height: 1;
+}
+
+.information-card__seal small {
+    margin-top: 8px;
+
+    color: var(--info-gold);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* ==========================================================
+   BACKGROUND WORDS
+   ========================================================== */
+
+.information-card__word {
+    position: absolute;
+
+    bottom: 15px;
+    right: -10px;
+
+    color:
+        rgba(77, 42, 122, 0.035);
+
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 700;
+
+    letter-spacing: -0.06em;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================
+   DIFFERENT CARD PERSONALITIES
+   ========================================================== */
+
+.information-card--parking {
+    background:
+        linear-gradient(
+            160deg,
+            rgba(77, 42, 122, 0.94),
+            rgba(45, 23, 72, 0.98)
+        );
+
+    border-color:
+        rgba(201, 164, 92, 0.45);
+}
+
+.information-card--parking
+.information-card__number {
+    color:
+        rgba(255, 255, 255, 0.05);
+}
+
+.information-card--parking h3 {
+    color: #ffffff;
+}
+
+.information-card--parking p {
+    color:
+        rgba(255, 255, 255, 0.68);
+}
+
+.information-card--parking
+.information-card__highlight strong {
+    color: var(--info-gold-light);
+}
+
+.information-card--parking
+.information-card__highlight span {
+    color:
+        rgba(255, 255, 255, 0.58);
+}
+
+.information-card--parking
+.information-card__word {
+    color:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 1000px) {
+
+    .information {
+        padding:
+            110px 30px 130px;
+    }
+
+    .information__deck {
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+
+        gap: 20px;
+    }
+
+    .information-card,
+    .information-card:nth-child(2) {
+        min-height: 500px;
+
+        transform: none;
+    }
+
+    .information-card:hover,
+    .information-card:nth-child(2):hover {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .information {
+        padding:
+            90px 18px 100px;
+    }
+
+    .information__header {
+        margin-bottom: 55px;
+    }
+
+    .information__title {
+        font-size:
+            clamp(3rem, 15vw, 4.5rem);
+    }
+
+    .information__intro {
+        font-size: 0.9rem;
+    }
+
+    .information-card {
+        min-height: 470px;
+
+        padding: 28px;
+    }
+
+    .information-card__label {
+        margin-bottom: 75px;
+    }
+
+    .information-card h3 {
+        font-size: 3rem;
+    }
+
+    .information-card__number {
+        font-size: 5.5rem;
+    }
+
+    .information-card__highlight strong {
+        font-size: 3rem;
+    }
+}
+
+/* ==========================================================
+   INFORMATION — INTERAÇÕES PREMIUM
+   Complemento para information.js
+   ========================================================== */
+
+
+/* ==========================================================
+   REVEAL NO SCROLL
+   ========================================================== */
+
+.information-card {
+    --rotate-x: 0deg;
+    --rotate-y: 0deg;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+
+    opacity: 0;
+
+    transform:
+        translateY(45px)
+        scale(0.97)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+
+    transform-style: preserve-3d;
+
+    transition:
+        opacity 0.9s ease var(--reveal-delay, 0ms),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)
+            var(--reveal-delay, 0ms),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+
+/* Card central mantém o desnivelamento */
+.information-card:nth-child(2) {
+    transform:
+        translateY(95px)
+        scale(0.97)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+}
+
+
+/* Quando entra na tela */
+.information-card.is-visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+}
+
+
+.information-card:nth-child(2).is-visible {
+    transform:
+        translateY(55px)
+        scale(1)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+}
+
+
+/* ==========================================================
+   SPOTLIGHT
+   Luz acompanha o mouse
+   ========================================================== */
+
+.information-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            320px circle at
+            var(--mouse-x)
+            var(--mouse-y),
+            rgba(255, 255, 255, 0.65),
+            transparent 45%
+        );
+
+    transition: opacity 0.4s ease;
+}
+
+
+.information-card:hover::before {
+    opacity: 1;
+}
+
+
+/* Spotlight especial no card roxo */
+.information-card--parking::before {
+    background:
+        radial-gradient(
+            350px circle at
+            var(--mouse-x)
+            var(--mouse-y),
+            rgba(201, 164, 92, 0.20),
+            transparent 50%
+        );
+}
+
+
+/* ==========================================================
+   BORDA DOURADA INTERATIVA
+   ========================================================== */
+
+.information-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    border: 1px solid transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0),
+            rgba(201, 164, 92, 0.8),
+            rgba(255, 255, 255, 0)
+        )
+        border-box;
+
+    mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    opacity: 0;
+
+    transition: opacity 0.45s ease;
+}
+
+
+.information-card:hover::after {
+    opacity: 1;
+}
+
+
+/* ==========================================================
+   HOVER 3D
+   ========================================================== */
+
+.information-card.is-hovering {
+    box-shadow:
+        0 45px 100px
+            rgba(45, 23, 72, 0.18),
+        0 10px 30px
+            rgba(201, 164, 92, 0.10);
+}
+
+
+.information-card.is-visible:hover {
+    transform:
+        translateY(-10px)
+        scale(1.015)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+}
+
+
+.information-card:nth-child(2).is-visible:hover {
+    transform:
+        translateY(43px)
+        scale(1.015)
+        perspective(1200px)
+        rotateX(var(--rotate-x))
+        rotateY(var(--rotate-y));
+}
+
+
+/* ==========================================================
+   PROFUNDIDADE INTERNA
+   ========================================================== */
+
+.information-card__content {
+    transform: translateZ(25px);
+}
+
+
+.information-card__number {
+    transform: translateZ(10px);
+
+    transition:
+        transform 0.25s ease,
+        color 0.4s ease;
+}
+
+
+.information-card__word {
+    transform: translateZ(5px);
+
+    transition:
+        transform 0.3s ease,
+        color 0.4s ease;
+}
+
+
+/* ==========================================================
+   NÚMERO GIGANTE NO HOVER
+   ========================================================== */
+
+.information-card:hover
+.information-card__number {
+    color:
+        rgba(77, 42, 122, 0.15);
+}
+
+
+.information-card--parking:hover
+.information-card__number {
+    color:
+        rgba(201, 164, 92, 0.12);
+}
+
+
+/* ==========================================================
+   TÍTULO
+   ========================================================== */
+
+.information-card h3 {
+    position: relative;
+
+    transition:
+        transform 0.45s
+            cubic-bezier(0.16, 1, 0.3, 1),
+        color 0.35s ease;
+}
+
+
+.information-card:hover h3 {
+    transform: translateX(7px);
+}
+
+
+/* Pequeno detalhe dourado */
+.information-card h3::after {
+    content: "";
+
+    display: block;
+
+    width: 0;
+    height: 1px;
+
+    margin-top: 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--info-gold),
+            transparent
+        );
+
+    transition:
+        width 0.65s
+            cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.information-card:hover h3::after {
+    width: 75px;
+}
+
+
+/* ==========================================================
+   LABEL
+   ========================================================== */
+
+.information-card__label {
+    position: relative;
+
+    width: fit-content;
+}
+
+
+.information-card__label::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 18px;
+    height: 1px;
+
+    background: var(--info-gold);
+
+    transition: width 0.5s ease;
+}
+
+
+.information-card:hover
+.information-card__label::before {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   TEXTO
+   ========================================================== */
+
+.information-card p {
+    transition:
+        transform 0.45s ease,
+        color 0.45s ease;
+}
+
+
+.information-card:hover p {
+    transform: translateX(4px);
+}
+
+
+/* ==========================================================
+   LINK "VER UBICACIÓN"
+   ========================================================== */
+
+.information-card__link {
+    position: relative;
+
+    z-index: 10;
+
+    transition:
+        transform 0.25s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.information-card__arrow {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    border:
+        1px solid
+        rgba(77, 42, 122, 0.18);
+
+    border-radius: 50%;
+
+    transition:
+        transform 0.4s
+            cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.information-card__link:hover
+.information-card__arrow {
+    transform:
+        translate(4px, -4px)
+        rotate(45deg);
+
+    color: white;
+
+    background: var(--info-purple);
+
+    border-color: var(--info-purple);
+}
+
+
+/* ==========================================================
+   PREÇO PARKING
+   ========================================================== */
+
+.information-card__highlight {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.information-card__highlight::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--info-gold-light),
+            transparent
+        );
+
+    transition:
+        left 0.8s ease;
+}
+
+
+.information-card--parking:hover
+.information-card__highlight::before {
+    left: 130%;
+}
+
+
+.information-card__highlight strong {
+    transition:
+        transform 0.4s
+            cubic-bezier(0.16, 1, 0.3, 1),
+        text-shadow 0.4s ease;
+}
+
+
+.information-card--parking:hover
+.information-card__highlight strong {
+    transform: scale(1.08);
+
+    text-shadow:
+        0 0 25px
+        rgba(201, 164, 92, 0.25);
+}
+
+
+/* ==========================================================
+   SELO SJ
+   ========================================================== */
+
+.information-card__seal {
+    position: relative;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
+}
+
+
+.information-card__seal::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid
+        rgba(201, 164, 92, 0.25);
+
+    border-radius: 50%;
+}
+
+
+.information-card:hover
+.information-card__seal {
+    background:
+        rgba(201, 164, 92, 0.06);
+
+    box-shadow:
+        0 0 0 8px
+            rgba(201, 164, 92, 0.04),
+        0 15px 40px
+            rgba(77, 42, 122, 0.08);
+}
+
+
+/* ==========================================================
+   PALAVRAS GIGANTES
+   ========================================================== */
+
+.information-card:hover
+.information-card__word {
+    color:
+        rgba(77, 42, 122, 0.065);
+}
+
+
+.information-card--parking:hover
+.information-card__word {
+    color:
+        rgba(255, 255, 255, 0.045);
+}
+
+
+/* ==========================================================
+   HEADER REVEAL
+   ========================================================== */
+
+.information__eyebrow,
+.information__title,
+.information__intro {
+    animation:
+        informationHeaderReveal
+        0.9s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.information__title {
+    animation-delay: 0.1s;
+}
+
+
+.information__intro {
+    animation-delay: 0.2s;
+}
+
+
+@keyframes informationHeaderReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter: blur(0);
+    }
+}
+
+
+/* ==========================================================
+   GOLD SHIMMER
+   ========================================================== */
+
+.information__eyebrow {
+    background:
+        linear-gradient(
+            90deg,
+            var(--info-gold),
+            #ead8ae,
+            var(--info-gold)
+        );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        informationHeaderReveal
+            0.9s ease both,
+        informationGoldShimmer
+            5s linear infinite;
+}
+
+
+@keyframes informationGoldShimmer {
+
+    to {
+        background-position:
+            200% center;
+    }
+}
+
+
+/* ==========================================================
+   GLOWS
+   ========================================================== */
+
+.information__glow {
+    will-change: transform;
+
+    transition:
+        transform 0.1s linear;
+}
+
+
+/* ==========================================================
+   MOBILE / TOUCH
+   ========================================================== */
+
+@media (max-width: 1000px) {
+
+    .information-card:nth-child(2),
+    .information-card:nth-child(2).is-visible {
+        transform:
+            translateY(0)
+            perspective(1200px);
+    }
+
+    .information-card.is-visible:hover,
+    .information-card:nth-child(2).is-visible:hover {
+        transform:
+            translateY(-5px)
+            perspective(1200px);
+    }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .information-card {
+        opacity: 1;
+
+        transform: none !important;
+
+        transition: none;
+    }
+
+    .information__eyebrow,
+    .information__title,
+    .information__intro {
+        animation: none;
+    }
+
+    .information-card *,
+    .information-card::before,
+    .information-card::after {
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -29,3 +29,5 @@
 @import "../components/sections/day/day.css";
 
 @import "../components/sections/dresscode/dresscode.css";
+
+@import url("../components/sections/information/information.css");
