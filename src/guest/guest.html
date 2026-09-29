@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f8f4ee"
+    >
+
+    <meta
+        name="description"
+        content="Comparte tus recuerdos de la boda de Suzana y Juan."
+    >
+
+    <title>Mis recuerdos | Suzana & Juan</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="./guest.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <div
+        class="guest-background"
+        aria-hidden="true"
+    >
+        <span class="guest-background__light guest-background__light--one"></span>
+        <span class="guest-background__light guest-background__light--two"></span>
+        <span class="guest-background__grain"></span>
+    </div>
+
+
+    <!-- =====================================================
+         PAGE
+         ===================================================== -->
+
+    <main class="guest-page">
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <header class="guest-header">
+
+            <a
+                href="../../index.html"
+                class="guest-header__brand"
+                aria-label="Volver a Suzana y Juan"
+            >
+                <span class="guest-header__monogram">
+                    SJ
+                </span>
+
+                <span class="guest-header__names">
+                    Suzana & Juan
+                </span>
+            </a>
+
+
+            <span class="guest-header__date">
+                09 · 01 · 2027
+            </span>
+
+        </header>
+
+
+        <!-- =================================================
+             INTRO
+             ================================================= -->
+
+        <section class="guest-intro">
+
+            <span class="guest-eyebrow">
+                Vuestra mirada
+            </span>
+
+
+            <h1 class="guest-intro__title">
+                Guarda un instante
+                <em>con nosotros.</em>
+            </h1>
+
+
+            <p class="guest-intro__text">
+                Cada mirada cuenta una parte distinta de este día.
+                Comparte tus fotografías y pequeños vídeos para
+                formar parte de nuestros recuerdos.
+            </p>
+
+
+            <div
+                class="guest-ornament"
+                aria-hidden="true"
+            >
+                <span></span>
+                <i></i>
+                <span></span>
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             APPLICATION
+             ================================================= -->
+
+        <section
+            class="guest-app"
+            data-guest-app
+            aria-live="polite"
+        >
+
+
+            <!-- =============================================
+                 LOADING
+                 ============================================= -->
+
+            <div
+                class="guest-state guest-state--loading"
+                data-state-loading
+            >
+                <div
+                    class="guest-loader"
+                    aria-hidden="true"
+                >
+                    <span></span>
+                </div>
+
+                <p>
+                    Preparando tu espacio...
+                </p>
+            </div>
+
+
+            <!-- =============================================
+                 CREATE PROFILE
+                 ============================================= -->
+
+            <section
+                class="guest-state guest-profile"
+                data-state-profile
+                hidden
+            >
+
+                <header class="guest-section-header">
+
+                    <span class="guest-section-header__number">
+                        01
+                    </span>
+
+
+                    <div>
+                        <span class="guest-eyebrow">
+                            Antes de empezar
+                        </span>
+
+                        <h2>
+                            Este recuerdo
+                            <em>también lleva tu nombre.</em>
+                        </h2>
+                    </div>
+
+                </header>
+
+
+                <form
+                    class="guest-profile__form"
+                    data-profile-form
+                    novalidate
+                >
+
+
+                    <!-- AVATAR -->
+
+                    <div class="guest-profile__avatar-area">
+
+                        <div
+                            class="guest-avatar"
+                            data-avatar-preview
+                        >
+
+                            <img
+                                src=""
+                                alt=""
+                                data-avatar-image
+                                hidden
+                            >
+
+
+                            <div
+                                class="guest-avatar__fallback"
+                                data-avatar-fallback
+                            >
+                                <svg
+                                    viewBox="0 0 64 64"
+                                    aria-hidden="true"
+                                >
+                                    <circle
+                                        cx="32"
+                                        cy="23"
+                                        r="11"
+                                    ></circle>
+
+                                    <path
+                                        d="M12 56C14 43 22 37 32 37C42 37 50 43 52 56"
+                                    ></path>
+                                </svg>
+                            </div>
+
+
+                            <label
+                                class="guest-avatar__edit"
+                                for="guest-avatar-input"
+                                aria-label="Seleccionar foto de perfil"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M4 7.5h3l1.5-2h7l1.5 2h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"
+                                    ></path>
+
+                                    <circle
+                                        cx="12"
+                                        cy="14"
+                                        r="4"
+                                    ></circle>
+                                </svg>
+                            </label>
+
+
+                            <input
+                                id="guest-avatar-input"
+                                class="guest-hidden-input"
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp"
+                                data-avatar-input
+                            >
+
+                        </div>
+
+
+                        <div class="guest-profile__avatar-copy">
+                            <strong>
+                                Tu fotografía
+                            </strong>
+
+                            <span>
+                                Opcional
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="guest-field">
+
+                        <label
+                            for="guest-name"
+                            class="guest-field__label"
+                        >
+                            Tu nombre
+                        </label>
+
+
+                        <div class="guest-field__control">
+
+                            <input
+                                id="guest-name"
+                                type="text"
+                                name="name"
+                                maxlength="50"
+                                autocomplete="name"
+                                placeholder="Ej. María"
+                                required
+                                data-profile-name
+                            >
+
+                            <span
+                                class="guest-field__focus"
+                                aria-hidden="true"
+                            ></span>
+
+                        </div>
+
+
+                        <span
+                            class="guest-field__error"
+                            data-name-error
+                            hidden
+                        >
+                            Escribe tu nombre para continuar.
+                        </span>
+
+                    </div>
+
+
+                    <!-- BIO -->
+
+                    <div class="guest-field">
+
+                        <div class="guest-field__heading">
+
+                            <label
+                                for="guest-bio"
+                                class="guest-field__label"
+                            >
+                                Una frase sobre ti
+                            </label>
+
+                            <span>
+                                Opcional
+                            </span>
+
+                        </div>
+
+
+                        <div class="guest-field__control">
+
+                            <textarea
+                                id="guest-bio"
+                                name="bio"
+                                maxlength="80"
+                                rows="2"
+                                placeholder="Ej. Amiga de la novia desde pequeñas."
+                                data-profile-bio
+                            ></textarea>
+
+                            <span
+                                class="guest-field__focus"
+                                aria-hidden="true"
+                            ></span>
+
+                        </div>
+
+
+                        <div class="guest-field__meta">
+                            <span>
+                                Máximo 80 caracteres
+                            </span>
+
+                            <span data-bio-counter>
+                                0 / 80
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="guest-button guest-button--primary"
+                        type="submit"
+                    >
+                        <span>
+                            Crear mi espacio
+                        </span>
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M5 12h14"></path>
+                            <path d="m14 7 5 5-5 5"></path>
+                        </svg>
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =============================================
+                 DASHBOARD
+                 ============================================= -->
+
+            <section
+                class="guest-state guest-dashboard"
+                data-state-dashboard
+                hidden
+            >
+
+
+                <!-- PROFILE -->
+
+                <header class="guest-dashboard__header">
+
+                    <div class="guest-dashboard__avatar">
+
+                        <img
+                            src=""
+                            alt=""
+                            data-dashboard-avatar
+                            hidden
+                        >
+
+                        <div
+                            class="guest-dashboard__avatar-fallback"
+                            data-dashboard-avatar-fallback
+                        >
+                            <svg
+                                viewBox="0 0 64 64"
+                                aria-hidden="true"
+                            >
+                                <circle
+                                    cx="32"
+                                    cy="23"
+                                    r="11"
+                                ></circle>
+
+                                <path
+                                    d="M12 56C14 43 22 37 32 37C42 37 50 43 52 56"
+                                ></path>
+                            </svg>
+                        </div>
+
+                    </div>
+
+
+                    <div class="guest-dashboard__identity">
+
+                        <span class="guest-eyebrow">
+                            Tu espacio
+                        </span>
+
+                        <h2 data-dashboard-name>
+                            Invitado
+                        </h2>
+
+                        <p
+                            data-dashboard-bio
+                            hidden
+                        ></p>
+
+                    </div>
+
+
+                    <div
+                        class="guest-dashboard__monogram"
+                        aria-hidden="true"
+                    >
+                        SJ
+                    </div>
+
+                </header>
+
+
+                <!-- =========================================
+                     LIMIT
+                     ========================================= -->
+
+                <div class="guest-limit">
+
+                    <div class="guest-limit__copy">
+
+                        <span>
+                            Tus recuerdos
+                        </span>
+
+                        <strong>
+                            <span data-memory-total>00</span>
+                            <small>/10</small>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="guest-limit__bar">
+
+                        <span
+                            data-memory-limit-bar
+                        ></span>
+
+                    </div>
+
+
+                    <p data-limit-message>
+                        Puedes compartir hasta 10 recuerdos.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================================
+                     UPLOAD
+                     ========================================= -->
+
+                <section class="guest-upload">
+
+                    <header class="guest-upload__header">
+
+                        <span class="guest-eyebrow">
+                            Comparte
+                        </span>
+
+                        <h3>
+                            ¿Qué estás viendo
+                            <em>ahora mismo?</em>
+                        </h3>
+
+                        <p>
+                            Fotografías o vídeos de hasta
+                            10 segundos.
+                        </p>
+
+                    </header>
+
+
+                    <input
+                        id="guest-memory-input"
+                        class="guest-hidden-input"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp,video/mp4,video/webm"
+                        multiple
+                        data-memory-input
+                    >
+
+
+                    <label
+                        class="guest-upload__dropzone"
+                        for="guest-memory-input"
+                        data-upload-dropzone
+                    >
+
+                        <span class="guest-upload__icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 7.5h3l1.5-2h7l1.5 2h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"
+                                ></path>
+
+                                <circle
+                                    cx="12"
+                                    cy="14"
+                                    r="4"
+                                ></circle>
+                            </svg>
+
+                        </span>
+
+
+                        <span class="guest-upload__copy">
+
+                            <strong>
+                                Añadir recuerdos
+                            </strong>
+
+                            <small data-upload-availability>
+                                10 espacios disponibles
+                            </small>
+
+                        </span>
+
+
+                        <span
+                            class="guest-upload__plus"
+                            aria-hidden="true"
+                        >
+                            +
+                        </span>
+
+                    </label>
+
+                </section>
+
+
+                <!-- =========================================
+                     SELECTED BEFORE SEND
+                     ========================================= -->
+
+                <section
+                    class="guest-selection"
+                    data-selection
+                    hidden
+                >
+
+                    <header class="guest-selection__header">
+
+                        <div>
+                            <span class="guest-eyebrow">
+                                Antes de enviar
+                            </span>
+
+                            <h3>
+                                Revisa tus recuerdos
+                            </h3>
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="guest-text-button"
+                            data-clear-selection
+                        >
+                            Limpiar
+                        </button>
+
+                    </header>
+
+
+                    <div
+                        class="guest-selection__grid"
+                        data-selection-grid
+                    ></div>
+
+
+                    <div class="guest-selection__notice">
+
+                        <span aria-hidden="true">
+                            ◇
+                        </span>
+
+                        <p>
+                            Las fotografías pueden ajustarse
+                            antes de enviarlas. El archivo
+                            original siempre se conservará
+                            sin recorte.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="guest-button guest-button--primary"
+                        data-send-memories
+                    >
+                        <span>
+                            Enviar para aprobación
+                        </span>
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M5 12h14"></path>
+                            <path d="m14 7 5 5-5 5"></path>
+                        </svg>
+                    </button>
+
+                </section>
+
+
+                <!-- =========================================
+                     MEMORIES
+                     ========================================= -->
+
+                <section class="guest-memories">
+
+                    <header class="guest-memories__header">
+
+                        <div>
+                            <span class="guest-eyebrow">
+                                Mi colección
+                            </span>
+
+                            <h3>
+                                Mis recuerdos
+                            </h3>
+                        </div>
+
+
+                        <div class="guest-memories__stats">
+
+                            <span>
+                                <strong data-pending-count>
+                                    0
+                                </strong>
+                                pendientes
+                            </span>
+
+                            <i></i>
+
+                            <span>
+                                <strong data-approved-count>
+                                    0
+                                </strong>
+                                publicados
+                            </span>
+
+                        </div>
+
+                    </header>
+
+
+                    <!-- EMPTY -->
+
+                    <div
+                        class="guest-memories__empty"
+                        data-memories-empty
+                    >
+                        <span class="guest-memories__empty-mark">
+                            SJ
+                        </span>
+
+                        <strong>
+                            Aquí aparecerán tus recuerdos.
+                        </strong>
+
+                        <p>
+                            Comparte el primero cuando quieras.
+                        </p>
+                    </div>
+
+
+                    <!-- GRID -->
+
+                    <div
+                        class="guest-memories__grid"
+                        data-memories-grid
+                        hidden
+                    ></div>
+
+                </section>
+
+            </section>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="guest-footer">
+
+            <span>
+                Suzana & Juan
+            </span>
+
+            <i></i>
+
+            <span>
+                Valencia · 2027
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         CROP EDITOR
+         ===================================================== -->
+
+    <div
+        class="guest-modal guest-crop"
+        data-crop-modal
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        hidden
+    >
+
+        <div
+            class="guest-modal__backdrop"
+            data-close-crop
+        ></div>
+
+
+        <section class="guest-modal__panel guest-crop__panel">
+
+            <header class="guest-modal__header">
+
+                <div>
+                    <span class="guest-eyebrow">
+                        Encuadre
+                    </span>
+
+                    <h2>
+                        Ajusta tu fotografía
+                    </h2>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="guest-modal__close"
+                    data-close-crop
+                    aria-label="Cerrar editor"
+                >
+                    ×
+                </button>
+
+            </header>
+
+
+            <p class="guest-crop__description">
+                Así se verá tu fotografía en la galería.
+                Muévela y ajusta el zoom hasta encontrar
+                el encuadre que prefieras.
+            </p>
+
+
+            <!-- CROP STAGE -->
+
+            <div
+                class="guest-crop__stage"
+                data-crop-stage
+            >
+
+                <img
+                    src=""
+                    alt="Vista previa del encuadre"
+                    data-crop-image
+                    draggable="false"
+                >
+
+                <div
+                    class="guest-crop__frame"
+                    aria-hidden="true"
+                ></div>
+
+            </div>
+
+
+            <!-- ZOOM -->
+
+            <div class="guest-crop__controls">
+
+                <span aria-hidden="true">
+                    −
+                </span>
+
+
+                <input
+                    type="range"
+                    min="1"
+                    max="3"
+                    step="0.01"
+                    value="1"
+                    aria-label="Zoom de la fotografía"
+                    data-crop-zoom
+                >
+
+
+                <span aria-hidden="true">
+                    +
+                </span>
+
+            </div>
+
+
+            <p class="guest-crop__hint">
+                Arrastra la fotografía para moverla.
+            </p>
+
+
+            <button
+                type="button"
+                class="guest-button guest-button--primary"
+                data-confirm-crop
+            >
+                <span>
+                    Guardar encuadre
+                </span>
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="m7 12 3 3 7-7"></path>
+                </svg>
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         ORIGINAL LIGHTBOX
+         ===================================================== -->
+
+    <div
+        class="guest-modal guest-lightbox"
+        data-lightbox
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        hidden
+    >
+
+        <div
+            class="guest-modal__backdrop guest-lightbox__backdrop"
+            data-close-lightbox
+        ></div>
+
+
+        <section class="guest-lightbox__panel">
+
+            <button
+                type="button"
+                class="guest-lightbox__close"
+                data-close-lightbox
+                aria-label="Cerrar recuerdo"
+            >
+                ×
+            </button>
+
+
+            <div class="guest-lightbox__media">
+
+                <img
+                    src=""
+                    alt="Recuerdo original"
+                    data-lightbox-image
+                    hidden
+                >
+
+
+                <video
+                    data-lightbox-video
+                    playsinline
+                    controls
+                    hidden
+                ></video>
+
+            </div>
+
+
+            <footer class="guest-lightbox__footer">
+
+                <div>
+                    <span class="guest-eyebrow">
+                        Recuerdo original
+                    </span>
+
+                    <strong data-lightbox-owner>
+                        Invitado
+                    </strong>
+                </div>
+
+
+                <span
+                    class="guest-lightbox__mark"
+                    aria-hidden="true"
+                >
+                    SJ
+                </span>
+
+            </footer>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         DELETE CONFIRMATION
+         ===================================================== -->
+
+    <div
+        class="guest-modal guest-confirm"
+        data-delete-modal
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        hidden
+    >
+
+        <div
+            class="guest-modal__backdrop"
+            data-cancel-delete
+        ></div>
+
+
+        <section class="guest-confirm__panel">
+
+            <span class="guest-confirm__mark">
+                SJ
+            </span>
+
+
+            <span class="guest-eyebrow">
+                Eliminar recuerdo
+            </span>
+
+
+            <h2>
+                ¿Quieres eliminarlo?
+            </h2>
+
+
+            <p>
+                Este recuerdo se eliminará definitivamente
+                y volverás a tener un espacio disponible.
+            </p>
+
+
+            <div class="guest-confirm__actions">
+
+                <button
+                    type="button"
+                    class="guest-button guest-button--secondary"
+                    data-cancel-delete
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="guest-button guest-button--danger"
+                    data-confirm-delete
+                >
+                    Eliminar
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         APPROVAL MESSAGE
+         ===================================================== -->
+
+    <div
+        class="guest-toast"
+        data-toast
+        role="status"
+        aria-live="polite"
+        hidden
+    >
+
+        <span
+            class="guest-toast__mark"
+            aria-hidden="true"
+        >
+            SJ
+        </span>
+
+
+        <div class="guest-toast__content">
+
+            <strong data-toast-title>
+                Recuerdos recibidos
+            </strong>
+
+            <p data-toast-message>
+                Tus recuerdos están en proceso de aprobación.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JS
+         ===================================================== -->
+
+    <script
+        type="module"
+        src="./guest.js"
+    ></script>
+
+</body>
+</html>

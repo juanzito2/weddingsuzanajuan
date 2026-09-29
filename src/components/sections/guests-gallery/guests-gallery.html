@@ -1,0 +1,821 @@
+<section
+    class="guest-gallery"
+    id="guest-gallery"
+    aria-labelledby="guest-gallery-title"
+>
+
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <div
+        class="guest-gallery__background"
+        aria-hidden="true"
+    >
+        <span class="guest-gallery__glow guest-gallery__glow--one"></span>
+        <span class="guest-gallery__glow guest-gallery__glow--two"></span>
+        <span class="guest-gallery__grain"></span>
+    </div>
+
+
+    <div class="guest-gallery__container">
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <header class="guest-gallery__header">
+
+            <div class="guest-gallery__heading">
+
+                <span class="guest-gallery__eyebrow">
+                    Vuestra mirada
+                </span>
+
+
+                <h2
+                    class="guest-gallery__title"
+                    id="guest-gallery-title"
+                >
+                    Recuerdos de
+                    <em>nuestros invitados.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="guest-gallery__introduction">
+
+                <p>
+                    Hay momentos que nosotros no vimos,
+                    pero vosotros sí.
+                </p>
+
+                <span>
+                    Esta es vuestra forma de contarnos
+                    nuestro propio día.
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             STORIES
+             ================================================= -->
+
+        <section
+            class="guest-stories"
+            aria-labelledby="guest-stories-title"
+        >
+
+            <!-- STORIES HEADER -->
+
+            <header class="guest-stories__header">
+
+                <div>
+
+                    <span class="guest-gallery__eyebrow">
+                        Historias
+                    </span>
+
+                    <h3 id="guest-stories-title">
+                        El día,
+                        <em>desde vuestros ojos.</em>
+                    </h3>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <label class="guest-stories__search">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6"
+                        ></circle>
+
+                        <path
+                            d="m16 16 4 4"
+                        ></path>
+                    </svg>
+
+
+                    <input
+                        type="search"
+                        placeholder="Buscar invitado"
+                        autocomplete="off"
+                        aria-label="Buscar invitado"
+                        data-guest-search
+                    >
+
+
+                    <button
+                        type="button"
+                        class="guest-stories__search-clear"
+                        aria-label="Limpiar búsqueda"
+                        data-guest-search-clear
+                        hidden
+                    >
+                        ×
+                    </button>
+
+                </label>
+
+            </header>
+
+
+            <!-- STORIES META -->
+
+            <div class="guest-stories__meta">
+
+                <span>
+                    <strong data-guest-total>
+                        00
+                    </strong>
+
+                    invitados compartieron
+                    sus recuerdos
+                </span>
+
+
+                <span class="guest-stories__hint">
+                    Desliza para descubrir
+                </span>
+
+            </div>
+
+
+            <!-- CAROUSEL -->
+
+            <div class="guest-stories__carousel">
+
+                <!-- PREVIOUS -->
+
+                <button
+                    type="button"
+                    class="
+                        guest-stories__control
+                        guest-stories__control--previous
+                    "
+                    aria-label="Invitados anteriores"
+                    data-stories-previous
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m15 6-6 6 6 6"
+                        ></path>
+                    </svg>
+                </button>
+
+
+                <!-- VIEWPORT -->
+
+                <div
+                    class="guest-stories__viewport"
+                    data-stories-viewport
+                >
+
+                    <div
+                        class="guest-stories__track"
+                        data-stories-track
+                        role="list"
+                        aria-label="Historias de invitados"
+                    >
+
+                        <!--
+                            Os perfis serão criados
+                            dinamicamente pelo JS.
+
+                            Estrutura futura:
+
+                            <button
+                                class="guest-story-profile"
+                                data-story-guest="..."
+                            >
+                                ...
+                            </button>
+                        -->
+
+                    </div>
+
+                </div>
+
+
+                <!-- NEXT -->
+
+                <button
+                    type="button"
+                    class="
+                        guest-stories__control
+                        guest-stories__control--next
+                    "
+                    aria-label="Siguientes invitados"
+                    data-stories-next
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m9 6 6 6-6 6"
+                        ></path>
+                    </svg>
+                </button>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="guest-stories__progress">
+
+                <span>
+                    <i data-stories-progress></i>
+                </span>
+
+            </div>
+
+
+            <!-- SEARCH EMPTY -->
+
+            <div
+                class="guest-stories__empty"
+                data-stories-search-empty
+                hidden
+            >
+
+                <span class="guest-stories__empty-mark">
+                    SJ
+                </span>
+
+                <strong>
+                    No encontramos ese invitado.
+                </strong>
+
+                <p>
+                    Prueba con otro nombre.
+                </p>
+
+            </div>
+
+
+            <!-- GENERAL EMPTY -->
+
+            <div
+                class="guest-stories__empty"
+                data-stories-empty
+                hidden
+            >
+
+                <span class="guest-stories__empty-mark">
+                    SJ
+                </span>
+
+                <strong>
+                    Las historias comenzarán aquí.
+                </strong>
+
+                <p>
+                    Muy pronto este espacio se llenará
+                    de miradas distintas del mismo día.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DIVIDER
+             ================================================= -->
+
+        <div
+            class="guest-gallery__divider"
+            aria-hidden="true"
+        >
+            <span></span>
+
+            <i>
+                SJ
+            </i>
+
+            <span></span>
+        </div>
+
+
+        <!-- =================================================
+             FEATURED GALLERY
+             ================================================= -->
+
+        <section
+            class="guest-featured"
+            aria-labelledby="guest-featured-title"
+        >
+
+            <!-- HEADER -->
+
+            <header class="guest-featured__header">
+
+                <div>
+
+                    <span class="guest-gallery__eyebrow">
+                        Selección de invitados
+                    </span>
+
+
+                    <h3 id="guest-featured-title">
+                        Instantes que
+                        <em>merecen quedarse.</em>
+                    </h3>
+
+                </div>
+
+
+                <p>
+                    Una pequeña selección de fotografías
+                    compartidas por quienes estuvieron
+                    junto a nosotros.
+                </p>
+
+            </header>
+
+
+            <!-- GRID -->
+
+            <div
+                class="guest-featured__grid"
+                data-featured-grid
+            >
+
+                <!--
+                    Só entram fotografias:
+
+                    status === "approved"
+                    featured === true
+
+                    O JS criará os cards.
+                -->
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                class="guest-featured__empty"
+                data-featured-empty
+                hidden
+            >
+
+                <span>
+                    La colección está creciendo.
+                </span>
+
+            </div>
+
+
+            <!-- LOAD MORE -->
+
+            <div
+                class="guest-featured__more"
+                data-featured-more-wrapper
+                hidden
+            >
+
+                <button
+                    type="button"
+                    class="guest-featured__more-button"
+                    data-featured-more
+                >
+                    <span>
+                        Ver más recuerdos
+                    </span>
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m6 9 6 6 6-6"
+                        ></path>
+                    </svg>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CLOSING
+             ================================================= -->
+
+        <footer class="guest-gallery__closing">
+
+            <span class="guest-gallery__eyebrow">
+                Un mismo día
+            </span>
+
+
+            <blockquote>
+                “Nuestro recuerdo,
+                contado por todos.”
+            </blockquote>
+
+
+            <div
+                class="guest-gallery__closing-mark"
+                aria-hidden="true"
+            >
+                SJ
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =====================================================
+         STORY VIEWER
+         ===================================================== -->
+
+    <div
+        class="story-viewer"
+        data-story-viewer
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-label="Historias de invitados"
+        hidden
+    >
+
+        <!-- BACKDROP -->
+
+        <div
+            class="story-viewer__backdrop"
+            data-story-close
+        ></div>
+
+
+        <!-- VIEWER -->
+
+        <section class="story-viewer__card">
+
+
+            <!-- PROGRESS -->
+
+            <div
+                class="story-viewer__progress"
+                data-story-progress
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- HEADER -->
+
+            <header class="story-viewer__header">
+
+                <div class="story-viewer__guest">
+
+                    <div class="story-viewer__avatar">
+
+                        <img
+                            src=""
+                            alt=""
+                            data-story-avatar
+                            hidden
+                        >
+
+
+                        <div
+                            class="story-viewer__avatar-fallback"
+                            data-story-avatar-fallback
+                        >
+                            <svg
+                                viewBox="0 0 64 64"
+                                aria-hidden="true"
+                            >
+                                <circle
+                                    cx="32"
+                                    cy="23"
+                                    r="11"
+                                ></circle>
+
+                                <path
+                                    d="M12 56C14 43 22 37 32 37C42 37 50 43 52 56"
+                                ></path>
+                            </svg>
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-viewer__identity">
+
+                        <strong data-story-name>
+                            Invitado
+                        </strong>
+
+                        <span
+                            data-story-bio
+                            hidden
+                        ></span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="story-viewer__close"
+                    data-story-close
+                    aria-label="Cerrar historias"
+                >
+                    ×
+                </button>
+
+            </header>
+
+
+            <!-- MEDIA -->
+
+            <div class="story-viewer__media">
+
+                <!-- IMAGE -->
+
+                <img
+                    src=""
+                    alt="Recuerdo compartido por un invitado"
+                    data-story-image
+                    draggable="false"
+                    hidden
+                >
+
+
+                <!-- VIDEO -->
+
+                <video
+                    data-story-video
+                    playsinline
+                    controls
+                    hidden
+                ></video>
+
+
+                <!-- LOADING -->
+
+                <div
+                    class="story-viewer__loading"
+                    data-story-loading
+                    hidden
+                >
+                    <span></span>
+                </div>
+
+
+                <!-- PREVIOUS -->
+
+                <button
+                    type="button"
+                    class="
+                        story-viewer__navigation
+                        story-viewer__navigation--previous
+                    "
+                    data-story-previous
+                    aria-label="Recuerdo anterior"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m15 6-6 6 6 6"
+                        ></path>
+                    </svg>
+                </button>
+
+
+                <!-- NEXT -->
+
+                <button
+                    type="button"
+                    class="
+                        story-viewer__navigation
+                        story-viewer__navigation--next
+                    "
+                    data-story-next
+                    aria-label="Siguiente recuerdo"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m9 6 6 6-6 6"
+                        ></path>
+                    </svg>
+                </button>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="story-viewer__footer">
+
+                <span>
+                    Suzana & Juan
+                </span>
+
+
+                <span data-story-counter>
+                    1 / 1
+                </span>
+
+            </footer>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         FEATURED PHOTO LIGHTBOX
+         ===================================================== -->
+
+    <div
+        class="featured-lightbox"
+        data-featured-lightbox
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-label="Fotografía de invitado"
+        hidden
+    >
+
+        <!-- TRANSPARENT BACKDROP -->
+
+        <div
+            class="featured-lightbox__backdrop"
+            data-featured-close
+        ></div>
+
+
+        <!-- DELUXE GLASS -->
+
+        <section class="featured-lightbox__panel">
+
+
+            <!-- DECORATIVE REFLECTION -->
+
+            <div
+                class="featured-lightbox__reflection"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="featured-lightbox__close"
+                data-featured-close
+                aria-label="Cerrar fotografía"
+            >
+                ×
+            </button>
+
+
+            <!-- ORIGINAL -->
+
+            <div class="featured-lightbox__media">
+
+                <img
+                    src=""
+                    alt="Fotografía original compartida por un invitado"
+                    data-featured-lightbox-image
+                    draggable="false"
+                >
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <footer class="featured-lightbox__footer">
+
+                <div class="featured-lightbox__guest">
+
+                    <div class="featured-lightbox__avatar">
+
+                        <img
+                            src=""
+                            alt=""
+                            data-featured-lightbox-avatar
+                            hidden
+                        >
+
+
+                        <div
+                            class="featured-lightbox__avatar-fallback"
+                            data-featured-lightbox-avatar-fallback
+                        >
+                            <span>
+                                SJ
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="guest-gallery__eyebrow">
+                            Recuerdo de
+                        </span>
+
+                        <strong
+                            data-featured-lightbox-name
+                        >
+                            Invitado
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="featured-lightbox__counter">
+
+                    <span
+                        data-featured-lightbox-counter
+                    >
+                        01 / 01
+                    </span>
+
+                </div>
+
+            </footer>
+
+
+            <!-- PREVIOUS -->
+
+            <button
+                type="button"
+                class="
+                    featured-lightbox__navigation
+                    featured-lightbox__navigation--previous
+                "
+                data-featured-previous
+                aria-label="Fotografía anterior"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="m15 6-6 6 6 6"
+                    ></path>
+                </svg>
+            </button>
+
+
+            <!-- NEXT -->
+
+            <button
+                type="button"
+                class="
+                    featured-lightbox__navigation
+                    featured-lightbox__navigation--next
+                "
+                data-featured-next
+                aria-label="Siguiente fotografía"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="m9 6 6 6-6 6"
+                    ></path>
+                </svg>
+            </button>
+
+        </section>
+
+    </div>
+
+</section>

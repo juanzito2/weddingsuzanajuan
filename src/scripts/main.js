@@ -1,7 +1,7 @@
 import { loadComponent } from "./core/componentLoader.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
 
+document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("✓ Aplicação iniciada");
 
@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     try {
+
+        /* ============================================================
+           LOADING
+           ============================================================ */
 
         await loadComponent(
             "./src/components/system/loading/loading.html",
@@ -84,6 +88,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
 
 
+        /* ============================================================
+           HERO
+           ============================================================ */
+
         await loadComponent(
             "./src/components/sections/hero/hero.html",
             "app"
@@ -114,6 +122,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
 
+        /* ============================================================
+           STORY
+           ============================================================ */
+
         await loadComponent(
             "./src/components/sections/story/story.html",
             "app"
@@ -143,18 +155,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         }
 
+
+        /* ============================================================
+           DAY
+           ============================================================ */
+
         await loadComponent(
             "./src/components/sections/day/day.html",
             "app"
         );
 
-        const day = document.getElementById("day");
+
+        const day =
+            document.getElementById("day");
+
 
         if (day) {
 
-            const dayModule = await import(
-                "../components/sections/day/day.js"
-            );
+            const dayModule =
+                await import(
+                    "../components/sections/day/day.js"
+                );
+
 
             if (
                 typeof dayModule.initDay ===
@@ -166,6 +188,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
         }
+
+
+        /* ============================================================
+           DRESS CODE
+           ============================================================ */
 
         await loadComponent(
             "./src/components/sections/dresscode/dresscode.html",
@@ -196,45 +223,120 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
 
-            /* ============================================================
-            INFORMATION
-            ============================================================ */
+        }
 
-            await loadComponent(
-                "./src/components/sections/information/information.html",
-                "app"
+
+        /* ============================================================
+           INFORMATION
+           ============================================================ */
+
+        await loadComponent(
+            "./src/components/sections/information/information.html",
+            "app"
+        );
+
+
+        const information =
+            document.getElementById(
+                "information"
             );
 
-            const information =
-                document.getElementById("information");
 
-            if (information) {
+        if (information) {
 
-                const informationModule =
-                    await import(
-                        "../components/sections/information/information.js"
-                    );
+            const informationModule =
+                await import(
+                    "../components/sections/information/information.js"
+                );
 
-                if (
-                    typeof informationModule.initInformation ===
-                    "function"
-                ) {
-                    informationModule.initInformation();
-                }
+
+            if (
+                typeof informationModule.initInformation ===
+                "function"
+            ) {
+
+                informationModule.initInformation();
+
             }
 
         }
 
 
+        /* ============================================================
+           OFFICIAL GALLERY
+           ============================================================ */
+
+        await loadComponent(
+            "./src/components/sections/official-gallery/official-gallery.html",
+            "app"
+        );
 
 
+        const officialGallery =
+            document.getElementById(
+                "official-gallery"
+            );
 
 
+        if (officialGallery) {
+
+            const officialGalleryModule =
+                await import(
+                    "../components/sections/official-gallery/official-gallery.js"
+                );
 
 
+            if (
+                typeof officialGalleryModule.initOfficialGallery ===
+                "function"
+            ) {
+
+                officialGalleryModule.initOfficialGallery();
+
+            }
+
+        }
 
 
+        /* ============================================================
+           GUEST GALLERY
+           ============================================================ */
 
+        await loadComponent(
+            "./src/components/sections/guests-gallery/guests-gallery.html",
+            "app"
+        );
+
+
+        const guestsGallery =
+            document.getElementById(
+                "guest-gallery"
+            );
+
+
+        if (guestsGallery) {
+
+            const guestsGalleryModule =
+                await import(
+                    "../components/sections/guests-gallery/guests-gallery.js"
+                );
+
+
+            if (
+                typeof guestsGalleryModule.initGuestsGallery ===
+                "function"
+            ) {
+
+                guestsGalleryModule.initGuestsGallery();
+
+            }
+
+        }
+
+
+        /* ============================================================
+           APPLICATION READY
+           ============================================================ */
 
         console.log(
             "✓ Todas as sections carregadas"
@@ -272,6 +374,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
     }
-
 
 });

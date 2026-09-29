@@ -31,3 +31,7 @@
 @import "../components/sections/dresscode/dresscode.css";
 
 @import url("../components/sections/information/information.css");
+
+@import url("../components/sections/official-gallery/official-gallery.css");
+
+@import url("../components/sections/guests-gallery/guests-gallery.css");

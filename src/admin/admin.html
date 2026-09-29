@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#24112f"
+    >
+
+    <!-- Área administrativa não deve ser indexada -->
+    <meta
+        name="robots"
+        content="noindex, nofollow, noarchive"
+    >
+
+    <title>
+        Panel administrativo | Suzana & Juan
+    </title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         AUTH GUARD
+         O painel começa bloqueado.
+         admin.js decide se pode ser exibido.
+    ====================================================== -->
+
+    <div
+        class="admin-guard"
+        data-admin-guard
+    >
+
+        <div class="admin-guard__monogram">
+            SJ
+        </div>
+
+        <div
+            class="admin-guard__spinner"
+            aria-hidden="true"
+        ></div>
+
+        <p>
+            Verificando acceso seguro…
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <div
+        class="admin-app"
+        data-admin-app
+        hidden
+    >
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="admin-sidebar">
+
+            <header class="admin-sidebar__brand">
+
+                <div class="admin-sidebar__monogram">
+                    SJ
+                </div>
+
+                <div>
+
+                    <strong>
+                        Suzana & Juan
+                    </strong>
+
+                    <span>
+                        Administración
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <nav
+                class="admin-sidebar__nav"
+                aria-label="Administración"
+            >
+
+                <button
+                    class="admin-nav-item is-active"
+                    type="button"
+                    data-admin-view="pending"
+                >
+
+                    <span class="admin-nav-item__icon">
+                        ◇
+                    </span>
+
+                    <span>
+                        Pendientes
+                    </span>
+
+                    <strong
+                        data-pending-nav-count
+                    >
+                        0
+                    </strong>
+
+                </button>
+
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-admin-view="approved"
+                >
+
+                    <span class="admin-nav-item__icon">
+                        ◇
+                    </span>
+
+                    <span>
+                        Publicados
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-admin-view="featured"
+                >
+
+                    <span class="admin-nav-item__icon">
+                        ◇
+                    </span>
+
+                    <span>
+                        Destacados
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="admin-nav-item"
+                    type="button"
+                    data-admin-view="guests"
+                >
+
+                    <span class="admin-nav-item__icon">
+                        ◇
+                    </span>
+
+                    <span>
+                        Invitados
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <div class="admin-sidebar__footer">
+
+                <div class="admin-sidebar__security">
+
+                    <span></span>
+
+                    <div>
+                        <small>
+                            Sesión
+                        </small>
+
+                        <strong>
+                            Administrador
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="admin-sidebar__logout"
+                    type="button"
+                    data-admin-logout
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN
+        ================================================== -->
+
+        <main class="admin-main">
+
+
+            <!-- =============================================
+                 TOPBAR
+            ============================================== -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-topbar__eyebrow">
+                        Panel privado
+                    </span>
+
+                    <h1 data-view-title>
+                        Recuerdos pendientes
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-topbar__actions">
+
+                    <button
+                        class="admin-refresh"
+                        type="button"
+                        data-admin-refresh
+                    >
+                        Actualizar
+                    </button>
+
+                    <button
+                        class="admin-mobile-menu"
+                        type="button"
+                        aria-label="Abrir menú"
+                        data-admin-menu
+                    >
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =============================================
+                 STATS
+            ============================================== -->
+
+            <section
+                class="admin-stats"
+                aria-label="Resumen"
+            >
+
+                <article class="admin-stat">
+
+                    <span>
+                        Pendientes
+                    </span>
+
+                    <strong data-stat-pending>
+                        0
+                    </strong>
+
+                    <small>
+                        Por revisar
+                    </small>
+
+                </article>
+
+
+                <article class="admin-stat">
+
+                    <span>
+                        Publicados
+                    </span>
+
+                    <strong data-stat-approved>
+                        0
+                    </strong>
+
+                    <small>
+                        En Stories
+                    </small>
+
+                </article>
+
+
+                <article class="admin-stat">
+
+                    <span>
+                        Destacados
+                    </span>
+
+                    <strong data-stat-featured>
+                        0
+                    </strong>
+
+                    <small>
+                        En galería
+                    </small>
+
+                </article>
+
+
+                <article class="admin-stat">
+
+                    <span>
+                        Invitados
+                    </span>
+
+                    <strong data-stat-guests>
+                        0
+                    </strong>
+
+                    <small>
+                        Con perfil
+                    </small>
+
+                </article>
+
+            </section>
+
+
+            <!-- =============================================
+                 TOOLBAR
+            ============================================== -->
+
+            <section class="admin-toolbar">
+
+                <div class="admin-search">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="6"
+                        ></circle>
+
+                        <path
+                            d="m16 16 4 4"
+                        ></path>
+                    </svg>
+
+                    <input
+                        type="search"
+                        placeholder="Buscar invitado…"
+                        autocomplete="off"
+                        data-admin-search
+                    >
+
+                </div>
+
+
+                <div class="admin-toolbar__meta">
+
+                    <span data-results-count>
+                        0 resultados
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 LOADING
+            ============================================== -->
+
+            <section
+                class="admin-content-state"
+                data-admin-loading
+                hidden
+            >
+
+                <div
+                    class="admin-content-state__spinner"
+                ></div>
+
+                <p>
+                    Cargando recuerdos…
+                </p>
+
+            </section>
+
+
+            <!-- =============================================
+                 ERROR
+            ============================================== -->
+
+            <section
+                class="
+                    admin-content-state
+                    admin-content-state--error
+                "
+                data-admin-error
+                hidden
+            >
+
+                <strong>
+                    No se pudieron cargar los datos.
+                </strong>
+
+                <p data-admin-error-message>
+                    Inténtalo de nuevo.
+                </p>
+
+                <button
+                    type="button"
+                    data-admin-error-retry
+                >
+                    Reintentar
+                </button>
+
+            </section>
+
+
+            <!-- =============================================
+                 EMPTY
+            ============================================== -->
+
+            <section
+                class="admin-content-state"
+                data-admin-empty
+                hidden
+            >
+
+                <div class="admin-content-state__diamond">
+                    SJ
+                </div>
+
+                <strong data-empty-title>
+                    Todo está al día
+                </strong>
+
+                <p data-empty-message>
+                    No hay recuerdos pendientes de revisión.
+                </p>
+
+            </section>
+
+
+            <!-- =============================================
+                 MEMORIES
+            ============================================== -->
+
+            <section
+                class="admin-memories"
+                data-admin-memories
+                hidden
+            >
+
+                <div
+                    class="admin-memories__grid"
+                    data-admin-memories-grid
+                ></div>
+
+            </section>
+
+
+            <!-- =============================================
+                 GUESTS
+            ============================================== -->
+
+            <section
+                class="admin-guests"
+                data-admin-guests
+                hidden
+            >
+
+                <div
+                    class="admin-guests__grid"
+                    data-admin-guests-grid
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         MEMORY MODERATION MODAL
+    ====================================================== -->
+
+    <div
+        class="admin-modal"
+        data-memory-modal
+        hidden
+    >
+
+        <div
+            class="admin-modal__backdrop"
+            data-close-memory-modal
+        ></div>
+
+
+        <section
+            class="admin-modal__panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="memory-modal-title"
+        >
+
+            <button
+                class="admin-modal__close"
+                type="button"
+                aria-label="Cerrar"
+                data-close-memory-modal
+            >
+                ×
+            </button>
+
+
+            <header class="admin-modal__header">
+
+                <div>
+
+                    <span data-memory-status>
+                        Pendiente
+                    </span>
+
+                    <h2 id="memory-modal-title">
+                        Revisión del recuerdo
+                    </h2>
+
+                </div>
+
+
+                <div class="admin-modal__guest">
+
+                    <div
+                        class="admin-modal__avatar"
+                        data-memory-guest-avatar
+                    >
+                        <span
+                            data-memory-guest-fallback
+                        >
+                            SJ
+                        </span>
+                    </div>
+
+                    <div>
+
+                        <strong
+                            data-memory-guest-name
+                        >
+                            Invitado
+                        </strong>
+
+                        <small
+                            data-memory-date
+                        ></small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =============================================
+                 COMPARISON
+            ============================================== -->
+
+            <div class="admin-comparison">
+
+
+                <!-- ORIGINAL -->
+
+                <article class="admin-preview">
+
+                    <header>
+
+                        <span>
+                            Original
+                        </span>
+
+                        <button
+                            type="button"
+                            data-open-original
+                        >
+                            Ver fullscreen
+                        </button>
+
+                    </header>
+
+
+                    <div
+                        class="
+                            admin-preview__media
+                            admin-preview__media--original
+                        "
+                        data-original-preview
+                    ></div>
+
+                </article>
+
+
+                <!-- PUBLIC CROP -->
+
+                <article
+                    class="admin-preview"
+                    data-public-preview-container
+                >
+
+                    <header>
+
+                        <span>
+                            Vista pública
+                        </span>
+
+                        <button
+                            type="button"
+                            data-adjust-crop
+                        >
+                            Ajustar encuadre
+                        </button>
+
+                    </header>
+
+
+                    <div
+                        class="
+                            admin-preview__media
+                            admin-preview__media--square
+                        "
+                        data-public-preview
+                    ></div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =============================================
+                 ADMIN ACTIONS
+            ============================================== -->
+
+            <footer class="admin-modal__actions">
+
+                <button
+                    class="
+                        admin-action
+                        admin-action--danger
+                    "
+                    type="button"
+                    data-admin-discard
+                >
+                    Descartar
+                </button>
+
+
+                <label
+                    class="admin-featured-toggle"
+                    data-featured-control
+                >
+
+                    <input
+                        type="checkbox"
+                        data-admin-featured
+                    >
+
+                    <span></span>
+
+                    <div>
+
+                        <strong>
+                            Destacar en galería
+                        </strong>
+
+                        <small>
+                            Solo fotografías aprobadas
+                        </small>
+
+                    </div>
+
+                </label>
+
+
+                <button
+                    class="
+                        admin-action
+                        admin-action--primary
+                    "
+                    type="button"
+                    data-admin-approve
+                >
+                    Aprobar
+                </button>
+
+            </footer>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         ORIGINAL LIGHTBOX
+    ====================================================== -->
+
+    <div
+        class="admin-lightbox"
+        data-admin-lightbox
+        hidden
+    >
+
+        <div
+            class="admin-lightbox__backdrop"
+            data-close-admin-lightbox
+        ></div>
+
+        <button
+            class="admin-lightbox__close"
+            type="button"
+            aria-label="Cerrar"
+            data-close-admin-lightbox
+        >
+            ×
+        </button>
+
+
+        <div class="admin-lightbox__content">
+
+            <img
+                src=""
+                alt=""
+                data-admin-lightbox-image
+                hidden
+            >
+
+            <video
+                src=""
+                controls
+                playsinline
+                data-admin-lightbox-video
+                hidden
+            ></video>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DELETE CONFIRMATION
+    ====================================================== -->
+
+    <div
+        class="admin-confirm"
+        data-admin-confirm
+        hidden
+    >
+
+        <div
+            class="admin-confirm__backdrop"
+            data-cancel-admin-confirm
+        ></div>
+
+
+        <section
+            class="admin-confirm__panel"
+            role="alertdialog"
+            aria-modal="true"
+        >
+
+            <span class="admin-confirm__eyebrow">
+                Acción permanente
+            </span>
+
+            <h2>
+                Descartar recuerdo
+            </h2>
+
+            <p>
+                El archivo será eliminado definitivamente
+                del almacenamiento y no podrá recuperarse.
+            </p>
+
+
+            <div class="admin-confirm__actions">
+
+                <button
+                    type="button"
+                    data-cancel-admin-confirm
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    data-confirm-admin-delete
+                >
+                    Descartar definitivamente
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+
+    <div
+        class="admin-toast"
+        role="status"
+        aria-live="polite"
+        data-admin-toast
+        hidden
+    >
+
+        <strong data-admin-toast-title>
+            Cambios guardados
+        </strong>
+
+        <span data-admin-toast-message>
+            La galería ha sido actualizada.
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         JS
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="./admin.js"
+    ></script>
+
+</body>
+
+</html>

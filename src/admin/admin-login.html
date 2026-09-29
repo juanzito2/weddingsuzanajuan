@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#24112f"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <title>
+        Administración | Suzana & Juan
+    </title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./admin-login.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="admin-login-background"
+        aria-hidden="true"
+    >
+
+        <div
+            class="
+                admin-login-background__glow
+                admin-login-background__glow--one
+            "
+        ></div>
+
+        <div
+            class="
+                admin-login-background__glow
+                admin-login-background__glow--two
+            "
+        ></div>
+
+        <div
+            class="admin-login-background__grain"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PAGE
+    ====================================================== -->
+
+    <main class="admin-login">
+
+
+        <!-- =================================================
+             BRAND
+        ================================================== -->
+
+        <header class="admin-login__brand">
+
+            <div
+                class="admin-login__monogram"
+                aria-hidden="true"
+            >
+                SJ
+            </div>
+
+            <p class="admin-login__couple">
+                Suzana & Juan
+            </p>
+
+            <span class="admin-login__date">
+                09 · 01 · 2027
+            </span>
+
+        </header>
+
+
+        <!-- =================================================
+             LOGIN CARD
+        ================================================== -->
+
+        <section
+            class="admin-login__card"
+            aria-labelledby="admin-login-title"
+        >
+
+            <div class="admin-login__ornament">
+
+                <span></span>
+
+                <div aria-hidden="true">
+                    SJ
+                </div>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="admin-login__heading">
+
+                <span class="admin-login__eyebrow">
+                    Área privada
+                </span>
+
+                <h1 id="admin-login-title">
+                    Administración
+                </h1>
+
+                <p>
+                    Acceso reservado para la gestión
+                    de los recuerdos de la boda.
+                </p>
+
+            </div>
+
+
+            <!-- =============================================
+                 FORM
+            ============================================== -->
+
+            <form
+                class="admin-login__form"
+                data-admin-login-form
+                novalidate
+            >
+
+
+                <!-- EMAIL -->
+
+                <div class="admin-login__field">
+
+                    <label for="admin-email">
+                        Correo electrónico
+                    </label>
+
+                    <div class="admin-login__input-wrapper">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M4 6h16v12H4z"
+                            ></path>
+
+                            <path
+                                d="m4 7 8 6 8-6"
+                            ></path>
+                        </svg>
+
+                        <input
+                            id="admin-email"
+                            type="email"
+                            autocomplete="username"
+                            placeholder="administración"
+                            required
+                            data-admin-email
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="admin-login__field">
+
+                    <label for="admin-password">
+                        Contraseña
+                    </label>
+
+                    <div class="admin-login__input-wrapper">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                x="5"
+                                y="10"
+                                width="14"
+                                height="10"
+                                rx="2"
+                            ></rect>
+
+                            <path
+                                d="
+                                    M8 10V7
+                                    a4 4 0 0 1 8 0
+                                    v3
+                                "
+                            ></path>
+                        </svg>
+
+
+                        <input
+                            id="admin-password"
+                            type="password"
+                            autocomplete="current-password"
+                            placeholder="••••••••••••"
+                            required
+                            data-admin-password
+                        >
+
+
+                        <button
+                            class="admin-login__password-toggle"
+                            type="button"
+                            aria-label="Mostrar contraseña"
+                            data-password-toggle
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="
+                                        M2 12
+                                        s3.5-6 10-6
+                                        10 6 10 6
+                                        -3.5 6-10 6
+                                        S2 12 2 12Z
+                                    "
+                                ></path>
+
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="2.5"
+                                ></circle>
+                            </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    class="admin-login__message"
+                    role="alert"
+                    aria-live="polite"
+                    data-admin-message
+                    hidden
+                ></div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    class="admin-login__submit"
+                    type="submit"
+                    data-admin-submit
+                >
+
+                    <span data-submit-text>
+                        Acceder
+                    </span>
+
+                    <span
+                        class="admin-login__spinner"
+                        data-submit-spinner
+                        hidden
+                        aria-hidden="true"
+                    ></span>
+
+                </button>
+
+            </form>
+
+
+            <!-- =============================================
+                 SECURITY
+            ============================================== -->
+
+            <div class="admin-login__security">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="
+                            M12 3
+                            19 6
+                            v5
+                            c0 4.5-2.8 8-7 10
+                            -4.2-2-7-5.5-7-10
+                            V6
+                            l7-3Z
+                        "
+                    ></path>
+                </svg>
+
+                <span>
+                    Acceso protegido
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-login__footer">
+
+            <span></span>
+
+            <p>
+                Panel privado · Suzana & Juan
+            </p>
+
+            <span></span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="./admin-login.js"
+    ></script>
+
+</body>
+
+</html>
