@@ -4,8 +4,7 @@
 
 import {
     supabase
-} from "../scripts/services/supabaseClient.js";
-
+} from "./scripts/services/supabaseClient.js";
 
 /* ============================================================
    ELEMENTS
