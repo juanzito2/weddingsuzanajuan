@@ -13,6 +13,10 @@ import {
     discardMemory
 } from "./scripts/services/adminService.js";
 
+import {
+    renderAdminCharts
+} from "./admin-charts.js";
+
 
 /* ============================================================
    STATE
@@ -585,6 +589,10 @@ async function loadAdminData() {
 
         renderStats();
 
+        renderAdminCharts(
+        state.memories
+        );
+        
         renderCurrentView();
 
     }
