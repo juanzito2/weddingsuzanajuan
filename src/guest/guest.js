@@ -32,9 +32,22 @@
    CONFIG
    ============================================================ */
 
+import {
+    ensureGuestSession,
+    createGuest,
+    getGuest,
+    updateGuest,
+    uploadGuestAvatar,
+    getGuestMemories,
+    uploadGuestMemory,
+    updateMemoryCrop,
+    deletePendingMemory,
+    MAX_MEMORIES
+} from "../admin/scripts/services/guestService.js";
+
 const CONFIG = {
 
-    maxMemories: 10,
+    maxMemories: MAX_MEMORIES,
 
     maxVideoDuration: 10,
 
@@ -55,6 +68,8 @@ const CONFIG = {
 
 const state = {
 
+    user: null,
+
     profile: null,
 
     memories: [],
@@ -62,6 +77,8 @@ const state = {
     selection: [],
 
     avatarUrl: null,
+
+    avatarFile: null,
 
     crop: {
 
@@ -105,6 +122,8 @@ const state = {
 const el = {
 
     /* STATES */
+
+
 
     loading:
         document.querySelector(
@@ -171,29 +190,34 @@ const el = {
     /* DASHBOARD PROFILE */
 
     dashboardAvatar:
-        document.querySelector(
-            "[data-dashboard-avatar]"
-        ),
+    document.querySelector(
+        "[data-dashboard-avatar]"
+    ),
 
-    dashboardAvatarFallback:
-        document.querySelector(
-            "[data-dashboard-avatar-fallback]"
-        ),
+dashboardAvatarFallback:
+    document.querySelector(
+        "[data-dashboard-avatar-fallback]"
+    ),
 
-    dashboardAvatarInput:
-        document.querySelector(
-            "[data-dashboard-avatar-input]"
-        ),
+dashboardAvatarInput:
+    document.querySelector(
+        "[data-dashboard-avatar-input]"
+    ),
 
-    dashboardName:
-        document.querySelector(
-            "[data-dashboard-name]"
-        ),
+dashboardAvatarEdit:
+    document.querySelector(
+        "[data-dashboard-avatar-edit]"
+    ),
 
-    dashboardBio:
-        document.querySelector(
-            "[data-dashboard-bio]"
-        ),
+dashboardName:
+    document.querySelector(
+        "[data-dashboard-name]"
+    ),
+
+dashboardBio:
+    document.querySelector(
+        "[data-dashboard-bio]"
+    ),
 
 
     /* PROFILE EDITOR */
@@ -425,40 +449,94 @@ document.addEventListener(
 );
 
 
-function init() {
-
-    loadLocalData();
+async function init() {
 
     registerEvents();
 
     updateBioCounter();
 
+    try {
 
-    setTimeout(() => {
+        /*
+         * 1. Inicia ou recupera
+         * a sessão anônima Supabase
+         */
+        state.user =
+            await ensureGuestSession();
 
-        hideStates();
+
+        /*
+         * 2. Procura o perfil
+         * associado a este navegador
+         */
+        state.profile =
+            await getGuest(
+                state.user.id
+            );
 
 
+        /*
+         * 3. Se já existe perfil,
+         * carregamos as memórias reais
+         */
         if (state.profile) {
 
-            el.dashboard.hidden =
-                false;
-
-            renderDashboard();
+            state.memories =
+                await getGuestMemories(
+                    state.user.id
+                );
 
         } else {
 
-            el.profileState.hidden =
-                false;
+            state.memories = [];
 
         }
 
-    }, 550);
+
+        /*
+         * Mantemos a pequena animação
+         * inicial que seu site já tinha
+         */
+        setTimeout(() => {
+
+            hideStates();
 
 
-    console.log(
-        "✓ Guest Experience inicializada"
-    );
+            if (state.profile) {
+
+                el.dashboard.hidden =
+                    false;
+
+                renderDashboard();
+
+            } else {
+
+                el.profileState.hidden =
+                    false;
+
+            }
+
+        }, 550);
+
+
+        console.log(
+            "✓ Guest Experience conectada ao Supabase"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "✕ Error iniciando Guest Experience:",
+            error
+        );
+
+
+        showToast(
+            "No pudimos abrir tu espacio",
+            "Comprueba tu conexión e inténtalo de nuevo."
+        );
+
+    }
 
 }
 
@@ -688,10 +766,17 @@ function registerEvents() {
     );
 
 
-    el.dashboardAvatarInput?.addEventListener(
-        "change",
-        changeProfileAvatar
-    );
+    el.dashboardAvatarEdit?.addEventListener(
+    "click",
+    () => {
+        el.dashboardAvatarInput?.click();
+    }
+);
+
+el.dashboardAvatarInput?.addEventListener(
+    "change",
+    handleAvatar
+);
 
 
     /* UPLOAD */
@@ -828,7 +913,7 @@ function registerEvents() {
    CREATE PROFILE
    ============================================================ */
 
-function createProfile(event) {
+async function createProfile(event) {
 
     event.preventDefault();
 
@@ -861,42 +946,160 @@ function createProfile(event) {
         true;
 
 
-    state.profile = {
+    try {
 
-        id:
-            createId(),
-
-        name,
-
-        bio,
-
-        avatarUrl:
-            state.avatarUrl,
-
-        createdAt:
-            new Date()
-                .toISOString()
-
-    };
+        /*
+         * Evita dois envios enquanto
+         * Supabase está trabalhando.
+         */
+        const submitButton =
+            el.profileForm.querySelector(
+                'button[type="submit"]'
+            );
 
 
-    saveProfile();
+        if (submitButton) {
+
+            submitButton.disabled =
+                true;
+
+        }
 
 
-    hideStates();
+        /*
+         * CRIA O PERFIL REAL
+         * NA TABELA guests
+         */
+        const guest =
+            await createGuest({
+
+                name,
+
+                bio
+
+            });
 
 
-    el.dashboard.hidden =
-        false;
+        state.profile =
+    guest;
 
 
-    renderDashboard();
+/*
+ * Se o convidado escolheu uma foto
+ * antes de criar o perfil,
+ * agora que temos guest.id podemos
+ * enviá-la ao Storage privado.
+ */
+if (state.avatarFile) {
+
+    try {
+
+        const avatar =
+            await uploadGuestAvatar(
+                guest.id,
+                state.avatarFile
+            );
 
 
-    showToast(
-        `Bienvenido, ${name}`,
-        "Tu espacio está preparado para guardar tus recuerdos."
-    );
+        state.profile.avatarPath =
+            avatar.path;
+
+        state.profile.avatarUrl =
+            avatar.url;
+
+
+        state.avatarUrl =
+            avatar.url;
+
+
+        state.avatarFile =
+            null;
+
+
+        console.log(
+            "✓ Avatar inicial guardado en Supabase"
+        );
+
+    } catch (avatarError) {
+
+        console.error(
+            "Error guardando avatar inicial:",
+            avatarError
+        );
+
+
+        /*
+         * Não bloqueamos a criação
+         * do perfil caso apenas o
+         * avatar falhe.
+         */
+        state.avatarFile =
+            null;
+
+
+        showToast(
+            "Perfil creado",
+            "Tu perfil se ha creado, pero no pudimos guardar la fotografía."
+        );
+
+    }
+
+}
+
+
+state.memories = [];
+
+
+        hideStates();
+
+
+        el.dashboard.hidden =
+            false;
+
+
+        renderDashboard();
+
+
+        showToast(
+            "Bienvenido, " + guest.name,
+            "Tu espacio está preparado para guardar tus recuerdos."
+        );
+
+
+        console.log(
+            "✓ Perfil creado en Supabase:",
+            guest
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error creando perfil:",
+            error
+        );
+
+
+        showToast(
+            "No pudimos crear tu perfil",
+            "Comprueba tu conexión e inténtalo de nuevo."
+        );
+
+    } finally {
+
+        const submitButton =
+            el.profileForm.querySelector(
+                'button[type="submit"]'
+            );
+
+
+        if (submitButton) {
+
+            submitButton.disabled =
+                false;
+
+        }
+
+    }
 
 }
 
@@ -939,9 +1142,7 @@ async function handleAvatar(event) {
     }
 
 
-    if (
-        !isValidProfileImage(file)
-    ) {
+    if (!isValidProfileImage(file)) {
 
         showToast(
             "Archivo no compatible",
@@ -953,32 +1154,89 @@ async function handleAvatar(event) {
     }
 
 
-    try {
+    /*
+     * Antes de criar o perfil ainda
+     * não temos um registro guests.
+     *
+     * Guardamos temporariamente o File
+     * em memória. NÃO localStorage.
+     */
+    if (!state.profile) {
+
+        state.avatarFile =
+            file;
+
+
+        const previewUrl =
+            URL.createObjectURL(file);
+
 
         state.avatarUrl =
-            await imageFileToPersistentData(
-                file
-            );
+            previewUrl;
 
 
         el.avatarImage.src =
-            state.avatarUrl;
-
+            previewUrl;
 
         el.avatarImage.hidden =
             false;
 
-
         el.avatarFallback.hidden =
             true;
 
-    } catch (error) {
 
-        console.error(error);
+        return;
+
+    }
+
+
+    /*
+     * Perfil já existe:
+     * envia diretamente ao Storage.
+     */
+    try {
+
+        const result =
+            await uploadGuestAvatar(
+                state.profile.id,
+                file
+            );
+
+
+        state.profile.avatarPath =
+            result.path;
+
+        state.profile.avatarUrl =
+            result.url;
+
+
+        state.avatarUrl =
+            result.url;
+
+
+        renderProfile();
 
 
         showToast(
-            "No pudimos preparar la fotografía",
+            "Fotografía actualizada",
+            "Tu fotografía de perfil se ha guardado."
+        );
+
+
+        console.log(
+            "✓ Avatar guardado en Supabase"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error guardando avatar:",
+            error
+        );
+
+
+        showToast(
+            "No pudimos guardar la fotografía",
             "Prueba con otra imagen."
         );
 

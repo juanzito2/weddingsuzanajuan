@@ -418,34 +418,67 @@
 
                     <div class="guest-dashboard__avatar">
 
-                        <img
-                            src=""
-                            alt=""
-                            data-dashboard-avatar
-                            hidden
-                        >
+    <img
+        src=""
+        alt=""
+        data-dashboard-avatar
+        hidden
+    >
 
-                        <div
-                            class="guest-dashboard__avatar-fallback"
-                            data-dashboard-avatar-fallback
-                        >
-                            <svg
-                                viewBox="0 0 64 64"
-                                aria-hidden="true"
-                            >
-                                <circle
-                                    cx="32"
-                                    cy="23"
-                                    r="11"
-                                ></circle>
+    <div
+        class="guest-dashboard__avatar-fallback"
+        data-dashboard-avatar-fallback
+    >
+        <svg
+            viewBox="0 0 64 64"
+            aria-hidden="true"
+        >
+            <circle
+                cx="32"
+                cy="23"
+                r="11"
+            ></circle>
 
-                                <path
-                                    d="M12 56C14 43 22 37 32 37C42 37 50 43 52 56"
-                                ></path>
-                            </svg>
-                        </div>
+            <path
+                d="M12 56C14 43 22 37 32 37C42 37 50 43 52 56"
+            ></path>
+        </svg>
+    </div>
 
-                    </div>
+
+    <!-- ALTERAR FOTO -->
+
+    <button
+        type="button"
+        class="guest-dashboard__avatar-edit"
+        data-dashboard-avatar-edit
+        aria-label="Cambiar foto de perfil"
+    >
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path
+                d="M4 7.5h3l1.5-2h7l1.5 2h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"
+            ></path>
+
+            <circle
+                cx="12"
+                cy="14"
+                r="4"
+            ></circle>
+        </svg>
+    </button>
+
+
+    <input
+        class="guest-hidden-input"
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        data-dashboard-avatar-input
+    >
+
+</div>
 
 
                     <div class="guest-dashboard__identity">

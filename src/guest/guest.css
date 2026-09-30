@@ -3079,3 +3079,90 @@ textarea:focus-visible {
 
     font-size: 1.5rem;
 }
+
+/* ============================================================
+   DASHBOARD — EDITAR AVATAR
+   ============================================================ */
+
+.guest-dashboard__avatar {
+    position: relative;
+    overflow: visible;
+}
+
+
+/* BOTÃO */
+
+.guest-dashboard__avatar-edit {
+    position: absolute;
+
+    right: -4px;
+    bottom: -4px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9b86c,
+            #b88a38
+        );
+
+    box-shadow:
+        0 5px 15px rgba(70, 42, 80, 0.18);
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* ÍCONE */
+
+.guest-dashboard__avatar-edit svg {
+    width: 15px;
+    height: 15px;
+
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* HOVER */
+
+.guest-dashboard__avatar-edit:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 7px 20px rgba(70, 42, 80, 0.25);
+}
+
+
+/* CLICK */
+
+.guest-dashboard__avatar-edit:active {
+    transform: scale(0.95);
+}
+
+
+/* INPUT REAL FICA INVISÍVEL */
+
+[data-dashboard-avatar-input] {
+    display: none;
+}
