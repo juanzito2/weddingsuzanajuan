@@ -1,1092 +1,648 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#24112f"
-    >
+    <meta name="theme-color" content="#24112f" />
 
     <!-- Área administrativa não deve ser indexada -->
-    <meta
-        name="robots"
-        content="noindex, nofollow, noarchive"
-    >
+    <meta name="robots" content="noindex, nofollow, noarchive" />
 
-    <title>
-        Panel administrativo | Suzana & Juan
-    </title>
-
+    <title>Panel administrativo | Suzana & Juan</title>
 
     <!-- =====================================================
          FONTS
     ====================================================== -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet"
-    >
-
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- =====================================================
          CSS
     ====================================================== -->
 
-    <link
-        rel="stylesheet"
-        href="./admin.css"
-    >
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
 
-</head>
-
-
-<body>
-
-
+  <body>
     <!-- =====================================================
          AUTH GUARD
          O painel começa bloqueado.
          admin.js decide se pode ser exibido.
     ====================================================== -->
 
-    <div
-        class="admin-guard"
-        data-admin-guard
-    >
+    <div class="admin-guard" data-admin-guard>
+      <div class="admin-guard__monogram">SJ</div>
 
-        <div class="admin-guard__monogram">
-            SJ
-        </div>
+      <div class="admin-guard__spinner" aria-hidden="true"></div>
 
-        <div
-            class="admin-guard__spinner"
-            aria-hidden="true"
-        ></div>
-
-        <p>
-            Verificando acceso seguro…
-        </p>
-
+      <p>Verificando acceso seguro…</p>
     </div>
-
 
     <!-- =====================================================
          APPLICATION
     ====================================================== -->
 
-    <div
-        class="admin-app"
-        data-admin-app
-        hidden
-    >
-
-
-        <!-- =================================================
+    <div class="admin-app" data-admin-app hidden>
+      <!-- =================================================
              SIDEBAR
         ================================================== -->
 
-        <aside class="admin-sidebar">
+      <aside class="admin-sidebar">
+        <header class="admin-sidebar__brand">
+          <div class="admin-sidebar__monogram">SJ</div>
 
-            <header class="admin-sidebar__brand">
+          <div>
+            <strong> Suzana & Juan </strong>
 
-                <div class="admin-sidebar__monogram">
-                    SJ
-                </div>
+            <span> Administración </span>
+          </div>
+        </header>
 
-                <div>
+        <nav class="admin-sidebar__nav" aria-label="Administración">
+          <button
+            class="admin-nav-item is-active"
+            type="button"
+            data-admin-view="pending"
+          >
+            <span class="admin-nav-item__icon"> ◇ </span>
 
-                    <strong>
-                        Suzana & Juan
-                    </strong>
+            <span> Pendientes </span>
 
-                    <span>
-                        Administración
-                    </span>
+            <strong data-pending-nav-count> 0 </strong>
+          </button>
 
-                </div>
+          <button
+            class="admin-nav-item"
+            type="button"
+            data-admin-view="approved"
+          >
+            <span class="admin-nav-item__icon"> ◇ </span>
 
-            </header>
+            <span> Publicados </span>
+          </button>
 
+          <button
+            class="admin-nav-item"
+            type="button"
+            data-admin-view="featured"
+          >
+            <span class="admin-nav-item__icon"> ◇ </span>
 
-            <nav
-                class="admin-sidebar__nav"
-                aria-label="Administración"
-            >
+            <span> Destacados </span>
+          </button>
 
-                <button
-                    class="admin-nav-item is-active"
-                    type="button"
-                    data-admin-view="pending"
-                >
+          <button class="admin-nav-item" type="button" data-admin-view="guests">
+            <span class="admin-nav-item__icon"> ◇ </span>
 
-                    <span class="admin-nav-item__icon">
-                        ◇
-                    </span>
+            <span> Invitados </span>
+          </button>
+        </nav>
 
-                    <span>
-                        Pendientes
-                    </span>
+        <div class="admin-sidebar__footer">
+          <div class="admin-sidebar__security">
+            <span></span>
 
-                    <strong
-                        data-pending-nav-count
-                    >
-                        0
-                    </strong>
+            <div>
+              <small> Sesión </small>
 
-                </button>
-
-
-                <button
-                    class="admin-nav-item"
-                    type="button"
-                    data-admin-view="approved"
-                >
-
-                    <span class="admin-nav-item__icon">
-                        ◇
-                    </span>
-
-                    <span>
-                        Publicados
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="admin-nav-item"
-                    type="button"
-                    data-admin-view="featured"
-                >
-
-                    <span class="admin-nav-item__icon">
-                        ◇
-                    </span>
-
-                    <span>
-                        Destacados
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="admin-nav-item"
-                    type="button"
-                    data-admin-view="guests"
-                >
-
-                    <span class="admin-nav-item__icon">
-                        ◇
-                    </span>
-
-                    <span>
-                        Invitados
-                    </span>
-
-                </button>
-
-            </nav>
-
-
-            <div class="admin-sidebar__footer">
-
-                <div class="admin-sidebar__security">
-
-                    <span></span>
-
-                    <div>
-                        <small>
-                            Sesión
-                        </small>
-
-                        <strong>
-                            Administrador
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="admin-sidebar__logout"
-                    type="button"
-                    data-admin-logout
-                >
-                    Cerrar sesión
-                </button>
-
+              <strong> Administrador </strong>
             </div>
+          </div>
 
-        </aside>
+          <button class="admin-sidebar__logout" type="button" data-admin-logout>
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
 
-
-        <!-- =================================================
+      <!-- =================================================
              MAIN
         ================================================== -->
 
-        <main class="admin-main">
-
-
-            <!-- =============================================
+      <main class="admin-main">
+        <!-- =============================================
                  TOPBAR
             ============================================== -->
 
-            <header class="admin-topbar">
+        <header class="admin-topbar">
+          <div>
+            <span class="admin-topbar__eyebrow"> Panel privado </span>
 
-                <div>
+            <h1 data-view-title>Recuerdos pendientes</h1>
+          </div>
 
-                    <span class="admin-topbar__eyebrow">
-                        Panel privado
-                    </span>
+          <div class="admin-topbar__actions">
+            <button class="admin-refresh" type="button" data-admin-refresh>
+              Actualizar
+            </button>
 
-                    <h1 data-view-title>
-                        Recuerdos pendientes
-                    </h1>
+            <button
+              class="admin-mobile-menu"
+              type="button"
+              aria-label="Abrir menú"
+              data-admin-menu
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </header>
 
-                </div>
-
-
-                <div class="admin-topbar__actions">
-
-                    <button
-                        class="admin-refresh"
-                        type="button"
-                        data-admin-refresh
-                    >
-                        Actualizar
-                    </button>
-
-                    <button
-                        class="admin-mobile-menu"
-                        type="button"
-                        aria-label="Abrir menú"
-                        data-admin-menu
-                    >
-                        <span></span>
-                        <span></span>
-                    </button>
-
-                </div>
-
-            </header>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  STATS
             ============================================== -->
 
-            <section
-                class="admin-stats"
-                aria-label="Resumen"
-            >
+        <section class="admin-stats" aria-label="Resumen">
+          <article class="admin-stat">
+            <span> Pendientes </span>
 
-                <article class="admin-stat">
+            <strong data-stat-pending> 0 </strong>
 
-                    <span>
-                        Pendientes
-                    </span>
+            <small> Por revisar </small>
+          </article>
 
-                    <strong data-stat-pending>
-                        0
-                    </strong>
+          <article class="admin-stat">
+            <span> Publicados </span>
 
-                    <small>
-                        Por revisar
-                    </small>
+            <strong data-stat-approved> 0 </strong>
 
-                </article>
+            <small> En Stories </small>
+          </article>
 
+          <article class="admin-stat">
+            <span> Destacados </span>
 
-                <article class="admin-stat">
+            <strong data-stat-featured> 0 </strong>
 
-                    <span>
-                        Publicados
-                    </span>
+            <small> En galería </small>
+          </article>
 
-                    <strong data-stat-approved>
-                        0
-                    </strong>
+          <article class="admin-stat">
+            <span> Invitados </span>
 
-                    <small>
-                        En Stories
-                    </small>
+            <strong data-stat-guests> 0 </strong>
 
-                </article>
+            <small> Con perfil </small>
+          </article>
+        </section>
 
-
-                <article class="admin-stat">
-
-                    <span>
-                        Destacados
-                    </span>
-
-                    <strong data-stat-featured>
-                        0
-                    </strong>
-
-                    <small>
-                        En galería
-                    </small>
-
-                </article>
-
-
-                <article class="admin-stat">
-
-                    <span>
-                        Invitados
-                    </span>
-
-                    <strong data-stat-guests>
-                        0
-                    </strong>
-
-                    <small>
-                        Con perfil
-                    </small>
-
-                </article>
-
-            </section>
-
-
-            <!-- ============================================================
+        <!-- ============================================================
      PRIVATE LETTER — PARA SUZANA
      ============================================================ -->
 
-<section class="admin-love-letter">
+        <section class="admin-love-letter">
+          <div class="admin-love-letter__memory-line" aria-hidden="true">
+            <span class="admin-love-letter__initial"> S </span>
 
-    <div
-        class="admin-love-letter__memory-line"
-        aria-hidden="true"
-    >
-        <span class="admin-love-letter__initial">
-            S
-        </span>
-
-        <span class="admin-love-letter__path">
-            <i></i>
-            <b></b>
-            <i></i>
-        </span>
-
-        <span class="admin-love-letter__initial">
-            J
-        </span>
-    </div>
-
-
-    <div class="admin-love-letter__content">
-
-        <span class="admin-love-letter__eyebrow">
-            Para Suzana
-        </span>
-
-        <p class="admin-love-letter__message">
-            Cada recuerdo de este día será especial,
-            pero mi recuerdo favorito siempre serás tú.
-        </p>
-
-        <footer class="admin-love-letter__signature">
-
-            <span>
-                Juan
+            <span class="admin-love-letter__path">
+              <i></i>
+              <b></b>
+              <i></i>
             </span>
 
-            <span
-                class="admin-love-letter__heart"
-                aria-hidden="true"
-            >
+            <span class="admin-love-letter__initial"> J </span>
+          </div>
+
+          <div class="admin-love-letter__content">
+            <span class="admin-love-letter__eyebrow"> Para Suzana </span>
+
+            <p class="admin-love-letter__message">
+              Cada recuerdo de este día será especial, pero mi recuerdo favorito
+              siempre serás tú.
+            </p>
+
+            <footer class="admin-love-letter__signature">
+              <span> Juan </span>
+
+              <span class="admin-love-letter__heart" aria-hidden="true">
                 ♡
+              </span>
+
+              <span> 09 · 01 · 2027 </span>
+            </footer>
+
+            <span class="admin-love-letter__secret">
+              el comienzo de nuestro para siempre
             </span>
+          </div>
 
-            <span>
-                09 · 01 · 2027
-            </span>
+          <div class="admin-love-letter__diamond" aria-hidden="true"></div>
 
-        </footer>
-
-        <span class="admin-love-letter__secret">
-            el comienzo de nuestro para siempre
-        </span>
-
-    </div>
-
-
-    <div
-        class="admin-love-letter__diamond"
-        aria-hidden="true"
-    ></div>
-
-
-    <div
-        class="admin-love-letter__reflection"
-        aria-hidden="true"
-    ></div>
-
-</section>
+          <div class="admin-love-letter__reflection" aria-hidden="true"></div>
+        </section>
 
         <!-- ============================================================
      ROYAL ANALYTICS
      ============================================================ -->
 
-<section class="admin-analytics">
+        <section class="admin-analytics">
+          <!-- ACTIVITY / LINE CHART -->
 
-    <!-- ACTIVITY / LINE CHART -->
+          <article class="admin-chart-card admin-chart-card--activity">
+            <header class="admin-chart-card__header">
+              <div>
+                <span class="admin-chart-card__eyebrow"> Actividad </span>
 
-    <article class="admin-chart-card admin-chart-card--activity">
+                <h2>Recuerdos compartidos</h2>
 
-        <header class="admin-chart-card__header">
+                <p>La actividad de nuestros invitados a lo largo del tiempo.</p>
+              </div>
 
-            <div>
-                <span class="admin-chart-card__eyebrow">
-                    Actividad
-                </span>
-
-                <h2>
-                    Recuerdos compartidos
-                </h2>
-
-                <p>
-                    La actividad de nuestros invitados a lo largo del tiempo.
-                </p>
-            </div>
-
-            <div
-                class="admin-chart-card__mark"
-                aria-hidden="true"
-            >
+              <div class="admin-chart-card__mark" aria-hidden="true">
                 <span>S</span>
                 <i></i>
                 <b></b>
                 <i></i>
                 <span>J</span>
+              </div>
+            </header>
+
+            <div class="admin-chart admin-chart--line" data-line-chart>
+              <div class="admin-chart__empty">
+                La actividad aparecerá aquí cuando los invitados comiencen a
+                compartir recuerdos.
+              </div>
             </div>
 
-        </header>
+            <footer class="admin-chart-card__footer">
+              <span class="admin-chart-card__legend-dot"></span>
 
+              <span> Actividad de recuerdos </span>
 
-        <div
-            class="admin-chart admin-chart--line"
-            data-line-chart
-        >
-            <div class="admin-chart__empty">
-                La actividad aparecerá aquí cuando los invitados
-                comiencen a compartir recuerdos.
-            </div>
-        </div>
+              <span class="admin-chart-card__date"> 09 · 01 · 2027 </span>
+            </footer>
+          </article>
 
+          <!-- STATUS / BAR CHART -->
 
-        <footer class="admin-chart-card__footer">
+          <article class="admin-chart-card admin-chart-card--status">
+            <header class="admin-chart-card__header">
+              <div>
+                <span class="admin-chart-card__eyebrow"> Colección </span>
 
-            <span class="admin-chart-card__legend-dot"></span>
+                <h2>Estado de recuerdos</h2>
 
-            <span>
-                Actividad de recuerdos
-            </span>
+                <p>Una vista rápida de la colección actual.</p>
+              </div>
 
-            <span class="admin-chart-card__date">
-                09 · 01 · 2027
-            </span>
+              <div class="admin-chart-card__crystal" aria-hidden="true"></div>
+            </header>
 
-        </footer>
-
-    </article>
-
-
-    <!-- STATUS / BAR CHART -->
-
-    <article class="admin-chart-card admin-chart-card--status">
-
-        <header class="admin-chart-card__header">
-
-            <div>
-                <span class="admin-chart-card__eyebrow">
-                    Colección
-                </span>
-
-                <h2>
-                    Estado de recuerdos
-                </h2>
-
-                <p>
-                    Una vista rápida de la colección actual.
-                </p>
-            </div>
-
-            <div
-                class="admin-chart-card__crystal"
-                aria-hidden="true"
-            ></div>
-
-        </header>
-
-
-        <div
-            class="admin-chart admin-chart--bars"
-            data-bar-chart
-        >
-            <div class="admin-chart__empty">
+            <div class="admin-chart admin-chart--bars" data-bar-chart>
+              <div class="admin-chart__empty">
                 Los datos aparecerán cuando lleguen los primeros recuerdos.
+              </div>
             </div>
-        </div>
 
+            <footer class="admin-chart-card__footer">
+              <span class="admin-chart-card__legend-dot"></span>
 
-        <footer class="admin-chart-card__footer">
+              <span> Royal Memories </span>
 
-            <span class="admin-chart-card__legend-dot"></span>
+              <span class="admin-chart-card__date"> S · J </span>
+            </footer>
+          </article>
+        </section>
 
-            <span>
-                Royal Memories
-            </span>
-
-            <span class="admin-chart-card__date">
-                S · J
-            </span>
-
-        </footer>
-
-    </article>
-
-</section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  TOOLBAR
             ============================================== -->
 
-            <section class="admin-toolbar">
+        <section class="admin-toolbar">
+          <div class="admin-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6"></circle>
 
-                <div class="admin-search">
+              <path d="m16 16 4 4"></path>
+            </svg>
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <circle
-                            cx="11"
-                            cy="11"
-                            r="6"
-                        ></circle>
+            <input
+              type="search"
+              placeholder="Buscar invitado…"
+              autocomplete="off"
+              data-admin-search
+            />
+          </div>
 
-                        <path
-                            d="m16 16 4 4"
-                        ></path>
-                    </svg>
+          <div class="admin-toolbar__meta">
+            <span data-results-count> 0 resultados </span>
+          </div>
+        </section>
 
-                    <input
-                        type="search"
-                        placeholder="Buscar invitado…"
-                        autocomplete="off"
-                        data-admin-search
-                    >
-
-                </div>
-
-
-                <div class="admin-toolbar__meta">
-
-                    <span data-results-count>
-                        0 resultados
-                    </span>
-
-                </div>
-
-            </section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  LOADING
             ============================================== -->
 
-            <section
-                class="admin-content-state"
-                data-admin-loading
-                hidden
-            >
+        <section class="admin-content-state" data-admin-loading hidden>
+          <div class="admin-content-state__spinner"></div>
 
-                <div
-                    class="admin-content-state__spinner"
-                ></div>
+          <p>Cargando recuerdos…</p>
+        </section>
 
-                <p>
-                    Cargando recuerdos…
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  ERROR
             ============================================== -->
 
-            <section
-                class="
-                    admin-content-state
-                    admin-content-state--error
-                "
-                data-admin-error
-                hidden
-            >
+        <section
+          class="admin-content-state admin-content-state--error"
+          data-admin-error
+          hidden
+        >
+          <strong> No se pudieron cargar los datos. </strong>
 
-                <strong>
-                    No se pudieron cargar los datos.
-                </strong>
+          <p data-admin-error-message>Inténtalo de nuevo.</p>
 
-                <p data-admin-error-message>
-                    Inténtalo de nuevo.
-                </p>
+          <button type="button" data-admin-error-retry>Reintentar</button>
+        </section>
 
-                <button
-                    type="button"
-                    data-admin-error-retry
-                >
-                    Reintentar
-                </button>
-
-            </section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  EMPTY
             ============================================== -->
 
-            <section
-                class="admin-content-state"
-                data-admin-empty
-                hidden
-            >
+        <section class="admin-content-state" data-admin-empty hidden>
+          <div class="admin-content-state__diamond">SJ</div>
 
-                <div class="admin-content-state__diamond">
-                    SJ
-                </div>
+          <strong data-empty-title> Todo está al día </strong>
 
-                <strong data-empty-title>
-                    Todo está al día
-                </strong>
+          <p data-empty-message>No hay recuerdos pendientes de revisión.</p>
+        </section>
 
-                <p data-empty-message>
-                    No hay recuerdos pendientes de revisión.
-                </p>
-
-            </section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  MEMORIES
             ============================================== -->
 
-            <section
-                class="admin-memories"
-                data-admin-memories
-                hidden
-            >
+        <section class="admin-memories" data-admin-memories hidden>
+          <div class="admin-memories__grid" data-admin-memories-grid></div>
+        </section>
 
-                <div
-                    class="admin-memories__grid"
-                    data-admin-memories-grid
-                ></div>
-
-            </section>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  GUESTS
             ============================================== -->
 
-            <section
-                class="admin-guests"
-                data-admin-guests
-                hidden
-            >
-
-                <div
-                    class="admin-guests__grid"
-                    data-admin-guests-grid
-                ></div>
-
-            </section>
-
-        </main>
-
+        <section class="admin-guests" data-admin-guests hidden>
+          <div class="admin-guests__grid" data-admin-guests-grid></div>
+        </section>
+      </main>
     </div>
-
 
     <!-- =====================================================
          MEMORY MODERATION MODAL
     ====================================================== -->
 
-    <div
-        class="admin-modal"
-        data-memory-modal
-        hidden
-    >
+    <div class="admin-modal" data-memory-modal hidden>
+      <div class="admin-modal__backdrop" data-close-memory-modal></div>
 
-        <div
-            class="admin-modal__backdrop"
-            data-close-memory-modal
-        ></div>
-
-
-        <section
-            class="admin-modal__panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="memory-modal-title"
+      <section
+        class="admin-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="memory-modal-title"
+      >
+        <button
+          class="admin-modal__close"
+          type="button"
+          aria-label="Cerrar"
+          data-close-memory-modal
         >
+          ×
+        </button>
 
-            <button
-                class="admin-modal__close"
-                type="button"
-                aria-label="Cerrar"
-                data-close-memory-modal
-            >
-                ×
-            </button>
+        <header class="admin-modal__header">
+          <div>
+            <span data-memory-status> Pendiente </span>
 
+            <h2 id="memory-modal-title">Revisión del recuerdo</h2>
+          </div>
 
-            <header class="admin-modal__header">
+          <div class="admin-modal__guest">
+            <div class="admin-modal__avatar" data-memory-guest-avatar>
+              <span data-memory-guest-fallback> SJ </span>
+            </div>
 
-                <div>
+            <div>
+              <strong data-memory-guest-name> Invitado </strong>
 
-                    <span data-memory-status>
-                        Pendiente
-                    </span>
+              <small data-memory-date></small>
+            </div>
+          </div>
+        </header>
 
-                    <h2 id="memory-modal-title">
-                        Revisión del recuerdo
-                    </h2>
-
-                </div>
-
-
-                <div class="admin-modal__guest">
-
-                    <div
-                        class="admin-modal__avatar"
-                        data-memory-guest-avatar
-                    >
-                        <span
-                            data-memory-guest-fallback
-                        >
-                            SJ
-                        </span>
-                    </div>
-
-                    <div>
-
-                        <strong
-                            data-memory-guest-name
-                        >
-                            Invitado
-                        </strong>
-
-                        <small
-                            data-memory-date
-                        ></small>
-
-                    </div>
-
-                </div>
-
-            </header>
-
-
-            <!-- =============================================
+        <!-- =============================================
                  COMPARISON
             ============================================== -->
 
-            <div class="admin-comparison">
+        <div class="admin-comparison">
+          <!-- ORIGINAL -->
 
+          <article class="admin-preview">
+            <header>
+              <span> Original </span>
 
-                <!-- ORIGINAL -->
+              <button type="button" data-open-original>Ver fullscreen</button>
+            </header>
 
-                <article class="admin-preview">
+            <div
+              class="admin-preview__media admin-preview__media--original"
+              data-original-preview
+            ></div>
+          </article>
 
-                    <header>
+          <!-- PUBLIC CROP -->
 
-                        <span>
-                            Original
-                        </span>
+          <article class="admin-preview" data-public-preview-container>
+            <header>
+              <span> Vista pública </span>
 
-                        <button
-                            type="button"
-                            data-open-original
-                        >
-                            Ver fullscreen
-                        </button>
+              <button type="button" data-adjust-crop>Ajustar encuadre</button>
+            </header>
 
-                    </header>
+            <div
+              class="admin-preview__media admin-preview__media--square"
+              data-public-preview
+            ></div>
+          </article>
+        </div>
 
+        <!-- =========================================================
+     AJUSTE DE ENQUADRAMENTO
+     ========================================================= -->
 
-                    <div
-                        class="
-                            admin-preview__media
-                            admin-preview__media--original
-                        "
-                        data-original-preview
-                    ></div>
+        <div class="admin-crop-editor" data-admin-crop-editor hidden>
+          <div class="admin-crop-editor__header">
+            <div>
+              <span class="admin-crop-editor__eyebrow"> ENCUADRE </span>
 
-                </article>
-
-
-                <!-- PUBLIC CROP -->
-
-                <article
-                    class="admin-preview"
-                    data-public-preview-container
-                >
-
-                    <header>
-
-                        <span>
-                            Vista pública
-                        </span>
-
-                        <button
-                            type="button"
-                            data-adjust-crop
-                        >
-                            Ajustar encuadre
-                        </button>
-
-                    </header>
-
-
-                    <div
-                        class="
-                            admin-preview__media
-                            admin-preview__media--square
-                        "
-                        data-public-preview
-                    ></div>
-
-                </article>
-
+              <h4>Ajustar fotografía</h4>
             </div>
 
+            <button
+              type="button"
+              class="admin-crop-editor__reset"
+              data-admin-crop-reset
+            >
+              Restablecer
+            </button>
+          </div>
 
-            <!-- =============================================
+          <p class="admin-crop-editor__help">
+            Arrastra la fotografía para ajustar cómo aparecerá en la galería.
+          </p>
+
+          <div class="admin-crop-editor__stage" data-admin-crop-stage>
+            <img data-admin-crop-image alt="" draggable="false" />
+
+            <div class="admin-crop-editor__frame"></div>
+          </div>
+
+          <div class="admin-crop-editor__controls">
+            <label class="admin-crop-editor__zoom">
+              <span> Zoom </span>
+
+              <input
+                type="range"
+                min="1"
+                max="3"
+                step="0.01"
+                value="1"
+                data-admin-crop-zoom
+              />
+            </label>
+
+            <button
+              type="button"
+              class="admin-crop-editor__save"
+              data-admin-crop-save
+            >
+              Guardar encuadre
+            </button>
+          </div>
+        </div>
+
+        <!-- =============================================
                  ADMIN ACTIONS
             ============================================== -->
 
-            <footer class="admin-modal__actions">
+        <footer class="admin-modal__actions">
+          <button
+            class="admin-action admin-action--danger"
+            type="button"
+            data-admin-discard
+          >
+            Descartar
+          </button>
 
-                <button
-                    class="
-                        admin-action
-                        admin-action--danger
-                    "
-                    type="button"
-                    data-admin-discard
-                >
-                    Descartar
-                </button>
+          <label class="admin-featured-toggle" data-featured-control>
+            <input type="checkbox" data-admin-featured />
 
+            <span></span>
 
-                <label
-                    class="admin-featured-toggle"
-                    data-featured-control
-                >
+            <div>
+              <strong> Destacar en galería </strong>
 
-                    <input
-                        type="checkbox"
-                        data-admin-featured
-                    >
+              <small> Solo fotografías aprobadas </small>
+            </div>
+          </label>
 
-                    <span></span>
-
-                    <div>
-
-                        <strong>
-                            Destacar en galería
-                        </strong>
-
-                        <small>
-                            Solo fotografías aprobadas
-                        </small>
-
-                    </div>
-
-                </label>
-
-
-                <button
-                    class="
-                        admin-action
-                        admin-action--primary
-                    "
-                    type="button"
-                    data-admin-approve
-                >
-                    Aprobar
-                </button>
-
-            </footer>
-
-        </section>
-
+          <button
+            class="admin-action admin-action--primary"
+            type="button"
+            data-admin-approve
+          >
+            Aprobar
+          </button>
+        </footer>
+      </section>
     </div>
-
 
     <!-- =====================================================
          ORIGINAL LIGHTBOX
     ====================================================== -->
 
-    <div
-        class="admin-lightbox"
-        data-admin-lightbox
-        hidden
-    >
+    <div class="admin-lightbox" data-admin-lightbox hidden>
+      <div class="admin-lightbox__backdrop" data-close-admin-lightbox></div>
 
-        <div
-            class="admin-lightbox__backdrop"
-            data-close-admin-lightbox
-        ></div>
+      <button
+        class="admin-lightbox__close"
+        type="button"
+        aria-label="Cerrar"
+        data-close-admin-lightbox
+      >
+        ×
+      </button>
 
-        <button
-            class="admin-lightbox__close"
-            type="button"
-            aria-label="Cerrar"
-            data-close-admin-lightbox
-        >
-            ×
-        </button>
+      <div class="admin-lightbox__content">
+        <img src="" alt="" data-admin-lightbox-image hidden />
 
-
-        <div class="admin-lightbox__content">
-
-            <img
-                src=""
-                alt=""
-                data-admin-lightbox-image
-                hidden
-            >
-
-            <video
-                src=""
-                controls
-                playsinline
-                data-admin-lightbox-video
-                hidden
-            ></video>
-
-        </div>
-
+        <video
+          src=""
+          controls
+          playsinline
+          data-admin-lightbox-video
+          hidden
+        ></video>
+      </div>
     </div>
-
 
     <!-- =====================================================
          DELETE CONFIRMATION
     ====================================================== -->
 
-    <div
-        class="admin-confirm"
-        data-admin-confirm
-        hidden
-    >
+    <div class="admin-confirm" data-admin-confirm hidden>
+      <div class="admin-confirm__backdrop" data-cancel-admin-confirm></div>
 
-        <div
-            class="admin-confirm__backdrop"
-            data-cancel-admin-confirm
-        ></div>
+      <section
+        class="admin-confirm__panel"
+        role="alertdialog"
+        aria-modal="true"
+      >
+        <span class="admin-confirm__eyebrow"> Acción permanente </span>
 
+        <h2>Descartar recuerdo</h2>
 
-        <section
-            class="admin-confirm__panel"
-            role="alertdialog"
-            aria-modal="true"
-        >
+        <p>
+          El archivo será eliminado definitivamente del almacenamiento y no
+          podrá recuperarse.
+        </p>
 
-            <span class="admin-confirm__eyebrow">
-                Acción permanente
-            </span>
+        <div class="admin-confirm__actions">
+          <button type="button" data-cancel-admin-confirm>Cancelar</button>
 
-            <h2>
-                Descartar recuerdo
-            </h2>
-
-            <p>
-                El archivo será eliminado definitivamente
-                del almacenamiento y no podrá recuperarse.
-            </p>
-
-
-            <div class="admin-confirm__actions">
-
-                <button
-                    type="button"
-                    data-cancel-admin-confirm
-                >
-                    Cancelar
-                </button>
-
-                <button
-                    type="button"
-                    data-confirm-admin-delete
-                >
-                    Descartar definitivamente
-                </button>
-
-            </div>
-
-        </section>
-
+          <button type="button" data-confirm-admin-delete>
+            Descartar definitivamente
+          </button>
+        </div>
+      </section>
     </div>
-
 
     <!-- =====================================================
          TOAST
     ====================================================== -->
 
     <div
-        class="admin-toast"
-        role="status"
-        aria-live="polite"
-        data-admin-toast
-        hidden
+      class="admin-toast"
+      role="status"
+      aria-live="polite"
+      data-admin-toast
+      hidden
     >
+      <strong data-admin-toast-title> Cambios guardados </strong>
 
-        <strong data-admin-toast-title>
-            Cambios guardados
-        </strong>
-
-        <span data-admin-toast-message>
-            La galería ha sido actualizada.
-        </span>
-
+      <span data-admin-toast-message> La galería ha sido actualizada. </span>
     </div>
-
 
     <!-- =====================================================
          JS
     ====================================================== -->
 
-    <script
-        type="module"
-        src="./admin.js"
-    ></script>
-
-</body>
-
+    <script type="module" src="./admin.js"></script>
+  </body>
 </html>

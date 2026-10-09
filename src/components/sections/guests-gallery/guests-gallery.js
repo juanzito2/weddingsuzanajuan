@@ -424,9 +424,9 @@ function setGalleryData(
             .filter(
                 memory =>
                     memory.featured ===
-                        true &&
+                    true &&
                     memory.type ===
-                        "image"
+                    "image"
             )
             .map(
                 memory => {
@@ -941,9 +941,9 @@ function handleSearch(event) {
                     normalizeText(
                         guest.name
                     )
-                    .includes(
-                        value
-                    )
+                        .includes(
+                            value
+                        )
 
             );
 
@@ -1052,7 +1052,7 @@ function updateStoriesScrollUI() {
         el.storiesNext.disabled =
             maxScroll <= 5 ||
             current >=
-                maxScroll - 5;
+            maxScroll - 5;
 
     }
 
@@ -1143,7 +1143,7 @@ function openStoryViewer(
 
     const guest =
         state.guests[
-            guestIndex
+        guestIndex
         ];
 
 
@@ -1337,7 +1337,7 @@ function renderStory() {
         if (
             playPromise &&
             typeof playPromise.catch ===
-                "function"
+            "function"
         ) {
 
             playPromise.catch(
@@ -1511,7 +1511,7 @@ function startVideoProgress() {
     if (
         !memory ||
         memory.type !==
-            "video"
+        "video"
     ) {
         return;
     }
@@ -1739,7 +1739,7 @@ function getCurrentStoryGuest() {
 
     return (
         state.guests[
-            state.storyGuestIndex
+        state.storyGuestIndex
         ] ||
         null
     );
@@ -1760,7 +1760,7 @@ function getCurrentStoryMemory() {
 
     return (
         guest.memories[
-            state.storyMemoryIndex
+        state.storyMemoryIndex
         ] ||
         null
     );
@@ -2321,7 +2321,7 @@ function renderFeaturedLightbox() {
 
     const memory =
         state.featured[
-            state.featuredIndex
+        state.featuredIndex
         ];
 
 

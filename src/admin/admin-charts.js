@@ -79,10 +79,10 @@ function renderStatusChart(memories) {
                 memories.filter(
                     memory =>
                         memory.status ===
-                            "approved"
+                        "approved"
                         &&
                         memory.featured ===
-                            true
+                        true
                 ).length
         }
 
@@ -617,10 +617,9 @@ function drawLineChart(
         points
             .map(
                 (point, index) =>
-                    `${
-                        index === 0
-                            ? "M"
-                            : "L"
+                    `${index === 0
+                        ? "M"
+                        : "L"
                     } ${point.x} ${point.y}`
             )
             .join(" ");

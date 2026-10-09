@@ -1,788 +1,532 @@
 /**
  * ============================================================
- * SUZANA & JUAN
- * OFFICIAL GALLERY — CONTROLLER
- * ============================================================
- *
- * Responsabilidade deste arquivo:
- *
- * - inicializar a galeria
- * - conectar Lightbox
- * - conectar Motion
- * - conectar Observer
- * - controlar navegação interna
- * - controlar spotlight do mouse
- * - permitir expansão futura por capítulos
- *
- * NÃO controla:
- *
- * - animações de scroll       → gallery-motion.js
- * - loading/reveal            → gallery-observer.js
- * - visualização fullscreen   → gallery-lightbox.js
- *
+ * OFFICIAL GALLERY
+ * Suzana & Juan
  * ============================================================
  */
-
-
-import {
-    createGalleryLightbox
-}
-from "./lightbox/gallery-lightbox.js";
-
-
-import {
-    createGalleryMotion
-}
-from "./core/gallery-motion.js";
-
-
-import {
-    createGalleryObserver
-}
-from "./core/gallery-observer.js";
-
-
-/* ============================================================
-   INITIALIZE
-   ============================================================ */
 
 export function initOfficialGallery() {
 
     const gallery =
-        document.getElementById(
-            "official-gallery"
-        );
-
+        document.querySelector(".official-gallery");
 
     if (!gallery) {
-
         console.warn(
-            "Official Gallery: elemento não encontrado."
+            "Official Gallery não encontrada."
         );
 
-        return null;
+        return;
     }
 
 
-    /*
-     * Evita inicialização duplicada caso main.js
-     * seja executado novamente.
-     */
+    if (gallery.dataset.initialized === "true") {
+        return;
+    }
+
+
+    gallery.dataset.initialized = "true";
+
+
+    initReveal(gallery);
+    initLightbox(gallery);
+
+
+    console.log(
+        "✓ Official Gallery inicializada"
+    );
+}
+
+
+/**
+ * ============================================================
+ * REVEAL
+ * ============================================================
+ */
+
+function initReveal(gallery) {
+
+    const elements =
+        gallery.querySelectorAll(".og-reveal");
+
+
+    if (!elements.length) {
+        return;
+    }
+
+
+    const reduceMotion =
+        window.matchMedia?.(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
 
     if (
-        gallery.dataset.galleryInitialized ===
-        "true"
+        reduceMotion ||
+        !("IntersectionObserver" in window)
     ) {
 
-        return null;
+        elements.forEach((element) => {
+            element.classList.add("is-visible");
+        });
+
+        return;
     }
 
 
-    gallery.dataset.galleryInitialized =
-        "true";
+    const observer =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
 
-    /* ========================================================
-       MODULES
-       ======================================================== */
-
-    let lightbox =
-        null;
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
 
 
-    let motion =
-        null;
+                    observer.unobserve(
+                        entry.target
+                    );
+                });
 
-
-    let observer =
-        null;
-
-
-    try {
-
-        lightbox =
-            createGalleryLightbox(
-                gallery
-            );
-
-    }
-    catch (error) {
-
-        console.error(
-            "Official Gallery: erro no lightbox.",
-            error
-        );
-
-    }
-
-
-    try {
-
-        observer =
-            createGalleryObserver(
-                gallery
-            );
-
-    }
-    catch (error) {
-
-        console.error(
-            "Official Gallery: erro no observer.",
-            error
-        );
-
-    }
-
-
-    try {
-
-        motion =
-            createGalleryMotion(
-                gallery
-            );
-
-    }
-    catch (error) {
-
-        console.error(
-            "Official Gallery: erro no motion.",
-            error
-        );
-
-    }
-
-
-    /* ========================================================
-       ELEMENTS
-       ======================================================== */
-
-    const exploreButton =
-        gallery.querySelector(
-            "[data-gallery-scroll]"
+            },
+            {
+                threshold: 0.1,
+                rootMargin:
+                    "0px 0px -8% 0px"
+            }
         );
 
 
-    const chapterEndButtons =
-        Array.from(
-            gallery.querySelectorAll(
-                "[data-next-chapter]"
-            )
-        );
+    elements.forEach((element) => {
+        observer.observe(element);
+    });
+}
 
 
-    const archiveButtons =
-        Array.from(
-            gallery.querySelectorAll(
-                "[data-chapter-target]"
-            )
-        );
+/**
+ * ============================================================
+ * LIGHTBOX
+ * ============================================================
+ */
 
+function initLightbox(gallery) {
 
     const photos =
         Array.from(
             gallery.querySelectorAll(
-                "[data-gallery-photo]"
+                ".og-photo[data-gallery-index]"
             )
         );
 
 
-    /* ========================================================
-       SCROLL
-       ======================================================== */
+    const lightbox =
+        gallery.querySelector(".og-lightbox");
 
-    function scrollToElement(
-        element,
-        options = {}
-    ) {
 
-        if (!element) {
-            return;
-        }
-
-
-        const reducedMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-
-        element.scrollIntoView({
-            behavior:
-                reducedMotion
-                    ? "auto"
-                    : "smooth",
-
-            block:
-                options.block ??
-                "start"
-        });
-    }
-
-
-    /* ========================================================
-       EXPLORE
-       ======================================================== */
-
-    function handleExplore() {
-
-        const firstChapter =
-            gallery.querySelector(
-                "[data-gallery-chapter]"
-            );
-
-
-        scrollToElement(
-            firstChapter
-        );
-    }
-
-
-    exploreButton?.addEventListener(
-        "click",
-        handleExplore
-    );
-
-
-    /* ========================================================
-       ARCHIVE NAVIGATION
-       ======================================================== */
-
-    function handleArchiveClick(
-        event
-    ) {
-
-        const button =
-            event.currentTarget;
-
-
-        const targetId =
-            button.dataset
-                .chapterTarget;
-
-
-        if (!targetId) {
-            return;
-        }
-
-
-        const target =
-            document.getElementById(
-                targetId
-            );
-
-
-        if (!target) {
-
-            console.warn(
-                `Official Gallery: capítulo "${targetId}" não encontrado.`
-            );
-
-            return;
-        }
-
-
-        scrollToElement(
-            target
-        );
-    }
-
-
-    archiveButtons.forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                handleArchiveClick
-            );
-
-        }
-    );
-
-
-    /* ========================================================
-       CONTINUE ARCHIVE
-       ======================================================== */
-
-    function handleContinueArchive(
-        event
-    ) {
-
-        const button =
-            event.currentTarget;
-
-
-        const currentChapter =
-            button.closest(
-                "[data-gallery-chapter]"
-            );
-
-
-        /*
-         * Procura o próximo capítulo real.
-         *
-         * Quando adicionarmos o jardim,
-         * o botão começará automaticamente
-         * a navegar para ele.
-         */
-
-        if (currentChapter) {
-
-            const chapters =
-                Array.from(
-                    gallery.querySelectorAll(
-                        "[data-gallery-chapter]"
-                    )
-                );
-
-
-            const currentIndex =
-                chapters.indexOf(
-                    currentChapter
-                );
-
-
-            const nextChapter =
-                chapters[
-                    currentIndex + 1
-                ];
-
-
-            if (nextChapter) {
-
-                scrollToElement(
-                    nextChapter
-                );
-
-                return;
-            }
-        }
-
-
-        /*
-         * Enquanto existe apenas o capítulo da praia,
-         * continuamos para o arquivo.
-         */
-
-        const archive =
-            gallery.querySelector(
-                ".gallery-archive"
-            );
-
-
-        scrollToElement(
-            archive
-        );
-    }
-
-
-    chapterEndButtons.forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                handleContinueArchive
-            );
-
-        }
-    );
-
-
-    /* ========================================================
-       PHOTO SPOTLIGHT
-       ========================================================
-       O círculo/gradiente acompanha levemente o mouse.
-       Não interfere com o clique do lightbox.
-       ======================================================== */
-
-    function handlePhotoPointerMove(
-        event
-    ) {
-
-        const photo =
-            event.currentTarget;
-
-
-        const rect =
-            photo.getBoundingClientRect();
-
-
-        const x =
-            (
-                (
-                    event.clientX -
-                    rect.left
-                ) /
-                rect.width
-            ) *
-            100;
-
-
-        const y =
-            (
-                (
-                    event.clientY -
-                    rect.top
-                ) /
-                rect.height
-            ) *
-            100;
-
-
-        photo.style.setProperty(
-            "--gallery-mouse-x",
-            `${x.toFixed(2)}%`
+    const image =
+        gallery.querySelector(
+            ".og-lightbox__image"
         );
 
 
-        photo.style.setProperty(
-            "--gallery-mouse-y",
-            `${y.toFixed(2)}%`
-        );
-    }
-
-
-    function handlePhotoPointerLeave(
-        event
-    ) {
-
-        const photo =
-            event.currentTarget;
-
-
-        photo.style.setProperty(
-            "--gallery-mouse-x",
-            "50%"
+    const current =
+        gallery.querySelector(
+            ".og-lightbox__current"
         );
 
 
-        photo.style.setProperty(
-            "--gallery-mouse-y",
-            "50%"
+    const close =
+        gallery.querySelector(
+            ".og-lightbox__close"
         );
-    }
 
 
-    /*
-     * Spotlight somente em dispositivos
-     * que realmente possuem hover.
-     */
+    const previous =
+        gallery.querySelector(
+            ".og-lightbox__nav--prev"
+        );
 
-    const supportsHover =
-        window.matchMedia(
-            "(hover: hover) and (pointer: fine)"
+
+    const next =
+        gallery.querySelector(
+            ".og-lightbox__nav--next"
         );
 
 
     if (
-        supportsHover.matches
+        !photos.length ||
+        !lightbox ||
+        !image ||
+        !current ||
+        !close ||
+        !previous ||
+        !next
     ) {
 
-        photos.forEach(
-            photo => {
-
-                photo.addEventListener(
-                    "pointermove",
-                    handlePhotoPointerMove
-                );
-
-
-                photo.addEventListener(
-                    "pointerleave",
-                    handlePhotoPointerLeave
-                );
-
-            }
+        console.warn(
+            "Lightbox da Official Gallery incompleto."
         );
 
+        return;
     }
 
 
-    /* ========================================================
-       CHAPTER CHANGE
-       ======================================================== */
+    let currentIndex = 0;
 
-    function handleChapterChange(
-        event
-    ) {
+    let previousFocus = null;
 
-        const chapter =
-            event.detail?.chapter;
+    let touchStartX = 0;
 
 
-        if (!chapter) {
+    /**
+     * --------------------------------------------------------
+     * FORMATA 1 → 01
+     * --------------------------------------------------------
+     */
+
+    const formatNumber =
+        (number) =>
+            String(number).padStart(2, "0");
+
+
+    /**
+     * --------------------------------------------------------
+     * MOSTRAR FOTO
+     * --------------------------------------------------------
+     */
+
+    function show(index) {
+
+        if (index < 0) {
+            index = photos.length - 1;
+        }
+
+
+        if (index >= photos.length) {
+            index = 0;
+        }
+
+
+        currentIndex = index;
+
+
+        const source =
+            photos[currentIndex]
+                .querySelector("img");
+
+
+        if (!source) {
             return;
         }
 
 
-        gallery.dataset.activeChapter =
-            chapter;
+        image.classList.add(
+            "is-changing"
+        );
+
+
+        window.setTimeout(() => {
+
+            image.src =
+                source.currentSrc ||
+                source.src;
+
+
+            image.alt =
+                source.alt ||
+                "Fotografia da nossa história";
+
+
+            current.textContent =
+                formatNumber(
+                    currentIndex + 1
+                );
+
+
+            requestAnimationFrame(() => {
+
+                image.classList.remove(
+                    "is-changing"
+                );
+
+            });
+
+        }, 110);
     }
 
 
-    gallery.addEventListener(
-        "gallery:chapterchange",
-        handleChapterChange
+    /**
+     * --------------------------------------------------------
+     * ABRIR
+     * --------------------------------------------------------
+     */
+
+    function open(index) {
+
+        previousFocus =
+            document.activeElement;
+
+
+        show(index);
+
+
+        lightbox.classList.add(
+            "is-open"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.classList.add(
+            "og-lightbox-open"
+        );
+
+
+        requestAnimationFrame(() => {
+            close.focus();
+        });
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * FECHAR
+     * --------------------------------------------------------
+     */
+
+    function closeLightbox() {
+
+        lightbox.classList.remove(
+            "is-open"
+        );
+
+
+        lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.classList.remove(
+            "og-lightbox-open"
+        );
+
+
+        if (
+            previousFocus &&
+            typeof previousFocus.focus ===
+                "function"
+        ) {
+            previousFocus.focus();
+        }
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * NAVEGAÇÃO
+     * --------------------------------------------------------
+     */
+
+    function showPrevious() {
+        show(currentIndex - 1);
+    }
+
+
+    function showNext() {
+        show(currentIndex + 1);
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * FOTOS
+     * --------------------------------------------------------
+     */
+
+    photos.forEach(
+        (photo, index) => {
+
+            photo.addEventListener(
+                "click",
+                () => open(index)
+            );
+
+        }
     );
 
 
-    /* ========================================================
-       IMAGE REFRESH
-       ======================================================== */
+    /**
+     * --------------------------------------------------------
+     * CONTROLES
+     * --------------------------------------------------------
+     */
 
-    function handleWindowLoad() {
-
-        observer?.refresh?.();
-
-        motion?.refresh?.();
-    }
+    close.addEventListener(
+        "click",
+        closeLightbox
+    );
 
 
-    window.addEventListener(
-        "load",
-        handleWindowLoad,
-        {
-            once: true
+    previous.addEventListener(
+        "click",
+        showPrevious
+    );
+
+
+    next.addEventListener(
+        "click",
+        showNext
+    );
+
+
+    /**
+     * --------------------------------------------------------
+     * FUNDO
+     * --------------------------------------------------------
+     */
+
+    lightbox.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === lightbox
+            ) {
+                closeLightbox();
+            }
+
         }
     );
 
 
-    /* ========================================================
-       RESIZE
-       ======================================================== */
+    /**
+     * --------------------------------------------------------
+     * TECLADO
+     * --------------------------------------------------------
+     */
 
-    let resizeFrame =
-        null;
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                !lightbox.classList.contains(
+                    "is-open"
+                )
+            ) {
+                return;
+            }
 
 
-    function handleResize() {
+            if (event.key === "Escape") {
 
-        if (resizeFrame) {
+                closeLightbox();
 
-            cancelAnimationFrame(
-                resizeFrame
-            );
+                return;
+            }
+
+
+            if (event.key === "ArrowLeft") {
+
+                event.preventDefault();
+
+                showPrevious();
+
+                return;
+            }
+
+
+            if (event.key === "ArrowRight") {
+
+                event.preventDefault();
+
+                showNext();
+            }
 
         }
+    );
 
 
-        resizeFrame =
-            requestAnimationFrame(
-                () => {
+    /**
+     * --------------------------------------------------------
+     * SWIPE MOBILE
+     * --------------------------------------------------------
+     */
 
-                    resizeFrame =
-                        null;
+    lightbox.addEventListener(
+        "touchstart",
+        (event) => {
+
+            if (
+                !event.changedTouches.length
+            ) {
+                return;
+            }
 
 
-                    observer?.refresh?.();
+            touchStartX =
+                event.changedTouches[0]
+                    .clientX;
 
-                    motion?.refresh?.();
-
-                }
-            );
-    }
-
-
-    window.addEventListener(
-        "resize",
-        handleResize,
+        },
         {
             passive: true
         }
     );
 
 
-    /* ========================================================
-       DEBUG
-       ======================================================== */
+    lightbox.addEventListener(
+        "touchend",
+        (event) => {
 
-    console.log(
-        "✓ Official Gallery inicializada",
-        {
-            photos:
-                photos.length,
-
-            chapters:
-                gallery.querySelectorAll(
-                    "[data-gallery-chapter]"
-                ).length,
-
-            lightbox:
-                Boolean(
-                    lightbox
-                ),
-
-            observer:
-                Boolean(
-                    observer
-                ),
-
-            motion:
-                Boolean(
-                    motion
-                )
-        }
-    );
-
-
-    /* ========================================================
-       PUBLIC API
-       ======================================================== */
-
-    const api = {
-
-        gallery,
-
-        lightbox,
-
-        observer,
-
-        motion,
-
-
-        refresh() {
-
-            observer?.refresh?.();
-
-            motion?.refresh?.();
-
-        },
-
-
-        destroy() {
-
-            /* -----------------------------------------------
-               EXPLORE
-               ----------------------------------------------- */
-
-            exploreButton
-                ?.removeEventListener(
-                    "click",
-                    handleExplore
-                );
-
-
-            /* -----------------------------------------------
-               ARCHIVE
-               ----------------------------------------------- */
-
-            archiveButtons.forEach(
-                button => {
-
-                    button.removeEventListener(
-                        "click",
-                        handleArchiveClick
-                    );
-
-                }
-            );
-
-
-            /* -----------------------------------------------
-               CONTINUE
-               ----------------------------------------------- */
-
-            chapterEndButtons.forEach(
-                button => {
-
-                    button.removeEventListener(
-                        "click",
-                        handleContinueArchive
-                    );
-
-                }
-            );
-
-
-            /* -----------------------------------------------
-               PHOTOS
-               ----------------------------------------------- */
-
-            photos.forEach(
-                photo => {
-
-                    photo.removeEventListener(
-                        "pointermove",
-                        handlePhotoPointerMove
-                    );
-
-
-                    photo.removeEventListener(
-                        "pointerleave",
-                        handlePhotoPointerLeave
-                    );
-
-                }
-            );
-
-
-            /* -----------------------------------------------
-               GALLERY EVENTS
-               ----------------------------------------------- */
-
-            gallery.removeEventListener(
-                "gallery:chapterchange",
-                handleChapterChange
-            );
-
-
-            /* -----------------------------------------------
-               WINDOW
-               ----------------------------------------------- */
-
-            window.removeEventListener(
-                "resize",
-                handleResize
-            );
-
-
-            window.removeEventListener(
-                "load",
-                handleWindowLoad
-            );
-
-
-            if (resizeFrame) {
-
-                cancelAnimationFrame(
-                    resizeFrame
-                );
-
-
-                resizeFrame =
-                    null;
+            if (
+                !event.changedTouches.length
+            ) {
+                return;
             }
 
 
-            /* -----------------------------------------------
-               MODULES
-               ----------------------------------------------- */
-
-            lightbox?.destroy?.();
-
-            observer?.destroy?.();
-
-            motion?.destroy?.();
+            const touchEndX =
+                event.changedTouches[0]
+                    .clientX;
 
 
-            /* -----------------------------------------------
-               RESET
-               ----------------------------------------------- */
-
-            delete gallery.dataset
-                .galleryInitialized;
+            const difference =
+                touchStartX -
+                touchEndX;
 
 
-            delete gallery.dataset
-                .activeChapter;
+            if (
+                Math.abs(difference) < 55
+            ) {
+                return;
+            }
 
 
-            console.log(
-                "Official Gallery destruída."
-            );
+            if (difference > 0) {
+
+                showNext();
+
+            } else {
+
+                showPrevious();
+
+            }
+
+        },
+        {
+            passive: true
         }
-
-    };
-
-
-    return api;
+    );
 }

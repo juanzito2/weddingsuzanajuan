@@ -190,34 +190,34 @@ const el = {
     /* DASHBOARD PROFILE */
 
     dashboardAvatar:
-    document.querySelector(
-        "[data-dashboard-avatar]"
-    ),
+        document.querySelector(
+            "[data-dashboard-avatar]"
+        ),
 
-dashboardAvatarFallback:
-    document.querySelector(
-        "[data-dashboard-avatar-fallback]"
-    ),
+    dashboardAvatarFallback:
+        document.querySelector(
+            "[data-dashboard-avatar-fallback]"
+        ),
 
-dashboardAvatarInput:
-    document.querySelector(
-        "[data-dashboard-avatar-input]"
-    ),
+    dashboardAvatarInput:
+        document.querySelector(
+            "[data-dashboard-avatar-input]"
+        ),
 
-dashboardAvatarEdit:
-    document.querySelector(
-        "[data-dashboard-avatar-edit]"
-    ),
+    dashboardAvatarEdit:
+        document.querySelector(
+            "[data-dashboard-avatar-edit]"
+        ),
 
-dashboardName:
-    document.querySelector(
-        "[data-dashboard-name]"
-    ),
+    dashboardName:
+        document.querySelector(
+            "[data-dashboard-name]"
+        ),
 
-dashboardBio:
-    document.querySelector(
-        "[data-dashboard-bio]"
-    ),
+    dashboardBio:
+        document.querySelector(
+            "[data-dashboard-bio]"
+        ),
 
 
     /* PROFILE EDITOR */
@@ -767,16 +767,16 @@ function registerEvents() {
 
 
     el.dashboardAvatarEdit?.addEventListener(
-    "click",
-    () => {
-        el.dashboardAvatarInput?.click();
-    }
-);
+        "click",
+        () => {
+            el.dashboardAvatarInput?.click();
+        }
+    );
 
-el.dashboardAvatarInput?.addEventListener(
-    "change",
-    handleAvatar
-);
+    el.dashboardAvatarInput?.addEventListener(
+        "change",
+        handleAvatar
+    );
 
 
     /* UPLOAD */
@@ -981,73 +981,73 @@ async function createProfile(event) {
 
 
         state.profile =
-    guest;
-
-
-/*
- * Se o convidado escolheu uma foto
- * antes de criar o perfil,
- * agora que temos guest.id podemos
- * enviá-la ao Storage privado.
- */
-if (state.avatarFile) {
-
-    try {
-
-        const avatar =
-            await uploadGuestAvatar(
-                guest.id,
-                state.avatarFile
-            );
-
-
-        state.profile.avatarPath =
-            avatar.path;
-
-        state.profile.avatarUrl =
-            avatar.url;
-
-
-        state.avatarUrl =
-            avatar.url;
-
-
-        state.avatarFile =
-            null;
-
-
-        console.log(
-            "✓ Avatar inicial guardado en Supabase"
-        );
-
-    } catch (avatarError) {
-
-        console.error(
-            "Error guardando avatar inicial:",
-            avatarError
-        );
+            guest;
 
 
         /*
-         * Não bloqueamos a criação
-         * do perfil caso apenas o
-         * avatar falhe.
+         * Se o convidado escolheu uma foto
+         * antes de criar o perfil,
+         * agora que temos guest.id podemos
+         * enviá-la ao Storage privado.
          */
-        state.avatarFile =
-            null;
+        if (state.avatarFile) {
+
+            try {
+
+                const avatar =
+                    await uploadGuestAvatar(
+                        guest.id,
+                        state.avatarFile
+                    );
 
 
-        showToast(
-            "Perfil creado",
-            "Tu perfil se ha creado, pero no pudimos guardar la fotografía."
-        );
+                state.profile.avatarPath =
+                    avatar.path;
 
-    }
-
-}
+                state.profile.avatarUrl =
+                    avatar.url;
 
 
-state.memories = [];
+                state.avatarUrl =
+                    avatar.url;
+
+
+                state.avatarFile =
+                    null;
+
+
+                console.log(
+                    "✓ Avatar inicial guardado en Supabase"
+                );
+
+            } catch (avatarError) {
+
+                console.error(
+                    "Error guardando avatar inicial:",
+                    avatarError
+                );
+
+
+                /*
+                 * Não bloqueamos a criação
+                 * do perfil caso apenas o
+                 * avatar falhe.
+                 */
+                state.avatarFile =
+                    null;
+
+
+                showToast(
+                    "Perfil creado",
+                    "Tu perfil se ha creado, pero no pudimos guardar la fotografía."
+                );
+
+            }
+
+        }
+
+
+        state.memories = [];
 
 
         hideStates();
@@ -1658,9 +1658,12 @@ function updateEditBioCounter() {
    SAVE PROFILE CHANGES
    ============================================================ */
 
-function saveProfileChanges() {
+async function saveProfileChanges() {
 
-    if (!state.profile) {
+    if (
+        !state.profile ||
+        !state.user
+    ) {
         return;
     }
 
@@ -1684,33 +1687,80 @@ function saveProfileChanges() {
             "Escribe tu nombre antes de guardar."
         );
 
-
         el.editProfileName.focus();
 
         return;
-
     }
 
 
-    state.profile.name =
-        name;
+    if (bio.length > CONFIG.maxBioLength) {
+
+        showToast(
+            "Biografía demasiado larga",
+            `La biografía puede tener un máximo de ${CONFIG.maxBioLength} caracteres.`
+        );
+
+        return;
+    }
 
 
-    state.profile.bio =
-        bio;
+    try {
+
+        const updatedGuest =
+            await updateGuest(
+                state.user.id,
+                {
+                    name,
+                    bio
+                }
+            );
 
 
-    saveProfile();
+        /*
+         * Conservamos la URL firmada del avatar
+         * que ya tenemos cargada.
+         */
 
-    renderProfile();
+        state.profile = {
+            ...state.profile,
+            ...updatedGuest,
+            avatarUrl:
+                updatedGuest.avatarUrl ||
+                state.profile.avatarUrl ||
+                null
+        };
 
-    closeProfileEditor();
+
+        renderProfile();
+
+        closeProfileEditor();
 
 
-    showToast(
-        "Perfil actualizado",
-        "Tus cambios se han guardado correctamente."
-    );
+        showToast(
+            "Perfil actualizado",
+            "Tus cambios se han guardado correctamente."
+        );
+
+
+        console.log(
+            "✓ Perfil actualizado en Supabase",
+            state.profile
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error actualizando perfil:",
+            error
+        );
+
+
+        showToast(
+            "No pudimos guardar los cambios",
+            "Inténtalo de nuevo en unos segundos."
+        );
+
+    }
 
 }
 
@@ -1840,10 +1890,9 @@ async function handleFiles(event) {
         showToast(
             "Límite de recuerdos",
 
-            `Solo tienes ${available} ${
-                available === 1
-                    ? "espacio disponible"
-                    : "espacios disponibles"
+            `Solo tienes ${available} ${available === 1
+                ? "espacio disponible"
+                : "espacios disponibles"
             }.`
         );
 
@@ -2749,7 +2798,7 @@ function moveCrop(event) {
     if (
         !state.crop.dragging ||
         event.pointerId !==
-            state.crop.pointerId
+        state.crop.pointerId
     ) {
         return;
     }
@@ -2942,13 +2991,13 @@ function confirmCrop() {
         x:
             stageSize
                 ? state.crop.x /
-                  stageSize
+                stageSize
                 : 0,
 
         y:
             stageSize
                 ? state.crop.y /
-                  stageSize
+                stageSize
                 : 0,
 
         zoom:
@@ -3054,13 +3103,84 @@ function closeCrop() {
 
 
 /* ============================================================
+   CROP — UI <-> DATABASE
+   ============================================================ */
+
+function toDatabaseCrop(crop) {
+
+    if (!crop) {
+        return null;
+    }
+
+
+    return {
+
+        x: clamp(
+            50 + Number(crop.x || 0) * 100,
+            0,
+            100
+        ),
+
+        y: clamp(
+            50 + Number(crop.y || 0) * 100,
+            0,
+            100
+        ),
+
+        zoom: clamp(
+            Number(crop.zoom || 1),
+            1,
+            3
+        )
+
+    };
+
+}
+
+
+function fromDatabaseCrop(crop) {
+
+    if (!crop) {
+        return null;
+    }
+
+
+    return {
+
+        x:
+            (
+                Number(crop.x ?? 50) -
+                50
+            ) / 100,
+
+        y:
+            (
+                Number(crop.y ?? 50) -
+                50
+            ) / 100,
+
+        zoom:
+            clamp(
+                Number(crop.zoom ?? 1),
+                1,
+                3
+            )
+
+    };
+
+}
+
+
+/* ============================================================
    SEND MEMORIES
    ============================================================ */
 
-function sendMemories() {
+async function sendMemories() {
 
     if (
-        !state.selection.length
+        !state.selection.length ||
+        !state.profile ||
+        !state.user
     ) {
         return;
     }
@@ -3071,14 +3191,11 @@ function sendMemories() {
         state.memories.length;
 
 
-    if (
-        available <= 0
-    ) {
+    if (available <= 0) {
 
         showLimitToast();
 
         return;
-
     }
 
 
@@ -3089,67 +3206,182 @@ function sendMemories() {
         );
 
 
-    const now =
-        new Date()
-            .toISOString();
+    /*
+     * Evita clique duplo enquanto
+     * os arquivos estão subindo.
+     */
+
+    if (el.sendButton) {
+        el.sendButton.disabled = true;
+    }
 
 
-    toSend.forEach(
-        memory => {
+    const uploaded = [];
 
-            state.memories.push({
+    let failed = 0;
 
-                id:
-                    memory.id,
 
-                type:
-                    memory.type,
+    try {
 
-                name:
-                    memory.name,
+        for (const memory of toSend) {
 
-                originalUrl:
-                    memory.originalUrl,
+            try {
 
-                duration:
-                    memory.duration ||
-                    null,
+                const savedMemory =
+                    await uploadGuestMemory(
+                        state.user.id,
+                        {
+                            file:
+                                memory.file,
 
-                crop:
-                    memory.crop ||
-                    null,
+                            type:
+                                memory.type,
 
-                status:
-                    "pending",
+                            duration:
+                                memory.duration ||
+                                null,
 
-                featured:
-                    false,
+                            crop:
+                                memory.type === "image"
+                                    ? toDatabaseCrop(
+                                        memory.crop
+                                    )
+                                    : null
+                        }
+                    );
 
-                createdAt:
-                    now
 
-            });
+                /*
+                 * O service devolve crop no formato
+                 * do banco (0–100).
+                 *
+                 * O guest.js trabalha internamente
+                 * com valores em torno de 0.
+                 */
+
+                savedMemory.crop =
+                    savedMemory.type === "image"
+                        ? fromDatabaseCrop(
+                            savedMemory.crop
+                        )
+                        : null;
+
+
+                uploaded.push(
+                    savedMemory
+                );
+
+
+                console.log(
+                    "✓ Recuerdo guardado en Supabase:",
+                    savedMemory.id
+                );
+
+
+            } catch (error) {
+
+                failed++;
+
+                console.error(
+                    "Error subiendo recuerdo:",
+                    error
+                );
+
+            }
 
         }
-    );
 
 
-    state.selection = [];
+        /*
+         * Adicionamos somente os arquivos
+         * que realmente chegaram ao Supabase.
+         */
+
+        state.memories = [
+            ...uploaded,
+            ...state.memories
+        ];
 
 
-    saveMemories();
+        /*
+         * Arquivos enviados com sucesso
+         * saem da seleção.
+         *
+         * Se algum falhou, mantemos apenas
+         * os que falharam para tentar novamente.
+         */
 
-    renderSelection();
+        const uploadedIds =
+            new Set(
+                uploaded.map(
+                    memory =>
+                        memory.id
+                )
+            );
 
-    renderMemories();
 
-    updateLimit();
+        if (failed === 0) {
+
+            state.selection = [];
+
+        } else {
+
+            /*
+             * Como o ID criado pelo Supabase é
+             * diferente do ID temporário da seleção,
+             * nesta primeira versão limpamos a seleção
+             * depois de um envio parcial para evitar
+             * duplicações acidentais.
+             */
+
+            state.selection = [];
+
+        }
 
 
-    showToast(
-        "Recuerdos recibidos",
-        "Tus recuerdos están en proceso de aprobación. Cuando sean aprobados podrán aparecer en la galería de la boda."
-    );
+        renderSelection();
+
+        renderMemories();
+
+        updateLimit();
+
+
+        if (
+            uploaded.length > 0 &&
+            failed === 0
+        ) {
+
+            showToast(
+                "Recuerdos recibidos",
+                "Tus recuerdos están siendo revisados. Cuando sean aprobados podrán aparecer en la galería de la boda."
+            );
+
+        } else if (
+            uploaded.length > 0
+        ) {
+
+            showToast(
+                "Envío parcialmente completado",
+                "Algunos recuerdos se guardaron correctamente, pero otros no pudieron enviarse."
+            );
+
+        } else {
+
+            showToast(
+                "No pudimos enviar tus recuerdos",
+                "Comprueba tu conexión e inténtalo de nuevo."
+            );
+
+        }
+
+
+    } finally {
+
+        if (el.sendButton) {
+            el.sendButton.disabled = false;
+        }
+
+    }
 
 }
 
@@ -3395,7 +3627,7 @@ function createMemoryCard(memory) {
 
     status.textContent =
         memory.status ===
-        "approved"
+            "approved"
             ? "Publicado"
             : "Pendiente";
 
@@ -3845,10 +4077,9 @@ function updateLimit() {
 
 
         el.uploadAvailability.textContent =
-            `${remaining} ${
-                remaining === 1
-                    ? "espacio disponible"
-                    : "espacios disponibles"
+            `${remaining} ${remaining === 1
+                ? "espacio disponible"
+                : "espacios disponibles"
             }`;
 
 
@@ -4192,7 +4423,7 @@ function createId() {
     if (
         window.crypto &&
         typeof crypto.randomUUID ===
-            "function"
+        "function"
     ) {
 
         return crypto.randomUUID();
@@ -4216,7 +4447,7 @@ function revokeBlob(url) {
 
     if (
         typeof url ===
-            "string" &&
+        "string" &&
 
         url.startsWith(
             "blob:"
@@ -4242,7 +4473,7 @@ function hasUsableUrl(url) {
 
     return (
         typeof url ===
-            "string" &&
+        "string" &&
 
         url.length > 0
     );
@@ -4335,7 +4566,7 @@ window.weddingGuestDev = {
         if (
             !memory ||
             memory.type !==
-                "image"
+            "image"
         ) {
             return;
         }

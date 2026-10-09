@@ -6,1320 +6,937 @@
  * ============================================================
  */
 
-
 /* ============================================================
    SECTION
 ============================================================ */
 
 .dresscode {
+  --dress-burgundy: #7a1f32;
+  --dress-burgundy-soft: #a54b5f;
 
-    --dress-burgundy: #7a1f32;
-    --dress-burgundy-soft: #a54b5f;
+  --dress-terracotta: #c96f4a;
 
-    --dress-terracotta: #c96f4a;
+  --dress-red: #c62828;
 
-    --dress-red: #c62828;
+  --dress-pink: #f4a6b8;
+  --dress-fuchsia: #c2185b;
 
-    --dress-pink: #f4a6b8;
-    --dress-fuchsia: #c2185b;
+  --dress-green-light: #8fbf7a;
 
-    --dress-green-light: #8fbf7a;
+  --dress-gray: #bfc1c5;
 
-    --dress-gray: #bfc1c5;
+  --dress-cream: #f7f0e8;
+  --dress-beige: #e9ddd1;
 
-    --dress-cream: #f7f0e8;
-    --dress-beige: #e9ddd1;
+  --dress-text: #4b3b3d;
+  --dress-text-soft: #7d696a;
 
-    --dress-text: #4b3b3d;
-    --dress-text-soft: #7d696a;
+  --selected-color: #c96f4a;
+  --selected-color-rgb: 201, 111, 74;
 
-    --selected-color: #c96f4a;
-    --selected-color-rgb: 201, 111, 74;
+  position: relative;
 
-    position: relative;
+  min-height: 100vh;
 
-    min-height: 100vh;
+  padding: 120px 30px 100px;
 
-    padding: 120px 30px 100px;
+  overflow: hidden;
 
-    overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(122, 31, 50, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(201, 111, 74, 0.08),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #f7f0e8, #eee1d6 50%, #e7d7ca);
 
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(122,31,50,.07),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 70%,
-            rgba(201,111,74,.08),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #f7f0e8,
-            #eee1d6 50%,
-            #e7d7ca
-        );
-
-    color: var(--dress-text);
-
+  color: var(--dress-text);
 }
-
 
 /* ============================================================
    BACKGROUND
 ============================================================ */
 
 .dresscode__background {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  overflow: hidden;
 
-    overflow: hidden;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .dresscode__orb {
+  position: absolute;
 
-    position: absolute;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  pointer-events: none;
 
-    pointer-events: none;
-
-    filter: blur(3px);
-
+  filter: blur(3px);
 }
-
 
 .dresscode__orb--one {
+  width: 430px;
+  height: 430px;
 
-    width: 430px;
-    height: 430px;
+  top: -200px;
+  left: -180px;
 
-    top: -200px;
-    left: -180px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(122,31,50,.13),
-            transparent 70%
-        );
-
+  background: radial-gradient(circle, rgba(122, 31, 50, 0.13), transparent 70%);
 }
-
 
 .dresscode__orb--two {
+  width: 520px;
+  height: 520px;
 
-    width: 520px;
-    height: 520px;
+  right: -260px;
+  top: 35%;
 
-    right: -260px;
-    top: 35%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(201,111,74,.14),
-            transparent 70%
-        );
-
+  background: radial-gradient(
+    circle,
+    rgba(201, 111, 74, 0.14),
+    transparent 70%
+  );
 }
-
 
 .dresscode__orb--three {
+  width: 400px;
+  height: 400px;
 
-    width: 400px;
-    height: 400px;
+  bottom: -240px;
+  left: 20%;
 
-    bottom: -240px;
-    left: 20%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(194,24,91,.06),
-            transparent 70%
-        );
-
+  background: radial-gradient(circle, rgba(194, 24, 91, 0.06), transparent 70%);
 }
-
 
 /* ============================================================
    GENERAL RAIN
 ============================================================ */
 
 .dresscode__rain {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  z-index: 2;
 
-    z-index: 2;
+  overflow: hidden;
 
-    overflow: hidden;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .dresscode__particle {
+  position: absolute;
 
-    position: absolute;
+  top: -12px;
 
-    top: -12px;
+  width: 3px;
+  height: 3px;
 
-    width: 3px;
-    height: 3px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
 
-    background: rgba(255,255,255,.8);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 
-    box-shadow:
-        0 0 5px rgba(255,255,255,.7);
-
-    animation:
-        dressRainFall
-        var(--rain-duration)
-        linear
-        var(--rain-delay)
-        infinite;
-
+  animation: dressRainFall var(--rain-duration) linear var(--rain-delay)
+    infinite;
 }
-
 
 .dresscode__particle--small {
-
-    width: 2px;
-    height: 2px;
-
+  width: 2px;
+  height: 2px;
 }
-
 
 .dresscode__particle--medium {
-
-    width: 4px;
-    height: 4px;
-
+  width: 4px;
+  height: 4px;
 }
-
 
 .dresscode__particle--soft {
-
-    opacity: .45;
-
+  opacity: 0.45;
 }
-
 
 @keyframes dressRainFall {
+  0% {
+    transform: translate3d(0, -20px, 0);
 
-    0% {
+    opacity: 0;
+  }
 
-        transform:
-            translate3d(
-                0,
-                -20px,
-                0
-            );
+  10% {
+    opacity: 0.75;
+  }
 
-        opacity: 0;
+  75% {
+    opacity: 0.65;
+  }
 
-    }
+  100% {
+    transform: translate3d(var(--rain-drift), 110vh, 0);
 
-    10% {
-
-        opacity: .75;
-
-    }
-
-    75% {
-
-        opacity: .65;
-
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                var(--rain-drift),
-                110vh,
-                0
-            );
-
-        opacity: 0;
-
-    }
-
+    opacity: 0;
+  }
 }
-
 
 /* ============================================================
    FRAMES
 ============================================================ */
 
 .dresscode__frame {
+  position: absolute;
 
-    position: absolute;
+  pointer-events: none;
 
-    pointer-events: none;
-
-    border: 1px solid rgba(122,31,50,.14);
-
+  border: 1px solid rgba(122, 31, 50, 0.14);
 }
-
 
 .dresscode__frame--outer {
-
-    inset: 24px;
-
+  inset: 24px;
 }
-
 
 .dresscode__frame--inner {
+  inset: 38px;
 
-    inset: 38px;
-
-    border-color:
-        rgba(201,111,74,.11);
-
+  border-color: rgba(201, 111, 74, 0.11);
 }
-
 
 /* ============================================================
    CORNERS
 ============================================================ */
 
 .dresscode__corner {
+  position: absolute;
 
-    position: absolute;
+  width: 42px;
+  height: 42px;
 
-    width: 42px;
-    height: 42px;
+  z-index: 5;
 
-    z-index: 5;
-
-    border-color:
-        rgba(122,31,50,.4);
-
+  border-color: rgba(122, 31, 50, 0.4);
 }
-
 
 .dresscode__corner--tl {
+  top: 34px;
+  left: 34px;
 
-    top: 34px;
-    left: 34px;
-
-    border-top: 1px solid;
-    border-left: 1px solid;
-
+  border-top: 1px solid;
+  border-left: 1px solid;
 }
-
 
 .dresscode__corner--tr {
+  top: 34px;
+  right: 34px;
 
-    top: 34px;
-    right: 34px;
-
-    border-top: 1px solid;
-    border-right: 1px solid;
-
+  border-top: 1px solid;
+  border-right: 1px solid;
 }
-
 
 .dresscode__corner--bl {
+  bottom: 34px;
+  left: 34px;
 
-    bottom: 34px;
-    left: 34px;
-
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-
+  border-bottom: 1px solid;
+  border-left: 1px solid;
 }
-
 
 .dresscode__corner--br {
+  bottom: 34px;
+  right: 34px;
 
-    bottom: 34px;
-    right: 34px;
-
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
-
 
 /* ============================================================
    CONTENT
 ============================================================ */
 
 .dresscode__content {
+  position: relative;
 
-    position: relative;
+  z-index: 10;
 
-    z-index: 10;
+  width: min(1120px, 100%);
 
-    width: min(1120px,100%);
-
-    margin: 0 auto;
-
+  margin: 0 auto;
 }
-
 
 /* ============================================================
    HEADING
 ============================================================ */
 
 .dresscode__heading {
+  max-width: 700px;
 
-    max-width: 700px;
+  margin: 0 auto;
 
-    margin: 0 auto;
-
-    text-align: center;
-
+  text-align: center;
 }
-
 
 .dresscode__eyebrow {
+  display: block;
 
-    display: block;
+  margin-bottom: 15px;
 
-    margin-bottom: 15px;
+  color: var(--dress-terracotta);
 
-    color: var(--dress-terracotta);
+  font-size: 0.68rem;
 
-    font-size: .68rem;
+  font-weight: 600;
 
-    font-weight: 600;
+  letter-spacing: 0.32em;
 
-    letter-spacing: .32em;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
-
 
 .dresscode__title {
+  margin: 0;
 
-    margin: 0;
+  color: var(--dress-burgundy);
 
-    color: var(--dress-burgundy);
+  font-family: Georgia, "Times New Roman", serif;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
 
-    font-size:
-        clamp(3.2rem,7vw,5.8rem);
+  font-weight: 400;
 
-    font-weight: 400;
+  line-height: 0.95;
 
-    line-height: .95;
-
-    letter-spacing: -.045em;
-
+  letter-spacing: -0.045em;
 }
-
 
 .dresscode__title-decoration {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 14px;
 
-    gap: 14px;
+  width: 180px;
 
-    width: 180px;
-
-    margin: 26px auto;
-
+  margin: 26px auto;
 }
-
 
 .dresscode__title-decoration span {
+  flex: 1;
 
-    flex: 1;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(201,111,74,.75)
-        );
-
+  background: linear-gradient(to right, transparent, rgba(201, 111, 74, 0.75));
 }
-
 
 .dresscode__title-decoration span:last-child {
-
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            rgba(201,111,74,.75)
-        );
-
+  background: linear-gradient(to left, transparent, rgba(201, 111, 74, 0.75));
 }
-
 
 .dresscode__title-decoration i {
+  color: var(--dress-terracotta);
 
-    color: var(--dress-terracotta);
-
-    font-style: normal;
-
+  font-style: normal;
 }
-
 
 .dresscode__intro {
+  max-width: 600px;
 
-    max-width: 600px;
+  margin: auto;
 
-    margin: auto;
+  color: var(--dress-text-soft);
 
-    color: var(--dress-text-soft);
+  font-size: 0.92rem;
 
-    font-size: .92rem;
-
-    line-height: 1.9;
-
+  line-height: 1.9;
 }
-
 
 /* ============================================================
    EMBLEM
 ============================================================ */
 
 .dresscode__emblem {
+  position: relative;
 
-    position: relative;
+  width: 150px;
+  height: 150px;
 
-    width: 150px;
-    height: 150px;
+  margin: 65px auto 70px;
 
-    margin: 65px auto 70px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
+  cursor: pointer;
 }
-
 
 .dresscode__emblem-ring {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  border: 1px solid rgba(122, 31, 50, 0.6);
 
-    border:
-        1px solid
-        rgba(122,31,50,.6);
+  border-radius: 50%;
 
-    border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 7px rgba(247, 240, 232, 0.5),
+    0 15px 45px rgba(122, 31, 50, 0.08);
 
-    box-shadow:
-        inset 0 0 0 7px rgba(247,240,232,.5),
-        0 15px 45px rgba(122,31,50,.08);
-
-    transition: .8s ease;
-
+  transition: 0.8s ease;
 }
 
-
-.dresscode__emblem:hover
-.dresscode__emblem-ring {
-
-    transform:
-        rotate(12deg)
-        scale(1.05);
-
+.dresscode__emblem:hover .dresscode__emblem-ring {
+  transform: rotate(12deg) scale(1.05);
 }
-
 
 .dresscode__emblem-inner {
+  width: 110px;
+  height: 110px;
 
-    width: 110px;
-    height: 110px;
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: linear-gradient(145deg, #fffaf5, #e8d8ca);
 
-    background:
-        linear-gradient(
-            145deg,
-            #fffaf5,
-            #e8d8ca
-        );
+  border: 1px solid rgba(201, 111, 74, 0.35);
 
-    border:
-        1px solid
-        rgba(201,111,74,.35);
-
-    box-shadow:
-        0 12px 30px
-        rgba(122,31,50,.08);
-
+  box-shadow: 0 12px 30px rgba(122, 31, 50, 0.08);
 }
-
 
 .dresscode__emblem-crown {
-
-    color: var(--dress-terracotta);
-
+  color: var(--dress-terracotta);
 }
-
 
 .dresscode__emblem-small {
+  color: var(--dress-text-soft);
 
-    color: var(--dress-text-soft);
+  font-size: 0.36rem;
 
-    font-size: .36rem;
-
-    letter-spacing: .28em;
-
+  letter-spacing: 0.28em;
 }
-
 
 .dresscode__emblem-inner strong {
+  color: var(--dress-burgundy);
 
-    color: var(--dress-burgundy);
+  font-family: Georgia, serif;
 
-    font-family: Georgia,serif;
+  font-size: 2rem;
 
-    font-size: 2rem;
-
-    font-weight: 400;
-
+  font-weight: 400;
 }
-
 
 .dresscode__emblem-star {
+  position: absolute;
 
-    position: absolute;
+  color: var(--dress-terracotta);
 
-    color: var(--dress-terracotta);
-
-    font-size: .5rem;
-
+  font-size: 0.5rem;
 }
-
 
 /* ============================================================
    PALETTE
 ============================================================ */
 
 .dresscode__palette-section {
+  max-width: 850px;
 
-    max-width: 850px;
+  margin: auto;
 
-    margin: auto;
-
-    text-align: center;
-
+  text-align: center;
 }
-
 
 .dresscode__section-title span {
+  display: block;
 
-    display: block;
+  margin-bottom: 8px;
 
-    margin-bottom: 8px;
+  color: var(--dress-terracotta);
 
-    color: var(--dress-terracotta);
+  font-size: 0.62rem;
 
-    font-size: .62rem;
+  font-weight: 600;
 
-    font-weight: 600;
+  letter-spacing: 0.3em;
 
-    letter-spacing: .3em;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
-
 
 .dresscode__section-title h3 {
+  margin: 0;
 
-    margin: 0;
+  color: var(--dress-burgundy);
 
-    color: var(--dress-burgundy);
+  font-family: Georgia, serif;
 
-    font-family: Georgia,serif;
+  font-size: 1.8rem;
 
-    font-size: 1.8rem;
-
-    font-weight: 400;
-
+  font-weight: 400;
 }
-
 
 .dresscode__section-title p {
+  max-width: 500px;
 
-    max-width: 500px;
+  margin: 12px auto 0;
 
-    margin: 12px auto 0;
+  color: var(--dress-text-soft);
 
-    color: var(--dress-text-soft);
+  font-size: 0.78rem;
 
-    font-size: .78rem;
-
-    line-height: 1.7;
-
+  line-height: 1.7;
 }
-
 
 /* ============================================================
    PALETTE
 ============================================================ */
 
 .dresscode__palette {
+  display: flex;
 
-    display: flex;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
+  flex-wrap: wrap;
 
-    flex-wrap: wrap;
+  gap: 16px;
 
-    gap: 16px;
-
-    margin-top: 38px;
-
+  margin-top: 38px;
 }
-
 
 .dresscode__swatch {
+  position: relative;
 
-    position: relative;
+  width: 42px;
+  height: 42px;
 
-    width: 42px;
-    height: 42px;
+  padding: 0;
 
-    padding: 0;
+  border: 0;
 
-    border: 0;
+  background: transparent;
 
-    background: transparent;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        transform .35s ease;
-
+  transition: transform 0.35s ease;
 }
-
 
 .dresscode__swatch span {
+  position: absolute;
 
-    position: absolute;
+  inset: 5px;
 
-    inset: 5px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: var(--swatch-color);
 
-    background:
-        var(--swatch-color);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 
-    border:
-        1px solid
-        rgba(255,255,255,.8);
-
-    box-shadow:
-        0 5px 15px
-        rgba(55,35,45,.14);
-
+  box-shadow: 0 5px 15px rgba(55, 35, 45, 0.14);
 }
-
 
 .dresscode__swatch:hover {
-
-    transform:
-        translateY(-7px);
-
+  transform: translateY(-7px);
 }
-
 
 .dresscode__swatch.is-active {
-
-    transform:
-        translateY(-6px)
-        scale(1.08);
-
+  transform: translateY(-6px) scale(1.08);
 }
-
 
 .dresscode__swatch.is-active::before {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  inset: -4px;
 
-    inset: -4px;
+  border: 1px solid var(--selected-color);
 
-    border:
-        1px solid
-        var(--selected-color);
+  border-radius: 50%;
 
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(
-            var(--selected-color-rgb),
-            .1
-        );
-
+  box-shadow: 0 0 0 4px rgba(var(--selected-color-rgb), 0.1);
 }
-
 
 /* ============================================================
    COLORS
 ============================================================ */
 
 .dresscode__swatch--burgundy {
-    --swatch-color: #7a1f32;
+  --swatch-color: #7a1f32;
 }
-
 
 .dresscode__swatch--fuchsia {
-    --swatch-color: #c2185b;
+  --swatch-color: #c2185b;
 }
-
 
 .dresscode__swatch--light-pink {
-    --swatch-color: #f4a6b8;
+  --swatch-color: #f4a6b8;
 }
-
 
 .dresscode__swatch--red {
-    --swatch-color: #c62828;
+  --swatch-color: #c62828;
 }
-
 
 .dresscode__swatch--terracotta {
-    --swatch-color: #c96f4a;
+  --swatch-color: #c96f4a;
 }
-
 
 .dresscode__swatch--light-green {
-    --swatch-color: #8fbf7a;
+  --swatch-color: #8fbf7a;
 }
-
 
 .dresscode__swatch--gray {
-    --swatch-color: #bfc1c5;
+  --swatch-color: #bfc1c5;
 }
-
 
 /* ============================================================
    HINT
 ============================================================ */
 
 .dresscode__selection-hint {
+  display: flex;
 
-    display: flex;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
+  gap: 8px;
 
-    gap: 8px;
+  min-height: 22px;
 
-    min-height: 22px;
-
-    margin-top: 24px;
-
+  margin-top: 24px;
 }
-
 
 .dresscode__selection-indicator {
+  width: 7px;
+  height: 7px;
 
-    width: 7px;
-    height: 7px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: var(--dress-terracotta);
 
-    background:
-        var(--dress-terracotta);
-
-    box-shadow:
-        0 0 10px
-        rgba(201,111,74,.35);
-
+  box-shadow: 0 0 10px rgba(201, 111, 74, 0.35);
 }
-
 
 .dresscode__selection-hint p {
+  margin: 0;
 
-    margin: 0;
+  color: var(--dress-text-soft);
 
-    color: var(--dress-text-soft);
+  font-size: 0.6rem;
 
-    font-size: .6rem;
+  letter-spacing: 0.16em;
 
-    letter-spacing: .16em;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
-
 
 /* ============================================================
    DIVIDER
 ============================================================ */
 
 .dresscode__divider {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  gap: 15px;
 
-    gap: 15px;
+  width: min(500px, 80%);
 
-    width: min(500px,80%);
-
-    margin: 80px auto 70px;
-
+  margin: 80px auto 70px;
 }
-
 
 .dresscode__divider span {
+  flex: 1;
 
-    flex: 1;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(201,111,74,.45)
-        );
-
+  background: linear-gradient(to right, transparent, rgba(201, 111, 74, 0.45));
 }
-
 
 .dresscode__divider span:last-child {
-
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            rgba(201,111,74,.45)
-        );
-
+  background: linear-gradient(to left, transparent, rgba(201, 111, 74, 0.45));
 }
-
 
 .dresscode__divider i {
+  color: var(--dress-terracotta);
 
-    color: var(--dress-terracotta);
-
-    font-style: normal;
-
+  font-style: normal;
 }
-
 
 /* ============================================================
    CARDS
 ============================================================ */
 
 .dresscode__cards {
+  display: grid;
 
-    display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
+  gap: 30px;
 
-    gap: 30px;
+  width: 100%;
 
-    width: 100%;
+  max-width: 1000px;
 
-    max-width: 1000px;
-
-    margin: 0 auto;
-
+  margin: 0 auto;
 }
-
 
 .dresscode__card {
+  --card-color: #c96f4a;
+  --card-color-rgb: 201, 111, 74;
 
-    --card-color: #c96f4a;
-    --card-color-rgb: 201,111,74;
+  --card-text: #7a1f32;
 
-    --card-text: #7a1f32;
+  position: relative;
 
-    position: relative;
+  isolation: isolate;
 
-    isolation: isolate;
+  min-height: 420px;
 
-    min-height: 420px;
+  overflow: hidden;
 
-    overflow: hidden;
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  padding: 55px 45px;
 
-    padding: 55px 45px;
+  text-align: center;
 
-    text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
 
-    border:
-        1px solid
-        rgba(255,255,255,.72);
+  border-radius: 18px;
 
-    border-radius: 18px;
+  background: rgba(255, 248, 242, 0.48);
 
-    background:
-        rgba(255,248,242,.48);
+  box-shadow:
+    0 25px 70px rgba(68, 42, 58, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(122, 31, 50, 0.06);
 
-    box-shadow:
-        0 25px 70px
-        rgba(68,42,58,.09),
-        inset 0 1px 0
-        rgba(255,255,255,.9),
-        inset 0 -1px 0
-        rgba(122,31,50,.06);
+  backdrop-filter: blur(18px) saturate(120%);
 
-    backdrop-filter:
-        blur(18px)
-        saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
 
-    -webkit-backdrop-filter:
-        blur(18px)
-        saturate(120%);
+  cursor: pointer;
 
-    cursor: pointer;
-
-    transition:
-        transform .6s cubic-bezier(.22,1,.36,1),
-        box-shadow .6s ease,
-        border-color .5s ease;
-
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s ease,
+    border-color 0.5s ease;
 }
-
 
 .dresscode__card:hover {
+  transform: translateY(-9px);
 
-    transform:
-        translateY(-9px);
-
-    box-shadow:
-        0 35px 85px
-        rgba(68,42,58,.14),
-        inset 0 1px 0
-        rgba(255,255,255,.95);
-
+  box-shadow:
+    0 35px 85px rgba(68, 42, 58, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
-
 
 /* ============================================================
    GLASS BASE
 ============================================================ */
 
 .dresscode__card-glass {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  z-index: -5;
 
-    z-index: -5;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.78),
-            rgba(247,240,232,.46)
-        );
-
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.78),
+    rgba(247, 240, 232, 0.46)
+  );
 }
-
 
 /* ============================================================
    DIAGONAL COLOR
 ============================================================ */
 
 .dresscode__card-color {
+  position: absolute;
 
-    position: absolute;
+  z-index: -4;
 
-    z-index: -4;
+  inset: -10%;
 
-    inset: -10%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--card-color-rgb), 0.64) 0%,
+    rgba(var(--card-color-rgb), 0.48) 45%,
+    rgba(var(--card-color-rgb), 0.12) 53%,
+    transparent 54%
+  );
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(
-                var(--card-color-rgb),
-                .64
-            )
-            0%,
-            rgba(
-                var(--card-color-rgb),
-                .48
-            )
-            45%,
-            rgba(
-                var(--card-color-rgb),
-                .12
-            )
-            53%,
-            transparent
-            54%
-        );
+  opacity: 0;
 
-    opacity: 0;
+  transform: translateX(-5%);
 
-    transform:
-        translateX(-5%);
-
-    transition:
-        opacity .7s ease,
-        transform .9s cubic-bezier(.22,1,.36,1);
-
+  transition:
+    opacity 0.7s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.dresscode__card.has-color .dresscode__card-color {
+  opacity: 1;
 
-.dresscode__card.has-color
-.dresscode__card-color {
-
-    opacity: 1;
-
-    transform:
-        translateX(0);
-
+  transform: translateX(0);
 }
-
 
 /* ============================================================
    GLASS REFLECTION
 ============================================================ */
 
 .dresscode__card-reflection {
+  position: absolute;
 
-    position: absolute;
+  z-index: -2;
 
-    z-index: -2;
+  width: 45%;
 
-    width: 45%;
+  height: 180%;
 
-    height: 180%;
+  top: -40%;
 
-    top: -40%;
+  left: -70%;
 
-    left: -70%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.48),
+    transparent
+  );
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.48),
-            transparent
-        );
+  transform: rotate(20deg);
 
-    transform:
-        rotate(20deg);
+  opacity: 0.55;
 
-    opacity: .55;
+  pointer-events: none;
 
-    pointer-events: none;
-
-    animation:
-        glassReflection
-        7s ease-in-out
-        infinite;
-
+  animation: glassReflection 7s ease-in-out infinite;
 }
-
 
 @keyframes glassReflection {
+  0%,
+  55% {
+    left: -70%;
+  }
 
-    0%,
-    55% {
-
-        left: -70%;
-
-    }
-
-    100% {
-
-        left: 140%;
-
-    }
-
+  100% {
+    left: 140%;
+  }
 }
-
 
 /* ============================================================
    CARD SHINE
 ============================================================ */
 
 .dresscode__card-shine {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  z-index: -1;
 
-    z-index: -1;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.48),
+    transparent 42%
+  );
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,255,255,.48),
-            transparent 42%
-        );
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 /* ============================================================
    CARD RAIN
 ============================================================ */
 
 .dresscode__card-rain {
+  position: absolute;
 
-    position: absolute;
+  inset: 0;
 
-    inset: 0;
+  z-index: 1;
 
-    z-index: 1;
+  overflow: hidden;
 
-    overflow: hidden;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .dresscode__card-particle {
+  position: absolute;
 
-    position: absolute;
+  top: -8px;
 
-    top: -8px;
+  width: 4px;
+  height: 4px;
 
-    width: 4px;
-    height: 4px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: rgba(221, 203, 255, 0.85);
 
-    background:
-        rgba(221,203,255,.85);
+  box-shadow: 0 0 7px rgba(211, 192, 255, 0.65);
 
-    box-shadow:
-        0 0 7px
-        rgba(211,192,255,.65);
-
-    animation:
-        cardRainFall
-        var(--card-rain-duration)
-        linear
-        var(--card-rain-delay)
-        infinite;
-
+  animation: cardRainFall var(--card-rain-duration) linear
+    var(--card-rain-delay) infinite;
 }
-
 
 .dresscode__card-particle::after {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  inset: -2px;
 
-    inset: -2px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: inherit;
 
-    background:
-        inherit;
-
-    opacity: .35;
-
+  opacity: 0.35;
 }
-
 
 @keyframes cardRainFall {
+  0% {
+    transform: translate3d(0, -15px, 0) scale(0.4);
 
-    0% {
+    opacity: 0;
+  }
 
-        transform:
-            translate3d(
-                0,
-                -15px,
-                0
-            )
-            scale(.4);
+  12% {
+    opacity: 0.9;
 
-        opacity: 0;
+    transform: translate3d(0, 25px, 0) scale(1);
+  }
 
-    }
+  80% {
+    opacity: 0.75;
+  }
 
-    12% {
+  100% {
+    transform: translate3d(var(--card-rain-drift), 450px, 0) scale(0.15);
 
-        opacity: .9;
-
-        transform:
-            translate3d(
-                0,
-                25px,
-                0
-            )
-            scale(1);
-
-    }
-
-    80% {
-
-        opacity: .75;
-
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                var(--card-rain-drift),
-                450px,
-                0
-            )
-            scale(.15);
-
-        opacity: 0;
-
-    }
-
+    opacity: 0;
+  }
 }
-
 
 /* ============================================================
    LIGHT COLOR MODE
@@ -1327,822 +944,567 @@
 ============================================================ */
 
 .dresscode__card.is-light {
-
-    background:
-        rgba(225,225,228,.52);
-
+  background: rgba(225, 225, 228, 0.52);
 }
 
+.dresscode__card.is-light .dresscode__card-particle {
+  background: rgba(255, 255, 255, 0.95);
 
-.dresscode__card.is-light
-.dresscode__card-particle {
+  border: 1px solid rgba(65, 58, 60, 0.65);
 
-    background:
-        rgba(255,255,255,.95);
-
-    border:
-        1px solid
-        rgba(65,58,60,.65);
-
-    box-shadow:
-        0 0 5px
-        rgba(255,255,255,.8);
-
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
-
-.dresscode__card.is-light
-.dresscode__card-glass {
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(245,245,247,.88),
-            rgba(220,221,224,.58)
-        );
-
+.dresscode__card.is-light .dresscode__card-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(245, 245, 247, 0.88),
+    rgba(220, 221, 224, 0.58)
+  );
 }
-
 
 /* ============================================================
    DARK COLOR MODE
 ============================================================ */
 
 .dresscode__card.is-dark {
-
-    background:
-        rgba(248,237,220,.5);
-
+  background: rgba(248, 237, 220, 0.5);
 }
 
-
-.dresscode__card.is-dark
-.dresscode__card-glass {
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,250,240,.82),
-            rgba(239,221,198,.48)
-        );
-
+.dresscode__card.is-dark .dresscode__card-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 250, 240, 0.82),
+    rgba(239, 221, 198, 0.48)
+  );
 }
-
 
 /* ============================================================
    CARD NUMBER
 ============================================================ */
 
 .dresscode__card-number {
+  position: absolute;
 
-    position: absolute;
+  top: 25px;
+  left: 28px;
 
-    top: 25px;
-    left: 28px;
+  z-index: 5;
 
-    z-index: 5;
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
+  font-family: Georgia, serif;
 
-    font-family: Georgia,serif;
+  font-size: 0.68rem;
 
-    font-size: .68rem;
+  letter-spacing: 0.15em;
 
-    letter-spacing: .15em;
-
-    transition:
-        color .6s ease;
-
+  transition: color 0.6s ease;
 }
-
 
 /* ============================================================
    CARD ICON
 ============================================================ */
 
 .dresscode__card-icon {
+  position: relative;
 
-    position: relative;
+  z-index: 5;
 
-    z-index: 5;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  gap: 10px;
 
-    gap: 10px;
+  margin-bottom: 25px;
 
-    margin-bottom: 25px;
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
-
-    transition:
-        color .6s ease,
-        transform .5s ease;
-
+  transition:
+    color 0.6s ease,
+    transform 0.5s ease;
 }
 
-
-.dresscode__card:hover
-.dresscode__card-icon {
-
-    transform:
-        translateY(-4px)
-        scale(1.05);
-
+.dresscode__card:hover .dresscode__card-icon {
+  transform: translateY(-4px) scale(1.05);
 }
-
 
 .dresscode__card-icon > span:nth-child(2) {
-
-    font-size: 1.5rem;
-
+  font-size: 1.5rem;
 }
-
 
 .dresscode__card-icon-line {
+  width: 30px;
 
-    width: 30px;
+  height: 1px;
 
-    height: 1px;
+  background: var(--card-text);
 
-    background:
-        var(--card-text);
-
-    opacity: .7;
-
+  opacity: 0.7;
 }
-
 
 /* ============================================================
    CONTENT
 ============================================================ */
 
 .dresscode__card-content {
+  position: relative;
 
-    position: relative;
+  z-index: 5;
 
-    z-index: 5;
-
-    max-width: 390px;
-
+  max-width: 390px;
 }
-
 
 .dresscode__card-label {
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
+  font-size: 0.58rem;
 
-    font-size: .58rem;
+  font-weight: 600;
 
-    font-weight: 600;
+  letter-spacing: 0.25em;
 
-    letter-spacing: .25em;
+  text-transform: uppercase;
 
-    text-transform: uppercase;
-
-    transition:
-        color .6s ease;
-
+  transition: color 0.6s ease;
 }
-
 
 .dresscode__card-content h3 {
+  margin: 10px 0 15px;
 
-    margin: 10px 0 15px;
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
+  font-family: Georgia, "Times New Roman", serif;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+  font-size: 2.35rem;
 
-    font-size: 2.35rem;
+  font-weight: 400;
 
-    font-weight: 400;
-
-    transition:
-        color .6s ease,
-        transform .5s ease;
-
+  transition:
+    color 0.6s ease,
+    transform 0.5s ease;
 }
 
-
-.dresscode__card:hover
-.dresscode__card-content h3 {
-
-    transform:
-        translateY(-2px);
-
+.dresscode__card:hover .dresscode__card-content h3 {
+  transform: translateY(-2px);
 }
-
 
 .dresscode__card-line {
+  width: 50px;
 
-    width: 50px;
+  height: 1px;
 
-    height: 1px;
+  margin: 0 auto 20px;
 
-    margin: 0 auto 20px;
+  background: var(--card-text);
 
-    background:
-        var(--card-text);
-
-    transition:
-        width .6s ease,
-        background .6s ease;
-
+  transition:
+    width 0.6s ease,
+    background 0.6s ease;
 }
 
-
-.dresscode__card:hover
-.dresscode__card-line {
-
-    width: 85px;
-
+.dresscode__card:hover .dresscode__card-line {
+  width: 85px;
 }
-
 
 .dresscode__card-content p {
+  margin: 0;
 
-    margin: 0;
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
+  opacity: 0.78;
 
-    opacity: .78;
+  font-size: 0.82rem;
 
-    font-size: .82rem;
+  line-height: 1.85;
 
-    line-height: 1.85;
-
-    transition:
-        color .6s ease;
-
+  transition: color 0.6s ease;
 }
-
 
 /* ============================================================
    SELECTION
 ============================================================ */
 
 .dresscode__card-selection {
+  position: absolute;
 
-    position: absolute;
+  left: 50%;
+  bottom: 24px;
 
-    left: 50%;
-    bottom: 24px;
+  z-index: 6;
 
-    z-index: 6;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  gap: 8px;
 
-    gap: 8px;
+  transform: translate(-50%, 8px);
 
-    transform:
-        translate(-50%,8px);
+  opacity: 0.55;
 
-    opacity: .55;
-
-    transition:
-        opacity .4s ease,
-        transform .4s ease;
-
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
-
 
 .dresscode__card-selection span {
+  width: 9px;
+  height: 9px;
 
-    width: 9px;
-    height: 9px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: var(--card-color);
 
-    background:
-        var(--card-color);
-
-    box-shadow:
-        0 0 0 1px
-        rgba(
-            var(--card-color-rgb),
-            .3
-        );
-
+  box-shadow: 0 0 0 1px rgba(var(--card-color-rgb), 0.3);
 }
-
 
 .dresscode__card-selection p {
+  margin: 0;
 
-    margin: 0;
+  color: var(--card-text);
 
-    color:
-        var(--card-text);
+  font-size: 0.56rem;
 
-    font-size: .56rem;
+  letter-spacing: 0.12em;
 
-    letter-spacing: .12em;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
 
+.dresscode__card:hover .dresscode__card-selection,
+.dresscode__card.is-selected .dresscode__card-selection {
+  opacity: 1;
 
-.dresscode__card:hover
-.dresscode__card-selection,
-.dresscode__card.is-selected
-.dresscode__card-selection {
-
-    opacity: 1;
-
-    transform:
-        translate(-50%,0);
-
+  transform: translate(-50%, 0);
 }
-
 
 /* ============================================================
    SELECTED CARD
 ============================================================ */
 
 .dresscode__card.is-selected {
+  border-color: rgba(var(--card-color-rgb), 0.55);
 
-    border-color:
-        rgba(
-            var(--card-color-rgb),
-            .55
-        );
-
-    box-shadow:
-        0 30px 80px
-        rgba(68,42,58,.14),
-        0 0 35px
-        rgba(
-            var(--card-color-rgb),
-            .12
-        ),
-        inset 0 1px 0
-        rgba(255,255,255,.95);
-
+  box-shadow:
+    0 30px 80px rgba(68, 42, 58, 0.14),
+    0 0 35px rgba(var(--card-color-rgb), 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
-
 
 /* ============================================================
    SPECIAL
 ============================================================ */
 
 .dresscode__special {
+  position: relative;
 
-    position: relative;
+  max-width: 650px;
 
-    max-width: 650px;
+  margin: 90px auto 0;
 
-    margin: 90px auto 0;
+  padding: 55px 35px;
 
-    padding: 55px 35px;
+  text-align: center;
 
-    text-align: center;
+  background: rgba(255, 248, 240, 0.45);
 
-    background:
-        rgba(255,248,240,.45);
+  border-top: 1px solid rgba(122, 31, 50, 0.2);
 
-    border-top:
-        1px solid
-        rgba(122,31,50,.2);
+  border-bottom: 1px solid rgba(201, 111, 74, 0.28);
 
-    border-bottom:
-        1px solid
-        rgba(201,111,74,.28);
+  backdrop-filter: blur(14px);
 
-    backdrop-filter:
-        blur(14px);
-
-    transition:
-        transform .6s ease,
-        box-shadow .6s ease;
-
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
 }
-
 
 .dresscode__special:hover {
+  transform: translateY(-5px);
 
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 20px 50px
-        rgba(122,31,50,.07);
-
+  box-shadow: 0 20px 50px rgba(122, 31, 50, 0.07);
 }
-
 
 .dresscode__special-line {
+  position: absolute;
 
-    position: absolute;
+  top: -1px;
+  left: 50%;
 
-    top: -1px;
-    left: 50%;
+  width: 80px;
+  height: 1px;
 
-    width: 80px;
-    height: 1px;
+  transform: translateX(-50%);
 
-    transform:
-        translateX(-50%);
-
-    background:
-        var(--dress-terracotta);
-
+  background: var(--dress-terracotta);
 }
-
 
 .dresscode__special-symbol {
+  color: var(--dress-terracotta);
 
-    color:
-        var(--dress-terracotta);
-
-    margin-bottom: 15px;
-
+  margin-bottom: 15px;
 }
-
 
 .dresscode__special > span {
+  color: var(--dress-terracotta);
 
-    color:
-        var(--dress-terracotta);
+  font-size: 0.58rem;
 
-    font-size: .58rem;
+  letter-spacing: 0.28em;
 
-    letter-spacing: .28em;
-
-    text-transform: uppercase;
-
+  text-transform: uppercase;
 }
-
 
 .dresscode__special h3 {
+  max-width: 480px;
 
-    max-width: 480px;
+  margin: 13px auto;
 
-    margin: 13px auto;
+  color: var(--dress-burgundy);
 
-    color:
-        var(--dress-burgundy);
+  font-family: Georgia, serif;
 
-    font-family: Georgia,serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
 
-    font-size:
-        clamp(1.8rem,4vw,2.5rem);
+  font-weight: 400;
 
-    font-weight: 400;
-
-    line-height: 1.2;
-
+  line-height: 1.2;
 }
-
 
 .dresscode__special p {
+  max-width: 500px;
 
-    max-width: 500px;
+  margin: auto;
 
-    margin: auto;
+  color: var(--dress-text-soft);
 
-    color:
-        var(--dress-text-soft);
+  font-size: 0.82rem;
 
-    font-size: .82rem;
-
-    line-height: 1.9;
-
+  line-height: 1.9;
 }
-
 
 .dresscode__special-signature {
+  display: flex;
 
-    display: flex;
+  justify-content: center;
+  align-items: center;
 
-    justify-content: center;
-    align-items: center;
+  gap: 10px;
 
-    gap: 10px;
+  margin-top: 28px;
 
-    margin-top: 28px;
+  color: var(--dress-burgundy);
 
-    color:
-        var(--dress-burgundy);
-
-    font-family: Georgia,serif;
-
+  font-family: Georgia, serif;
 }
-
 
 .dresscode__special-signature i {
-
-    color:
-        var(--dress-terracotta);
-
+  color: var(--dress-terracotta);
 }
-
 
 /* ============================================================
    FOOTER
 ============================================================ */
 
 .dresscode__footer {
+  display: flex;
 
-    display: flex;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
+  gap: 20px;
 
-    gap: 20px;
-
-    margin-top: 75px;
-
+  margin-top: 75px;
 }
-
 
 .dresscode__footer span {
+  width: 90px;
 
-    width: 90px;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        rgba(122,31,50,.25);
-
+  background: rgba(122, 31, 50, 0.25);
 }
-
 
 .dresscode__footer p {
+  margin: 0;
 
-    margin: 0;
+  color: var(--dress-text-soft);
 
-    color:
-        var(--dress-text-soft);
+  font-size: 0.56rem;
 
-    font-size: .56rem;
-
-    letter-spacing: .25em;
-
+  letter-spacing: 0.25em;
 }
-
 
 /* ============================================================
    REVEAL
 ============================================================ */
 
 .dresscode-reveal {
+  opacity: 0;
 
-    opacity: 0;
+  transform: translateY(25px);
 
-    transform:
-        translateY(25px);
-
-    transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.22,1,.36,1);
-
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .dresscode-reveal.is-visible {
+  opacity: 1;
 
-    opacity: 1;
-
-    transform:
-        translateY(0);
-
+  transform: translateY(0);
 }
-
 
 /* ============================================================
    SECRET
 ============================================================ */
 
 .dresscode__secret-message {
+  position: fixed;
 
-    position: fixed;
+  inset: 0;
 
-    inset: 0;
+  z-index: 999;
 
-    z-index: 999;
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    align-items: center;
-    justify-content: center;
+  padding: 30px;
 
-    padding: 30px;
+  text-align: center;
 
-    text-align: center;
+  background: radial-gradient(
+    circle,
+    rgba(75, 0, 130, 0.96),
+    rgba(20, 5, 30, 0.98)
+  );
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(75,0,130,.96),
-            rgba(20,5,30,.98)
-        );
+  color: white;
 
-    color: white;
+  opacity: 0;
 
-    opacity: 0;
+  visibility: hidden;
 
-    visibility: hidden;
+  transform: scale(1.03);
 
-    transform:
-        scale(1.03);
-
-    transition:
-        opacity .6s ease,
-        visibility .6s ease,
-        transform .8s ease;
-
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease,
+    transform 0.8s ease;
 }
-
 
 .dresscode__secret-message.is-visible {
+  opacity: 1;
 
-    opacity: 1;
+  visibility: visible;
 
-    visibility: visible;
-
-    transform:
-        scale(1);
-
+  transform: scale(1);
 }
-
 
 .dresscode__secret-message span {
+  color: #e8d5a7;
 
-    color: #e8d5a7;
-
-    font-size: 1.5rem;
-
+  font-size: 1.5rem;
 }
-
 
 .dresscode__secret-message p {
+  color: rgba(255, 255, 255, 0.75);
 
-    color:
-        rgba(255,255,255,.75);
-
-    font-size: .8rem;
-
+  font-size: 0.8rem;
 }
-
 
 .dresscode__secret-message strong {
+  max-width: 600px;
 
-    max-width: 600px;
+  color: #e8d5a7;
 
-    color: #e8d5a7;
+  font-family: Georgia, serif;
 
-    font-family: Georgia,serif;
+  font-size: clamp(2rem, 5vw, 4rem);
 
-    font-size:
-        clamp(2rem,5vw,4rem);
+  font-weight: 400;
 
-    font-weight: 400;
-
-    line-height: 1.2;
-
+  line-height: 1.2;
 }
-
 
 .dresscode__secret-message small {
+  margin-top: 35px;
 
-    margin-top: 35px;
+  color: rgba(255, 255, 255, 0.55);
 
-    color:
-        rgba(255,255,255,.55);
+  font-size: 0.6rem;
 
-    font-size: .6rem;
-
-    letter-spacing: .35em;
-
+  letter-spacing: 0.35em;
 }
-
 
 /* ============================================================
    RESPONSIVE
 ============================================================ */
 
 @media (max-width: 800px) {
+  .dresscode {
+    padding: 100px 22px 80px;
+  }
 
-    .dresscode {
+  .dresscode__cards {
+    grid-template-columns: 1fr;
 
-        padding:
-            100px 22px 80px;
+    max-width: 560px;
+  }
 
-    }
+  .dresscode__card {
+    min-height: 390px;
+  }
 
+  .dresscode__frame--outer {
+    inset: 15px;
+  }
 
-    .dresscode__cards {
-
-        grid-template-columns:
-            1fr;
-
-        max-width: 560px;
-
-    }
-
-
-    .dresscode__card {
-
-        min-height: 390px;
-
-    }
-
-
-    .dresscode__frame--outer {
-
-        inset: 15px;
-
-    }
-
-
-    .dresscode__frame--inner {
-
-        inset: 25px;
-
-    }
-
+  .dresscode__frame--inner {
+    inset: 25px;
+  }
 }
-
 
 @media (max-width: 600px) {
+  .dresscode {
+    padding: 90px 18px 70px;
+  }
 
-    .dresscode {
+  .dresscode__card {
+    min-height: 370px;
 
-        padding:
-            90px 18px 70px;
+    padding: 45px 25px;
+  }
 
-    }
+  .dresscode__swatch {
+    width: 36px;
+    height: 36px;
+  }
 
-
-    .dresscode__card {
-
-        min-height: 370px;
-
-        padding:
-            45px 25px;
-
-    }
-
-
-    .dresscode__swatch {
-
-        width: 36px;
-        height: 36px;
-
-    }
-
-
-    .dresscode__swatch::after {
-
-        display: none;
-
-    }
-
+  .dresscode__swatch::after {
+    display: none;
+  }
 }
 
-
 @media (max-width: 500px) {
+  .dresscode__title {
+    font-size: 3.1rem;
+  }
 
-    .dresscode__title {
+  .dresscode__emblem {
+    transform: scale(0.9);
+  }
 
-        font-size: 3.1rem;
+  .dresscode__card-content h3 {
+    font-size: 2rem;
+  }
 
-    }
-
-
-    .dresscode__emblem {
-
-        transform:
-            scale(.9);
-
-    }
-
-
-    .dresscode__card-content h3 {
-
-        font-size: 2rem;
-
-    }
-
-
-    .dresscode__footer span {
-
-        width: 55px;
-
-    }
-
+  .dresscode__footer span {
+    width: 55px;
+  }
 }

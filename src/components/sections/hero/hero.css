@@ -3,1843 +3,1200 @@
 ========================================================== */
 
 .hero {
+  position: relative;
 
-    position: relative;
+  min-height: 100svh;
 
-    min-height: 100svh;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  overflow: hidden;
 
-    overflow: hidden;
+  padding: 5rem 2rem;
 
-    padding: 5rem 2rem;
+  isolation: isolate;
 
-    isolation: isolate;
+  text-align: center;
 
-    text-align: center;
-
-    background:
-
-        radial-gradient(
-            ellipse at 50% 35%,
-            rgba(255,255,255,.98) 0%,
-            rgba(255,255,255,.72) 30%,
-            transparent 65%
-        ),
-
-        linear-gradient(
-            135deg,
-            #f5efe7 0%,
-            #ffffff 45%,
-            #f2e8da 100%
-        );
-
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.72) 30%,
+      transparent 65%
+    ),
+    linear-gradient(135deg, #f5efe7 0%, #ffffff 45%, #f2e8da 100%);
 }
-
 
 /* ==========================================================
    LUZ CENTRAL
 ========================================================== */
 
 .hero::before {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  width: 650px;
+  height: 650px;
 
-    width: 650px;
-    height: 650px;
+  top: 50%;
+  left: 50%;
 
-    top: 50%;
-    left: 50%;
+  transform: translate(-50%, -50%);
 
-    transform:
-        translate(-50%, -50%);
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.3) 45%,
+    transparent 72%
+  );
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.95),
-            rgba(255,255,255,.3) 45%,
-            transparent 72%
-        );
+  filter: blur(20px);
 
-    filter: blur(20px);
+  z-index: -3;
 
-    z-index: -3;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 /* ==========================================================
    LUZ DOURADA SUTIL
 ========================================================== */
 
 .hero::after {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  width: 420px;
+  height: 420px;
 
-    width: 420px;
-    height: 420px;
+  top: -180px;
+  right: -130px;
 
-    top: -180px;
-    right: -130px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 164, 76, 0.1), transparent 68%);
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(201,164,76,.10),
-            transparent 68%
-        );
+  filter: blur(30px);
 
-    filter: blur(30px);
-
-    z-index: -3;
-
+  z-index: -3;
 }
-
 
 /* ==========================================================
    MOLDURAS
 ========================================================== */
 
 .hero__frame {
+  position: absolute;
 
-    position: absolute;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .hero__frame--outer {
+  inset: 20px;
 
-    inset: 20px;
+  border: 1px solid rgba(77, 42, 122, 0.08);
 
-    border:
-        1px solid
-        rgba(77,42,122,.08);
-
-    z-index: 1;
-
+  z-index: 1;
 }
-
 
 .hero__frame--inner {
+  inset: 34px;
 
-    inset: 34px;
+  border: 1px solid rgba(201, 164, 76, 0.16);
 
-    border:
-        1px solid
-        rgba(201,164,76,.16);
-
-    z-index: 1;
-
+  z-index: 1;
 }
-
 
 /* ==========================================================
    CANTOS DECORATIVOS
 ========================================================== */
 
 .hero__corner {
+  position: absolute;
 
-    position: absolute;
+  width: 62px;
+  height: 62px;
 
-    width: 62px;
-    height: 62px;
+  z-index: 3;
 
-    z-index: 3;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .hero__corner::before,
 .hero__corner::after {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
-
-    display: block;
-
+  display: block;
 }
-
 
 .hero__corner::before {
+  width: 62px;
+  height: 1px;
 
-    width: 62px;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            #c9a44c,
-            rgba(201,164,76,0)
-        );
-
+  background: linear-gradient(to right, #c9a44c, rgba(201, 164, 76, 0));
 }
-
 
 .hero__corner::after {
+  width: 1px;
+  height: 62px;
 
-    width: 1px;
-    height: 62px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #c9a44c,
-            rgba(201,164,76,0)
-        );
-
+  background: linear-gradient(to bottom, #c9a44c, rgba(201, 164, 76, 0));
 }
-
 
 .hero__corner--tl {
-
-    top: 34px;
-    left: 34px;
-
+  top: 34px;
+  left: 34px;
 }
-
 
 .hero__corner--tr {
+  top: 34px;
+  right: 34px;
 
-    top: 34px;
-    right: 34px;
-
-    transform:
-        rotate(90deg);
-
+  transform: rotate(90deg);
 }
-
 
 .hero__corner--bl {
+  bottom: 34px;
+  left: 34px;
 
-    bottom: 34px;
-    left: 34px;
-
-    transform:
-        rotate(-90deg);
-
+  transform: rotate(-90deg);
 }
-
 
 .hero__corner--br {
+  bottom: 34px;
+  right: 34px;
 
-    bottom: 34px;
-    right: 34px;
-
-    transform:
-        rotate(180deg);
-
+  transform: rotate(180deg);
 }
-
 
 /* ==========================================================
    CÍRCULOS DECORATIVOS
 ========================================================== */
 
 .hero__circle {
+  position: absolute;
 
-    position: absolute;
+  border-radius: 50%;
 
-    border-radius: 50%;
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 .hero__circle--large {
+  width: 520px;
+  height: 520px;
 
-    width: 520px;
-    height: 520px;
+  right: -330px;
+  top: 50%;
 
-    right: -330px;
-    top: 50%;
+  transform: translateY(-50%);
 
-    transform:
-        translateY(-50%);
-
-    border:
-        1px solid
-        rgba(77,42,122,.055);
-
+  border: 1px solid rgba(77, 42, 122, 0.055);
 }
-
 
 .hero__circle--small {
+  width: 230px;
+  height: 230px;
 
-    width: 230px;
-    height: 230px;
+  left: -125px;
+  bottom: 8%;
 
-    left: -125px;
-    bottom: 8%;
-
-    border:
-        1px solid
-        rgba(201,164,76,.12);
-
+  border: 1px solid rgba(201, 164, 76, 0.12);
 }
-
 
 /* ==========================================================
    PONTOS
 ========================================================== */
 
 .hero__dot {
+  position: absolute;
 
-    position: absolute;
+  width: 5px;
+  height: 5px;
 
-    width: 5px;
-    height: 5px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: #c9a44c;
 
-    background:
-        #c9a44c;
+  opacity: 0.4;
 
-    opacity: .4;
-
-    transition:
-        transform .7s ease,
-        opacity .5s ease;
-
+  transition:
+    transform 0.7s ease,
+    opacity 0.5s ease;
 }
-
 
 .hero__dot--one {
-
-    top: 21%;
-    left: 17%;
-
+  top: 21%;
+  left: 17%;
 }
-
 
 .hero__dot--two {
-
-    top: 29%;
-    right: 17%;
-
+  top: 29%;
+  right: 17%;
 }
-
 
 .hero__dot--three {
-
-    bottom: 23%;
-    left: 19%;
-
+  bottom: 23%;
+  left: 19%;
 }
-
 
 .hero__dot--four {
-
-    bottom: 18%;
-    right: 18%;
-
+  bottom: 18%;
+  right: 18%;
 }
-
 
 .hero:hover .hero__dot {
-
-    opacity: .85;
-
+  opacity: 0.85;
 }
-
 
 .hero:hover .hero__dot--one {
-
-    transform:
-        translate(6px,-6px);
-
+  transform: translate(6px, -6px);
 }
-
 
 .hero:hover .hero__dot--two {
-
-    transform:
-        translate(-6px,5px);
-
+  transform: translate(-6px, 5px);
 }
-
 
 .hero:hover .hero__dot--three {
-
-    transform:
-        translate(5px,4px);
-
+  transform: translate(5px, 4px);
 }
-
 
 .hero:hover .hero__dot--four {
-
-    transform:
-        translate(-5px,-4px);
-
+  transform: translate(-5px, -4px);
 }
-
 
 /* ==========================================================
    FLORES — APENAS DETALHES
 ========================================================== */
 
 .hero__floral {
+  position: absolute;
 
-    position: absolute;
+  z-index: 4;
 
-    z-index: 4;
+  width: 105px;
 
-    width: 105px;
+  opacity: 0.38;
 
-    opacity: .38;
+  pointer-events: none;
 
-    pointer-events: none;
-
-    transition:
-        transform 1s
-        cubic-bezier(.22,1,.36,1),
-        opacity .6s ease;
-
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
 }
-
 
 .hero__floral img {
+  display: block;
 
-    display: block;
+  width: 100%;
 
-    width: 100%;
-
-    height: auto;
-
+  height: auto;
 }
-
 
 .hero__floral--left {
+  left: -22px;
+  bottom: 17%;
 
-    left: -22px;
-    bottom: 17%;
-
-    transform:
-        rotate(-25deg);
-
+  transform: rotate(-25deg);
 }
-
 
 .hero__floral--right {
+  right: -22px;
+  top: 16%;
 
-    right: -22px;
-    top: 16%;
-
-    transform:
-        rotate(25deg);
-
+  transform: rotate(25deg);
 }
-
 
 .hero:hover .hero__floral--left {
+  transform: translate(9px, -7px) rotate(-19deg);
 
-    transform:
-        translate(9px,-7px)
-        rotate(-19deg);
-
-    opacity: .58;
-
+  opacity: 0.58;
 }
-
 
 .hero:hover .hero__floral--right {
+  transform: translate(-9px, 7px) rotate(19deg);
 
-    transform:
-        translate(-9px,7px)
-        rotate(19deg);
-
-    opacity: .58;
-
+  opacity: 0.58;
 }
-
 
 /* ==========================================================
    CONTEÚDO
 ========================================================== */
 
 .hero__content {
+  position: relative;
 
-    position: relative;
+  z-index: 10;
 
-    z-index: 10;
+  width: min(800px, 94%);
 
-    width:
-        min(800px, 94%);
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    align-items: center;
-
+  align-items: center;
 }
-
 
 /* ==========================================================
    EYEBROW
 ========================================================== */
 
 .hero__eyebrow {
+  margin: 0 0 1rem;
 
-    margin:
-        0 0 1rem;
+  color: #b8892c;
 
-    color:
-        #b8892c;
+  font-size: 0.63rem;
 
-    font-size:
-        .63rem;
+  font-weight: 500;
 
-    font-weight:
-        500;
+  letter-spacing: 0.42rem;
 
-    letter-spacing:
-        .42rem;
+  text-transform: uppercase;
 
-    text-transform:
-        uppercase;
-
-    transition:
-        letter-spacing .6s ease;
-
+  transition: letter-spacing 0.6s ease;
 }
-
 
 .hero:hover .hero__eyebrow {
-
-    letter-spacing:
-        .52rem;
-
+  letter-spacing: 0.52rem;
 }
-
 
 /* ==========================================================
    MONOGRAMA
 ========================================================== */
 
 .hero__monogram {
+  position: relative;
 
-    position: relative;
+  width: 175px;
+  height: 175px;
 
-    width: 175px;
-    height: 175px;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
-
-    transition:
-        transform .8s
-        cubic-bezier(.22,1,.36,1);
-
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .hero__monogram::before {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  inset: 3px;
 
-    inset: 3px;
+  border-radius: 50%;
 
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(201,164,76,.20);
-
+  border: 1px solid rgba(201, 164, 76, 0.2);
 }
-
 
 .hero__monogram::after {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  inset: 13px;
 
-    inset: 13px;
+  border-radius: 50%;
 
-    border-radius: 50%;
-
-    border:
-        1px dashed
-        rgba(77,42,122,.10);
-
+  border: 1px dashed rgba(77, 42, 122, 0.1);
 }
-
 
 .hero__monogram-ring {
+  position: absolute;
 
-    position: absolute;
+  inset: 21px;
 
-    inset: 21px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  border: 1px solid rgba(201, 164, 76, 0.42);
 
-    border:
-        1px solid
-        rgba(201,164,76,.42);
-
-    transition:
-        transform 1s ease;
-
+  transition: transform 1s ease;
 }
-
 
 .hero__monogram img {
+  position: relative;
 
-    position: relative;
+  z-index: 3;
 
-    z-index: 3;
+  width: 112px;
+  height: 112px;
 
-    width: 112px;
-    height: 112px;
+  object-fit: contain;
 
-    object-fit: contain;
-
-    transition:
-        transform .7s ease,
-        filter .7s ease;
-
+  transition:
+    transform 0.7s ease,
+    filter 0.7s ease;
 }
-
 
 .hero:hover .hero__monogram {
-
-    transform:
-        translateY(-6px);
-
+  transform: translateY(-6px);
 }
-
 
 .hero:hover .hero__monogram-ring {
-
-    transform:
-        rotate(25deg);
-
+  transform: rotate(25deg);
 }
-
 
 .hero:hover .hero__monogram img {
+  transform: scale(1.06);
 
-    transform:
-        scale(1.06);
-
-    filter:
-        drop-shadow(
-            0 12px 22px
-            rgba(77,42,122,.13)
-        );
-
+  filter: drop-shadow(0 12px 22px rgba(77, 42, 122, 0.13));
 }
-
 
 /* ==========================================================
    DIVISOR
 ========================================================== */
 
 .hero__divider {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 0.8rem;
 
-    gap: .8rem;
+  width: 190px;
 
-    width: 190px;
-
-    margin:
-        .8rem 0 1.4rem;
-
+  margin: 0.8rem 0 1.4rem;
 }
-
 
 .hero__divider span {
+  flex: 1;
 
-    flex: 1;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(201,164,76,.65)
-        );
-
+  background: linear-gradient(to right, transparent, rgba(201, 164, 76, 0.65));
 }
-
 
 .hero__divider span:last-child {
-
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            rgba(201,164,76,.65)
-        );
-
+  background: linear-gradient(to left, transparent, rgba(201, 164, 76, 0.65));
 }
-
 
 .hero__divider i {
+  color: #c9a44c;
 
-    color:
-        #c9a44c;
+  font-size: 0.55rem;
 
-    font-size:
-        .55rem;
-
-    font-style:
-        normal;
-
+  font-style: normal;
 }
-
 
 /* ==========================================================
    VERSÍCULO
 ========================================================== */
 
 .hero__verse {
+  max-width: 590px;
 
-    max-width:
-        590px;
+  margin: 0;
 
-    margin: 0;
+  color: #756579;
 
-    color:
-        #756579;
+  font-family: Georgia, "Times New Roman", serif;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+  font-size: 0.9rem;
 
-    font-size:
-        .9rem;
+  font-style: italic;
 
-    font-style:
-        italic;
-
-    line-height:
-        1.9;
-
+  line-height: 1.9;
 }
-
 
 /* ==========================================================
    NOMES
 ========================================================== */
 
 .hero__title {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 0.32em;
 
-    gap:
-        .32em;
+  margin: 1.45rem 0 0.9rem;
 
-    margin:
-        1.45rem 0 .9rem;
+  color: #4d2a7a;
 
-    color:
-        #4d2a7a;
+  font-family: var(--font-title);
 
-    font-family:
-        var(--font-title);
+  font-size: clamp(3.6rem, 8vw, 6.6rem);
 
-    font-size:
-        clamp(3.6rem,8vw,6.6rem);
+  font-weight: 400;
 
-    font-weight:
-        400;
-
-    line-height:
-        .9;
-
+  line-height: 0.9;
 }
-
 
 .hero__title span {
-
-    transition:
-        transform .55s
-        cubic-bezier(.22,1,.36,1);
-
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .hero__title span:first-child {
-
-    transform-origin:
-        right center;
-
+  transform-origin: right center;
 }
-
 
 .hero__title span:last-child {
-
-    transform-origin:
-        left center;
-
+  transform-origin: left center;
 }
-
 
 .hero:hover .hero__title span:first-child {
-
-    transform:
-        translateX(-4px);
-
+  transform: translateX(-4px);
 }
-
 
 .hero:hover .hero__title span:last-child {
-
-    transform:
-        translateX(4px);
-
+  transform: translateX(4px);
 }
-
 
 .hero__title strong {
+  color: #c9a44c;
 
-    color:
-        #c9a44c;
+  font-family: Georgia, serif;
 
-    font-family:
-        Georgia,
-        serif;
+  font-size: 0.46em;
 
-    font-size:
-        .46em;
+  font-weight: 400;
 
-    font-weight:
-        400;
-
-    transition:
-        transform .6s
-        cubic-bezier(.22,1,.36,1);
-
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .hero:hover .hero__title strong {
-
-    transform:
-        scale(1.15)
-        rotate(7deg);
-
+  transform: scale(1.15) rotate(7deg);
 }
-
 
 /* ==========================================================
    DATA
 ========================================================== */
 
 .hero__date {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 1rem;
 
-    gap:
-        1rem;
-
-    margin: 0;
-
+  margin: 0;
 }
-
 
 .hero__date span {
+  width: 42px;
 
-    width: 42px;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            rgba(201,164,76,.6)
-        );
-
+  background: linear-gradient(to right, transparent, rgba(201, 164, 76, 0.6));
 }
-
 
 .hero__date span:last-child {
-
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            rgba(201,164,76,.6)
-        );
-
+  background: linear-gradient(to left, transparent, rgba(201, 164, 76, 0.6));
 }
-
 
 .hero__date p {
+  margin: 0;
 
-    margin: 0;
+  color: #b8892c;
 
-    color:
-        #b8892c;
+  font-size: 0.67rem;
 
-    font-size:
-        .67rem;
+  font-weight: 500;
 
-    font-weight:
-        500;
+  letter-spacing: 0.34rem;
 
-    letter-spacing:
-        .34rem;
-
-    text-transform:
-        uppercase;
-
+  text-transform: uppercase;
 }
-
 
 /* ==========================================================
    COUNTDOWN
 ========================================================== */
 
 .hero__countdown {
+  position: relative;
 
-    position: relative;
+  display: flex;
 
-    display: flex;
+  align-items: stretch;
 
-    align-items: stretch;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 0;
 
-    gap: 0;
+  margin-top: 2.35rem;
 
-    margin-top:
-        2.35rem;
+  padding: 0.55rem 0.65rem;
 
-    padding:
-        .55rem .65rem;
+  border: 1px solid rgba(201, 164, 76, 0.24);
 
-    border:
-        1px solid
-        rgba(201,164,76,.24);
+  border-radius: 4px;
 
-    border-radius:
-        4px;
+  background: rgba(255, 255, 255, 0.42);
 
-    background:
-        rgba(255,255,255,.42);
+  backdrop-filter: blur(14px);
 
-    backdrop-filter:
-        blur(14px);
-
-    box-shadow:
-
-        0 15px 45px
-        rgba(77,42,122,.055),
-
-        inset 0 1px 0
-        rgba(255,255,255,.8);
-
+  box-shadow:
+    0 15px 45px rgba(77, 42, 122, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-
 
 /* brilho interno */
 
 .hero__countdown::before {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  inset: 4px;
 
-    inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
 
-    border:
-        1px solid
-        rgba(255,255,255,.65);
-
-    pointer-events: none;
-
+  pointer-events: none;
 }
-
 
 /* ==========================================================
    ITEM
 ========================================================== */
 
 .countdown__item {
+  position: relative;
 
-    position: relative;
+  min-width: 88px;
 
-    min-width: 88px;
+  padding: 0.9rem 0.85rem;
 
-    padding:
-        .9rem .85rem;
-
-    transition:
-        background .45s ease,
-        transform .45s
-        cubic-bezier(.22,1,.36,1);
-
+  transition:
+    background 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .countdown__item:hover {
+  transform: translateY(-4px);
 
-    transform:
-        translateY(-4px);
-
-    background:
-        rgba(255,255,255,.62);
-
+  background: rgba(255, 255, 255, 0.62);
 }
-
 
 /* ==========================================================
    NÚMERO
 ========================================================== */
 
 .countdown__item span {
+  display: block;
 
-    display: block;
+  color: #4d2a7a;
 
-    color:
-        #4d2a7a;
+  font-family: var(--font-title);
 
-    font-family:
-        var(--font-title);
+  font-size: 2.25rem;
 
-    font-size:
-        2.25rem;
+  font-weight: 400;
 
-    font-weight:
-        400;
+  line-height: 1;
 
-    line-height:
-        1;
+  font-variant-numeric: tabular-nums;
 
-    font-variant-numeric:
-        tabular-nums;
-
-    transition:
-        color .3s ease,
-        transform .3s ease;
-
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
-
 
 .countdown__item:hover span {
+  color: #5e348f;
 
-    color:
-        #5e348f;
-
-    transform:
-        scale(1.04);
-
+  transform: scale(1.04);
 }
-
 
 /* ==========================================================
    LABEL
 ========================================================== */
 
 .countdown__item small {
+  display: block;
 
-    display: block;
+  margin-top: 0.55rem;
 
-    margin-top:
-        .55rem;
+  color: #a58f9d;
 
-    color:
-        #a58f9d;
+  font-size: 0.55rem;
 
-    font-size:
-        .55rem;
+  font-weight: 500;
 
-    font-weight:
-        500;
+  letter-spacing: 0.16rem;
 
-    letter-spacing:
-        .16rem;
-
-    text-transform:
-        uppercase;
-
+  text-transform: uppercase;
 }
-
 
 /* ==========================================================
    SEPARADORES
 ========================================================== */
 
 .countdown__separator {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  padding: 0 0.05rem;
 
-    padding:
-        0 .05rem;
+  color: #c9a44c;
 
-    color:
-        #c9a44c;
+  font-family: Georgia, serif;
 
-    font-family:
-        Georgia,
-        serif;
+  font-size: 1.2rem;
 
-    font-size:
-        1.2rem;
+  opacity: 0.7;
 
-    opacity:
-        .7;
-
-    animation:
-        countdownPulse
-        2s
-        ease-in-out
-        infinite;
-
+  animation: countdownPulse 2s ease-in-out infinite;
 }
-
 
 @keyframes countdownPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
 
-    0%,
-    100% {
-
-        opacity: .45;
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-    }
-
+  50% {
+    opacity: 1;
+  }
 }
-
 
 /* ==========================================================
    BOTÃO
 ========================================================== */
 
 .hero__discover {
-
-    margin-top:
-        2.7rem;
-
+  margin-top: 2.7rem;
 }
-
 
 /* ==========================================================
    BUTTON
 ========================================================== */
 
 .hero__button {
+  position: relative;
 
-    position: relative;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  gap: 1rem;
 
-    gap: 1rem;
+  min-width: 250px;
 
-    min-width: 250px;
+  padding: 1rem 1.4rem;
 
-    padding:
-        1rem 1.4rem;
+  border: 1px solid rgba(201, 164, 76, 0.38);
 
-    border:
-        1px solid
-        rgba(201,164,76,.38);
+  border-radius: 999px;
 
-    border-radius:
-        999px;
+  background: linear-gradient(
+    135deg,
+    rgba(77, 42, 122, 0.96),
+    rgba(94, 52, 143, 0.92)
+  );
 
-    background:
+  color: white;
 
-        linear-gradient(
-            135deg,
-            rgba(77,42,122,.96),
-            rgba(94,52,143,.92)
-        );
+  cursor: pointer;
 
-    color:
-        white;
+  overflow: hidden;
 
-    cursor:
-        pointer;
+  box-shadow:
+    0 12px 30px rgba(77, 42, 122, 0.16),
+    0 2px 0 rgba(255, 255, 255, 0.15) inset;
 
-    overflow:
-        hidden;
-
-    box-shadow:
-
-        0 12px 30px
-        rgba(77,42,122,.16),
-
-        0 2px 0
-        rgba(255,255,255,.15)
-        inset;
-
-    transition:
-
-        transform .45s
-        cubic-bezier(.22,1,.36,1),
-
-        box-shadow .45s ease,
-
-        border-color .45s ease;
-
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
 }
-
 
 /* brilho passando */
 
 .hero__button::before {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  top: 0;
+  bottom: 0;
 
-    top: 0;
-    bottom: 0;
+  left: -80%;
 
-    left: -80%;
+  width: 55%;
 
-    width: 55%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
 
-    background:
+  transform: skewX(-20deg);
 
-        linear-gradient(
-            100deg,
-            transparent,
-            rgba(255,255,255,.28),
-            transparent
-        );
-
-    transform:
-        skewX(-20deg);
-
-    transition:
-        left .8s ease;
-
+  transition: left 0.8s ease;
 }
-
 
 /* brilho central */
 
 .hero__button::after {
+  content: "";
 
-    content: "";
+  position: absolute;
 
-    position: absolute;
+  width: 90px;
+  height: 90px;
 
-    width: 90px;
-    height: 90px;
+  right: -45px;
+  top: -45px;
 
-    right: -45px;
-    top: -45px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
 
-    background:
-        rgba(255,255,255,.08);
-
-    transition:
-        transform .6s ease;
-
+  transition: transform 0.6s ease;
 }
-
 
 .hero__button:hover {
+  transform: translateY(-5px);
 
-    transform:
-        translateY(-5px);
+  border-color: rgba(201, 164, 76, 0.72);
 
-    border-color:
-        rgba(201,164,76,.72);
-
-    box-shadow:
-
-        0 20px 45px
-        rgba(77,42,122,.25),
-
-        0 2px 0
-        rgba(255,255,255,.2)
-        inset;
-
+  box-shadow:
+    0 20px 45px rgba(77, 42, 122, 0.25),
+    0 2px 0 rgba(255, 255, 255, 0.2) inset;
 }
-
 
 .hero__button:hover::before {
-
-    left:
-        125%;
-
+  left: 125%;
 }
-
 
 .hero__button:hover::after {
-
-    transform:
-        scale(2.2);
-
+  transform: scale(2.2);
 }
-
 
 /* ==========================================================
    BUTTON LINES
 ========================================================== */
 
 .hero__button-line {
+  width: 27px;
 
-    width: 27px;
+  height: 1px;
 
-    height: 1px;
+  background: rgba(255, 255, 255, 0.5);
 
-    background:
-        rgba(255,255,255,.5);
-
-    transition:
-        width .5s ease,
-        background .5s ease;
-
+  transition:
+    width 0.5s ease,
+    background 0.5s ease;
 }
-
 
 .hero__button:hover .hero__button-line {
+  width: 38px;
 
-    width: 38px;
-
-    background:
-        #e5ca88;
-
+  background: #e5ca88;
 }
-
 
 /* ==========================================================
    BUTTON TEXT
 ========================================================== */
 
 .hero__button-text {
+  position: relative;
 
-    position: relative;
+  z-index: 2;
 
-    z-index: 2;
+  color: #ffffff;
 
-    color:
-        #ffffff;
+  font-size: 0.65rem;
 
-    font-size:
-        .65rem;
+  font-weight: 500;
 
-    font-weight:
-        500;
+  letter-spacing: 0.22rem;
 
-    letter-spacing:
-        .22rem;
+  text-transform: uppercase;
 
-    text-transform:
-        uppercase;
-
-    white-space:
-        nowrap;
-
+  white-space: nowrap;
 }
-
 
 /* ==========================================================
    BUTTON ARROW
 ========================================================== */
 
 .hero__button-arrow {
+  position: relative;
 
-    position: relative;
+  z-index: 2;
 
-    z-index: 2;
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  width: 25px;
+  height: 25px;
 
-    width: 25px;
-    height: 25px;
+  border: 1px solid rgba(229, 202, 136, 0.5);
 
-    border:
-        1px solid
-        rgba(229,202,136,.5);
+  border-radius: 50%;
 
-    border-radius:
-        50%;
+  color: #e5ca88;
 
-    color:
-        #e5ca88;
+  font-size: 0.85rem;
 
-    font-size:
-        .85rem;
+  animation: heroArrow 2s ease-in-out infinite;
 
-    animation:
-        heroArrow
-        2s
-        ease-in-out
-        infinite;
-
-    transition:
-        transform .4s ease,
-        background .4s ease;
-
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease;
 }
-
 
 .hero__button:hover .hero__button-arrow {
+  transform: translateY(3px);
 
-    transform:
-        translateY(3px);
-
-    background:
-        rgba(229,202,136,.12);
-
+  background: rgba(229, 202, 136, 0.12);
 }
-
 
 /* ==========================================================
    ARROW ANIMATION
 ========================================================== */
 
 @keyframes heroArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
 
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(4px);
-
-    }
-
+  50% {
+    transform: translateY(4px);
+  }
 }
-
 
 /* ==========================================================
    SCROLL INDICATOR
 ========================================================== */
 
 .hero__scroll {
+  position: absolute;
 
-    position: absolute;
+  z-index: 10;
 
-    z-index: 10;
+  left: 50%;
+  bottom: 28px;
 
-    left: 50%;
-    bottom: 28px;
+  transform: translateX(-50%);
 
-    transform:
-        translateX(-50%);
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  gap: 0.65rem;
 
-    gap: .65rem;
-
-    opacity: .65;
-
+  opacity: 0.65;
 }
-
 
 .hero__scroll-line {
+  width: 32px;
 
-    width: 32px;
+  height: 1px;
 
-    height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            #c9a44c
-        );
-
+  background: linear-gradient(to right, transparent, #c9a44c);
 }
-
 
 .hero__scroll small {
+  color: #9a8995;
 
-    color:
-        #9a8995;
+  font-size: 0.48rem;
 
-    font-size:
-        .48rem;
+  letter-spacing: 0.2rem;
 
-    letter-spacing:
-        .2rem;
-
-    text-transform:
-        uppercase;
-
+  text-transform: uppercase;
 }
-
 
 /* ==========================================================
    MOBILE
 ========================================================== */
 
 @media (max-width: 700px) {
+  .hero {
+    padding: 4rem 1rem;
+  }
 
-    .hero {
+  .hero__frame--outer {
+    inset: 11px;
+  }
 
-        padding:
-            4rem 1rem;
+  .hero__frame--inner {
+    inset: 21px;
+  }
 
-    }
+  .hero__corner {
+    width: 36px;
+    height: 36px;
+  }
 
+  .hero__corner::before {
+    width: 36px;
+  }
 
-    .hero__frame--outer {
+  .hero__corner::after {
+    height: 36px;
+  }
 
-        inset: 11px;
+  .hero__corner--tl {
+    top: 21px;
+    left: 21px;
+  }
 
-    }
+  .hero__corner--tr {
+    top: 21px;
+    right: 21px;
+  }
 
+  .hero__corner--bl {
+    bottom: 21px;
+    left: 21px;
+  }
 
-    .hero__frame--inner {
+  .hero__corner--br {
+    bottom: 21px;
+    right: 21px;
+  }
 
-        inset: 21px;
+  .hero__monogram {
+    width: 145px;
+    height: 145px;
+  }
 
-    }
+  .hero__monogram img {
+    width: 92px;
+    height: 92px;
+  }
 
+  .hero__verse {
+    max-width: 340px;
 
-    .hero__corner {
+    font-size: 0.78rem;
+  }
 
-        width: 36px;
-        height: 36px;
+  .hero__title {
+    font-size: clamp(3rem, 14vw, 4.7rem);
+  }
 
-    }
+  .hero__countdown {
+    width: min(100%, 360px);
 
+    padding: 0.4rem;
+  }
 
-    .hero__corner::before {
+  .countdown__item {
+    min-width: 0;
 
-        width: 36px;
+    flex: 1;
 
-    }
+    padding: 0.75rem 0.3rem;
+  }
 
+  .countdown__item span {
+    font-size: 1.55rem;
+  }
 
-    .hero__corner::after {
+  .countdown__item small {
+    font-size: 0.46rem;
 
-        height: 36px;
+    letter-spacing: 0.08rem;
+  }
 
-    }
+  .countdown__separator {
+    font-size: 0.8rem;
+  }
 
+  .hero__button {
+    min-width: 225px;
 
-    .hero__corner--tl {
+    padding: 0.85rem 1rem;
+  }
 
-        top: 21px;
-        left: 21px;
+  .hero__button-text {
+    font-size: 0.57rem;
 
-    }
+    letter-spacing: 0.16rem;
+  }
 
+  .hero__button-line {
+    width: 20px;
+  }
 
-    .hero__corner--tr {
+  .hero__floral {
+    width: 72px;
 
-        top: 21px;
-        right: 21px;
+    opacity: 0.28;
+  }
 
-    }
+  .hero__floral--left {
+    left: -27px;
+  }
 
+  .hero__floral--right {
+    right: -27px;
+  }
 
-    .hero__corner--bl {
-
-        bottom: 21px;
-        left: 21px;
-
-    }
-
-
-    .hero__corner--br {
-
-        bottom: 21px;
-        right: 21px;
-
-    }
-
-
-    .hero__monogram {
-
-        width: 145px;
-        height: 145px;
-
-    }
-
-
-    .hero__monogram img {
-
-        width: 92px;
-        height: 92px;
-
-    }
-
-
-    .hero__verse {
-
-        max-width:
-            340px;
-
-        font-size:
-            .78rem;
-
-    }
-
-
-    .hero__title {
-
-        font-size:
-            clamp(3rem,14vw,4.7rem);
-
-    }
-
-
-    .hero__countdown {
-
-        width:
-            min(100%,360px);
-
-        padding:
-            .4rem;
-
-    }
-
-
-    .countdown__item {
-
-        min-width:
-            0;
-
-        flex: 1;
-
-        padding:
-            .75rem .3rem;
-
-    }
-
-
-    .countdown__item span {
-
-        font-size:
-            1.55rem;
-
-    }
-
-
-    .countdown__item small {
-
-        font-size:
-            .46rem;
-
-        letter-spacing:
-            .08rem;
-
-    }
-
-
-    .countdown__separator {
-
-        font-size:
-            .8rem;
-
-    }
-
-
-    .hero__button {
-
-        min-width:
-            225px;
-
-        padding:
-            .85rem 1rem;
-
-    }
-
-
-    .hero__button-text {
-
-        font-size:
-            .57rem;
-
-        letter-spacing:
-            .16rem;
-
-    }
-
-
-    .hero__button-line {
-
-        width:
-            20px;
-
-    }
-
-
-    .hero__floral {
-
-        width:
-            72px;
-
-        opacity:
-            .28;
-
-    }
-
-
-    .hero__floral--left {
-
-        left:
-            -27px;
-
-    }
-
-
-    .hero__floral--right {
-
-        right:
-            -27px;
-
-    }
-
-
-    .hero__scroll {
-
-        display:
-            none;
-
-    }
-
+  .hero__scroll {
+    display: none;
+  }
 }
-
 
 /* ==========================================================
    ALTURA PEQUENA
 ========================================================== */
 
 @media (max-height: 720px) {
+  .hero {
+    padding-top: 2rem;
 
-    .hero {
+    padding-bottom: 2rem;
+  }
 
-        padding-top:
-            2rem;
+  .hero__eyebrow {
+    margin-bottom: 0.35rem;
+  }
 
-        padding-bottom:
-            2rem;
+  .hero__monogram {
+    width: 120px;
 
-    }
+    height: 120px;
+  }
 
+  .hero__monogram img {
+    width: 78px;
 
-    .hero__eyebrow {
+    height: 78px;
+  }
 
-        margin-bottom:
-            .35rem;
+  .hero__divider {
+    margin: 0.45rem 0 0.8rem;
+  }
 
-    }
+  .hero__title {
+    margin-top: 0.9rem;
+  }
 
+  .hero__countdown {
+    margin-top: 1.4rem;
+  }
 
-    .hero__monogram {
-
-        width:
-            120px;
-
-        height:
-            120px;
-
-    }
-
-
-    .hero__monogram img {
-
-        width:
-            78px;
-
-        height:
-            78px;
-
-    }
-
-
-    .hero__divider {
-
-        margin:
-            .45rem 0 .8rem;
-
-    }
-
-
-    .hero__title {
-
-        margin-top:
-            .9rem;
-
-    }
-
-
-    .hero__countdown {
-
-        margin-top:
-            1.4rem;
-
-    }
-
-
-    .hero__discover {
-
-        margin-top:
-            1.5rem;
-
-    }
-
+  .hero__discover {
+    margin-top: 1.5rem;
+  }
 }

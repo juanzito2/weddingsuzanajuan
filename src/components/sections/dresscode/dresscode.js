@@ -483,7 +483,7 @@ export function initDresscode() {
             swatches.find(
                 swatch =>
                     swatch.dataset.color
-                    .toLowerCase() ===
+                        .toLowerCase() ===
                     color.toLowerCase()
             );
 
@@ -674,19 +674,19 @@ export function initDresscode() {
 
             r:
                 parseInt(
-                    clean.substring(0,2),
+                    clean.substring(0, 2),
                     16
                 ),
 
             g:
                 parseInt(
-                    clean.substring(2,4),
+                    clean.substring(2, 4),
                     16
                 ),
 
             b:
                 parseInt(
-                    clean.substring(4,6),
+                    clean.substring(4, 6),
                     16
                 )
 

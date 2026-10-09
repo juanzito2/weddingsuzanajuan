@@ -34,4 +34,6 @@
 
 @import url("../components/sections/official-gallery/official-gallery.css");
 
+@import url("../components/sections/official-gallery/official-gallery-responsive.css");
+
 @import url("../components/sections/guests-gallery/guests-gallery.css");

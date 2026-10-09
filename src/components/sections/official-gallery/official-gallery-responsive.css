@@ -1,389 +1,157 @@
-/**
- * ============================================================
- * SUZANA & JUAN
- * OFFICIAL GALLERY — RESPONSIVE
- * Chapter 01: Junto al mar
- * ============================================================
- *
- * Desktop  → editorial amplo
- * Tablet   → composição reduzida
- * Mobile   → experiência própria
- *
- * IMPORTANTE:
- * Os seletores começam com .official-gallery para superar
- * corretamente as regras base importadas depois/antes.
- * ============================================================
- */
-
-
 /* ============================================================
-   LARGE DESKTOP
+   OFFICIAL GALLERY
+   RESPONSIVE
    ============================================================ */
-
-@media (min-width: 1600px) {
-
-    .official-gallery {
-        --gallery-page: 120px;
-    }
-
-
-    .official-gallery .gallery-photo--opening {
-        max-width: 1380px;
-    }
-
-
-    .official-gallery .gallery-photo--connection {
-        max-width: 1250px;
-    }
-
-
-    .official-gallery .gallery-photo--sky {
-        max-width: 980px;
-    }
-
-}
-
-
-/* ============================================================
-   LAPTOP
-   ============================================================ */
-
-@media (max-width: 1280px) {
-
-    .official-gallery {
-        --gallery-page: 65px;
-    }
-
-
-    /* COVER */
-
-    .official-gallery .gallery-cover {
-        padding-top: 75px;
-        padding-bottom: 75px;
-    }
-
-
-    .official-gallery .gallery-cover__top {
-        margin-bottom: 100px;
-    }
-
-
-    .official-gallery .gallery-cover__bottom {
-        margin-top: 100px;
-    }
-
-
-    /* CHAPTER */
-
-    .official-gallery .gallery-chapter-heading {
-        grid-template-columns:
-            0.35fr
-            1.4fr
-            0.45fr;
-
-        gap: 45px;
-    }
-
-
-    /* PHOTO 01 */
-
-    .official-gallery .gallery-scene--opening {
-        min-height: 1250px;
-    }
-
-
-    .official-gallery .gallery-photo--opening {
-        width: 80vw;
-    }
-
-
-    /* PHOTO 02 */
-
-    .official-gallery .gallery-scene--connection {
-        grid-template-columns:
-            minmax(240px, 0.55fr)
-            minmax(500px, 1.45fr);
-
-        gap: 65px;
-
-        min-height: 1100px;
-    }
-
-
-    /* PHOTO 03 */
-
-    .official-gallery .gallery-scene--sky {
-        min-height: 1500px;
-    }
-
-
-    .official-gallery .gallery-photo--sky,
-    .official-gallery .gallery-sky__footer {
-        width: min(72vw, 880px);
-    }
-
-}
 
 
 /* ============================================================
    TABLET
    ============================================================ */
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
 
     .official-gallery {
-        --gallery-page: 42px;
-    }
-
-
-    /* ========================================================
-       COVER
-       ======================================================== */
-
-    .official-gallery .gallery-cover {
-        min-height: 900px;
-
         padding:
-            70px
-            var(--gallery-page);
+            105px 0
+            125px;
     }
 
 
-    .official-gallery .gallery-cover__top {
-        margin-bottom: 105px;
+    .og-story {
+        width: min(
+            760px,
+            calc(100% - 42px)
+        );
     }
 
 
-    .official-gallery .gallery-cover__title {
-        font-size:
-            clamp(
-                90px,
-                15vw,
-                150px
-            );
+    .og-moment {
+        margin-bottom: 145px;
     }
 
 
-    .official-gallery .gallery-cover__title em {
-        margin-left: 12vw;
+    .og-intro {
+        margin-bottom: 140px;
     }
 
 
-    .official-gallery .gallery-cover__bottom {
-        grid-template-columns:
-            1fr
-            auto;
+    /* 02 — amigos */
 
-        gap: 50px;
-
-        margin-top: 105px;
-    }
-
-
-    .official-gallery .gallery-cover__explore {
-        grid-row: 1 / 3;
-
-        grid-column: 2;
-
-        align-self: center;
-    }
-
-
-    .official-gallery .gallery-cover__date {
-        grid-column: 1;
-    }
-
-
-    /* ========================================================
-       CHAPTER HEADING
-       ======================================================== */
-
-    .official-gallery .gallery-chapter-heading {
-        min-height: 850px;
-
-        grid-template-columns:
-            150px
-            1fr;
-
-        gap: 50px;
-
-        padding:
-            110px
-            var(--gallery-page);
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__aside {
-        grid-column: 2;
-
-        align-self: auto;
-
-        margin: 0;
-
-        flex-direction: row;
-
-        gap: 25px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__content h3 {
-        font-size:
-            clamp(
-                75px,
-                11vw,
-                120px
-            );
-    }
-
-
-    /* ========================================================
-       PHOTO 01
-       ======================================================== */
-
-    .official-gallery .gallery-scene--opening {
-        min-height: 1050px;
-
-        padding:
-            130px
-            var(--gallery-page)
-            180px;
-    }
-
-
-    .official-gallery .gallery-photo--opening {
-        width: 84vw;
-    }
-
-
-    .official-gallery .gallery-opening-copy {
-        bottom: 90px;
-
-        width: 35vw;
-    }
-
-
-    /* ========================================================
-       SEA BREAK
-       ======================================================== */
-
-    .official-gallery .gallery-sea-break {
-        min-height: 650px;
-    }
-
-
-    /* ========================================================
-       PHOTO 02
-       ======================================================== */
-
-    .official-gallery .gallery-scene--connection {
+    .og-moment--friends {
         min-height: auto;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 80px;
-
-        padding:
-            140px
-            var(--gallery-page);
     }
 
 
-    .official-gallery .gallery-connection__intro {
-        width: 65%;
-    }
-
-
-    .official-gallery
-    .gallery-connection__intro p {
-        width: 70%;
-    }
-
-
-    .official-gallery .gallery-photo--connection {
-        width: 90%;
-
-        margin-left: auto;
-    }
-
-
-    .official-gallery
-    .gallery-connection__signature {
+    .og-moment--friends .og-copy {
         position: relative;
 
-        right: auto;
-        bottom: auto;
+        top: auto;
+        left: auto;
 
-        align-self: flex-end;
+        width: 70%;
+
+        margin-bottom: 42px;
     }
 
 
-    /* ========================================================
-       SILENCE
-       ======================================================== */
-
-    .official-gallery .gallery-silence {
-        min-height: 520px;
-
-        gap: 30px;
+    .og-photo--01 {
+        width: 83%;
+        height: 620px;
     }
 
 
-    /* ========================================================
-       PHOTO 03
-       ======================================================== */
+    /* 03 — buquê */
 
-    .official-gallery .gallery-scene--sky {
-        min-height: auto;
+    .og-moment--bouquet {
+        grid-template-columns:
+            30px
+            1fr;
 
-        padding:
-            130px
-            var(--gallery-page)
-            150px;
+        gap:
+            35px
+            25px;
     }
 
 
-    .official-gallery .gallery-photo--sky,
-    .official-gallery .gallery-sky__footer {
-        width: min(78vw, 780px);
+    .og-moment--bouquet .og-copy {
+        grid-column: 2;
+
+        width: 76%;
     }
 
 
-    .official-gallery .gallery-sky__copy {
-        top: 10%;
-
-        left: 8%;
+    .og-photo--02 {
+        height: 590px;
     }
 
 
-    /* ========================================================
-       ARCHIVE
-       ======================================================== */
+    /* 04 — rosa */
 
-    .official-gallery .gallery-archive {
-        padding:
-            130px
-            var(--gallery-page);
+    .og-moment--rose {
+        grid-template-columns:
+            0.8fr
+            1.2fr;
+
+        gap: 50px;
     }
 
 
-    .official-gallery .gallery-archive__header {
-        margin-bottom: 80px;
+    .og-photo--03 {
+        height: 560px;
     }
 
 
-    /* ========================================================
-       GUEST TRANSITION
-       ======================================================== */
+    /* primeiro sim */
 
-    .official-gallery .gallery-guests-transition {
-        min-height: 750px;
+    .og-yes-layout {
+        gap: 45px;
     }
 
+
+    .og-photo--05 {
+        height: 570px;
+    }
+
+
+    /* dupla */
+
+    .og-duo {
+        min-height: 630px;
+    }
+
+
+    .og-photo--06 {
+        width: 68%;
+        height: 535px;
+    }
+
+
+    .og-photo--07 {
+        width: 41%;
+        height: 370px;
+    }
+
+
+    /* castelo */
+
+    .og-moment--castle {
+        gap: 45px;
+    }
+
+
+    .og-photo--08 {
+        height: 590px;
+    }
+
+
+    /* noivado */
+
+    .og-engagement-gallery {
+        grid-template-rows:
+            250px
+            350px
+            530px;
+    }
 }
 
 
@@ -391,1209 +159,510 @@
    MOBILE
    ============================================================ */
 
-@media (max-width: 640px) {
+@media (max-width: 620px) {
 
     .official-gallery {
-        --gallery-page: 22px;
+        padding:
+            85px 0
+            100px;
+    }
 
-        overflow: hidden;
+
+    .og-story {
+        width: calc(100% - 30px);
+    }
+
+
+    .og-moment {
+        margin-bottom: 115px;
+    }
+
+
+    .og-copy h3,
+    .og-section-heading h3,
+    .og-engagement-heading h3 {
+        font-size: clamp(
+            2.15rem,
+            11vw,
+            3.4rem
+        );
     }
 
 
     /* ========================================================
-       COVER
+       01 — abertura
        ======================================================== */
 
-    .official-gallery .gallery-cover {
-        min-height: 100svh;
+    .og-intro {
+        width: calc(100% - 34px);
 
-        align-items: stretch;
+        margin-bottom: 110px;
+    }
+
+
+    .og-intro__title {
+        font-size: clamp(
+            3.6rem,
+            18vw,
+            5.2rem
+        );
+    }
+
+
+    .og-intro__text {
+        width: 90%;
+
+        margin-top: 32px;
+
+        font-size: 1.08rem;
+    }
+
+
+    /* ========================================================
+       02 — amigos
+       ======================================================== */
+
+    .og-moment--friends .og-copy {
+        width: 92%;
+
+        margin-bottom: 35px;
+    }
+
+
+    .og-photo--01 {
+        width: 93%;
+        height: 125vw;
+
+        max-height: 570px;
+    }
+
+
+    /* ========================================================
+       03 — buquê
+       ======================================================== */
+
+    .og-moment--bouquet {
+        grid-template-columns:
+            20px
+            1fr;
+
+        gap:
+            28px
+            13px;
+    }
+
+
+    .og-whisper {
+        font-size: 0.55rem;
+
+        letter-spacing: 0.4em;
+    }
+
+
+    .og-photo--02 {
+        height: 125vw;
+
+        max-height: 570px;
+    }
+
+
+    .og-moment--bouquet .og-copy {
+        width: 100%;
+    }
+
+
+    /* ========================================================
+       04 — rosa
+       ======================================================== */
+
+    .og-moment--rose {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 40px;
+    }
+
+
+    .og-moment--rose .og-copy {
+        width: 92%;
+
+        padding-left: 0;
+    }
+
+
+    .og-frame-wrap {
+        width: 94%;
+
+        margin-left: auto;
 
         padding:
-            32px
-            var(--gallery-page)
+            20px
+            15px
+            0 0;
+    }
+
+
+    .og-frame {
+        left: 15px;
+
+        bottom: 20px;
+    }
+
+
+    .og-photo--03 {
+        height: 125vw;
+
+        max-height: 570px;
+    }
+
+
+    /* ========================================================
+       MAR
+       ======================================================== */
+
+    .og-moment--sea {
+        width: 100%;
+    }
+
+
+    .og-photo--04 {
+        height: 74vw;
+
+        min-height: 270px;
+    }
+
+
+    .og-sea-caption {
+        width: 94%;
+
+        margin-top: 20px;
+
+        gap: 17px;
+    }
+
+
+    .og-sea-caption p {
+        font-size: 1rem;
+    }
+
+
+    /* ========================================================
+       05 — primeiro sim
+       ======================================================== */
+
+    .og-moment--yes {
+        padding:
+            75px 0
+            80px;
+    }
+
+
+    .og-yes-heading {
+        margin-bottom: 42px;
+    }
+
+
+    .og-yes-heading h3 {
+        font-size: clamp(
+            3rem,
+            15vw,
+            4.8rem
+        );
+    }
+
+
+    .og-yes-layout {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 38px;
+    }
+
+
+    .og-photo--05 {
+        width: 95%;
+        height: 115vw;
+
+        max-height: 550px;
+
+        margin: 0 auto;
+    }
+
+
+    .og-yes-layout .og-copy {
+        width: 91%;
+
+        margin: 0 auto;
+    }
+
+
+    /* ========================================================
+       06 — dupla
+       ======================================================== */
+
+    .og-section-heading {
+        width: 92%;
+
+        margin:
+            0 0
+            45px 0;
+    }
+
+
+    .og-duo {
+        min-height: 133vw;
+
+        max-height: 650px;
+    }
+
+
+    .og-photo--06 {
+        width: 78%;
+        height: 104vw;
+
+        max-height: 510px;
+    }
+
+
+    .og-photo--07 {
+        right: 0;
+
+        width: 49%;
+        height: 66vw;
+
+        max-height: 320px;
+
+        border-width: 6px;
+    }
+
+
+    /* ========================================================
+       CASTELO
+       ======================================================== */
+
+    .og-moment--castle {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 38px;
+    }
+
+
+    .og-photo--08 {
+        width: 91%;
+        height: 125vw;
+
+        max-height: 570px;
+    }
+
+
+    .og-moment--castle .og-copy {
+        width: 90%;
+
+        margin-left: auto;
+
+        padding-bottom: 0;
+    }
+
+
+    /* ========================================================
+       07 — tríptico
+       ======================================================== */
+
+    .og-section-heading--right {
+        width: 92%;
+
+        margin:
+            0 0
+            45px auto;
+    }
+
+
+    .og-triptych {
+        grid-template-columns:
+            1.15fr
+            0.85fr;
+
+        grid-template-rows:
+            45vw
+            55vw;
+
+        gap: 10px;
+    }
+
+
+    .og-photo--10 {
+        transform: translateY(-12px);
+    }
+
+
+    /* ========================================================
+       08 — data
+       ======================================================== */
+
+    .og-moment--date {
+        padding:
+            60px 0
             45px;
     }
 
 
-    .official-gallery .gallery-cover::before {
-        width: 115vw;
-        height: 115vw;
-
-        top: 43%;
+    .og-date-heading {
+        margin-bottom: 50px;
     }
 
 
-    .official-gallery .gallery-cover::after {
-        left:
-            var(--gallery-page);
-    }
-
-
-    .official-gallery .gallery-cover__inner {
-        display: flex;
-
-        flex-direction: column;
-
-        min-height:
-            calc(
-                100svh -
-                77px
-            );
-    }
-
-
-    .official-gallery .gallery-cover__top {
-        grid-template-columns:
-            1fr
-            auto;
-
-        margin-bottom: auto;
-
-        font-size: 7px;
-
-        letter-spacing: 0.24em;
-    }
-
-
-    .official-gallery
-    .gallery-cover__top span:nth-child(2) {
-        display: none;
-    }
-
-
-    .official-gallery
-    .gallery-cover__top span:last-child {
-        display: block;
-
-        text-align: right;
-    }
-
-
-    .official-gallery .gallery-cover__ghost {
-        top: 42%;
-
-        font-size: 85vw;
-    }
-
-
-    .official-gallery .gallery-cover__heading {
-        margin-top: 80px;
-    }
-
-
-    .official-gallery .gallery-cover__eyebrow {
-        margin:
-            0
-            0
-            16px
-            2px;
-
-        font-size: 7px;
-
-        letter-spacing: 0.3em;
-    }
-
-
-    .official-gallery .gallery-cover__title {
-        font-size:
-            clamp(
-                72px,
-                24vw,
-                110px
-            );
-
-        line-height: 0.76;
-    }
-
-
-    .official-gallery .gallery-cover__title em {
-        margin-left: 14vw;
-    }
-
-
-    .official-gallery .gallery-cover__title-mark {
-        top: -25px;
-        right: 3px;
-
-        font-size: 28px;
-    }
-
-
-    .official-gallery .gallery-cover__bottom {
-        display: grid;
-
-        grid-template-columns:
-            1fr
-            auto;
-
-        gap:
-            28px
-            20px;
-
-        margin-top: auto;
-
-        padding-top: 80px;
-    }
-
-
-    .official-gallery .gallery-cover__description {
-        max-width: 245px;
-
-        font-size: 16px;
-
-        line-height: 1.45;
-    }
-
-
-    .official-gallery .gallery-cover__explore {
-        grid-column: 2;
-        grid-row: 1 / 3;
-
-        width: 76px;
-        height: 76px;
-
+    .og-date {
         gap: 7px;
 
-        font-size: 6px;
+        font-size: clamp(
+            3.1rem,
+            17vw,
+            5rem
+        );
     }
 
 
-    .official-gallery
-    .gallery-cover__explore-line {
-        height: 15px;
-    }
-
-
-    .official-gallery .gallery-cover__date {
-        grid-column: 1;
-
-        font-size: 18px;
-    }
-
-
-    /* ========================================================
-       CHAPTER INTRO
-       ======================================================== */
-
-    .official-gallery .gallery-chapter-heading {
-        min-height: auto;
-
-        display: block;
-
-        padding:
-            110px
-            var(--gallery-page)
-            100px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading::after {
-        left:
-            var(--gallery-page);
-
-        right:
-            var(--gallery-page);
-
-        bottom: 45px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__number {
-        display: flex;
-
-        align-items: flex-end;
-
-        gap: 14px;
-
-        margin-bottom: 65px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__number span {
-        margin-bottom: 4px;
-
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__number strong {
-        font-size: 95px;
-
-        line-height: 0.65;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__eyebrow {
-        margin-bottom: 16px;
-
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__content h3 {
-        font-size:
-            clamp(
-                67px,
-                20vw,
-                90px
-            );
-
-        line-height: 0.78;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__content h3 em {
-        margin-left: 16vw;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__content p {
-        max-width: 245px;
-
-        margin:
-            42px
-            0
-            0
-            auto;
-
-        font-size: 17px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-heading__aside {
-        display: flex;
-
-        flex-direction: row;
-
-        justify-content: space-between;
-
-        margin-top: 65px;
-
-        font-size: 6px;
-    }
-
-
-    /* ========================================================
-       PHOTO SHARED — MOBILE
-       ======================================================== */
-
-    .official-gallery .gallery-photo__view {
-        /*
-         * No celular não precisamos do círculo "Ver foto".
-         * O toque na fotografia continua abrindo o lightbox.
-         */
-
-        display: none;
-    }
-
-
-    .official-gallery .gallery-photo__media img {
-        /*
-         * Nunca cortar as fotografias.
-         */
-
-        width: 100%;
-        height: auto;
-
-        object-fit: initial;
-    }
-
-
-    /* ========================================================
-       PHOTO 01
-       ======================================================== */
-
-    .official-gallery .gallery-scene--opening {
-        min-height: auto;
-
-        padding:
-            100px
-            var(--gallery-page)
-            115px;
-    }
-
-
-    .official-gallery
-    .gallery-scene__background-number {
-        top: 55px;
-        right: -8%;
-
-        font-size: 72vw;
-    }
-
-
-    .official-gallery .gallery-scene__rail {
-        position: relative;
-
-        top: auto;
-        right: auto;
-
-        justify-content: flex-end;
-
-        margin-bottom: 65px;
-
-        font-size: 6px;
-    }
-
-
-    .official-gallery .gallery-scene__rail i {
-        width: 25px;
-    }
-
-
-    .official-gallery .gallery-opening-heading {
-        width: 90%;
-
-        margin-bottom: 48px;
-    }
-
-
-    .official-gallery
-    .gallery-opening-heading > span {
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-opening-heading p {
-        max-width: 330px;
-
-        font-size:
-            clamp(
-                42px,
-                13vw,
-                60px
-            );
-    }
-
-
-    .official-gallery .gallery-photo--opening {
-        width:
-            calc(
-                100% +
-                var(--gallery-page)
-            );
-
-        margin-left: 0;
-
-        margin-right:
-            calc(
-                var(--gallery-page) *
-                -1
-            );
-
-        box-shadow:
-            0 30px 65px
-            rgba(56, 77, 85, 0.12);
-    }
-
-
-    .official-gallery .gallery-opening-copy {
-        position: relative;
-
-        left: auto;
-        bottom: auto;
-
-        width: 78%;
-
-        margin:
-            55px
-            0
-            0
-            auto;
-    }
-
-
-    .official-gallery
-    .gallery-opening-copy__number {
-        font-size: 6px;
-    }
-
-
-    .official-gallery .gallery-opening-copy p {
-        font-size:
-            clamp(
-                34px,
-                10vw,
-                46px
-            );
-    }
-
-
-    /* ========================================================
-       SEA BREAK
-       ======================================================== */
-
-    .official-gallery .gallery-sea-break {
-        min-height: 540px;
-
-        padding:
-            90px
-            var(--gallery-page);
-    }
-
-
-    .official-gallery
-    .gallery-sea-break::before {
-        width: 115vw;
-        height: 115vw;
-    }
-
-
-    .official-gallery .gallery-sea-break__word {
-        left: -13%;
-
-        font-size: 62vw;
-    }
-
-
-    .official-gallery
-    .gallery-sea-break__content {
-        width: 100%;
-    }
-
-
-    .official-gallery
-    .gallery-sea-break__content > span {
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-sea-break__content p {
-        font-size:
-            clamp(
-                48px,
-                15vw,
-                68px
-            );
-
-        line-height: 0.88;
-    }
-
-
-    .official-gallery
-    .gallery-sea-break__coordinate {
-        right:
-            var(--gallery-page);
-
-        bottom: 28px;
-
-        font-size: 5px;
-    }
-
-
-    /* ========================================================
-       PHOTO 02
-       ======================================================== */
-
-    .official-gallery
-    .gallery-scene--connection {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 55px;
-
-        min-height: auto;
-
-        padding:
-            110px
-            var(--gallery-page)
-            100px;
-    }
-
-
-    .official-gallery
-    .gallery-connection__intro {
-        width: 100%;
-    }
-
-
-    .official-gallery
-    .gallery-editorial__eyebrow {
-        margin-bottom: 18px;
-
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-connection__intro h3 {
-        max-width: 340px;
-
-        font-size:
-            clamp(
-                48px,
-                14vw,
-                66px
-            );
-
-        line-height: 0.87;
-    }
-
-
-    .official-gallery
-    .gallery-connection__intro p {
-        width: 72%;
-
-        margin:
-            35px
-            0
-            0
-            auto;
-
-        font-size: 16px;
-    }
-
-
-    .official-gallery
-    .gallery-photo--connection {
-        width:
-            calc(
-                100% +
-                22px
-            );
-
-        margin-left:
-            -22px;
-
-        box-shadow:
-            0 30px 70px
-            rgba(52, 72, 81, 0.13);
-    }
-
-
-    .official-gallery
-    .gallery-photo__index {
-        top: 13px;
-        left: 14px;
-
-        font-size: 21px;
-    }
-
-
-    .official-gallery
-    .gallery-connection__signature {
-        position: relative;
-
-        right: auto;
-        bottom: auto;
-
-        align-self: flex-end;
-
-        margin-top: 3px;
-
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-connection__signature i {
-        width: 35px;
-    }
-
-
-    /* ========================================================
-       SILENCE
-       ======================================================== */
-
-    .official-gallery .gallery-silence {
-        min-height: 440px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 35px;
-
-        padding:
-            80px
-            var(--gallery-page);
-    }
-
-
-    .official-gallery
-    .gallery-silence__line {
-        width: 55%;
-
-        align-self: flex-start;
-
-        background:
-            linear-gradient(
-                to right,
-                rgba(77, 42, 122, 0.14),
-                transparent
-            );
-    }
-
-
-    .official-gallery
-    .gallery-silence__line:last-child {
-        align-self: flex-end;
-
-        background:
-            linear-gradient(
-                to left,
-                rgba(77, 42, 122, 0.14),
-                transparent
-            );
-    }
-
-
-    .official-gallery .gallery-silence p {
-        max-width: 300px;
-
-        font-size:
-            clamp(
-                35px,
-                11vw,
-                48px
-            );
-    }
-
-
-    /* ========================================================
-       PHOTO 03 — SKY
-       Esta é a cena especial do mobile.
-       ======================================================== */
-
-    .official-gallery .gallery-scene--sky {
-        min-height: auto;
-
-        padding:
-            100px
-            0
-            120px;
-
-        background:
-            linear-gradient(
-                180deg,
-                var(--gallery-cream) 0%,
-                var(--chapter-sky-light) 16%,
-                var(--chapter-sky) 67%,
-                var(--chapter-sand) 100%
-            );
-    }
-
-
-    .official-gallery
-    .gallery-scene--sky::before {
-        top: 45px;
-        right: -8%;
-
-        font-size: 70vw;
-    }
-
-
-    .official-gallery .gallery-sky__header {
-        width: auto;
-
-        margin:
-            0
-            var(--gallery-page)
-            50px;
-
-        gap: 18px;
-    }
-
-
-    .official-gallery
-    .gallery-sky__header > span {
-        font-size: 62px;
-    }
-
-
-    .official-gallery
-    .gallery-sky__header div span {
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-sky__header p {
-        font-size: 15px;
-    }
-
-
-    .official-gallery .gallery-photo--sky {
-        /*
-         * No celular ela ocupa praticamente a tela toda.
-         * Mantemos a proporção original da foto.
-         */
-
-        width: 100%;
-
-        margin: 0;
-
-        box-shadow:
-            0 35px 80px
-            rgba(55, 79, 89, 0.16);
-    }
-
-
-    .official-gallery .gallery-sky__copy {
-        /*
-         * Texto no céu.
-         *
-         * A foto possui muito espaço negativo na parte
-         * superior, então usamos essa região.
-         */
-
-        top: 9%;
-        left:
-            var(--gallery-page);
-
-        width:
-            calc(
-                100% -
-                (
-                    var(--gallery-page) *
-                    2
-                )
-            );
-    }
-
-
-    .official-gallery
-    .gallery-sky__copy small {
-        margin-bottom: 12px;
-
-        font-size: 6px;
-
-        letter-spacing: 0.27em;
-    }
-
-
-    .official-gallery
-    .gallery-sky__copy strong {
-        max-width: 315px;
-
-        font-size:
-            clamp(
-                40px,
-                12vw,
-                54px
-            );
-
-        line-height: 0.88;
-    }
-
-
-    .official-gallery
-    .gallery-sky__footer {
-        width:
-            calc(
-                100% -
-                (
-                    var(--gallery-page) *
-                    2
-                )
-            );
-
-        margin:
-            28px
-            auto
-            0;
-
-        gap: 12px;
-
-        font-size: 5px;
-    }
-
-
-    /* ========================================================
-       CHAPTER END
-       ======================================================== */
-
-    .official-gallery .gallery-chapter-end {
-        min-height: 100svh;
-
-        padding:
-            100px
-            var(--gallery-page);
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end::before {
-        width: 110vw;
-        height: 110vw;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__background {
-        font-size: 70vw;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__eyebrow {
-        margin-bottom: 35px;
-
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__seal {
-        width: 90px;
-        height: 90px;
-
-        margin-bottom: 42px;
-
-        font-size: 20px;
-    }
-
-
-    .official-gallery .gallery-chapter-end h3 {
-        font-size:
-            clamp(
-                64px,
-                20vw,
-                90px
-            );
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__content > p {
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__divider {
-        height: 50px;
-
-        margin:
-            35px auto;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__count {
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-chapter-end__next {
-        margin-top: 45px;
-
-        font-size: 6px;
-    }
-
-
-    /* ========================================================
-       ARCHIVE
-       ======================================================== */
-
-    .official-gallery .gallery-archive {
-        padding:
-            110px
-            var(--gallery-page);
-    }
-
-
-    .official-gallery
-    .gallery-archive__header {
-        margin-bottom: 70px;
-    }
-
-
-    .official-gallery
-    .gallery-archive__eyebrow {
-        margin-bottom: 18px;
-
-        font-size: 7px;
-    }
-
-
-    .official-gallery
-    .gallery-archive__header h3 {
-        font-size:
-            clamp(
-                60px,
-                18vw,
-                82px
-            );
-
-        line-height: 0.8;
-    }
-
-
-    .official-gallery
-    .gallery-archive__header h3 em {
-        margin-left: 12vw;
-    }
-
-
-    .official-gallery
-    .gallery-archive__description {
-        max-width: 270px;
-
-        margin:
-            38px
-            0
-            0
-            auto;
-
-        font-size: 16px;
-    }
-
-
-    .official-gallery .gallery-archive-item {
-        min-height: 120px;
-
+    .og-date-gallery {
         grid-template-columns:
-            45px
-            1fr
-            auto;
+            0.86fr
+            1.14fr;
 
-        gap: 12px;
-
-        padding:
-            25px 0;
+        gap: 10px;
     }
 
 
-    .official-gallery
-    .gallery-archive-item__number {
-        font-size: 27px;
+    .og-photo--12 {
+        height: 82vw;
+
+        transform: translateY(24px);
     }
 
 
-    .official-gallery
-    .gallery-archive-item__content strong {
-        font-size: 30px;
-    }
-
-
-    .official-gallery
-    .gallery-archive-item__content span {
-        font-size: 6px;
-    }
-
-
-    .official-gallery
-    .gallery-archive-item__count,
-    .official-gallery
-    .gallery-archive-item__status {
-        font-size: 6px;
-
-        text-align: right;
-    }
-
-
-    .official-gallery
-    .gallery-archive-item__arrow {
-        display: none;
+    .og-photo--13 {
+        height: 102vw;
     }
 
 
     /* ========================================================
-       GUEST TRANSITION
+       09 — noivado
        ======================================================== */
 
-    .official-gallery
-    .gallery-guests-transition {
-        min-height: 720px;
-
+    .og-moment--engagement {
         padding:
-            110px
-            var(--gallery-page);
+            85px 0
+            105px;
     }
 
 
-    .official-gallery
-    .gallery-guests-transition__background {
-        left: -10%;
+    .og-engagement-heading {
+        width: 92%;
 
-        font-size: 34vw;
+        margin-bottom: 55px;
     }
 
 
-    .official-gallery
-    .gallery-guests-transition__content {
+    .og-engagement-gallery {
+        grid-template-columns:
+            0.8fr
+            1.2fr;
+
+        grid-template-rows:
+            40vw
+            54vw
+            90vw;
+
+        gap: 10px;
+    }
+
+
+    .og-photo--14 {
         width: 100%;
     }
 
 
-    .official-gallery
-    .gallery-guests-transition__eyebrow {
-        margin-bottom: 22px;
+    .og-photo--17 {
+        width: 95%;
 
-        font-size: 6px;
+        margin-top: 20px;
     }
 
 
-    .official-gallery
-    .gallery-guests-transition h3 {
-        font-size:
-            clamp(
-                58px,
-                18vw,
-                82px
-            );
+    /* ========================================================
+       10 — final
+       ======================================================== */
 
-        line-height: 0.82;
-    }
-
-
-    .official-gallery
-    .gallery-guests-transition h3 em {
-        margin-left: 8vw;
-    }
-
-
-    .official-gallery
-    .gallery-guests-transition p {
-        width: 78%;
-
-        margin:
-            42px
-            0
-            0
-            auto;
-
-        font-size: 16px;
-    }
-
-
-    .official-gallery
-    .gallery-guests-transition__button {
-        margin-top: 45px;
-
+    .og-ending {
         padding:
-            15px
-            18px;
-
-        font-size: 6px;
+            30px 15px
+            0;
     }
 
 
-    .official-gallery
-    .gallery-guests-transition__monogram {
-        right: -8%;
-        bottom: -10px;
+    .og-ending__journey {
+        gap: 8px;
 
-        font-size: 52vw;
-    }
-
-}
-
-
-/* ============================================================
-   VERY SMALL MOBILE
-   ============================================================ */
-
-@media (max-width: 390px) {
-
-    .official-gallery {
-        --gallery-page: 18px;
+        font-size: 1.7rem;
     }
 
 
-    .official-gallery .gallery-cover__title {
-        font-size: 68px;
+    .og-ending__text {
+        font-size: 1.05rem;
     }
 
 
-    .official-gallery
-    .gallery-chapter-heading__content h3 {
-        font-size: 62px;
+    /* ========================================================
+       LIGHTBOX MOBILE
+       ======================================================== */
+
+    .og-lightbox {
+        padding:
+            65px 14px
+            60px;
     }
 
 
-    .official-gallery
-    .gallery-opening-heading p {
-        font-size: 40px;
+    .og-lightbox__image {
+        max-height:
+            calc(100vh - 150px);
     }
 
 
-    .official-gallery
-    .gallery-connection__intro h3 {
-        font-size: 45px;
+    .og-lightbox__close {
+        top: 12px;
+        right: 12px;
     }
 
 
-    .official-gallery
-    .gallery-sky__copy strong {
-        max-width: 280px;
+    .og-lightbox__nav {
+        top: auto;
+        bottom: 12px;
 
-        font-size: 37px;
+        width: 55px;
+        height: 45px;
+
+        transform: none;
+
+        font-size: 2.4rem;
     }
 
 
-    .official-gallery
-    .gallery-archive-item__content strong {
-        font-size: 27px;
-    }
-
-}
-
-
-/* ============================================================
-   MOBILE LANDSCAPE
-   ============================================================ */
-
-@media
-(max-height: 520px)
-and
-(orientation: landscape) {
-
-    .official-gallery .gallery-cover {
-        min-height: 720px;
+    .og-lightbox__nav--prev {
+        left: 15px;
     }
 
 
-    .official-gallery .gallery-chapter-end {
-        min-height: 650px;
-    }
-
-}
-
-
-/* ============================================================
-   TOUCH DEVICES
-   ============================================================ */
-
-@media (hover: none) {
-
-    .official-gallery
-    .gallery-photo__view {
-        display: none;
+    .og-lightbox__nav--next {
+        right: 15px;
     }
 
 
-    .official-gallery
-    .gallery-photo:hover
-    .gallery-photo__overlay {
-        opacity: 0;
+    .og-lightbox__counter {
+        bottom: 27px;
     }
-
-
-    .official-gallery
-    button.gallery-archive-item:hover {
-        padding-left: 8px;
-
-        background: transparent;
-    }
-
 }
 
 
@@ -1603,41 +672,17 @@ and
 
 @media (prefers-reduced-motion: reduce) {
 
-    .official-gallery
-    .gallery-cover__title,
+    .og-reveal {
+        opacity: 1;
 
-    .official-gallery
-    .gallery-cover__ghost,
-
-    .official-gallery
-    .gallery-scene__background-number,
-
-    .official-gallery
-    .gallery-opening-copy,
-
-    .official-gallery
-    .gallery-sea-break__word,
-
-    .official-gallery
-    .gallery-connection__intro,
-
-    .official-gallery
-    .gallery-connection__signature,
-
-    .official-gallery
-    .gallery-sky__copy,
-
-    .official-gallery
-    .gallery-sky__header,
-
-    .official-gallery
-    .gallery-chapter-end__seal,
-
-    .official-gallery
-    .gallery-chapter-end__background {
-
-        transform: none !important;
-
+        transform: none;
     }
 
+
+    .official-gallery *,
+    .official-gallery *::before,
+    .official-gallery *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }

@@ -8,6 +8,7 @@ import {
     getAdminData,
     calculateAdminStats,
     approveMemory,
+    updateAdminMemoryCrop,
     setMemoryFeatured,
     unpublishMemory,
     discardMemory
@@ -30,6 +31,19 @@ const state = {
     search: "",
 
     selectedMemoryId: null,
+    crop: {
+        x: 50,
+        y: 50,
+        zoom: 1,
+
+        dragging: false,
+
+        startPointerX: 0,
+        startPointerY: 0,
+
+        startCropX: 50,
+        startCropY: 50
+    },
 
     loading: false,
     actionRunning: false
@@ -224,6 +238,41 @@ const elements = {
     publicPreview:
         document.querySelector(
             "[data-public-preview]"
+        ),
+
+    adjustCrop:
+        document.querySelector(
+            "[data-adjust-crop]"
+        ),
+
+    cropEditor:
+        document.querySelector(
+            "[data-admin-crop-editor]"
+        ),
+
+    cropStage:
+        document.querySelector(
+            "[data-admin-crop-stage]"
+        ),
+
+    cropImage:
+        document.querySelector(
+            "[data-admin-crop-image]"
+        ),
+
+    cropZoom:
+        document.querySelector(
+            "[data-admin-crop-zoom]"
+        ),
+
+    cropReset:
+        document.querySelector(
+            "[data-admin-crop-reset]"
+        ),
+
+    cropSave:
+        document.querySelector(
+            "[data-admin-crop-save]"
         ),
 
     openOriginal:
@@ -489,6 +538,52 @@ function bindEvents() {
     );
 
 
+    elements.adjustCrop
+        ?.addEventListener(
+            "click",
+            openCropEditor
+        );
+
+
+    elements.cropZoom
+        ?.addEventListener(
+            "input",
+            handleCropZoom
+        );
+
+
+    elements.cropReset
+        ?.addEventListener(
+            "click",
+            resetAdminCrop
+        );
+
+
+    elements.cropSave
+        ?.addEventListener(
+            "click",
+            saveAdminCrop
+        );
+
+
+    elements.cropStage
+        ?.addEventListener(
+            "pointerdown",
+            startAdminCropDrag
+        );
+
+
+    window.addEventListener(
+        "pointermove",
+        moveAdminCropDrag
+    );
+
+
+    window.addEventListener(
+        "pointerup",
+        endAdminCropDrag
+    );
+
     elements.approve
         ?.addEventListener(
             "click",
@@ -590,9 +685,9 @@ async function loadAdminData() {
         renderStats();
 
         renderAdminCharts(
-        state.memories
+            state.memories
         );
-        
+
         renderCurrentView();
 
     }
@@ -647,7 +742,7 @@ function changeView(view) {
             button.classList.toggle(
                 "is-active",
                 button.dataset.adminView ===
-                    view
+                view
             );
 
         }
@@ -822,9 +917,9 @@ function getFilteredMemories() {
             memories.filter(
                 memory =>
                     memory.status ===
-                        "approved" &&
+                    "approved" &&
                     memory.featured ===
-                        true
+                    true
             );
 
     }
@@ -930,14 +1025,14 @@ function createMemoryCardHTML(
 
     const statusText =
         memory.status ===
-        "approved"
+            "approved"
             ? "Publicado"
             : "Pendiente";
 
 
     const statusClass =
         memory.status ===
-        "approved"
+            "approved"
             ? "admin-memory-card__status--approved"
             : "";
 
@@ -956,7 +1051,7 @@ function createMemoryCardHTML(
 
     const videoLabel =
         memory.type ===
-        "video"
+            "video"
             ? `
                 <span
                     class="admin-memory-card__video"
@@ -1231,11 +1326,10 @@ function renderGuests() {
 
                                 <span>
                                     ${memoriesCount}
-                                    ${
-                                        memoriesCount === 1
-                                            ? " recuerdo"
-                                            : " recuerdos"
-                                    }
+                                    ${memoriesCount === 1
+                            ? " recuerdo"
+                            : " recuerdos"
+                        }
                                 </span>
 
                             </div>
@@ -1379,7 +1473,7 @@ function renderModal(
 
         elements.approve.textContent =
             memory.status ===
-            "approved"
+                "approved"
                 ? "Retirar publicación"
                 : "Aprobar";
 
@@ -1634,6 +1728,9 @@ function renderPublicPreview(
     image.style.objectPosition =
         `${memory.crop.x}% ${memory.crop.y}%`;
 
+    image.style.transformOrigin =
+        `${memory.crop.x}% ${memory.crop.y}%`;
+
 
     image.style.transform =
         `scale(${memory.crop.zoom})`;
@@ -1643,6 +1740,446 @@ function renderPublicPreview(
         .appendChild(
             image
         );
+
+}
+
+/* ============================================================
+   ADMIN CROP EDITOR
+   ============================================================ */
+
+function openCropEditor() {
+
+    const memory = getSelectedMemory();
+
+    if (
+        !memory ||
+        memory.type !== "image" ||
+        !memory.originalUrl
+    ) {
+        return;
+    }
+
+    state.crop.x =
+        Number(memory.crop?.x ?? 50);
+
+    state.crop.y =
+        Number(memory.crop?.y ?? 50);
+
+    state.crop.zoom =
+        Number(memory.crop?.zoom ?? 1);
+
+
+    elements.cropImage.src =
+        memory.originalUrl;
+
+    elements.cropZoom.value =
+        state.crop.zoom;
+
+
+    elements.cropEditor.hidden =
+        false;
+
+
+    renderAdminCrop();
+
+
+    requestAnimationFrame(() => {
+
+        elements.cropEditor
+            ?.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+
+    });
+
+}
+
+
+/* ============================================================
+   RENDER CROP
+   ============================================================ */
+
+function renderAdminCrop() {
+
+    if (!elements.cropImage) {
+        return;
+    }
+
+
+    elements.cropImage.style.objectPosition =
+        `${state.crop.x}% ${state.crop.y}%`;
+
+
+    elements.cropImage.style.transformOrigin =
+        `${state.crop.x}% ${state.crop.y}%`;
+
+    elements.cropImage.style.transform =
+        `scale(${state.crop.zoom})`;
+}
+
+
+/* ============================================================
+   ZOOM
+   ============================================================ */
+
+function handleCropZoom(event) {
+
+    state.crop.zoom =
+        clampAdminCrop(
+            Number(event.target.value),
+            1,
+            3
+        );
+
+
+    renderAdminCrop();
+
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+function resetAdminCrop() {
+
+    state.crop.x = 50;
+    state.crop.y = 50;
+    state.crop.zoom = 1;
+
+
+    if (elements.cropZoom) {
+        elements.cropZoom.value = 1;
+    }
+
+
+    renderAdminCrop();
+
+}
+
+
+/* ============================================================
+   DRAG START
+   ============================================================ */
+
+function startAdminCropDrag(event) {
+
+    if (!elements.cropStage) {
+        return;
+    }
+
+
+    event.preventDefault();
+
+
+    state.crop.dragging = true;
+
+    state.crop.startPointerX =
+        event.clientX;
+
+    state.crop.startPointerY =
+        event.clientY;
+
+    state.crop.startCropX =
+        state.crop.x;
+
+    state.crop.startCropY =
+        state.crop.y;
+
+
+    elements.cropStage
+        .setPointerCapture?.(
+            event.pointerId
+        );
+
+}
+
+
+/* ============================================================
+   DRAG MOVE
+   ============================================================ */
+
+function moveAdminCropDrag(event) {
+
+    if (
+        !state.crop.dragging ||
+        !elements.cropStage
+    ) {
+        return;
+    }
+
+
+    const rect =
+        elements.cropStage
+            .getBoundingClientRect();
+
+
+    if (
+        !rect.width ||
+        !rect.height
+    ) {
+        return;
+    }
+
+
+    const deltaX =
+        event.clientX -
+        state.crop.startPointerX;
+
+    const deltaY =
+        event.clientY -
+        state.crop.startPointerY;
+
+
+    /*
+     * Quanto maior o zoom, maior é a área da
+     * fotografia disponível para deslocamento.
+     *
+     * Com zoom 1 não existe deslocamento visual
+     * real, portanto mantemos o centro.
+     */
+
+    const zoom =
+        Math.max(
+            1,
+            state.crop.zoom
+        );
+
+
+    const availableX =
+        rect.width *
+        (zoom - 1);
+
+    const availableY =
+        rect.height *
+        (zoom - 1);
+
+
+    if (availableX > 0) {
+
+        const percentX =
+            deltaX /
+            availableX *
+            100;
+
+
+        state.crop.x =
+            clampAdminCrop(
+                state.crop.startCropX -
+                percentX,
+                0,
+                100
+            );
+
+    }
+    else {
+
+        state.crop.x = 50;
+
+    }
+
+
+    if (availableY > 0) {
+
+        const percentY =
+            deltaY /
+            availableY *
+            100;
+
+
+        state.crop.y =
+            clampAdminCrop(
+                state.crop.startCropY -
+                percentY,
+                0,
+                100
+            );
+
+    }
+    else {
+
+        state.crop.y = 50;
+
+    }
+
+
+    renderAdminCrop();
+
+}
+
+
+/* ============================================================
+   DRAG END
+   ============================================================ */
+
+function endAdminCropDrag() {
+
+    state.crop.dragging =
+        false;
+
+}
+
+
+/* ============================================================
+   SAVE CROP
+   ============================================================ */
+
+async function saveAdminCrop() {
+
+    if (state.actionRunning) {
+        return;
+    }
+
+
+    const memory =
+        getSelectedMemory();
+
+
+    if (
+        !memory ||
+        memory.type !== "image"
+    ) {
+        return;
+    }
+
+
+    const crop = {
+
+        x:
+            clampAdminCrop(
+                state.crop.x,
+                0,
+                100
+            ),
+
+        y:
+            clampAdminCrop(
+                state.crop.y,
+                0,
+                100
+            ),
+
+        zoom:
+            clampAdminCrop(
+                state.crop.zoom,
+                1,
+                3
+            )
+
+    };
+
+
+    state.actionRunning = true;
+
+    elements.cropSave.disabled = true;
+    elements.cropReset.disabled = true;
+
+
+    try {
+
+        const updated =
+            await updateAdminMemoryCrop(
+                memory.id,
+                crop
+            );
+
+
+        /*
+         * Atualizamos também o estado local.
+         * Assim a prévia muda imediatamente.
+         */
+
+        memory.crop =
+            updated?.crop || crop;
+
+
+        renderPublicPreview(
+            memory
+        );
+
+
+        elements.cropEditor.hidden =
+            true;
+
+
+        showToast(
+            "Encuadre guardado",
+            "La fotografía se mostrará con este encuadre."
+        );
+
+
+        /*
+         * Recarrega os dados reais do Supabase.
+         */
+
+        await loadAdminData();
+
+
+        const refreshed =
+            getMemory(
+                memory.id
+            );
+
+
+        if (refreshed) {
+
+            state.selectedMemoryId =
+                refreshed.id;
+
+            renderModal(
+                refreshed
+            );
+
+        }
+
+    }
+    catch (error) {
+
+        console.error(
+            "Crop update failed:",
+            error
+        );
+
+
+        showToast(
+            "No se pudo guardar",
+            "El encuadre no ha sido modificado."
+        );
+
+    }
+    finally {
+
+        state.actionRunning = false;
+
+        elements.cropSave.disabled =
+            false;
+
+        elements.cropReset.disabled =
+            false;
+
+    }
+
+}
+
+
+/* ============================================================
+   CROP CLAMP
+   ============================================================ */
+
+function clampAdminCrop(
+    value,
+    min,
+    max
+) {
+
+    return Math.min(
+        Math.max(
+            Number(value) || 0,
+            min
+        ),
+        max
+    );
 
 }
 
@@ -1698,10 +2235,10 @@ async function handleApprove() {
 
             const featured =
                 memory.type ===
-                    "image" &&
+                "image" &&
                 elements.featured
                     ?.checked ===
-                    true;
+                true;
 
 
             await approveMemory(
@@ -1778,7 +2315,7 @@ async function handleFeaturedChange() {
     if (
         !memory ||
         memory.type !==
-            "image"
+        "image"
     ) {
         return;
     }
@@ -2032,9 +2569,8 @@ function openOriginalLightbox() {
 
 
         elements.lightboxImage.alt =
-            `Recuerdo de ${
-                memory.guest?.name ||
-                "invitado"
+            `Recuerdo de ${memory.guest?.name ||
+            "invitado"
             }`;
 
 
@@ -2270,10 +2806,10 @@ function showEmptyForCurrentView() {
 
     showEmpty(
         current?.title ||
-            "Sin resultados",
+        "Sin resultados",
 
         current?.message ||
-            "No hay resultados."
+        "No hay resultados."
     );
 
 }
@@ -2321,10 +2857,9 @@ function setResultsCount(
 
 
     elements.resultsCount.textContent =
-        `${count} ${
-            count === 1
-                ? "resultado"
-                : "resultados"
+        `${count} ${count === 1
+            ? "resultado"
+            : "resultados"
         }`;
 
 }

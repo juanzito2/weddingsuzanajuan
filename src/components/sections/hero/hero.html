@@ -1,149 +1,112 @@
 <section id="hero" class="hero">
+  <!-- Decoração estrutural -->
+  <div class="hero__frame hero__frame--outer"></div>
+  <div class="hero__frame hero__frame--inner"></div>
 
-    <!-- Decoração estrutural -->
-    <div class="hero__frame hero__frame--outer"></div>
-    <div class="hero__frame hero__frame--inner"></div>
+  <div class="hero__corner hero__corner--tl"></div>
+  <div class="hero__corner hero__corner--tr"></div>
+  <div class="hero__corner hero__corner--bl"></div>
+  <div class="hero__corner hero__corner--br"></div>
 
-    <div class="hero__corner hero__corner--tl"></div>
-    <div class="hero__corner hero__corner--tr"></div>
-    <div class="hero__corner hero__corner--bl"></div>
-    <div class="hero__corner hero__corner--br"></div>
+  <!-- Elementos gráficos -->
+  <div class="hero__circle hero__circle--large"></div>
+  <div class="hero__circle hero__circle--small"></div>
 
-    <!-- Elementos gráficos -->
-    <div class="hero__circle hero__circle--large"></div>
-    <div class="hero__circle hero__circle--small"></div>
+  <span class="hero__dot hero__dot--one"></span>
+  <span class="hero__dot hero__dot--two"></span>
+  <span class="hero__dot hero__dot--three"></span>
+  <span class="hero__dot hero__dot--four"></span>
 
-    <span class="hero__dot hero__dot--one"></span>
-    <span class="hero__dot hero__dot--two"></span>
-    <span class="hero__dot hero__dot--three"></span>
-    <span class="hero__dot hero__dot--four"></span>
+  <!-- Pequenos detalhes florais -->
+  <div class="hero__floral hero__floral--left">
+    <img src="./src/assets/images/flower/flor-branco.png" alt="" />
+  </div>
 
-    <!-- Pequenos detalhes florais -->
-    <div class="hero__floral hero__floral--left">
-        <img
-            src="./src/assets/images/flower/flor-branco.png"
-            alt=""
-        >
+  <div class="hero__floral hero__floral--right">
+    <img src="./src/assets/images/flower/flor-rosa.png" alt="" />
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="hero__content">
+    <p class="hero__eyebrow">Nuestra boda</p>
+
+    <div class="hero__monogram">
+      <div class="hero__monogram-ring"></div>
+
+      <img
+        src="./src/assets/images/monograms/monogram4.png"
+        alt="Suzana y Juan"
+      />
     </div>
 
-    <div class="hero__floral hero__floral--right">
-        <img
-            src="./src/assets/images/flower/flor-rosa.png"
-            alt=""
-        >
+    <div class="hero__divider">
+      <span></span>
+      <i>✦</i>
+      <span></span>
     </div>
 
-    <!-- Conteúdo -->
-    <div class="hero__content">
+    <p class="hero__verse">
+      La mujer de Pr. 31:10 y el hombre de Ef. 5:25 alcanzarán el amor de 1 Co.
+      13.
+    </p>
 
-        <p class="hero__eyebrow">
-            Nuestra boda
-        </p>
+    <h1 class="hero__title">
+      <span>Suzana</span>
 
-        <div class="hero__monogram">
+      <strong>&amp;</strong>
 
-            <div class="hero__monogram-ring"></div>
+      <span>Juan</span>
+    </h1>
 
-            <img
-                src="./src/assets/images/monograms/monogram4.png"
-                alt="Suzana y Juan"
-            >
-
-        </div>
-
-        <div class="hero__divider">
-            <span></span>
-            <i>✦</i>
-            <span></span>
-        </div>
-
-        <p class="hero__verse">
-            La mujer de Pr. 31:10 y el hombre de Ef. 5:25
-            alcanzarán el amor de 1 Co. 13.
-        </p>
-
-        <h1 class="hero__title">
-
-            <span>Suzana</span>
-
-            <strong>&amp;</strong>
-
-            <span>Juan</span>
-
-        </h1>
-
-        <div class="hero__date">
-            <span></span>
-            <p>09 Enero 2027</p>
-            <span></span>
-        </div>
-
-        <div
-            id="hero-countdown"
-            class="hero__countdown"
-        >
-
-            <div class="countdown__item">
-                <span id="countdown-days">000</span>
-                <small>Días</small>
-            </div>
-
-            <div class="countdown__separator">:</div>
-
-            <div class="countdown__item">
-                <span id="countdown-hours">00</span>
-                <small>Horas</small>
-            </div>
-
-            <div class="countdown__separator">:</div>
-
-            <div class="countdown__item">
-                <span id="countdown-minutes">00</span>
-                <small>Minutos</small>
-            </div>
-
-            <div class="countdown__separator">:</div>
-
-            <div class="countdown__item">
-                <span id="countdown-seconds">00</span>
-                <small>Segundos</small>
-            </div>
-
-        </div>
-
-        <div class="hero__discover">
-
-            <button
-                id="hero-discover"
-                class="hero__button"
-                type="button"
-            >
-
-                <span class="hero__button-line"></span>
-
-                <span class="hero__button-text">
-                    Nuestra historia
-                </span>
-
-                <span class="hero__button-arrow">
-                    ↓
-                </span>
-
-                <span class="hero__button-line"></span>
-
-            </button>
-
-        </div>
-
+    <div class="hero__date">
+      <span></span>
+      <p>09 Enero 2027</p>
+      <span></span>
     </div>
 
-    <!-- Indicador inferior -->
-    <div class="hero__scroll">
+    <div id="hero-countdown" class="hero__countdown">
+      <div class="countdown__item">
+        <span id="countdown-days">000</span>
+        <small>Días</small>
+      </div>
 
-        <span class="hero__scroll-line"></span>
+      <div class="countdown__separator">:</div>
 
-        
+      <div class="countdown__item">
+        <span id="countdown-hours">00</span>
+        <small>Horas</small>
+      </div>
 
+      <div class="countdown__separator">:</div>
+
+      <div class="countdown__item">
+        <span id="countdown-minutes">00</span>
+        <small>Minutos</small>
+      </div>
+
+      <div class="countdown__separator">:</div>
+
+      <div class="countdown__item">
+        <span id="countdown-seconds">00</span>
+        <small>Segundos</small>
+      </div>
     </div>
 
+    <div class="hero__discover">
+      <button id="hero-discover" class="hero__button" type="button">
+        <span class="hero__button-line"></span>
+
+        <span class="hero__button-text"> Nuestra historia </span>
+
+        <span class="hero__button-arrow"> ↓ </span>
+
+        <span class="hero__button-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Indicador inferior -->
+  <div class="hero__scroll">
+    <span class="hero__scroll-line"></span>
+  </div>
 </section>
