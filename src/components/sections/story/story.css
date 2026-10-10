@@ -1205,3 +1205,22 @@
     right: -100px;
   }
 }
+
+/* Evita problemas em ecrãs muito estreitos */
+@media (max-width: 380px) {
+    .story__body {
+        padding: 2rem 1.15rem;
+    }
+
+    .story__body-heading {
+        gap: 0.5rem;
+    }
+
+    .story__body-heading p {
+        letter-spacing: 0.12rem;
+    }
+
+    .story__photo-frame {
+        width: min(290px, 88%);
+    }
+}

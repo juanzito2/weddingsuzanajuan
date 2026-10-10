@@ -6,7 +6,7 @@
 export const royalMemoriesConfig = {
     // true  = mostra fotografias de demonstração
     // false = mostra apenas conteúdos reais
-    demoMode: true,
+    demoMode: false,
 
     // Identificação da galeria
     couple: "Suzana & Juan",

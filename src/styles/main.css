@@ -42,3 +42,6 @@
 ========================================================== */
 
 @import url("../components/sections/guests-gallery/guests-gallery.css");
+
+/* ROYAL FINALE & FOOTER */
+@import url("../components/sections/finale/finale.css");

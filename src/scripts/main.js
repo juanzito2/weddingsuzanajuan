@@ -245,6 +245,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
 
+        /* ============================================================
+           ROYAL FINALE & FOOTER
+           ============================================================ */
+
+        await loadComponent(
+            "./src/components/sections/finale/finale.html",
+            "app"
+        );
+
+        const finale = document.getElementById("finale");
+
+        if (!finale) {
+            throw new Error("Royal Finale: HTML não encontrado.");
+        }
+
+        const finaleModule = await import(
+            "../components/sections/finale/finale.js"
+        );
+
+        if (typeof finaleModule.initFinale === "function") {
+            finaleModule.initFinale();
+        }
+
+        console.log("✓ Royal Finale e Footer carregados");
+
+
+
 
         /* ============================================================
            APPLICATION READY

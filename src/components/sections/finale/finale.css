@@ -1,0 +1,29 @@
+/* ROYAL FINALE — SUZANA & JUAN */
+.royal-finale{position:relative;isolation:isolate;overflow:hidden;display:flex;justify-content:center;align-items:center;min-height:680px;padding:110px 24px;background:radial-gradient(ellipse at 50% 20%,#51365e 0%,transparent 55%),linear-gradient(155deg,#291a35,#170f20);color:#f9f3fa;text-align:center}
+.royal-finale__glow{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(208,167,220,.09),transparent 55%)}
+.royal-finale__content{width:100%;max-width:760px;margin:auto}
+.royal-finale__eyebrow{display:block;color:#d9bc8b;font-size:11px;font-weight:500;letter-spacing:.25em}
+.royal-finale__ornament{display:flex;align-items:center;justify-content:center;gap:22px;margin:35px auto 42px}
+.royal-finale__ornament>span{width:85px;max-width:20vw;height:1px;background:linear-gradient(90deg,transparent,#d6b67f)}
+.royal-finale__ornament>span:last-child{transform:rotate(180deg)}
+.royal-finale__monogram{display:grid;place-items:center;width:66px;height:66px;border:1px solid #c9a673;transform:rotate(45deg);color:transparent;font-size:0}
+.royal-finale__monogram::after{content:"SJ";color:#e5cda2;font-family:Georgia,serif;font-size:24px;transform:rotate(-45deg)}
+.royal-finale h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(37px,6vw,68px);font-weight:400;line-height:1.16;letter-spacing:-.035em}
+.royal-finale h2 em{display:block;color:#e0c091;font-weight:400}
+.royal-finale__verse{max-width:540px;margin:32px auto 0;color:#dfcfe5;font-family:Georgia,serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.8}
+.royal-finale__divider{width:52px;height:1px;margin:37px auto;background:#cba875}
+.royal-finale__message{max-width:540px;margin:0 auto;color:#e4dbe7;font-size:15px;line-height:2}
+.royal-finale__signature{display:block;margin-top:43px;color:#e4c28f;font-family:Georgia,serif;font-size:clamp(27px,4vw,37px);font-style:italic}
+.royal-footer{padding:48px 24px;background:#f7f3ed;text-align:center;border-top:1px solid rgba(195,160,109,.25)}
+.royal-footer__inner{max-width:600px;margin:auto}
+.royal-footer__names{color:#493052;font-family:Georgia,serif;font-size:28px}
+.royal-footer__names i{color:#bb9461;font-weight:400}
+.royal-footer p{margin:13px 0;color:#78697d;font-size:13px;letter-spacing:.04em}
+.royal-footer__line{display:block;width:40px;height:1px;margin:23px auto;background:#c5a16c}
+.royal-footer small{color:#827486;font-size:10px;letter-spacing:.2em}
+.royal-footer__developer{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:5px;margin-top:34px;font-size:10px;font-weight:400;letter-spacing:.025em;color:#a69ba8}
+.royal-footer__developer a{color:#8f8193;text-decoration:none;transition:color 200ms ease}
+.royal-footer__developer a:hover,.royal-footer__developer a:focus-visible{color:#785585}
+.royal-footer__github{margin-left:4px;opacity:.65}
+@media(max-width:600px){.royal-finale{min-height:auto;padding:85px 22px}.royal-finale__ornament{margin:30px auto 38px}.royal-finale__message{font-size:14px;line-height:1.9}.royal-footer{padding:42px 20px}}
+@media(max-width:480px){.royal-footer__developer{font-size:9px;margin-top:28px}}
