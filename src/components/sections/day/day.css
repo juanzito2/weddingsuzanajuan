@@ -586,13 +586,23 @@
   background: var(--gold);
 }
 
-.day__event--left .day__marker {
-  right: calc(50% - 62px);
+
+/* Marcadores alinhados à linha central */
+
+@media (min-width: 801px) {
+  #day .day__event--left > .day__marker,
+  #day .day__event--right > .day__marker {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #day .day__event:hover > .day__marker {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 }
 
-.day__event--right .day__marker {
-  left: calc(50% - 62px);
-}
 
 .day__event:hover .day__marker {
   transform: translateY(-50%) scale(1.5);
@@ -960,4 +970,10 @@
 @media (prefers-reduced-motion: reduce) {
   #day .day__event, #day .day__event-card, #day .day__seal, #day .day__particles span { animation: none !important; transition: none !important; }
   #day .day__event { opacity: 1 !important; transform: none !important; }
+}
+
+/* Remover os círculos indesejados */
+#day .day__timeline .day__event .day__marker,
+#day .day__timeline .day__event .day__marker span {
+  display: none !important;
 }
