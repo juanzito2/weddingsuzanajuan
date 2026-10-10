@@ -1224,3 +1224,201 @@
         width: min(290px, 88%);
     }
 }
+
+
+/* ==========================================================
+   NUESTRA HISTORIA — ROMANCE LAVANDA
+   Suzana & Juan · 09.01.2027
+
+   Apenas cores e acabamentos.
+   Preserva layout, animações e responsividade.
+========================================================== */
+
+.story {
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgba(255, 250, 245, 0.9),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 85% 78%,
+      rgba(172, 139, 192, 0.24),
+      transparent 52%
+    ),
+    linear-gradient(
+      145deg,
+      #fffaf5 0%,
+      #f2e8f3 48%,
+      #e5d5e9 100%
+    );
+}
+
+/* Luzes decorativas */
+
+.story::before {
+  background: radial-gradient(
+    circle,
+    rgba(214, 183, 122, 0.17),
+    transparent 70%
+  );
+}
+
+.story::after {
+  background: radial-gradient(
+    circle,
+    rgba(143, 104, 169, 0.15),
+    transparent 70%
+  );
+}
+
+/* Títulos */
+
+.story__title {
+  color: #4d305e;
+  text-shadow: none;
+}
+
+.story__eyebrow,
+.story__number,
+.story__divider i {
+  color: #a47b40;
+}
+
+.story__subtitle {
+  color: #796883;
+}
+
+/* Cartão principal */
+
+.story__body {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 253, 250, 0.94),
+    rgba(244, 232, 247, 0.88)
+  );
+
+  border-color: rgba(185, 147, 88, 0.4);
+
+  box-shadow:
+    0 24px 65px rgba(94, 60, 111, 0.12),
+    0 8px 25px rgba(94, 60, 111, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  backdrop-filter: blur(16px);
+}
+
+.story__body:hover {
+  border-color: rgba(185, 147, 88, 0.65);
+
+  box-shadow:
+    0 30px 75px rgba(94, 60, 111, 0.17),
+    0 10px 30px rgba(94, 60, 111, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.story__body::before {
+  border-color: rgba(185, 147, 88, 0.18);
+}
+
+/* Textos */
+
+.story__body-heading p {
+  color: #583768;
+}
+
+.story__text {
+  color: #685b6c;
+}
+
+.story__highlight {
+  color: #583768;
+
+  border-left-color: #c4a365;
+
+  background: linear-gradient(
+    to right,
+    rgba(214, 183, 122, 0.12),
+    rgba(229, 213, 233, 0.05)
+  );
+}
+
+/* Assinatura */
+
+.story__signature strong {
+  color: #583768;
+}
+
+.story__signature span {
+  color: #89768e;
+}
+
+/* Moldura da fotografia */
+
+.story__photo-frame {
+  background: #fffaf5;
+
+  border-color: rgba(185, 147, 88, 0.6);
+
+  box-shadow:
+    0 24px 60px rgba(79, 48, 94, 0.17),
+    0 0 0 8px rgba(214, 183, 122, 0.1);
+}
+
+.story__photo-frame:hover {
+  box-shadow:
+    0 32px 75px rgba(79, 48, 94, 0.23),
+    0 0 0 8px rgba(214, 183, 122, 0.16);
+}
+
+.story__photo-decoration {
+  border-color: rgba(185, 147, 88, 0.55);
+}
+
+.story__photo {
+  background: #e5d5e9;
+}
+
+.story__photo::after {
+  background: linear-gradient(
+    135deg,
+    rgba(115, 81, 132, 0.04),
+    transparent 45%,
+    rgba(214, 183, 122, 0.09)
+  );
+}
+
+/* Linhas e ornamentos */
+
+.story__title::after,
+.story__divider span {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #c4a365,
+    transparent
+  );
+}
+
+.story__body-heading::after {
+  background: linear-gradient(
+    to right,
+    rgba(196, 163, 101, 0.55),
+    transparent
+  );
+}
+
+/* Ajuste visual para telemóveis */
+
+@media (max-width: 600px) {
+  .story__body {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 253, 250, 0.97),
+      rgba(246, 236, 248, 0.94)
+    );
+
+    box-shadow:
+      0 15px 40px rgba(94, 60, 111, 0.11);
+  }
+}

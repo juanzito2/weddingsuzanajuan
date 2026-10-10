@@ -1,4 +1,4 @@
 export const galleryConfig = {
-    officialGalleryVisible: false,
+    officialGalleryVisible: true,
     guestsGalleryVisible: true
 };

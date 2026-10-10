@@ -45,3 +45,6 @@
 
 /* ROYAL FINALE & FOOTER */
 @import url("../components/sections/finale/finale.css");
+
+
+@import url("./mobile-premium.css");

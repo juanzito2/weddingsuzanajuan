@@ -9,7 +9,8 @@ export function initDay() {
 
     const day = document.querySelector("#day");
 
-    if (!day) return;
+    if (!day || day.dataset.initialized === "true") return;
+    day.dataset.initialized = "true";
 
     console.log("✓ Nosso Grande Dia inicializado");
 
@@ -24,71 +25,27 @@ export function initDay() {
         day.querySelector(".day__secret-message");
 
 
-    /* ========================================================
-       ENTRADA
-    ======================================================== */
-
-    events.forEach((event, index) => {
-
-        event.style.opacity = "0";
-
-        event.style.transform =
-            "translateY(35px)";
-
-        event.style.transition =
-            "opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1)";
-
-        event.dataset.delay =
-            index * 120;
-
-    });
-
-
-    const observer =
-        new IntersectionObserver(
-
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (!entry.isIntersecting) return;
-
-
-                    events.forEach(event => {
-
-                        const delay =
-                            Number(
-                                event.dataset.delay || 0
-                            );
-
-
-                        setTimeout(() => {
-
-                            event.style.opacity = "1";
-
-                            event.style.transform =
-                                "translateY(0)";
-
-                        }, delay);
-
-                    });
-
-
-                    observer.unobserve(day);
-
-                });
-
-            },
-
-            {
-                threshold: .08
-            }
-
-        );
-
-
-    observer.observe(day);
-
+    /* ENTRADA — anima cada cartão quando fica visível */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        events.forEach(event => { event.style.opacity = '1'; event.style.transform = 'none'; });
+    } else if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const event = entry.target;
+                event.style.opacity = '1';
+                event.style.transform = 'translateY(0)';
+                event.classList.add('is-visible');
+                observer.unobserve(event);
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+        events.forEach(event => {
+            event.style.opacity = '0';
+            event.style.transform = 'translateY(35px)';
+            event.style.transition = 'opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1)';
+            observer.observe(event);
+        });
+    }
 
     /* ========================================================
        PROGRESSO DA TIMELINE
@@ -149,7 +106,7 @@ export function initDay() {
        HOVER DOS EVENTOS
     ======================================================== */
 
-    events.forEach(event => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) events.forEach(event => {
 
         event.addEventListener(
             "mouseenter",
@@ -157,7 +114,7 @@ export function initDay() {
 
                 events.forEach(other => {
 
-                    if (other !== event) {
+                    if (other !== event && other.classList.contains("is-visible")) {
 
                         other.style.opacity =
                             ".38";
@@ -176,7 +133,7 @@ export function initDay() {
 
                 events.forEach(other => {
 
-                    other.style.opacity =
+                    if (other.classList.contains("is-visible")) other.style.opacity =
                         "1";
 
                 });

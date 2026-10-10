@@ -936,3 +936,28 @@
     transform: translate(var(--x), var(--y)) scale(1.2);
   }
 }
+
+
+/* Ajustes pontuais sobre o CSS ORIGINAL — sem substituir o visual */
+#day.day {
+  background: radial-gradient(circle at 50% 20%, rgba(104,63,148,.42), transparent 35%),
+              radial-gradient(circle at 10% 60%, rgba(214,184,102,.08), transparent 25%),
+              radial-gradient(circle at 90% 80%, rgba(111,66,156,.18), transparent 30%),
+              linear-gradient(145deg,#160b24,#2a143e 48%,#170b26);
+  color: #fff;
+}
+#day .day__event-card { box-sizing: border-box; min-width: 0; }
+#day .day__event-title, #day .day__event-text { overflow-wrap: anywhere; }
+#day .day__event-time { font-variant-numeric: tabular-nums; }
+@media (max-width: 380px) {
+  #day .day__event, #day .day__event--left, #day .day__event--right { padding-left: 43px; }
+  #day .day__event-card { padding: 1.3rem 1.15rem; }
+  #day .day__event-time { font-size: .9rem; letter-spacing: .01em; }
+  #day .day__timeline-line { left: 16px; }
+  #day .day__marker, #day .day__event--left .day__marker, #day .day__event--right .day__marker { left: 9px; }
+  #day .day__seal { left: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #day .day__event, #day .day__event-card, #day .day__seal, #day .day__particles span { animation: none !important; transition: none !important; }
+  #day .day__event { opacity: 1 !important; transform: none !important; }
+}
