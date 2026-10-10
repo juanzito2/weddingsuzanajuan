@@ -1,0 +1,267 @@
+
+/* =====================================================
+   ROYAL MEMORIES 3.2 — CINEMATIC VIEWERS
+   Suzana & Juan
+   ===================================================== */
+
+.rm {
+    --cv-gold: #d8b77c;
+    --cv-amethyst: #9873ac;
+    --cv-pearl: #fff9f0;
+}
+
+/* Fundo cinematográfico */
+
+.rm .rm-modal {
+    isolation: isolate;
+    perspective: 1200px;
+}
+
+.rm .rm-shade {
+    background:
+        radial-gradient(
+            ellipse at 25% 20%,
+            rgba(147, 105, 178, 0.28),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 80% 85%,
+            rgba(218, 179, 119, 0.13),
+            transparent 50%
+        ),
+        rgba(20, 12, 29, 0.88);
+
+    backdrop-filter: blur(25px) saturate(135%);
+    -webkit-backdrop-filter: blur(25px) saturate(135%);
+}
+
+/* Painel principal */
+
+.rm .rm-panel {
+    border: 1px solid rgba(245, 226, 255, 0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(76, 47, 91, 0.94),
+            rgba(34, 22, 44, 0.97) 55%,
+            rgba(58, 38, 69, 0.96)
+        );
+
+    box-shadow:
+        0 35px 110px rgba(0, 0, 0, 0.55),
+        0 0 55px rgba(175, 125, 201, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
+    animation: cv-open 0.48s
+        cubic-bezier(.18, .85, .25, 1) both;
+}
+
+/* Reflexo de cristal */
+
+.rm .rm-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            130deg,
+            rgba(255, 255, 255, 0.13),
+            transparent 30%,
+            transparent 75%,
+            rgba(219, 178, 238, 0.07)
+        );
+}
+
+.rm .rm-panel > * {
+    z-index: 1;
+}
+
+/* Cabeçalho */
+
+.rm .rm-panel header {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.02)
+        );
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rm .rm-panel header strong {
+    color: #fff7ed;
+    letter-spacing: 0.025em;
+}
+
+.rm .rm-panel header button {
+    display: grid;
+    place-items: center;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.rm .rm-panel header button:hover {
+    transform: rotate(90deg);
+    background: rgba(216, 183, 124, 0.23);
+    border-color: var(--cv-gold);
+}
+
+/* Moldura da imagem */
+
+.rm .rm-media {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #382542,
+            #160f1d 75%
+        );
+}
+
+.rm .rm-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    box-shadow:
+        inset 0 0 45px rgba(0, 0, 0, 0.15),
+        inset 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+.rm .rm-media img,
+.rm .rm-media video {
+    transition:
+        opacity 0.28s ease,
+        filter 0.28s ease;
+}
+
+.rm .rm-media img.cv-changing,
+.rm .rm-media video.cv-changing {
+    opacity: 0.35;
+    filter: blur(6px);
+}
+
+/* Setas */
+
+.rm .rm-media .rm-prev,
+.rm .rm-media .rm-next {
+    z-index: 3;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(130, 88, 155, 0.25)
+        );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.2);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rm .rm-media .rm-prev:hover,
+.rm .rm-media .rm-next:hover {
+    background: rgba(207, 170, 113, 0.35);
+    border-color: var(--cv-gold);
+
+    box-shadow:
+        0 0 22px rgba(216, 183, 124, 0.27);
+}
+
+/* Barra de progresso */
+
+.rm .rm-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    overflow: hidden;
+}
+
+.rm .rm-progress span {
+    background:
+        linear-gradient(
+            90deg,
+            #b48dca,
+            #e8c88e,
+            #fff4d9
+        );
+
+    box-shadow:
+        0 0 12px rgba(242, 209, 149, 0.7);
+}
+
+/* Rodapé do visualizador */
+
+.rm .rm-panel footer {
+    background: rgba(255, 255, 255, 0.035);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e7d6ed;
+    letter-spacing: 0.08em;
+}
+
+/* Entrada */
+
+@keyframes cv-open {
+    from {
+        opacity: 0;
+        transform:
+            translateY(28px)
+            rotateX(5deg)
+            scale(0.94);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+        filter: blur(0);
+    }
+}
+
+/* Telemóveis */
+
+@media (max-width: 700px) {
+    .rm .rm-panel {
+        border-radius: 18px;
+    }
+
+    .rm .rm-media .rm-prev,
+    .rm .rm-media .rm-next {
+        width: 36px;
+        height: 48px;
+        font-size: 30px;
+    }
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+    .rm .rm-panel {
+        animation: none !important;
+    }
+
+    .rm .rm-media img,
+    .rm .rm-media video {
+        transition: none !important;
+    }
+}

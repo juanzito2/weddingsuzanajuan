@@ -1,0 +1,312 @@
+
+/* ==========================================================
+   ROYAL MEMORIES 3.1
+   DIAMOND EXPERIENCE
+   Suzana & Juan
+   ========================================================== */
+
+.rm {
+    --diamond-gold: #c7a36c;
+    --diamond-gold-light: #f5dfb4;
+    --diamond-purple: #78508e;
+    --diamond-lilac: #d8bfe8;
+    --diamond-pearl: #fffdfb;
+}
+
+/* ==========================================================
+   GLASS CRYSTAL — GENERAL
+   ========================================================== */
+
+.rm .rm-hero,
+.rm .rm-section--purple,
+.rm .rm-section--white,
+.rm .rm-footer--purple {
+    border: 1px solid rgba(255, 255, 255, 0.88);
+
+    backdrop-filter: blur(28px) saturate(165%);
+    -webkit-backdrop-filter: blur(28px) saturate(165%);
+
+    box-shadow:
+        0 22px 65px rgba(83, 48, 111, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.35);
+
+    transition:
+        box-shadow 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.rm .rm-hero:hover,
+.rm .rm-section--purple:hover,
+.rm .rm-section--white:hover,
+.rm .rm-footer--purple:hover {
+    border-color: rgba(226, 200, 154, 0.85);
+
+    box-shadow:
+        0 30px 85px rgba(92, 54, 124, 0.2),
+        0 0 35px rgba(236, 205, 157, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* ==========================================================
+   DIAMOND STORIES
+   ========================================================== */
+
+.rm .rm-story {
+    position: relative;
+    isolation: isolate;
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(241, 229, 248, 0.76) 58%,
+            rgba(222, 204, 235, 0.7)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 12px 30px rgba(102, 68, 126, 0.14),
+        inset 0 1px 0 #fff;
+
+    transition:
+        transform 0.45s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+.rm .rm-story:hover {
+    transform: translateY(-10px) scale(1.035);
+
+    border-color: var(--diamond-gold);
+
+    box-shadow:
+        0 25px 55px rgba(96, 58, 125, 0.24),
+        0 0 30px rgba(221, 184, 126, 0.22),
+        inset 0 1px 0 #fff;
+}
+
+.rm .rm-ring {
+    position: relative;
+
+    background: conic-gradient(
+        from 0deg,
+        #9e73b6,
+        #e7c88e,
+        #fff3d8,
+        #bd92d1,
+        #8455a1,
+        #e7c88e,
+        #9e73b6
+    );
+
+    box-shadow:
+        0 0 16px rgba(214, 178, 117, 0.28),
+        0 0 26px rgba(167, 116, 197, 0.14);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.rm .rm-story:hover .rm-ring {
+    transform: scale(1.07) rotate(8deg);
+
+    box-shadow:
+        0 0 22px rgba(214, 178, 117, 0.5),
+        0 0 40px rgba(167, 116, 197, 0.25);
+}
+
+.rm .rm-avatar {
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            #fffdfb,
+            #e7d6f0 65%,
+            #c5a6d8
+        );
+
+    color: #80559a;
+}
+
+/* ==========================================================
+   DIAMOND PHOTO CARDS
+   ========================================================== */
+
+.rm .rm-tile {
+    isolation: isolate;
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 16px 42px rgba(91, 55, 116, 0.18),
+        0 0 0 1px rgba(219, 192, 231, 0.15);
+
+    transition:
+        transform 0.55s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.55s ease,
+        border-color 0.55s ease;
+}
+
+.rm .rm-tile:hover {
+    transform: translateY(-12px) scale(1.025);
+
+    border-color: rgba(223, 189, 132, 0.95);
+
+    box-shadow:
+        0 30px 65px rgba(83, 48, 111, 0.28),
+        0 0 35px rgba(224, 191, 137, 0.19);
+}
+
+.rm .rm-tile img {
+    transition:
+        transform 0.9s cubic-bezier(.2, .8, .2, 1),
+        filter 0.6s ease;
+}
+
+.rm .rm-tile:hover img {
+    transform: scale(1.09);
+    filter: brightness(1.05) saturate(1.08);
+}
+
+/* ==========================================================
+   SEARCH GLASS
+   ========================================================== */
+
+.rm .rm-search {
+    transition:
+        box-shadow 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s ease;
+}
+
+.rm .rm-search:focus-within {
+    transform: translateY(-3px);
+
+    border-color: rgba(199, 163, 108, 0.85);
+
+    box-shadow:
+        0 14px 38px rgba(101, 65, 127, 0.15),
+        0 0 25px rgba(223, 190, 136, 0.15),
+        inset 0 1px 0 #fff;
+}
+
+/* ==========================================================
+   CELESTIAL FINALE
+   ========================================================== */
+
+.rm .rm-footer--purple {
+    position: relative;
+    isolation: isolate;
+
+    padding: 85px 25px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 255, 255, 0.85),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(231, 211, 242, 0.76),
+            rgba(197, 170, 215, 0.66)
+        );
+}
+
+.rm .rm-footer--purple::before {
+    content: "✧";
+
+    position: absolute;
+    top: 12%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 35px;
+    color: var(--diamond-gold);
+
+    text-shadow:
+        0 0 18px rgba(227, 192, 133, 0.65);
+
+    animation: diamond-finale-star 4s ease-in-out infinite;
+}
+
+.rm .rm-footer--purple strong {
+    position: relative;
+
+    background: linear-gradient(
+        115deg,
+        #604276,
+        #a47bb8,
+        #b58d55,
+        #65467b
+    );
+
+    background-size: 250% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: diamond-gold-text 9s ease-in-out infinite alternate;
+}
+
+@keyframes diamond-finale-star {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.25);
+    }
+}
+
+@keyframes diamond-gold-text {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+/* ==========================================================
+   ACCESSIBILITY & MOBILE
+   ========================================================== */
+
+@media (max-width: 700px) {
+    .rm .rm-story:hover {
+        transform: translateY(-4px);
+    }
+
+    .rm .rm-tile:hover {
+        transform: translateY(-5px);
+    }
+
+    .rm .rm-footer--purple {
+        padding: 72px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm .rm-footer--purple::before,
+    .rm .rm-footer--purple strong {
+        animation: none !important;
+    }
+
+    .rm .rm-story,
+    .rm .rm-tile,
+    .rm .rm-ring,
+    .rm .rm-tile img {
+        transition: none !important;
+    }
+}

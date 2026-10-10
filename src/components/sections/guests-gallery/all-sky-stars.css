@@ -1,0 +1,109 @@
+/* ROYAL MEMORIES 3.0 — CELESTIAL CRYSTAL PALACE
+   Luminous ivory + pearlescent lavender + champagne + amethyst.
+   One continuous sky, no harsh purple blocks. */
+.rm {
+  background:
+    radial-gradient(ellipse 72% 17% at 18% 11%, rgba(245,224,255,.76), transparent 90%),
+    radial-gradient(ellipse 66% 22% at 92% 37%, rgba(229,202,248,.55), transparent 90%),
+    radial-gradient(ellipse 65% 22% at 10% 67%, rgba(255,231,198,.48), transparent 90%),
+    linear-gradient(180deg,
+      #fffdf9 0%, #faf5fb 13%, #f1e5f7 25%, #e9d8f0 37%,
+      #f7f0f9 49%, #fffdfb 61%, #eee1f5 75%,
+      #e2d0ec 88%, #f7f0f8 100%);
+}
+.rm-flight-layer {
+  position:sticky; top:0; z-index:0;
+  height:100vh; height:100dvh;
+  margin-bottom:-100vh; margin-bottom:-100dvh;
+  overflow:hidden; pointer-events:none; isolation:isolate;
+}
+.rm-flight-canvas {display:block;width:100%;height:100%;opacity:.95}
+.rm-stars {z-index:0;opacity:.6}
+.rm-aurora-layer {
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 15% at 15% 16%,#fff9,transparent 95%),
+    radial-gradient(ellipse 58% 20% at 90% 48%,#d6b5e74d,transparent 90%),
+    radial-gradient(ellipse 55% 20% at 10% 80%,#ffe7b74d,transparent 90%);
+  animation:rm-aurora-drift 22s ease-in-out infinite alternate;
+}
+@keyframes rm-aurora-drift {to {opacity:.68;filter:hue-rotate(9deg);transform:scale(1.025)}}
+.rm-wrap {position:relative;z-index:1}
+.rm-hero {
+  background:linear-gradient(125deg,rgba(255,255,255,.88),rgba(255,255,255,.52) 53%,rgba(225,206,239,.55));
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:0 25px 80px #79518a1d,inset 0 1px 0 #fff,0 0 0 1px #e5d2ec40;
+  backdrop-filter:blur(24px) saturate(145%);
+}
+.rm-section--purple,.rm-section--white {
+  position:relative;overflow:hidden;border-radius:34px;
+  padding:38px 28px 32px;
+  backdrop-filter:blur(24px) saturate(150%);
+  -webkit-backdrop-filter:blur(24px) saturate(150%);
+}
+.rm-section--purple {
+  color:#4c355c;
+  border:1px solid #ffffffdb;
+  background:linear-gradient(135deg,
+    rgba(255,255,255,.77),
+    rgba(225,204,238,.64) 48%,
+    rgba(181,149,207,.48) 100%);
+  box-shadow:0 24px 75px #69447c26,inset 0 1px 0 #fff;
+}
+.rm-section--purple .rm-overline {color:#967347}
+.rm-section--purple .rm-heading>span {color:#715b7d}
+.rm-section--purple .rm-search {
+  border:1px solid #fff;
+  background:linear-gradient(110deg,#ffffffba,#f5eafa9c);
+  box-shadow:0 8px 28px #80539314,inset 0 1px #fff;
+  color:#8b6b9b;
+  backdrop-filter:blur(18px);
+}
+.rm-section--purple .rm-search input {color:#473152}
+.rm-section--purple .rm-search input::placeholder {color:#9988a3}
+.rm-section--purple .rm-story {
+  background:linear-gradient(135deg,#fffefce8,#f7effbd9 60%,#e9d9f2cc);
+  border-color:#fff;box-shadow:0 14px 36px #63437a20;
+}
+.rm-section--white {
+  border:1px solid #ffffffed;
+  background:linear-gradient(130deg,#ffffffc9,#fdf9ffe0 54%,#e9d8f1a3);
+  box-shadow:0 20px 65px #6a4a7b20,inset 0 1px #fff;
+}
+.rm-footer--purple {
+  position:relative;overflow:hidden;
+  color:#4a3457;
+  background:linear-gradient(125deg,
+    rgba(255,255,255,.82),
+    rgba(230,212,240,.76) 53%,
+    rgba(177,146,200,.65));
+  border:1px solid #fff;
+  box-shadow:0 28px 70px #69437b2b,inset 0 1px #fff;
+  backdrop-filter:blur(22px);
+}
+.rm-footer--purple .rm-overline,.rm-footer--purple small {color:#a17b49}
+.rm-footer--purple p {color:#7c6a84}
+.rm-hero::after,.rm-section--purple::after,.rm-section--white::after,.rm-footer--purple::after {
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(330px circle at var(--glow-x,50%) var(--glow-y,50%),
+    rgba(255,255,255,.75),transparent 70%);
+  opacity:0;transition:opacity .4s;mix-blend-mode:screen;
+}
+.rm-hero:hover::after,.rm-section--purple:hover::after,
+.rm-section--white:hover::after,.rm-footer--purple:hover::after {opacity:.85}
+.rm-hero,.rm-section--purple,.rm-section--white,.rm-footer--purple {overflow:hidden}
+.rm .rm-seal {animation:rm-seal-breathe 6s ease-in-out infinite alternate}
+@keyframes rm-seal-breathe {
+  to {box-shadow:0 0 38px #d5ad73a6,inset 0 0 22px #fff9;transform:scale(1.035)}
+}
+.rm .rm-story:hover,.rm .rm-tile:hover {
+  box-shadow:0 26px 54px #6c43853a,0 0 0 1px #d9b9859c;
+}
+@media(max-width:700px) {
+  .rm-section--purple,.rm-section--white {padding:25px 13px;border-radius:24px}
+  .rm-flight-canvas {opacity:.8}
+}
+@media(prefers-reduced-motion:reduce) {
+  .rm-aurora-layer,.rm .rm-seal {animation:none!important}
+  .rm-flight-canvas {opacity:.38}
+}

@@ -1,25 +1,25 @@
+
+/**
+ * ============================================================
+ * MAIN — SUZANA & JUAN
+ * ============================================================
+ */
+
 import { loadComponent } from "./core/componentLoader.js";
+
+import { galleryConfig } from "../config/gallery.config.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("✓ Aplicação iniciada");
 
-
-    const app =
-        document.getElementById("app");
-
+    const app = document.getElementById("app");
 
     if (!app) {
-
-        console.error(
-            '❌ Container "app" não encontrado.'
-        );
-
+        console.error('❌ Container "app" não encontrado.');
         return;
-
     }
-
 
     try {
 
@@ -32,60 +32,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const loading =
-            document.getElementById(
-                "loading-screen"
-            );
-
+        const loading = document.getElementById("loading-screen");
 
         if (!loading) {
-
-            console.error(
-                "❌ Loading não encontrado."
-            );
-
+            console.error("❌ Loading não encontrado.");
             return;
-
         }
 
+        const loadingModule = await import(
+            "../components/system/loading/loading.js"
+        );
 
-        const loadingModule =
-            await import(
-                "../components/system/loading/loading.js"
-            );
-
-
-        if (
-            typeof loadingModule.initLoading ===
-            "function"
-        ) {
-
+        if (typeof loadingModule.initLoading === "function") {
             loadingModule.initLoading();
-
         }
 
+        console.log("⏳ Loading ativo...");
 
-        console.log(
-            "⏳ Loading ativo..."
-        );
+        await new Promise((resolve) => {
+            setTimeout(resolve, 4000);
+        });
 
-
-        await new Promise(
-            function (resolve) {
-
-                setTimeout(
-                    resolve,
-                    4000
-                );
-
-            }
-        );
-
-
-        console.log(
-            "✓ Tempo do Loading terminado"
-        );
+        console.log("✓ Tempo do Loading terminado");
 
 
         /* ============================================================
@@ -97,28 +65,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const hero =
-            document.getElementById("hero");
-
+        const hero = document.getElementById("hero");
 
         if (hero) {
+            const heroModule = await import(
+                "../components/sections/hero/hero.js"
+            );
 
-            const heroModule =
-                await import(
-                    "../components/sections/hero/hero.js"
-                );
-
-
-            if (
-                typeof heroModule.initHero ===
-                "function"
-            ) {
-
+            if (typeof heroModule.initHero === "function") {
                 heroModule.initHero();
-
             }
-
         }
 
 
@@ -131,28 +87,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const story =
-            document.getElementById("story");
-
+        const story = document.getElementById("story");
 
         if (story) {
+            const storyModule = await import(
+                "../components/sections/story/story.js"
+            );
 
-            const storyModule =
-                await import(
-                    "../components/sections/story/story.js"
-                );
-
-
-            if (
-                typeof storyModule.initStory ===
-                "function"
-            ) {
-
+            if (typeof storyModule.initStory === "function") {
                 storyModule.initStory();
-
             }
-
         }
 
 
@@ -165,28 +109,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const day =
-            document.getElementById("day");
-
+        const day = document.getElementById("day");
 
         if (day) {
+            const dayModule = await import(
+                "../components/sections/day/day.js"
+            );
 
-            const dayModule =
-                await import(
-                    "../components/sections/day/day.js"
-                );
-
-
-            if (
-                typeof dayModule.initDay ===
-                "function"
-            ) {
-
+            if (typeof dayModule.initDay === "function") {
                 dayModule.initDay();
-
             }
-
         }
 
 
@@ -199,30 +131,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const dresscode =
-            document.getElementById(
-                "dresscode"
-            );
-
+        const dresscode = document.getElementById("dresscode");
 
         if (dresscode) {
+            const dresscodeModule = await import(
+                "../components/sections/dresscode/dresscode.js"
+            );
 
-            const dresscodeModule =
-                await import(
-                    "../components/sections/dresscode/dresscode.js"
-                );
-
-
-            if (
-                typeof dresscodeModule.initDresscode ===
-                "function"
-            ) {
-
+            if (typeof dresscodeModule.initDresscode === "function") {
                 dresscodeModule.initDresscode();
-
             }
-
         }
 
 
@@ -235,30 +153,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             "app"
         );
 
-
-        const information =
-            document.getElementById(
-                "information"
-            );
-
+        const information = document.getElementById("information");
 
         if (information) {
+            const informationModule = await import(
+                "../components/sections/information/information.js"
+            );
 
-            const informationModule =
-                await import(
-                    "../components/sections/information/information.js"
-                );
-
-
-            if (
-                typeof informationModule.initInformation ===
-                "function"
-            ) {
-
+            if (typeof informationModule.initInformation === "function") {
                 informationModule.initInformation();
-
             }
-
         }
 
 
@@ -266,92 +170,91 @@ document.addEventListener("DOMContentLoaded", async () => {
            OFFICIAL GALLERY
            ============================================================ */
 
-        await loadComponent(
-            "./src/components/sections/official-gallery/official-gallery.html",
-            "app"
-        );
+        if (galleryConfig.officialGalleryVisible) {
 
+            await loadComponent(
+                "./src/components/sections/official-gallery/official-gallery.html",
+                "app"
+            );
 
-        const officialGallery =
-            document.getElementById(
+            const officialGallery = document.getElementById(
                 "official-gallery"
             );
 
+            if (officialGallery) {
 
-        if (officialGallery) {
-
-            const officialGalleryModule =
-                await import(
+                const officialGalleryModule = await import(
                     "../components/sections/official-gallery/official-gallery.js"
                 );
 
-
-            if (
-                typeof officialGalleryModule.initOfficialGallery ===
-                "function"
-            ) {
-
-                officialGalleryModule.initOfficialGallery();
-
+                if (
+                    typeof officialGalleryModule.initOfficialGallery ===
+                    "function"
+                ) {
+                    officialGalleryModule.initOfficialGallery();
+                }
             }
 
+            console.log("✓ Galeria oficial carregada");
+
+        } else {
+
+            console.log("🔒 Galeria oficial oculta");
+
         }
+
 
 
         /* ============================================================
-           GUEST GALLERY
+           GUEST GALLERY — ROYAL MEMORIES 2.0
            ============================================================ */
 
-        await loadComponent(
-            "./src/components/sections/guests-gallery/guests-gallery.html",
-            "app"
-        );
+        if (galleryConfig.guestsGalleryVisible) {
 
-
-        const guestsGallery =
-            document.getElementById(
-                "guest-gallery"
+            await loadComponent(
+                "./src/components/sections/guests-gallery/guests-gallery.html",
+                "app"
             );
 
+            const guestsGallery = document.getElementById("guest-gallery");
 
-        if (guestsGallery) {
-
-            const guestsGalleryModule =
-                await import(
-                    "../components/sections/guests-gallery/guests-gallery.js"
+            if (!guestsGallery) {
+                throw new Error(
+                    "Royal Memories: HTML da galeria não encontrado."
                 );
-
-
-            if (
-                typeof guestsGalleryModule.initGuestsGallery ===
-                "function"
-            ) {
-
-                guestsGalleryModule.initGuestsGallery();
-
             }
 
+            const guestsGalleryModule = await import(
+                "../components/sections/guests-gallery/guests-gallery.js"
+            );
+
+            if (typeof guestsGalleryModule.initGuestsGallery !== "function") {
+                throw new Error(
+                    "Royal Memories: initGuestsGallery não encontrada."
+                );
+            }
+
+            guestsGalleryModule.initGuestsGallery(guestsGallery);
+
+            console.log("✓ Royal Memories 2.0 inicializada");
+
+        } else {
+
+            console.log("🔒 Royal Memories oculta");
+
         }
+
 
 
         /* ============================================================
            APPLICATION READY
            ============================================================ */
 
-        console.log(
-            "✓ Todas as sections carregadas"
-        );
+        console.log("✓ Todas as sections carregadas");
 
-
-        if (
-            typeof loadingModule.finishLoading ===
-            "function"
-        ) {
-
+        if (typeof loadingModule.finishLoading === "function") {
             loadingModule.finishLoading();
-
         }
-
 
     } catch (error) {
 
@@ -360,19 +263,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             error
         );
 
-
-        const loading =
-            document.getElementById(
-                "loading-screen"
-            );
-
+        const loading = document.getElementById(
+            "loading-screen"
+        );
 
         if (loading) {
-
             loading.remove();
-
         }
-
     }
 
 });

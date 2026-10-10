@@ -1,0 +1,101 @@
+/* ==================================================
+   ROYAL MEMORIES 3.3 — GUEST EXPERIENCE
+   Suzana & Juan
+   ================================================== */
+
+.rm {
+    --gx-gold: #d7b77f;
+    --gx-lilac: #d7b9e9;
+    --gx-white: #fffaf4;
+}
+
+/* Stories: navegação e indicadores */
+
+.rm .rm-media {
+    touch-action: pan-y;
+}
+
+.rm .rm-media img {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+.rm .rm-progress {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    min-height: 4px;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.rm .rm-progress>span {
+    border-radius: inherit;
+    background: linear-gradient(90deg,
+            #b58bc9,
+            #e5c48d,
+            #fff3d8);
+}
+
+/* Controles acessíveis */
+
+.rm .rm-prev,
+.rm .rm-next,
+.rm .rm-close {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rm .rm-prev:focus-visible,
+.rm .rm-next:focus-visible,
+.rm .rm-close:focus-visible,
+.rm .rm-story:focus-visible,
+.rm .rm-tile:focus-visible {
+    outline: 3px solid var(--gx-gold);
+    outline-offset: 4px;
+}
+
+/* Interações de toque */
+
+@media (hover: none) {
+
+    .rm .rm-story:hover,
+    .rm .rm-tile:hover {
+        transform: none;
+    }
+
+    .rm .rm-prev,
+    .rm .rm-next {
+        min-width: 42px;
+        min-height: 42px;
+    }
+}
+
+/* Experiência mobile */
+
+@media (max-width: 600px) {
+    .rm .rm-panel {
+        max-width: calc(100vw - 16px);
+        max-height: calc(100dvh - 16px);
+    }
+
+    .rm .rm-panel header,
+    .rm .rm-panel footer {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .rm .rm-prev,
+    .rm .rm-next {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm .rm-progress>span {
+        transition: none !important;
+        animation: none !important;
+    }
+}

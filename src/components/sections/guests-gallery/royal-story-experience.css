@@ -1,0 +1,159 @@
+/* ROYAL MEMORIES 3.4 — STORY EXPERIENCE */
+
+.rm [data-story-modal] .rm-media {
+    position: relative;
+}
+
+.rm [data-story-modal] .rm-media::before {
+    content: "Ⅱ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+
+    display: grid;
+    place-items: center;
+
+    width: 74px;
+    height: 74px;
+
+    border-radius: 50%;
+
+    color: #fffaf0;
+    font-size: 31px;
+
+    background: rgba(47, 27, 58, 0.5);
+    border: 1px solid rgba(245, 217, 164, 0.55);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 0 35px rgba(217, 175, 113, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0.85);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.rm [data-story-modal].rm-story-held .rm-media::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.rm [data-story-modal].rm-story-held .rm-progress span {
+    animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm [data-story-modal] .rm-media::before {
+        transition: none;
+    }
+}
+
+
+/* ROYAL MEMORIES 3.6 — CELESTIAL PROGRESS */
+
+.rm [data-story-modal] .rm-progress {
+    position: relative;
+    z-index: 6;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.rm [data-story-modal] .rm-progress [data-progress] {
+    display: block;
+    height: 100%;
+    width: 0%;
+    border-radius: inherit;
+
+    background: linear-gradient(90deg,
+            #a879c0 0%,
+            #d4a96e 55%,
+            #fff4d8 100%);
+
+    box-shadow:
+        0 0 10px rgba(232, 195, 139, 0.6),
+        0 0 22px rgba(203, 158, 220, 0.35);
+
+    transition: width 90ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm [data-story-modal] .rm-progress [data-progress] {
+        transition: none;
+    }
+}
+
+
+/* ==============================================
+   ROYAL MEMORIES 3.7 — DIAMOND SEGMENTS
+   ============================================== */
+
+.rm [data-story-progress].rm-progress--segments {
+    display: block;
+    position: relative;
+    height: auto;
+    min-height: 5px;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+.rm [data-story-progress] [data-progress][hidden] {
+    display: none !important;
+}
+
+.rm .rm-progress-segments {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    min-height: 5px;
+}
+
+.rm .rm-progress-segment {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.14);
+}
+
+.rm .rm-progress-segment-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg,
+            #a77cbd,
+            #d7b37c,
+            #fff1ce);
+    box-shadow: 0 0 9px rgba(230, 194, 137, 0.5);
+    transition: width 90ms linear;
+}
+
+.rm .rm-progress-segment.is-active {
+    box-shadow:
+        0 0 12px rgba(219, 181, 125, 0.35),
+        inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm .rm-progress-segment-fill {
+        transition: none;
+    }
+}
