@@ -177,9 +177,7 @@ function initCountdown() {
          * Atualiza HTML.
          */
 
-        daysElement.textContent =
-            String(days)
-                .padStart(3, "0");
+        daysElement.textContent = String(days);
 
 
         hoursElement.textContent =

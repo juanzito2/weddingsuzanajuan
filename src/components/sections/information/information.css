@@ -1052,3 +1052,112 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* RSVP — Minimalismo Royal */
+
+.information-card__rsvp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  width: 100%;
+  margin-top: 34px;
+  padding: 0 0 14px;
+
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(194, 155, 91, 0.45);
+  border-radius: 0;
+
+  color: #4d306f;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-decoration: none;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.information-card__rsvp span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid rgba(194, 155, 91, 0.45);
+  border-radius: 50%;
+
+  color: #4d306f;
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.information-card__rsvp:hover {
+  color: #301944;
+  border-bottom-color: #c29b5b;
+}
+
+.information-card__rsvp:hover span {
+  transform: translate(3px, -3px);
+  border-color: #c29b5b;
+  background: rgba(194, 155, 91, 0.08);
+}
+
+.information-card__rsvp:focus-visible {
+  outline: 2px solid #c29b5b;
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .information-card__rsvp,
+  .information-card__rsvp span {
+    transition: none;
+  }
+}
+
+
+/* RSVP — Organização do selo */
+
+.information-card--details .information-card__seal {
+  position: relative;
+  inset: auto;
+  transform: none;
+
+  align-self: flex-end;
+  margin-top: 48px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 0;
+
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.information-card--details .information-card__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .information-card--details .information-card__seal {
+    margin-top: 36px;
+    width: 86px;
+    height: 86px;
+  }
+}
