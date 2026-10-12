@@ -78,7 +78,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
 
-        
+        /* ============================================================
+           STORY
+           ============================================================ */
+
+        await loadComponent(
+            "./src/components/sections/story/story.html",
+            "app"
+        );
+
+        const story = document.getElementById("story");
+
+        if (story) {
+            const storyModule = await import(
+                "../components/sections/story/story.js"
+            );
+
+            if (typeof storyModule.initStory === "function") {
+                storyModule.initStory();
+            }
+        }
 
 
         /* ============================================================

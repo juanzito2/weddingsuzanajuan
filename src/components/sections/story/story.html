@@ -1,187 +1,92 @@
-<section id="story" class="story">
-  <div class="story__transition" aria-hidden="true"></div>
-  <!-- ======================================================
-     DECORAÇÃO EXTERNA
-======================================================= -->
-
-  <div class="story__frame story__frame--outer"></div>
-
-  <div class="story__frame story__frame--inner"></div>
-
-  <!-- ======================================================
-     CANTOS DECORATIVOS
-======================================================= -->
-
-  <div class="story__corner story__corner--tl"></div>
-
-  <div class="story__corner story__corner--tr"></div>
-
-  <div class="story__corner story__corner--bl"></div>
-
-  <div class="story__corner story__corner--br"></div>
-
-  <!-- ======================================================
-     ELEMENTOS GEOMÉTRICOS
-======================================================= -->
-
-  <div class="story__circle story__circle--one"></div>
-
-  <div class="story__circle story__circle--two"></div>
-
-  <div class="story__circle story__circle--three"></div>
-
-  <!-- ======================================================
-     PONTOS DECORATIVOS
-======================================================= -->
-
-  <span class="story__dot story__dot--one"></span>
-
-  <span class="story__dot story__dot--two"></span>
-
-  <span class="story__dot story__dot--three"></span>
-
-  <span class="story__dot story__dot--four"></span>
-
-  <!-- ======================================================
-     ELEMENTOS FLORAIS
-======================================================= -->
-
-  <div class="story__floral story__floral--left">
-    <img
-      src="./src/assets/images/flower/flor-branco.png"
-      alt=""
-      aria-hidden="true"
-    />
+<section id="story" class="story story--chapter-one" aria-labelledby="story-title">
+  <!-- Universo e efeitos: preenchidos e animados pelo story.js -->
+  <div class="story__universe" aria-hidden="true">
+    <div class="story__nebula story__nebula--gold"></div>
+    <div class="story__nebula story__nebula--blue"></div>
+    <div class="story__stars" data-story-stars></div>
+    <div class="story__orbits"><span></span><span></span><span></span></div>
+    <div class="story__burst" data-story-burst></div>
+    <div class="story__horizon"></div>
+    <div class="story__aurora story__aurora--one"></div>
+    <div class="story__aurora story__aurora--two"></div>
+    <div class="story__cosmic-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="story__meteors" data-story-meteors></div>
+    <div class="story__rays" aria-hidden="true"></div>
+    <div class="story__pulse" aria-hidden="true"></div>
   </div>
 
-  <div class="story__floral story__floral--right">
-    <img
-      src="./src/assets/images/flower/flor-rosa.png"
-      alt=""
-      aria-hidden="true"
-    />
-  </div>
+  <div class="story__shell">
+    <header class="story__intro">
+      <span class="story__kicker">SUZANA &amp; JUAN · 09.01.2027</span>
+      <h2 class="story__title" id="story-title">El libro de nuestro destino</h2>
+      <p class="story__intro-text">Dos capítulos. Una historia guiada por Dios.</p>
+    </header>
 
-  <!-- ======================================================
-     CONTEÚDO PRINCIPAL
-======================================================= -->
+    <div class="story__experience" data-story-experience>
+      <div class="story__book" data-story-book>
+        <div class="story__book-spine" aria-hidden="true"></div>
 
-  <div class="story__content">
-    <!-- ==================================================
-         CABEÇALHO DA SEÇÃO
-    =================================================== -->
-
-    <div class="story__heading">
-      <p class="story__eyebrow">DOS VIDAS, UN MISMO PROPÓSITO</p>
-
-      <h2 class="story__title">Nuestra historia</h2>
-
-      <p class="story__subtitle">
-        Dos caminos que Dios permitió encontrar, una historia escrita con
-        propósito y un amor que decidimos construir juntos.
-      </p>
-    </div>
-
-    <!-- ==================================================
-         COMPOSIÇÃO PRINCIPAL
-    =================================================== -->
-
-    <div class="story__layout">
-      <!-- ==============================================
-             ÁREA DA FOTO
-        =============================================== -->
-
-      <div class="story__visual">
-        <!-- Moldura da fotografia -->
-
-        <div class="story__photo-frame">
-          <div class="story__photo-decoration"></div>
-
-          <div class="story__photo">
-            <img
-              src="./src/assets/images/story/story.jpg"
-              alt="Suzana y Juan"
-            />
+        <!-- CAPÍTULO I -->
+        <article class="story__page story__page--active" data-story-page="0" aria-labelledby="story-chapter-one">
+          <div class="story__page-art">
+            <div class="story__photo-aura" aria-hidden="true"></div>
+            <figure class="story__portrait">
+              <img src="./src/assets/images/story/story-azul.jpg" alt="Suzana y Juan ante un fondo azul" loading="lazy" decoding="async" />
+              <figcaption>Suzana &amp; Juan <span>✦</span> 09 · 01 · 2027</figcaption>
+            </figure>
+            <span class="story__art-seal" aria-hidden="true">SJ</span>
           </div>
-        </div>
+          <div class="story__page-copy">
+            <span class="story__chapter-label">CAPÍTULO I <span class="story__chapter-rule"></span> LA ESPERA</span>
+            <h3 class="story__chapter-title" id="story-chapter-one" data-story-kinetic>El tiempo de confiar</h3>
+            <p class="story__lead">Antes de que nuestros caminos se encontraran, ya existía una historia que nuestros ojos todavía no podían ver.</p>
+            <p>Hubo un tiempo para esperar, para aprender a confiar y para comprender que no todo lo que anhelamos llega cuando lo deseamos.</p>
+            <p>En medio de las preguntas, elegimos descansar en la voluntad de Dios. Porque la espera no siempre significa ausencia de respuestas; a veces, es el tiempo en el que Él prepara aquello que aún no conocemos.</p>
+            <p>Y mientras nosotros aprendíamos a confiar, Dios seguía escribiendo una historia que, a su debido tiempo, uniría nuestros caminos.</p>
+            <blockquote>«Porque lo que nace en el propósito de Dios no necesita adelantarse a su tiempo».</blockquote>
+          </div>
+        </article>
 
-        <!-- Selo SJ -->
-
-        <div class="story__seal" aria-label="Suzana y Juan">SJ</div>
-
-        <!-- Legenda -->
-
-        <div class="story__photo-caption">
-          <span></span>
-
-          <p>Suzana & Juan</p>
-
-          <span></span>
-        </div>
+        <!-- CAPÍTULO II -->
+        <article class="story__page" data-story-page="1" aria-labelledby="story-chapter-two" aria-hidden="true" inert>
+          <div class="story__page-art">
+            <div class="story__photo-aura" aria-hidden="true"></div>
+            <figure class="story__portrait">
+              <img src="./src/assets/images/story/story-aliancas.jpg" alt="Suzana y Juan mostrando sus alianzas" loading="lazy" decoding="async" />
+              <figcaption>Suzana &amp; Juan <span>✦</span> 09 · 01 · 2027</figcaption>
+            </figure>
+            <span class="story__art-seal" aria-hidden="true">SJ</span>
+          </div>
+          <div class="story__page-copy">
+            <span class="story__chapter-label">CAPÍTULO II <span class="story__chapter-rule"></span> EL CAMINO</span>
+            <h3 class="story__chapter-title" id="story-chapter-two" data-story-kinetic>Cuando Dios respondió</h3>
+            <p class="story__lead">Y llegó el momento en que aquello que un día fue oración comenzó a convertirse en realidad.</p>
+            <p>Nuestros caminos se encontraron, y lo que antes parecía incierto empezó a revelar un propósito compartido.</p>
+            <p>Pero comprendimos que el amor no consiste solamente en recibir una respuesta, sino también en tomar una decisión: elegirnos, cuidarnos, crecer juntos y poner a Dios en el centro de nuestra historia.</p>
+            <p>Hoy no afirmamos conocer cada paso del futuro, pero sí sabemos con quién queremos recorrerlo.</p>
+            <p>Con fe en Dios, amor en nuestros corazones y la decisión de caminar en una misma dirección, comenzamos a escribir un nuevo capítulo.</p>
+            <blockquote>«Porque Dios permitió el encuentro, pero nosotros elegimos recorrer el camino juntos».</blockquote>
+          </div>
+        </article>
+        <div class="story__page-flash" aria-hidden="true"></div>
       </div>
-
-      <!-- ==============================================
-             ÁREA DO TEXTO
-        =============================================== -->
-
-      <article class="story__body">
-        <!-- Cabeçalho do texto -->
-
-        <div class="story__body-heading">
-          <span class="story__number"> 01 </span>
-
-          <p>El comienzo</p>
-        </div>
-
-        <!-- Primeiro parágrafo -->
-
-        <p class="story__text">
-          Todo comenzó mucho antes de que imagináramos lo que Dios tenía preparado para nosotros.
-           Dios fue guiando cada etapa, cada encuentro y cada
-          decisión hasta llevarnos al momento en el que nuestras historias se
-          encontraron.
-        </p>
-
-        <!-- Frase destacada -->
-
-        <blockquote class="story__highlight">
-          “El amor verdadero se construye cuando dos personas deciden caminar en
-          la misma dirección.”
-        </blockquote>
-
-        <!-- Segundo parágrafo -->
-
-        <p class="story__text">
-          Aprendimos que el amor no se trata solamente de encontrar a la persona
-          correcta, sino de caminar juntos, crecer juntos y elegirnos cada día.
-        </p>
-
-        <!-- Divisor decorativo -->
-
-        <div class="story__divider">
-          <span></span>
-
-          <i>✦</i>
-
-          <span></span>
-        </div>
-
-        <!-- Terceiro parágrafo -->
-
-        <p class="story__text">
-          Hoy miramos hacia adelante con gratitud, sabiendo que todavía quedan
-          muchos capítulos por escribir. Y queremos comenzar ese nuevo capítulo
-          delante de Dios y junto a las personas que amamos.
-        </p>
-
-        <!-- Assinatura -->
-
-        <div class="story__signature">
-          <span> Con amor </span>
-
-          <strong> Suzana & Juan </strong>
-        </div>
-      </article>
     </div>
+
+    <nav class="story__navigation" aria-label="Navegación de los capítulos">
+      <button class="story__arrow" type="button" data-story-prev aria-label="Ver el capítulo anterior"><span aria-hidden="true">←</span></button>
+      <div class="story__chapters" role="group" aria-label="Elegir capítulo">
+        <button class="story__chapter-button is-active" type="button" data-story-go="0" aria-current="step"><span>01</span><span>LA ESPERA</span></button>
+        <span class="story__nav-star" aria-hidden="true">✦</span>
+        <button class="story__chapter-button" type="button" data-story-go="1"><span>02</span><span>EL CAMINO</span></button>
+      </div>
+      <button class="story__arrow" type="button" data-story-next aria-label="Ver el capítulo siguiente"><span aria-hidden="true">→</span></button>
+    </nav>
+    <div class="story__autoplay" aria-label="Reproducción automática de los capítulos">
+      <button type="button" class="story__play-toggle" data-story-play aria-pressed="true" aria-label="Pausar cambio automático">❚❚</button>
+      <div class="story__progress" aria-hidden="true"><span data-story-progress></span></div>
+      <span class="story__auto-label" data-story-auto-label>CAMBIO AUTOMÁTICO</span>
+    </div>
+    <p class="story__hint">Los capítulos avanzan automáticamente · También puedes deslizar o utilizar las flechas</p>
+    <p class="story__sr-only" aria-live="polite" data-story-announcement></p>
   </div>
 </section>
