@@ -601,6 +601,38 @@
   --swatch-color: #bfc1c5;
 }
 
+
+/* AZUL CELESTE */
+.dresscode__swatch--sky-blue {
+  --swatch-color: #87ceeb;
+}
+
+/* TURQUESA */
+.dresscode__swatch--turquoise {
+  --swatch-color: #40c4b4;
+}
+
+/* SALMÓN */
+.dresscode__swatch--salmon {
+  --swatch-color: #fa8072;
+}
+
+/* AMARILLO MOSTAZA */
+.dresscode__swatch--mustard {
+  --swatch-color: #d4a017;
+}
+
+/* GRIS GRAFITO */
+.dresscode__swatch--graphite {
+  --swatch-color: #41424c;
+}
+
+/* NEGRO */
+.dresscode__swatch--black {
+  --swatch-color: #171717;
+}
+
+
 /* ============================================================
    HINT
 ============================================================ */
@@ -1507,4 +1539,33 @@
   .dresscode__footer span {
     width: 55px;
   }
+}
+
+
+/* ============================================================
+   NOVAS CORES — DRESS CODE
+============================================================ */
+
+.dresscode__swatch--sky-blue {
+  --swatch-color: #87ceeb;
+}
+
+.dresscode__swatch--turquoise {
+  --swatch-color: #40c4b4;
+}
+
+.dresscode__swatch--salmon {
+  --swatch-color: #fa8072;
+}
+
+.dresscode__swatch--mustard {
+  --swatch-color: #d4a017;
+}
+
+.dresscode__swatch--graphite {
+  --swatch-color: #41424c;
+}
+
+.dresscode__swatch--black {
+  --swatch-color: #171717;
 }
