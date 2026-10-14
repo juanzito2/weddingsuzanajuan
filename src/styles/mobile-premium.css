@@ -6,19 +6,77 @@
 
 /* Base: impedir cortes horizontais sem apagar efeitos decorativos */
 @media (max-width: 850px) {
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  body, #app { min-width: 0; }
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale, .royal-footer) { max-width: 100%; }
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale, .royal-footer) img,
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale, .royal-footer) video { max-width: 100%; }
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale, .royal-footer) :is(h1, h2, h3, p) { overflow-wrap: break-word; }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body,
+  #app {
+    min-width: 0;
+  }
+  :where(
+    .hero,
+    .story,
+    .day,
+    .dresscode,
+    .information,
+    .rm,
+    .royal-finale,
+    .royal-footer
+  ) {
+    max-width: 100%;
+  }
+  :where(
+      .hero,
+      .story,
+      .day,
+      .dresscode,
+      .information,
+      .rm,
+      .royal-finale,
+      .royal-footer
+    )
+    img,
+  :where(
+      .hero,
+      .story,
+      .day,
+      .dresscode,
+      .information,
+      .rm,
+      .royal-finale,
+      .royal-footer
+    )
+    video {
+    max-width: 100%;
+  }
+  :where(
+      .hero,
+      .story,
+      .day,
+      .dresscode,
+      .information,
+      .rm,
+      .royal-finale,
+      .royal-footer
+    )
+    :is(h1, h2, h3, p) {
+    overflow-wrap: break-word;
+  }
 
   /* Evita que elementos decorativos sejam confundidos com conteúdo clicável */
-  :where(.hero, .story, .day, .dresscode) :is(.hero__frame, .story__frame, .day__frame, .dresscode__frame) { pointer-events: none; }
+  :where(.hero, .story, .day, .dresscode)
+    :is(.hero__frame, .story__frame, .day__frame, .dresscode__frame) {
+    pointer-events: none;
+  }
 
   /* Botões, links e campos confortáveis para toque */
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale) :is(button, input, select, textarea) { font-size: max(16px, 1em); }
-  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale) :is(button, a, input, select, textarea):focus-visible {
+  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale)
+    :is(button, input, select, textarea) {
+    font-size: max(16px, 1em);
+  }
+  :where(.hero, .story, .day, .dresscode, .information, .rm, .royal-finale)
+    :is(button, a, input, select, textarea):focus-visible {
     outline: 2px solid #cba962;
     outline-offset: 3px;
   }
@@ -26,23 +84,57 @@
 
 @media (max-width: 600px) {
   /* HERO: título e contagem regressiva sem cortar nos ecrãs estreitos */
-  .hero { min-height: 100svh; }
-  .hero__content { width: 100%; max-width: 100%; min-width: 0; }
-  .hero__title { max-width: 100%; overflow-wrap: break-word; }
-  .hero__countdown { max-width: 100%; min-width: 0; }
-  .countdown__item { min-width: 0; }
-  .hero__button { max-width: 100%; }
+  .hero {
+    min-height: 100svh;
+  }
+  .hero__content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .hero__title {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .hero__countdown {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .countdown__item {
+    min-width: 0;
+  }
+  .hero__button {
+    max-width: 100%;
+  }
 
   /* HISTÓRIA: fotografia e texto adaptáveis sem mexer na composição */
-  .story__content, .story__layout, .story__visual, .story__body { min-width: 0; max-width: 100%; }
-  .story__photo { max-width: 100%; }
-  .story__body { overflow-wrap: break-word; }
+  .story__content,
+  .story__layout,
+  .story__visual,
+  .story__body {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .story__photo {
+    max-width: 100%;
+  }
+  .story__body {
+    overflow-wrap: break-word;
+  }
 
   /* NOSSO DIA: linha e cartões alinhados num único eixo */
-  .day { padding-inline: 16px; }
-  .day__content { min-width: 0; }
-  .day__timeline { padding-bottom: 2rem; }
-  .day__event, .day__event--left, .day__event--right {
+  .day {
+    padding-inline: 16px;
+  }
+  .day__content {
+    min-width: 0;
+  }
+  .day__timeline {
+    padding-bottom: 2rem;
+  }
+  .day__event,
+  .day__event--left,
+  .day__event--right {
     width: 100%;
     min-width: 0;
     padding-left: 52px;
@@ -50,65 +142,174 @@
     margin-bottom: 2.25rem;
     justify-content: flex-end;
   }
-  .day__event-card { min-width: 0; width: 100%; box-sizing: border-box; }
-  .day__timeline-line { left: 19px; }
-  .day__event--left .day__marker, .day__event--right .day__marker { left: 12px; right: auto; }
-  .day__seal { left: 19px; }
-  .day__event-time { font-variant-numeric: tabular-nums; }
+  .day__event-card {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .day__timeline-line {
+    left: 19px;
+  }
+  .day__event--left .day__marker,
+  .day__event--right .day__marker {
+    left: 12px;
+    right: auto;
+  }
+  .day__seal {
+    left: 19px;
+  }
+  .day__event-time {
+    font-variant-numeric: tabular-nums;
+  }
 
   /* DRESS CODE: preservar cores e cartões, mas evitar scroll lateral */
-  .dresscode__content, .dresscode__cards, .dresscode__card, .dresscode__palette-section { min-width: 0; max-width: 100%; }
-  .dresscode__palette { max-width: 100%; }
-  .dresscode__card-content { min-width: 0; }
+  .dresscode__content,
+  .dresscode__cards,
+  .dresscode__card,
+  .dresscode__palette-section {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .dresscode__palette {
+    max-width: 100%;
+  }
+  .dresscode__card-content {
+    min-width: 0;
+  }
 
   /* INFORMAÇÕES: remover deslocamento decorativo dos cartões empilhados */
-  .information__deck { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .information-card, .information-card:nth-child(2), .information-card:nth-child(2):hover {
+  .information__deck {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .information-card,
+  .information-card:nth-child(2),
+  .information-card:nth-child(2):hover {
     min-width: 0;
     min-height: 0;
     transform: none;
   }
-  .information-card { padding: clamp(22px, 6vw, 32px); }
+  .information-card {
+    padding: clamp(22px, 6vw, 32px);
+  }
 
   /* ROYAL MEMORIES: stories horizontais e grelha flexível */
-  .rm-wrap, .rm-section, .rm-hero { min-width: 0; max-width: 100%; }
-  .rm-hero { padding: 48px 16px; border-radius: 24px; }
-  .rm-hero h2 { font-size: clamp(2.35rem, 11vw, 4rem); overflow-wrap: anywhere; }
-  .rm-search { max-width: 100%; }
-  .rm-search input { min-width: 0; font-size: 16px; }
-  .rm-stories { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
-  .rm-story { flex: 0 0 120px; }
-  .rm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rm-modal, .rm-panel { max-width: 100%; }
-  .rm-media { max-width: 100%; max-height: 88dvh; object-fit: contain; }
+  .rm-wrap,
+  .rm-section,
+  .rm-hero {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .rm-hero {
+    padding: 48px 16px;
+    border-radius: 24px;
+  }
+  .rm-hero h2 {
+    font-size: clamp(2.35rem, 11vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+  .rm-search {
+    max-width: 100%;
+  }
+  .rm-search input {
+    min-width: 0;
+    font-size: 16px;
+  }
+  .rm-stories {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+  .rm-story {
+    flex: 0 0 120px;
+  }
+  .rm-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rm-modal,
+  .rm-panel {
+    max-width: 100%;
+  }
+  .rm-media {
+    max-width: 100%;
+    max-height: 88dvh;
+    object-fit: contain;
+  }
 
   /* FINAL: leitura confortável e assinatura centralizada */
-  .royal-finale__content, .royal-footer__inner { max-width: 100%; min-width: 0; }
-  .royal-finale__message, .royal-finale__verse { overflow-wrap: break-word; }
-  .royal-footer__developer { flex-wrap: wrap; justify-content: center; text-align: center; }
+  .royal-finale__content,
+  .royal-footer__inner {
+    max-width: 100%;
+    min-width: 0;
+  }
+  .royal-finale__message,
+  .royal-finale__verse {
+    overflow-wrap: break-word;
+  }
+  .royal-footer__developer {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 380px) {
-  .day { padding-inline: 12px; }
-  .day__event, .day__event--left, .day__event--right { padding-left: 43px; }
-  .day__event-card { padding: 1.25rem 1.1rem; }
-  .day__timeline-line, .day__seal { left: 16px; }
-  .day__event--left .day__marker, .day__event--right .day__marker { left: 9px; }
-  .day__event-time { font-size: clamp(.85rem, 4vw, 1.2rem); letter-spacing: 0; }
-  .day__event-title { font-size: clamp(1.05rem, 5vw, 1.35rem); }
-  .rm-grid { grid-template-columns: minmax(0, 1fr); }
-  .rm-story { flex-basis: 108px; }
-  .rm-hero { padding-inline: 12px; }
+  .day {
+    padding-inline: 12px;
+  }
+  .day__event,
+  .day__event--left,
+  .day__event--right {
+    padding-left: 43px;
+  }
+  .day__event-card {
+    padding: 1.25rem 1.1rem;
+  }
+  .day__timeline-line,
+  .day__seal {
+    left: 16px;
+  }
+  .day__event--left .day__marker,
+  .day__event--right .day__marker {
+    left: 9px;
+  }
+  .day__event-time {
+    font-size: clamp(0.85rem, 4vw, 1.2rem);
+    letter-spacing: 0;
+  }
+  .day__event-title {
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+  }
+  .rm-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rm-story {
+    flex-basis: 108px;
+  }
+  .rm-hero {
+    padding-inline: 12px;
+  }
 }
 
 /* Sem efeitos hover presos no toque */
 @media (hover: none) and (pointer: coarse) {
-  .day__event-card:hover, .information-card:hover, .information-card:nth-child(2):hover,
-  .rm-story:hover, .rm-tile:hover { transform: none; }
+  .day__event-card:hover,
+  .information-card:hover,
+  .information-card:nth-child(2):hover,
+  .rm-story:hover,
+  .rm-tile:hover {
+    transform: none;
+  }
 }
 
 /* Movimento reduzido sem esconder conteúdo */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within { scroll-behavior: auto; }
-  .rm-stories { scroll-behavior: auto; }
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  .rm-stories {
+    scroll-behavior: auto;
+  }
 }

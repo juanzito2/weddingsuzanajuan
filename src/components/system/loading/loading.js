@@ -2,7 +2,7 @@ let loadingScreen = null;
 
 let loadingStartTime = 0;
 
-const MINIMUM_LOADING_TIME = 4000;
+const MINIMUM_LOADING_TIME = 5200;
 
 export function initLoading() {
 
