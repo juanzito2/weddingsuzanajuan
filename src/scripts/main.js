@@ -5,10 +5,11 @@
  * ============================================================
  */
 
-import { loadComponent } from "./core/componentLoader.js";
+
 
 import { galleryConfig } from "../config/gallery.config.js";
 
+import { loadComponent } from "./core/componentLoader.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -278,6 +279,10 @@ document.addEventListener("DOMContentLoaded", async () => {
            ============================================================ */
 
         console.log("✓ Todas as sections carregadas");
+
+
+     
+
 
         if (typeof loadingModule.finishLoading === "function") {
             loadingModule.finishLoading();
