@@ -1,112 +1,32 @@
-<section id="hero" class="hero">
-  <!-- Decoração estrutural -->
-  <div class="hero__frame hero__frame--outer"></div>
-  <div class="hero__frame hero__frame--inner"></div>
-
-  <div class="hero__corner hero__corner--tl"></div>
-  <div class="hero__corner hero__corner--tr"></div>
-  <div class="hero__corner hero__corner--bl"></div>
-  <div class="hero__corner hero__corner--br"></div>
-
-  <!-- Elementos gráficos -->
-  <div class="hero__circle hero__circle--large"></div>
-  <div class="hero__circle hero__circle--small"></div>
-
-  <span class="hero__dot hero__dot--one"></span>
-  <span class="hero__dot hero__dot--two"></span>
-  <span class="hero__dot hero__dot--three"></span>
-  <span class="hero__dot hero__dot--four"></span>
-
-  <!-- Pequenos detalhes florais -->
-  <div class="hero__floral hero__floral--left">
-    <img src="./src/assets/images/flower/flor-branco.png" alt="" />
+<section id="hero" class="hero hero--celestial" aria-label="Nuestra boda — Suzana y Juan">
+  <div class="hero__cosmos" aria-hidden="true">
+    <div class="hero__nebula hero__nebula--one"></div><div class="hero__nebula hero__nebula--two"></div>
+    <div class="hero__aurora hero__aurora--one"></div><div class="hero__aurora hero__aurora--two"></div>
+    <div class="hero__starfield" id="hero-starfield"></div>
+    <div class="hero__meteors" id="hero-meteors"></div>
+    <div class="hero__constellation"><svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M38 242 170 126 292 208 426 66 571 190 721 90 858 229 M170 126 201 380 426 66 498 392 721 90"/><circle cx="38" cy="242" r="3"/><circle cx="170" cy="126" r="4"/><circle cx="292" cy="208" r="3"/><circle cx="426" cy="66" r="4"/><circle cx="571" cy="190" r="3"/><circle cx="721" cy="90" r="4"/><circle cx="858" cy="229" r="3"/><circle cx="201" cy="380" r="3"/><circle cx="498" cy="392" r="3"/></svg></div>
+    <div class="hero__rays"></div><div class="hero__horizon"></div>
+    <div class="hero__portal" id="hero-portal"><span class="hero__portal-ring hero__portal-ring--one"></span><span class="hero__portal-ring hero__portal-ring--two"></span><span class="hero__portal-ring hero__portal-ring--three"></span><span class="hero__portal-ring hero__portal-ring--four"></span><span class="hero__portal-core"></span></div>
+    <div class="hero__bursts" id="hero-bursts"></div>
   </div>
-
-  <div class="hero__floral hero__floral--right">
-    <img src="./src/assets/images/flower/flor-rosa.png" alt="" />
-  </div>
-
-  <!-- Conteúdo -->
+  <div class="hero__frame hero__frame--outer" aria-hidden="true"></div><div class="hero__frame hero__frame--inner" aria-hidden="true"></div>
+  <div class="hero__corner hero__corner--tl" aria-hidden="true"></div><div class="hero__corner hero__corner--tr" aria-hidden="true"></div><div class="hero__corner hero__corner--bl" aria-hidden="true"></div><div class="hero__corner hero__corner--br" aria-hidden="true"></div>
   <div class="hero__content">
-    <p class="hero__eyebrow">Nuestra boda</p>
-
-    <div class="hero__monogram">
-      <div class="hero__monogram-ring"></div>
-
-      <img
-        src="./src/assets/images/monograms/monogram4.png"
-        alt="Suzana y Juan"
-      />
+    <p class="hero__eyebrow hero__reveal">✦ &nbsp; NUESTRA BODA &nbsp; ✦</p>
+    <div class="hero__monogram hero__reveal"><div class="hero__monogram-ring" aria-hidden="true"></div><img src="./src/assets/images/monograms/monogram4.png" alt="Monograma de Suzana y Juan" /></div>
+    <div class="hero__divider hero__reveal" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+    <p class="hero__verse hero__reveal">La mujer de Pr. 31:10 y el hombre de Ef. 5:25 alcanzarán el amor de 1 Co. 13.</p>
+    <h1 class="hero__title" aria-label="Suzana y Juan"><span class="hero__name" data-hero-letters="Suzana">Suzana</span><strong class="hero__ampersand">&amp;</strong><span class="hero__name" data-hero-letters="Juan">Juan</span></h1>
+    <div class="hero__date hero__reveal"><span></span><p>09 · ENERO · 2027</p><span></span></div>
+    <p class="hero__location hero__reveal">VALENCIA · ESPAÑA</p>
+    <div id="hero-countdown" class="hero__countdown hero__reveal" aria-label="Cuenta atrás para nuestra boda">
+      <div class="countdown__item"><span id="countdown-days">0</span><small>Días</small></div><div class="countdown__separator" aria-hidden="true">✦</div>
+      <div class="countdown__item"><span id="countdown-hours">00</span><small>Horas</small></div><div class="countdown__separator" aria-hidden="true">✦</div>
+      <div class="countdown__item"><span id="countdown-minutes">00</span><small>Minutos</small></div><div class="countdown__separator" aria-hidden="true">✦</div>
+      <div class="countdown__item"><span id="countdown-seconds">00</span><small>Segundos</small></div>
     </div>
-
-    <div class="hero__divider">
-      <span></span>
-      <i>✦</i>
-      <span></span>
-    </div>
-
-    <p class="hero__verse">
-      La mujer de Pr. 31:10 y el hombre de Ef. 5:25 alcanzarán el amor de 1 Co.
-      13.
-    </p>
-
-    <h1 class="hero__title">
-      <span>Suzana</span>
-
-      <strong>&amp;</strong>
-
-      <span>Juan</span>
-    </h1>
-
-    <div class="hero__date">
-      <span></span>
-      <p>09 Enero 2027</p>
-      <span></span>
-    </div>
-
-    <div id="hero-countdown" class="hero__countdown">
-      <div class="countdown__item">
-        <span id="countdown-days">000</span>
-        <small>Días</small>
-      </div>
-
-      <div class="countdown__separator">:</div>
-
-      <div class="countdown__item">
-        <span id="countdown-hours">00</span>
-        <small>Horas</small>
-      </div>
-
-      <div class="countdown__separator">:</div>
-
-      <div class="countdown__item">
-        <span id="countdown-minutes">00</span>
-        <small>Minutos</small>
-      </div>
-
-      <div class="countdown__separator">:</div>
-
-      <div class="countdown__item">
-        <span id="countdown-seconds">00</span>
-        <small>Segundos</small>
-      </div>
-    </div>
-
-    <div class="hero__discover">
-      <button id="hero-discover" class="hero__button" type="button">
-        <span class="hero__button-line"></span>
-
-        <span class="hero__button-text"> Descubre lo que nos unió </span>
-
-        <span class="hero__button-arrow"> ↓ </span>
-
-        <span class="hero__button-line"></span>
-      </button>
-    </div>
+    <div class="hero__discover hero__reveal"><button id="hero-discover" class="hero__button" type="button"><span class="hero__button-glow" aria-hidden="true"></span><span class="hero__button-text">Descubre lo que nos unió</span><span class="hero__button-arrow" aria-hidden="true">↓</span></button></div>
   </div>
-
-  <!-- Indicador inferior -->
-  <div class="hero__scroll">
-    <span class="hero__scroll-line"></span>
-  </div>
+  <div class="hero__scroll" aria-hidden="true"><span>DESLIZA PARA DESCUBRIR</span><span class="hero__scroll-line"></span></div>
+  <div class="hero__bottom-glow" aria-hidden="true"></div>
 </section>

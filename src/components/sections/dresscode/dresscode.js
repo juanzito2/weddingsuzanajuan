@@ -403,6 +403,19 @@ export function initDresscode() {
             textColor
         );
 
+        // Contraste real da amostra: texto escuro em tons claros,
+        // texto branco em tons escuros, preservando a cor original.
+        const hex = color.replace('#', '');
+        const rgb = [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+        const linear = rgb.map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+        const luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+        const darkText = luminance > 0.23;
+        card.style.setProperty('--preview-ink', darkText ? '#241b30' : '#fffaf1');
+        card.style.setProperty('--preview-muted', darkText ? 'rgba(36,27,48,.78)' : 'rgba(255,250,241,.91)');
+        card.style.setProperty('--preview-detail', darkText ? 'rgba(53,37,61,.50)' : 'rgba(255,246,224,.72)');
+        card.style.setProperty('--preview-glass', darkText ? 'rgba(255,255,255,.13)' : 'rgba(18,10,38,.10)');
+        card.style.setProperty('--preview-contrast', darkText ? 'light' : 'dark');
+
 
         /*
          * Card agora possui cor.
