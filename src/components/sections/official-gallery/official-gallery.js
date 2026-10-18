@@ -1,11 +1,11 @@
 import {initReflections} from './effects/reflections.js';
 import {initGalleryLightbox} from './lightbox/lightbox.js';
-export function initOfficialGallery(){const root=document.getElementById('official-gallery');if(!root||root.dataset.initialized==='true')return;root.dataset.initialized='true';const reveal=[...root.querySelectorAll('.og-reveal')];if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion:reduce)').matches){reveal.forEach(el=>el.classList.add('is-visible'))}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08});reveal.forEach(el=>observer.observe(el))}const stars=root.querySelector('.og-stars');for(let i=0;i<32;i++){const s=document.createElement('span');s.className='og-star';s.style.left=`${(i*73.7)%100}%`;s.style.top=`${(i*39.13+7)%100}%`;s.style.animationDelay=`-${(i%7)*.6}s`;stars.append(s)}// V6: estrelas concentradas nas margens para preencher o espaço vazio.
+export function initOfficialGallery(){const root=document.getElementById('official-gallery');if(!root||root.dataset.initialized==='true')return;root.dataset.initialized='true';const reveal=[...root.querySelectorAll('.og-reveal')];if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion:reduce)').matches){reveal.forEach(el=>el.classList.add('is-visible'))}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08});reveal.forEach(el=>observer.observe(el))}const stars=root.querySelector('.og-stars');for(let i=0;i<(window.matchMedia("(max-width:700px)").matches?12:32);i++){const s=document.createElement('span');s.className='og-star';s.style.left=`${(i*73.7)%100}%`;s.style.top=`${(i*39.13+7)%100}%`;s.style.animationDelay=`-${(i%7)*.6}s`;stars.append(s)}// V6: estrelas concentradas nas margens para preencher o espaço vazio.
 const sideStars=root.querySelector('[data-og-side-stars]');
 const isMobileSide=window.matchMedia('(max-width:700px)').matches;
 const prefersLessMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 if(sideStars){
-  const count=isMobileSide?64:180;
+  const count=isMobileSide?20:180;
   const fraction=n=>{const x=Math.sin(n*92.731+14.81)*43758.5453;return x-Math.floor(x)};
   for(let i=0;i<count;i++){
     const star=document.createElement('span');
@@ -25,12 +25,12 @@ if(sideStars){
     sideStars.append(star);
   }
 }
-const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;const mobile=window.matchMedia('(max-width:700px)').matches;const dust=root.querySelector('[data-og-dust]');const meteors=root.querySelector('[data-og-meteors]');if(!reduced){for(let i=0;i<(mobile?65:150);i++){const s=document.createElement('span');const f=n=>((Math.sin(n*127.1)*43758.5453)%1+1)%1;s.style.setProperty('--x',`${f(i+1)*100}%`);s.style.setProperty('--y',`${f(i+17)*100}%`);s.style.setProperty('--s',`${1+f(i+31)*2.8}px`);s.style.setProperty('--t',`${2+f(i+43)*6}s`);s.style.setProperty('--d',`${-f(i+51)*9}s`);s.style.setProperty('--c',i%3?'#fff6dd':'#c9b9f5');dust?.append(s)}for(let i=0;i<(mobile?5:12);i++){const m=document.createElement('span');m.className='og-meteor';m.style.setProperty('--x',`${(i*19.3+11)%100}%`);m.style.setProperty('--y',`${(i*11.7+4)%95}%`);m.style.setProperty('--w',`${65+i%5*17}px`);m.style.setProperty('--t',`${9+i%5*2}s`);m.style.setProperty('--d',`${-i*2.7}s`);meteors?.append(m)}}// All Stars V4: constelações e cristais leves no fundo, sem cobrir fotografias.
+const reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;const mobile=window.matchMedia('(max-width:700px)').matches;const dust=root.querySelector('[data-og-dust]');const meteors=root.querySelector('[data-og-meteors]');if(!reduced){for(let i=0;i<(mobile?18:150);i++){const s=document.createElement('span');const f=n=>((Math.sin(n*127.1)*43758.5453)%1+1)%1;s.style.setProperty('--x',`${f(i+1)*100}%`);s.style.setProperty('--y',`${f(i+17)*100}%`);s.style.setProperty('--s',`${1+f(i+31)*2.8}px`);s.style.setProperty('--t',`${2+f(i+43)*6}s`);s.style.setProperty('--d',`${-f(i+51)*9}s`);s.style.setProperty('--c',i%3?'#fff6dd':'#c9b9f5');dust?.append(s)}for(let i=0;i<(mobile?2:12);i++){const m=document.createElement('span');m.className='og-meteor';m.style.setProperty('--x',`${(i*19.3+11)%100}%`);m.style.setProperty('--y',`${(i*11.7+4)%95}%`);m.style.setProperty('--w',`${65+i%5*17}px`);m.style.setProperty('--t',`${9+i%5*2}s`);m.style.setProperty('--d',`${-i*2.7}s`);meteors?.append(m)}}// All Stars V4: constelações e cristais leves no fundo, sem cobrir fotografias.
 const constellations=root.querySelector('[data-og-constellations]');
 const crystals=root.querySelector('[data-og-crystals]');
 if(!reduced){
  const patterns=[[[7,17],[43,7],[69,38],[92,13]],[[12,65],[38,19],[67,46],[90,11]],[[8,8],[26,52],[55,26],[82,73]],[[10,40],[38,10],[70,16],[93,70]]];
- for(let i=0;i<(mobile?10:24);i++){
+ for(let i=0;i<(mobile?4:24);i++){
   const pts=patterns[i%patterns.length];
   const shape=document.createElement('span');shape.className='og-constellation';
   shape.style.setProperty('--x',`${(i*43.37+5)%93}%`);
@@ -44,7 +44,7 @@ if(!reduced){
   for(const pt of pts){const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',pt[0]);dot.setAttribute('cy',pt[1]);dot.setAttribute('r','1.8');svg.append(dot)}
   shape.append(svg);constellations?.append(shape);
  }
- for(let i=0;i<(mobile?18:55);i++){
+ for(let i=0;i<(mobile?6:55);i++){
   const crystal=document.createElement('span');crystal.className='og-crystal';
   crystal.style.setProperty('--x',`${(i*47.91+12)%97}%`);
   crystal.style.setProperty('--y',`${(i*29.13+7)%98}%`);

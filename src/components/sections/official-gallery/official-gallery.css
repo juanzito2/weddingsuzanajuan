@@ -160,3 +160,33 @@
   .og-side-star--cross::after{height:14px}
 }
 @media(prefers-reduced-motion:reduce){.og-side-star{animation:none!important}}
+
+
+/* V7 — MOBILE STABILITY: reduzir composição GPU sem alterar o desktop */
+@media (max-width:700px) {
+  .official-gallery .og-nebula,
+  .official-gallery .og-aurora {
+    animation: none !important;
+    filter: blur(22px) !important;
+  }
+  .official-gallery .og-glass-beams i {
+    animation: none !important;
+    filter: blur(12px) !important;
+  }
+  .official-gallery .og-orbits i,
+  .official-gallery .og-portal__orbit i { animation: none !important; }
+  .official-gallery .og-portal {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .official-gallery .og-reveal {
+    filter: none !important;
+    transition: opacity .6s ease, translate .6s ease !important;
+  }
+  .official-gallery .og-side-star,
+  .official-gallery .og-crystal,
+  .official-gallery .og-constellation,
+  .official-gallery .og-dust span,
+  .official-gallery .og-meteor { animation: none !important; }
+  .official-gallery .og-chapter { transform-style: flat !important; }
+}
